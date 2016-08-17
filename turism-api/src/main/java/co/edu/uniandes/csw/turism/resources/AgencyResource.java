@@ -56,8 +56,8 @@ import javax.ws.rs.WebApplicationException;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AgencyResource {
-    private static final String AGENCY_HREF = "https://api.stormpath.com/v1/groups/49JK92HE8y6PDHLmuTnYBI";
-    private static final String ADMIN_HREF = "https://api.stormpath.com/v1/groups/2oHvI7o5XY5DmpW9jGBrKO";
+    private static final String AGENCY_HREF = "https://api.stormpath.com/v1/groups/3HLGWgwc7MezMbiUHKWIKO";
+    private static final String ADMIN_HREF = "https://api.stormpath.com/v1/groups/4ayxsJyhONfx4NUCF5HmTg";
 
     @Inject private IAgencyLogic agencyLogic;
     @Context private HttpServletResponse response;
