@@ -46,8 +46,8 @@ public interface ITripLogic {
     public void removeCategory(Long tripId, Long categoryId);
     
     public List<CommentEntity> listComments(Long tripId);
-    public CommentEntity getComment(Long tripId, Long categoryId);
-    public CommentEntity addComment(Long tripId, Long categoryId);
+    public CommentEntity getComment(Long tripId, Long commentId);
+    public CommentEntity addComment(Long tripId, Long commentId);
     public List<CommentEntity> replaceComments(Long tripId, List<CommentEntity> list);
-    public void removeComment(Long tripId, Long categoryId);
+    public void removeComment(Long tripId, Long commentId);
 }
