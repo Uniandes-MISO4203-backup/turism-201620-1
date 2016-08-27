@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
@@ -49,7 +49,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany
     private List<CategoryEntity> category = new ArrayList<>();
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<CommentEntity> comments = new ArrayList<>();
@@ -60,7 +60,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return atributo image.
      * @generated
      */
-    public String getImage(){
+    public String getImage() {
         return image;
     }
 
@@ -70,7 +70,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param image nuevo valor del atributo
      * @generated
      */
-    public void setImage(String image){
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -80,7 +80,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return atributo price.
      * @generated
      */
-    public Long getPrice(){
+    public Long getPrice() {
         return price;
     }
 
@@ -90,7 +90,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param price nuevo valor del atributo
      * @generated
      */
-    public void setPrice(Long price){
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -133,4 +133,13 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
     }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
 }
