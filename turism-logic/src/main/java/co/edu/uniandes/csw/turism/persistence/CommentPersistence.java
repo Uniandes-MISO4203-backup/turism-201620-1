@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.turism.persistence;
 
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,9 +15,10 @@ import javax.persistence.PersistenceContext;
  *
  * @author da.prieto1
  */
+@Stateless
 public class CommentPersistence extends CrudPersistence<CommentEntity> {
     
-    @PersistenceContext(unitName="CommentPU")
+    @PersistenceContext(unitName="TurismPU")
     protected EntityManager em;
     
     /**
