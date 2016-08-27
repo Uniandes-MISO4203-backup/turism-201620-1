@@ -5,12 +5,16 @@
  */
 package co.edu.uniandes.csw.turism.entities;
 
+import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -27,8 +31,11 @@ public class CommentEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private TripEntity trip;
 
-    private String text;
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date date;
+
+    private String text;
 
     public ClientEntity getClient() {
         return client;
