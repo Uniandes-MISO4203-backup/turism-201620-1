@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.turism.test.persistence;
 
+import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
-import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
 import co.edu.uniandes.csw.turism.persistence.CommentPersistence;
 import java.util.ArrayList;
@@ -32,8 +34,12 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class CommentPersistenceTest {
-    
-     @Deployment
+
+    private AgencyEntity agencyEntity;
+    private TripEntity tripEntity;
+    private ClientEntity clientEntity;
+
+    @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CommentEntity.class.getPackage())
@@ -41,16 +47,16 @@ public class CommentPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+
     @Inject
     private CommentPersistence commentPersistence;
-    
+
     @PersistenceContext
     private EntityManager em;
 
     @Inject
     UserTransaction utx;
-    
+
     /**
      * Configuración inicial de la prueba.
      *
@@ -73,7 +79,7 @@ public class CommentPersistenceTest {
             }
         }
     }
-    
+
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
@@ -87,22 +93,31 @@ public class CommentPersistenceTest {
      * @generated
      */
     private List<CommentEntity> data = new ArrayList<CommentEntity>();
-    
+
     /**
-     * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
      *
      * @generated
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
-            CommentEntity entity = factory.manufacturePojo(CommentEntity.class);
-            
-            em.persist(entity);
-            data.add(entity);
-        }
+
+        agencyEntity = factory.manufacturePojo(AgencyEntity.class);
+        agencyEntity.setId(1L);
+        em.persist(agencyEntity);
+
+        tripEntity = factory.manufacturePojo(TripEntity.class);
+        tripEntity.setId(1L);
+        tripEntity.setAgency(agencyEntity);
+        em.persist(tripEntity);
+
+        clientEntity = factory.manufacturePojo(ClientEntity.class);
+        clientEntity.setId(1L);
+        em.persist(clientEntity);
+
     }
-    
+
     /**
      * Prueba para crear un Comment.
      *
@@ -112,79 +127,14 @@ public class CommentPersistenceTest {
     public void createCommentTest() {
         PodamFactory factory = new PodamFactoryImpl();
         CommentEntity newEntity = factory.manufacturePojo(CommentEntity.class);
+        newEntity.setTrip(tripEntity);
+        newEntity.setClient(clientEntity);
         CommentEntity result = commentPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
-
         CommentEntity entity = em.find(CommentEntity.class, result.getId());
-
         Assert.assertEquals(newEntity.getName(), entity.getName());
-    }
-    
-    /**
-     * Prueba para consultar la lista de Comments.
-     *
-     * @generated
-     */
-    @Test
-    public void getCommentsTest() {
-        List<CommentEntity> list = commentPersistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for (CommentEntity ent : list) {
-            boolean found = false;
-            for (CommentEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
-    
-    /**
-     * Prueba para consultar un Comment.
-     *
-     * @generated
-     */
-    @Test
-    public void getCommentTest() {
-        CommentEntity entity = data.get(0);
-        CommentEntity newEntity = commentPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(newEntity.getText(), entity.getText());
     }
 
-    /**
-     * Prueba para eliminar un Comment.
-     *
-     * @generated
-     */
-    @Test
-    public void deleteCommentTest() {
-        CommentEntity entity = data.get(0);
-        commentPersistence.delete(entity.getId());
-        CommentEntity deleted = em.find(CommentEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
-
-    /**
-     * Prueba para actualizar un Comment.
-     *
-     * @generated
-     */
-    @Test
-    public void updateCommentTest() {
-        CommentEntity entity = data.get(0);
-        PodamFactory factory = new PodamFactoryImpl();
-        CommentEntity newEntity = factory.manufacturePojo(CommentEntity.class);
-
-        newEntity.setId(entity.getId());
-
-        commentPersistence.update(newEntity);
-
-        CommentEntity resp = em.find(CommentEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-    }
-    
 }
