@@ -64,7 +64,6 @@ public class CommentTest {
 
     private final static List<CommentEntity> oraculo = new ArrayList<>();
 
-    private final String agencyPath = "agencys";
     private final String tripPath = "trips";
     private final String commentPath = "comments";
 
@@ -143,9 +142,9 @@ public class CommentTest {
             }
         }
         target = createWebTarget()
-                .path(agencyPath)
+                .path(tripPath)
                 .path(agencyEntity.getId().toString())
-                .path(tripPath);
+                .path(commentPath);
     }
 
     /**
@@ -174,12 +173,13 @@ public class CommentTest {
     @Ignore
     public void createCommentTest() throws IOException {
         CommentDTO comment = factory.manufacturePojo(CommentDTO.class);
+        
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
                 .request().cookie(cookieSessionId)
                 .post(Entity.entity(comment, MediaType.APPLICATION_JSON));
-
+        String responseS = (String)response.readEntity(String.class);
         CommentDTO commentTest = (CommentDTO) response.readEntity(CommentDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());

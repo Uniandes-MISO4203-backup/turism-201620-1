@@ -24,6 +24,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
+ * URI: trips/{tripId: \\d+}/comments/
  *
  * @author da.prieto1
  */
@@ -46,13 +47,10 @@ public class CommentResource {
     @PathParam("tipId")
     private Long tripId;
 
-    @PathParam("clientId")
-    private Long clientId;
-
     @POST
     @StatusCreated
-    public CommentDetailDTO createTrip(CommentDetailDTO dto) {
-        return new CommentDetailDTO(commentLogic.createComment(clientId, tripId, dto.toEntity()));
+    public CommentDetailDTO createComment(CommentDetailDTO dto) {
+        return new CommentDetailDTO(commentLogic.createComment(dto.getClient().getId(), tripId, dto.toEntity()));
     }
 
     private List<CommentDetailDTO> listEntity2DTO(List<CommentEntity> entityList) {
@@ -63,9 +61,4 @@ public class CommentResource {
         return list;
     }
 
-    @POST
-    @StatusCreated
-    public CommentDetailDTO createComment(CommentDetailDTO dto) {
-        return new CommentDetailDTO(commentLogic.createComment(clientId, tripId, dto.toEntity()));
-    }
 }
