@@ -70,6 +70,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('tripCategoryList');
                     }
+                },
+                comments: {
+                    displayName: 'Comments',
+                    icon: 'question-sign',
+                    fn: function () {
+                        $state.go('commentsList');
+                    }
                 }
             };
         }]);
