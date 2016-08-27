@@ -17,25 +17,25 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author da.prieto1
  */
 @Entity
-public class CommentEntity extends BaseEntity implements Serializable{
-    
+public class CommentEntity extends BaseEntity implements Serializable {
+
     @PodamExclude
     @ManyToOne
-    private ClientEntity author;
-    
+    private ClientEntity client;
+
     @PodamExclude
     @ManyToOne
     private TripEntity trip;
-    
+
     private String text;
     private Date date;
 
-    public ClientEntity getAuthor() {
-        return author;
+    public ClientEntity getClient() {
+        return client;
     }
 
-    public void setAuthor(ClientEntity author) {
-        this.author = author;
+    public void setClient(ClientEntity client) {
+        this.client = client;
     }
 
     public TripEntity getTrip() {
@@ -62,7 +62,4 @@ public class CommentEntity extends BaseEntity implements Serializable{
         this.date = date;
     }
 
-   
-    
-    
 }

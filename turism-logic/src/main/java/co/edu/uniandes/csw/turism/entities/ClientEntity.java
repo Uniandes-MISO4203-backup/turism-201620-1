@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
@@ -42,6 +42,10 @@ public class ClientEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> wishList = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(mappedBy = "client")
+    private List<CommentEntity> comments = new ArrayList<>();
+
     /**
      * Obtiene la colección de wishList.
      *
@@ -61,4 +65,13 @@ public class ClientEntity extends BaseEntity implements Serializable {
     public void setWishList(List<ItemEntity> wishlist) {
         this.wishList = wishlist;
     }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
 }

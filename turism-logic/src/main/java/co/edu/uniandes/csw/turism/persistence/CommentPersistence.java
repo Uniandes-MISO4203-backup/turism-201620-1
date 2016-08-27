@@ -19,11 +19,17 @@ public class CommentPersistence extends CrudPersistence<CommentEntity> {
     @PersistenceContext(unitName="CommentPU")
     protected EntityManager em;
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected Class<CommentEntity> getEntityClass() {
         return CommentEntity.class;
