@@ -13,11 +13,18 @@ import java.util.List;
  * @author da.prieto1
  */
 public interface ICommentLogic {
+
     public int countComments();
+
     public List<CommentEntity> getComments();
+
     public List<CommentEntity> getComments(Integer page, Integer maxRecords);
+
     public CommentEntity getComment(Long id);
-    public CommentEntity createComment(CommentEntity entity);
+
+    public CommentEntity createComment(Long clientId, Long tripId, CommentEntity entity);
+
     public CommentEntity updateComment(CommentEntity entity);
+
     public void deleteComment(Long id);
 }

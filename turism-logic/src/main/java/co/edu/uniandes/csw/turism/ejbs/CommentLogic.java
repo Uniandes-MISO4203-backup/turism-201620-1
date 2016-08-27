@@ -5,8 +5,12 @@
  */
 package co.edu.uniandes.csw.turism.ejbs;
 
+import co.edu.uniandes.csw.turism.api.IClientLogic;
 import co.edu.uniandes.csw.turism.api.ICommentLogic;
+import co.edu.uniandes.csw.turism.api.ITripLogic;
+import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.CommentPersistence;
 import java.util.List;
 import javax.inject.Inject;
@@ -19,6 +23,12 @@ public class CommentLogic implements ICommentLogic {
 
     @Inject
     private CommentPersistence persistence;
+
+    @Inject
+    private ITripLogic tripLogic;
+    
+    @Inject
+    private IClientLogic clientLogic;
 
     @Override
     public int countComments() {
@@ -41,8 +51,14 @@ public class CommentLogic implements ICommentLogic {
     }
 
     @Override
-    public CommentEntity createComment(CommentEntity entity) {
-        persistence.create(entity);
+    public CommentEntity createComment(Long clientId, Long tripId, CommentEntity entity) {
+        ClientEntity client = clientLogic.getClient(clientId);
+        entity.setClient(client);
+        
+        TripEntity trip = tripLogic.getTrip(tripId);
+        entity.setTrip(trip);
+        
+        entity = persistence.create(entity);
         return entity;
     }
 
