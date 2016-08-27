@@ -49,6 +49,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany
     private List<CategoryEntity> category = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<CommentEntity> comments = new ArrayList<>();
 
     /**
      * Obtiene el atributo image.
