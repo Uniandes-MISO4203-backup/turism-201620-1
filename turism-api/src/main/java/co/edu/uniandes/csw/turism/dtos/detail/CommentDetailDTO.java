@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.turism.dtos.detail;
 
+import co.edu.uniandes.csw.turism.dtos.minimum.ClientDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.CommentDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
@@ -21,6 +22,9 @@ public class CommentDetailDTO extends CommentDTO {
     @PodamExclude
     private TripDTO trip;
 
+    @PodamExclude
+    private ClientDTO client;
+
     public CommentDetailDTO() {
         super();
     }
@@ -30,6 +34,9 @@ public class CommentDetailDTO extends CommentDTO {
         if (entity.getTrip() != null) {
             this.trip = new TripDTO(entity.getTrip());
         }
+        if (entity.getClient() != null) {
+            this.client = new ClientDTO(entity.getClient());
+        }
     }
 
     @Override
@@ -37,6 +44,9 @@ public class CommentDetailDTO extends CommentDTO {
         CommentEntity entity = super.toEntity();
         if (this.getTrip() != null) {
             entity.setTrip(this.getTrip().toEntity());
+        }
+        if (this.getClient() != null) {
+            entity.setClient(this.getClient().toEntity());
         }
         return entity;
     }
@@ -47,6 +57,14 @@ public class CommentDetailDTO extends CommentDTO {
 
     public void setTrip(TripDTO trip) {
         this.trip = trip;
+    }
+
+    public ClientDTO getClient() {
+        return client;
+    }
+
+    public void setClient(ClientDTO client) {
+        this.client = client;
     }
 
 }
