@@ -25,10 +25,10 @@ public class CommentLogic implements ICommentLogic {
     private CommentPersistence persistence;
 
     @Inject
-    private ITripLogic tripLogic;
-    
-    @Inject
     private IClientLogic clientLogic;
+
+    @Inject
+    private ITripLogic tripLogic;
 
     @Override
     public int countComments() {
@@ -36,41 +36,42 @@ public class CommentLogic implements ICommentLogic {
     }
 
     @Override
-    public List<CommentEntity> getComments() {
-        return persistence.findAll();
+    public List<CommentEntity> getCommentsByTrip(Long tripId) {
+        TripEntity tripEntity = tripLogic.getTrip(tripId);
+        return tripEntity.getComments();
     }
 
     @Override
-    public List<CommentEntity> getComments(Integer page, Integer maxRecords) {
-        return persistence.findAll(page, maxRecords);
+    public List<CommentEntity> getCommentsByTrip(Integer page, Integer maxRecords, Long tripId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<CommentEntity> getCommentsByClient(Long clientId) {
+        ClientEntity clientEntity = clientLogic.getClient(clientId);
+        return clientEntity.getComments();
+    }
+
+    @Override
+    public List<CommentEntity> getCommentsByClient(Integer page, Integer maxRecords, Long clientId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public CommentEntity getComment(Long id) {
-        return persistence.find(id);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public CommentEntity createComment(Long clientId, Long tripId, CommentEntity entity) {
         ClientEntity client = clientLogic.getClient(clientId);
         entity.setClient(client);
-        
+
         TripEntity trip = tripLogic.getTrip(tripId);
         entity.setTrip(trip);
-        
+
         entity = persistence.create(entity);
         return entity;
     }
 
-    @Override
-    public CommentEntity updateComment(CommentEntity entity) {
-        CommentEntity newEntity = entity;
-        CommentEntity oldEntity = persistence.find(entity.getId());
-        return persistence.update(newEntity);
-    }
-
-    @Override
-    public void deleteComment(Long id) {
-        persistence.delete(id);
-    }
 }

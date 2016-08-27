@@ -48,9 +48,6 @@ public class TripLogic implements ITripLogic {
     @Inject
     private IAgencyLogic agencyLogic;
 
-    @Inject
-    ICommentLogic commentLogic;
-
     /**
      * Obtiene el número de registros de Trip.
      *
@@ -250,49 +247,4 @@ public class TripLogic implements ITripLogic {
         entity.getCategory().remove(categoryEntity);
     }
 
-    @Override
-    public List<CommentEntity> listComments(Long tripId) {
-        return persistence.find(tripId).getComments();
-    }
-
-    @Override
-    public CommentEntity getComment(Long tripId, Long commentId) {
-        List<CommentEntity> list = persistence.find(tripId).getComments();
-        CommentEntity commentEntity = new CommentEntity();
-        commentEntity.setId(commentId);
-        int index = list.indexOf(commentEntity);
-        if (index >= 0) {
-            return list.get(index);
-        }
-        return null;
-    }
-
-    @Override
-    public CommentEntity addComment(Long tripId, Long commentId) {
-        TripEntity tripEntity = persistence.find(tripId);
-        CommentEntity commentEntity = commentLogic.getComment(commentId);
-        commentEntity.setTrip(tripEntity);
-        return commentEntity;
-    }
-
-    @Override
-    public List<CommentEntity> replaceComments(Long tripId, List<CommentEntity> list) {
-        TripEntity tripEntity = persistence.find(tripId);
-        List<CommentEntity> commentsList = commentLogic.getComments();
-        for (CommentEntity comment : commentsList) {
-            if (list.contains(comment)) {
-                comment.setTrip(tripEntity);
-            } else if (comment.getTrip() != null && comment.getTrip().equals(tripEntity)) {
-                comment.setTrip(null);
-            }
-        }
-        tripEntity.setComments(list);
-        return tripEntity.getComments();
-    }
-
-    @Override
-    public void removeComment(Long tripId, Long commentId) {
-        CommentEntity commentEntity = commentLogic.getComment(commentId);
-        commentEntity.setTrip(null);
-    }
 }
