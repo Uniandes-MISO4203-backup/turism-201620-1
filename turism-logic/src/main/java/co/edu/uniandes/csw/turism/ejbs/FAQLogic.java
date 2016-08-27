@@ -5,19 +5,22 @@
  */
 package co.edu.uniandes.csw.turism.ejbs;
 
-import co.edu.uniandes.csw.turism.api.IFAQ;
 import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import co.edu.uniandes.csw.turism.persistence.FAQPersistence;
 import java.util.List;
 import javax.inject.Inject;
+import co.edu.uniandes.csw.turism.api.IFAQLogic;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author lm.ariza10
  */
-public class FAQLogic implements IFAQ{
+@Stateless
+public class FAQLogic implements IFAQLogic{
 
     @Inject private FAQPersistence persistence;
+    
     
     @Override
     public int countFAQs() {

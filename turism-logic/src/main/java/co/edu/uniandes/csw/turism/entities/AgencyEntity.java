@@ -44,7 +44,7 @@ public class AgencyEntity extends BaseEntity implements Serializable {
     
     
     @PodamExclude
-    @OneToMany(mappedBy = "faq")
+    @OneToMany(mappedBy = "agency", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FAQEntity> faqs = new ArrayList<>();
 
    

@@ -33,7 +33,8 @@ SOFTWARE.
         'agencyModule',
         'categoryModule',
         'authModule',
-        'roleModule'
+        'roleModule',
+        'faqModule'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {

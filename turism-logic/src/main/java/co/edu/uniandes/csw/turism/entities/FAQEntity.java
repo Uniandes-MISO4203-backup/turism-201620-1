@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.turism.entities;
 
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -14,15 +15,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author lm.ariza10
  */
+@Entity
 public class FAQEntity extends BaseEntity implements Serializable {
     
     private String question; 
 
     private String response; 
     
-     @PodamExclude
+    @PodamExclude
     @ManyToOne
     private AgencyEntity agency;
+
      
     public String getQuestion() {
         return question;

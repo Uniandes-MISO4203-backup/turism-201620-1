@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author lm.ariza10
  */
-public interface IFAQ {
+public interface IFAQLogic {
      public int countFAQs();
     public List<FAQEntity> getFAQs();
     public List<FAQEntity> getFAQs(Integer page, Integer maxRecords);

@@ -23,35 +23,31 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("agencyModule");
+    var mod = ng.module("faqModule");
 
-    mod.controller("agencyDetailCtrl", ['$scope', "$state", "agency",'$rootScope',
-        function ($scope, $state, agency,$rootScope) {
-            $scope.currentRecord = agency;
-            var roles = $rootScope.roles;
+    mod.controller("faqDetailCtrl", ['$scope', "$state", "faq",
+        function ($scope, $state, faq) {
+            $scope.currentRecord = faq;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('agencyNew');
-                    },
-                    show: function () {
-                        return (roles.indexOf("admin") !== -1);
+                        $state.go('faqNew');
                     }
                 },
                 edit: {
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function () {
-                        $state.go('agencyEdit');
+                        $state.go('faqEdit');
                     }
                 },
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('agencyDelete');
+                        $state.go('faqDelete');
                     }
                 },
                 refresh: {
@@ -64,20 +60,6 @@ SOFTWARE.
                 list: {
                     displayName: 'List',
                     icon: 'th-list',
-                    fn: function () {
-                        $state.go('agencyList');
-                    }
-                },
-                trips: {
-                    displayName: 'Trips',
-                    icon: 'link',
-                    fn: function () {
-                        $state.go('tripList');
-                    }
-                },
-                faqs: {
-                    displayName: 'Faqs',
-                    icon: 'question-sign',
                     fn: function () {
                         $state.go('faqList');
                     }

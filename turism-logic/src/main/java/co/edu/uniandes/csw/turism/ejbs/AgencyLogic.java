@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
-import co.edu.uniandes.csw.turism.api.IFAQ;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
@@ -32,6 +31,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
+import co.edu.uniandes.csw.turism.api.IFAQLogic;
 
 /**
  * @generated
@@ -42,7 +42,7 @@ public class AgencyLogic implements IAgencyLogic {
     @Inject private AgencyPersistence persistence;
     
     
-    @Inject private IFAQ faqLogic;
+    @Inject private IFAQLogic faqLogic;
 
 
     /**
@@ -145,16 +145,16 @@ public class AgencyLogic implements IAgencyLogic {
 
     @Override
     public FAQEntity addFAQ(Long agencyId, Long faqId) {
-        AgencyEntity authorEntity = persistence.find(agencyId);
+        AgencyEntity agencyEntity = persistence.find(agencyId);
         FAQEntity faqEntity = faqLogic.getFAQ(faqId);
-        faqEntity.setAgency(agencyId);
-        return faqEntity;
+        faqEntity.setAgency(agencyEntity);
+        return faqEntity; 
     }
 
     @Override
     public List<FAQEntity> replaceFAQs(Long agencyId, List<FAQEntity> list) {
          AgencyEntity agencyEntity = persistence.find(agencyId);
-        List<FAQEntity> faqList = faqLogic.getAwards();
+        List<FAQEntity> faqList = faqLogic.getFAQs();
         for (FAQEntity faq : faqList) {
             if (list.contains(faq)) {
                 faq.setAgency(agencyEntity);
