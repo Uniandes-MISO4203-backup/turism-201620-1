@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'trip',
         displayName: 'Trip',
 		url: 'trips',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -42,7 +43,18 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            },
+            transportType: {
+                displayName: 'Transport Type',
+                type: 'String',
+                required: true
+            },
+            specialRequirements: {
+                displayName: 'Special Requirements',
+                type: 'String',
+                required: false
+            }
+        }
     });
 
     mod.config(['$stateProvider',

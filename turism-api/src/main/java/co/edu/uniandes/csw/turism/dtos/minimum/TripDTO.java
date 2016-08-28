@@ -37,6 +37,9 @@ public class TripDTO implements Serializable{
     private String name;
     private String image;
     private Long price;
+    private String transportType;
+    private String specialRequirements;
+    
 
     /**
      * @generated
@@ -56,6 +59,8 @@ public class TripDTO implements Serializable{
         this.name=entity.getName();
         this.image=entity.getImage();
         this.price=entity.getPrice();
+        this.transportType=entity.getTransportType();
+        this.specialRequirements=entity.getSpecialRequirements();
        }
     }
 
@@ -71,6 +76,8 @@ public class TripDTO implements Serializable{
         entity.setName(this.getName());
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
+        entity.setTransportType(this.getTransportType());
+        entity.setSpecialRequirements(this.getSpecialRequirements());
     return entity;
     }
 
@@ -153,5 +160,38 @@ public class TripDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+    /**
+     * Obtiene el atributo transportType
+     * @return atributo transportType
+     */
+    public String getTransportType() {
+        return transportType;
+    }
+    
+    /**
+     * Establece el valor del atributo transportType
+     * @param transportType  nuevo valor del atributo
+     */
+    public void setTransportType(String transportType) {
+        this.transportType = transportType;
+    }
+    
+    /**
+     * Obtiene el atributo specialRequirements
+     * @return atributo specialRequirements
+     */
+    public String getSpecialRequirements() {
+        return specialRequirements;
+    }
 
+    /**
+     * Establce el valor del atributo specialRequirements
+     * @param specialRequirements nuevo valor del atributo
+     */
+    public void setSpecialRequirements(String specialRequirements) {
+        this.specialRequirements = specialRequirements;
+    }
+
+    
 }
