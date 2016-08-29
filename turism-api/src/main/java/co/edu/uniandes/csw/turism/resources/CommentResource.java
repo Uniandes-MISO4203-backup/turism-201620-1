@@ -17,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -47,11 +49,44 @@ public class CommentResource {
     @PathParam("tipId")
     private Long tripId;
 
+    @GET
+    public List<CommentDetailDTO> getComments() {
+        if (page != null && maxRecords != null) {
+            this.response.setIntHeader("X-Total-Count", commentLogic.countComments());
+            return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+        }
+        return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+    }
+
+    @GET
+    @Path("{commentId: \\d+}")
+    public CommentDetailDTO getComment(@PathParam("commentId") Long commentId) {
+        CommentEntity entity = commentLogic.getComment(commentId);
+        if (entity.getTrip() != null && !tripId.equals(entity.getTrip().getId())) {
+            throw new WebApplicationException(404);
+        }
+        return new CommentDetailDTO(entity);
+    }
+
     @POST
     @StatusCreated
     public CommentDetailDTO createComment(CommentDetailDTO dto) {
         return new CommentDetailDTO(commentLogic.createComment(dto.getClient().getId(), tripId, dto.toEntity()));
     }
+    
+//    @PUT
+//    @Path("{commentId: \\d+}")
+//    public CommentDetailDTO updateComment(@PathParam("commentId") Long commentId, CommentDetailDTO dto) {
+//        CommentEntity entity = dto.toEntity();
+//        entity.setId(commentId);
+//        return new CommentDetailDTO(commentLogic.updateComment(tripId, entity));
+//    }
+//
+//    @DELETE
+//    @Path("{commentId: \\d+}")
+//    public void deleteComment(@PathParam("commentId") Long commentId) {
+//        commentLogic.deleteComment(commentId);
+//    }
 
     private List<CommentDetailDTO> listEntity2DTO(List<CommentEntity> entityList) {
         List<CommentDetailDTO> list = new ArrayList<>();

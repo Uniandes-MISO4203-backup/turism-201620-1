@@ -21,7 +21,7 @@
             };
 
             this.pageChanged = function () {
-                $state.go('faqList', {page: this.currentPage});
+                $state.go('commentList', {page: this.currentPage});
             };
 
             $scope.actions = {
@@ -29,7 +29,7 @@
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('faqNew');
+                        $state.go('commentNew');
                     }
                 },
                 refresh: {
@@ -53,7 +53,7 @@
                     displayName: 'Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
-                        $state.go('faqDetail', {faqId: rc.id});
+                        $state.go('commentDetail', {commentId: rc.id});
                     },
                     show: function () {
                         return true;
@@ -63,7 +63,7 @@
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function (rc) {
-                        $state.go('faqEdit', {faqId: rc.id});
+                        $state.go('commentEdit', {commentId: rc.id});
                     },
                     show: function () {
                         return true;
@@ -73,7 +73,7 @@
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function (rc) {
-                        $state.go('faqDelete', {faqId: rc.id});
+                        $state.go('commentDelete', {commentId: rc.id});
                     },
                     show: function () {
                         return true;

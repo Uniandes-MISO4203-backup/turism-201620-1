@@ -73,9 +73,9 @@ SOFTWARE.
                 },
                 comments: {
                     displayName: 'Comments',
-                    icon: 'question-sign',
+                    icon: 'comment',
                     fn: function () {
-                        $state.go('commentsList');
+                        $state.go('commentList');
                     }
                 }
             };
