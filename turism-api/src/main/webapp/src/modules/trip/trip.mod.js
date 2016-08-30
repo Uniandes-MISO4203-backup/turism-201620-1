@@ -42,6 +42,16 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
+            },
+            quota: {
+                displayName: 'Quota',
+                type: 'Integer',
+                required: true
+            },
+            duration: {
+                displayName: 'Duration',
+                type: 'Integer',
+                required: true
             }        }
     });
 

@@ -41,6 +41,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String image;
 
     private Long price;
+    
+    private Integer quota;
+    
+    private Integer duration;
 
     @PodamExclude
     @ManyToOne
@@ -128,5 +132,37 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
+    }
+    
+    /**
+     * Obtiene el atributo quota.
+     * @return quota
+     */
+    public Integer getQuota(){
+        return quota;
+    }
+
+    /**
+     * Establece el valor del atributo duration.
+     * @param duration 
+     */
+    public void setDuration(Integer duration){
+        this.duration = duration;
+    }
+    
+     /**
+     * Obtiene el atributo quota.
+     * @return quota
+     */
+    public Integer getDuration(){
+        return duration;
+    }
+
+    /**
+     * Establece el valor del atributo quota.
+     * @param quota 
+     */
+    public void setQuota(Integer quota){
+        this.quota = quota;
     }
 }
