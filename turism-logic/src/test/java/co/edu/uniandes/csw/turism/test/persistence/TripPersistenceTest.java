@@ -159,6 +159,8 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(newEntity.getTransportType(), entity.getTransportType());
+        Assert.assertEquals(newEntity.getSpecialRequirements(), entity.getSpecialRequirements());
     }
 
     /**
@@ -194,6 +196,8 @@ public class TripPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        Assert.assertEquals(entity.getTransportType(), newEntity.getTransportType());
+        Assert.assertEquals(entity.getSpecialRequirements(), newEntity.getSpecialRequirements());
     }
 
     /**
@@ -229,5 +233,7 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(newEntity.getTransportType(), resp.getTransportType());
+        Assert.assertEquals(newEntity.getSpecialRequirements(), resp.getSpecialRequirements());
     }
 }

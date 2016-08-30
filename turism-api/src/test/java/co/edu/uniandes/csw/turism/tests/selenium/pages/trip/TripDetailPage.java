@@ -45,6 +45,10 @@ public class TripDetailPage {
     private WebElement image;
     @FindBy(id = "price")
     private WebElement price;
+    @FindBy(id = "transportType")
+    private WebElement transportType;
+    @FindBy(id = "specialRequirements")
+    private WebElement specialRequirements;
 
     public void list() {
         listBtn.click();
@@ -63,6 +67,8 @@ public class TripDetailPage {
         trip.setName(name.getText());
         trip.setImage(image.getText());
         trip.setPrice(Long.parseLong(price.getText()));
+        trip.setTransportType(transportType.getText());
+        trip.setSpecialRequirements(specialRequirements.getText());
         return trip;
     }
 }

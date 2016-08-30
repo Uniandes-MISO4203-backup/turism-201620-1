@@ -37,6 +37,10 @@ public class TripCreatePage {
     private WebElement imageInput;
     @FindBy(id = "price")
     private WebElement priceInput;
+    @FindBy(id = "transportType")
+    private WebElement transportTypeInput;
+    @FindBy(id = "specialRequirements")
+    private WebElement specialRequirementsInput;
 
     @FindBy(id = "save-trip")
     private WebElement saveBtn;
@@ -54,6 +58,13 @@ public class TripCreatePage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(trip.getPrice().toString());
+         waitGui().until().element(transportTypeInput).is().visible();
+         transportTypeInput.clear();
+         transportTypeInput.sendKeys(trip.getTransportType());
+         waitGui().until().element(specialRequirementsInput).is().visible();
+         specialRequirementsInput.clear();
+         specialRequirementsInput.sendKeys(trip.getSpecialRequirements());
+         
         guardAjax(saveBtn).click();
     }
 }

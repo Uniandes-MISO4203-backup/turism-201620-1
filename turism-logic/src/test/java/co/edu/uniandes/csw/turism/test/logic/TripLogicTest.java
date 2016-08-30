@@ -184,6 +184,8 @@ public class TripLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(newEntity.getTransportType(), entity.getTransportType());
+        Assert.assertEquals(newEntity.getSpecialRequirements(), entity.getSpecialRequirements());
     }
 
     /**
@@ -221,6 +223,8 @@ public class TripLogicTest {
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getImage(), resultEntity.getImage());
         Assert.assertEquals(entity.getPrice(), resultEntity.getPrice());
+        Assert.assertEquals(entity.getTransportType(), resultEntity.getTransportType());
+        Assert.assertEquals(entity.getSpecialRequirements(), resultEntity.getSpecialRequirements());
     }
 
     /**
@@ -256,6 +260,8 @@ public class TripLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getImage(), resp.getImage());
         Assert.assertEquals(pojoEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(pojoEntity.getTransportType(), resp.getTransportType());
+        Assert.assertEquals(pojoEntity.getSpecialRequirements(), resp.getSpecialRequirements());
     }
 
     /**
