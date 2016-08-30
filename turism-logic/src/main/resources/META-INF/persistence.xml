@@ -4,15 +4,17 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/Turism</jta-data-source>
     <class>co.edu.uniandes.csw.turism.entities.ClientEntity</class>
-    <class>co.edu.uniandes.csw.turism.entities.ItemEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.ItemEntity</class>    
+    <class>co.edu.uniandes.csw.turism.entities.FAQEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.TripEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.ProductEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.AgencyEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.CategoryEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.CommentEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-      <property name="eclipselink.cache.type.default" value="NONE" />
+      <property name="eclipselink.cache.type.default" value="NONE"/>
     </properties>
   </persistence-unit>
 </persistence>

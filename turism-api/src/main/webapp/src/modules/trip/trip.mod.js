@@ -42,7 +42,34 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            },
+            quota: {
+                displayName: 'Quota',
+                type: 'Integer',
+                required: true
+            },
+            duration: {
+                displayName: 'Duration',
+                type: 'Integer',
+                required: true
+            },        
+            date: {
+                displayName: 'Date',
+                type: 'Date',
+                required: true 
+            },
+            origin:{
+                displayName: 'Origin',
+                type: 'String',
+                required: true
+            },
+            destination:{
+                displayName: 'Destination',
+                type: 'String',
+                required: true
+            } 
+            
+        }
     });
 
     mod.config(['$stateProvider',

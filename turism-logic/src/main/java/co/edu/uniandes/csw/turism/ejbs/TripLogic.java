@@ -20,15 +20,17 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
+import co.edu.uniandes.csw.turism.api.ICommentLogic;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
+import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -40,7 +42,8 @@ import javax.persistence.NoResultException;
 @Stateless
 public class TripLogic implements ITripLogic {
 
-    @Inject private TripPersistence persistence;
+    @Inject
+    private TripPersistence persistence;
 
     @Inject
     private IAgencyLogic agencyLogic;
@@ -69,7 +72,8 @@ public class TripLogic implements ITripLogic {
     }
 
     /**
-     * Obtiene la lista de los registros de Trip que pertenecen a un Agency indicando los datos para la paginación.
+     * Obtiene la lista de los registros de Trip que pertenecen a un Agency
+     * indicando los datos para la paginación.
      *
      * @param page Número de página.
      * @param maxRecords Número de registros que se mostraran en cada página.
@@ -79,13 +83,13 @@ public class TripLogic implements ITripLogic {
      */
     @Override
     public List<TripEntity> getTrips(Integer page, Integer maxRecords, Long agencyid) {
-        if (agencyid!=null){
-        return persistence.findAll(page, maxRecords, agencyid);    
-        }else{
-        return persistence.findAll(page, maxRecords);    
+        if (agencyid != null) {
+            return persistence.findAll(page, maxRecords, agencyid);
+        } else {
+            return persistence.findAll(page, maxRecords);
         }
     }
-    
+
     /**
      * Obtiene la lista de los registros de Trip por categoria.
      *
@@ -96,9 +100,9 @@ public class TripLogic implements ITripLogic {
      * @generated
      */
     @Override
-    public List<TripEntity> getTripByCategory(Integer page, Integer maxRecords, Long categoryid) {        
-        return persistence.getTripByCategory(page, maxRecords,categoryid);  
-        
+    public List<TripEntity> getTripByCategory(Integer page, Integer maxRecords, Long categoryid) {
+        return persistence.getTripByCategory(page, maxRecords, categoryid);
+
     }
 
     /**
@@ -113,7 +117,7 @@ public class TripLogic implements ITripLogic {
     public TripEntity getTrip(Long tripid) {
         try {
             return persistence.find(tripid);
-        }catch(NoResultException e){
+        } catch (NoResultException e) {
             throw new IllegalArgumentException("El Trip no existe");
         }
     }
@@ -161,14 +165,14 @@ public class TripLogic implements ITripLogic {
         TripEntity old = getTrip(id);
         persistence.delete(old.getId());
     }
-  
 
     /**
      * Obtiene una colección de instancias de CategoryEntity asociadas a una
      * instancia de Trip
      *
      * @param tripId Identificador de la instancia de Trip
-     * @return Colección de instancias de CategoryEntity asociadas a la instancia de Trip
+     * @return Colección de instancias de CategoryEntity asociadas a la
+     * instancia de Trip
      * @generated
      */
     @Override
@@ -216,7 +220,8 @@ public class TripLogic implements ITripLogic {
      * Remplaza las instancias de Category asociadas a una instancia de Trip
      *
      * @param tripId Identificador de la instancia de Trip
-     * @param list Colección de instancias de CategoryEntity a asociar a instancia de Trip
+     * @param list Colección de instancias de CategoryEntity a asociar a
+     * instancia de Trip
      * @return Nueva colección de CategoryEntity asociada a la instancia de Trip
      * @generated
      */
@@ -241,4 +246,5 @@ public class TripLogic implements ITripLogic {
         categoryEntity.setId(categoryId);
         entity.getCategory().remove(categoryEntity);
     }
+
 }

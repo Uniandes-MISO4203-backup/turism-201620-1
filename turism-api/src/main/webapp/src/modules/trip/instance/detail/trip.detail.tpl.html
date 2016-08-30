@@ -33,8 +33,23 @@ SOFTWARE.
         <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
         </p>
         <p>
-        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price}}</span>
+        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price|currency}}</span>
         </p>
+        <p>
+        <label><strong>Quota: </strong></label><span id="quota"> {{currentRecord.quota}}</span>
+        </p>
+        <p>
+        <label><strong>Duration: </strong></label><span id="duration"> {{currentRecord.duration}}</span>
+        </p>
+        <p>
+        <label><strong>Date: </strong></label><span id="date"> {{currentRecord.date}}</span>
+        </p>
+        <p>
+        <label><strong>Origin: </strong></label><span id="origin"> {{currentRecord.origin}}</span>
+        </p>
+        <p>
+        <label><strong>Destination: </strong></label><span id="destination"> {{currentRecord.destination}}</span>
+        </p>        
     </div>
 </div>
 <div ui-view="tripChieldView"></div>

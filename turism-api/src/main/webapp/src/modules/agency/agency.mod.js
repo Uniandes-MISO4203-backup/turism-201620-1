@@ -27,8 +27,9 @@ SOFTWARE.
     mod.constant('agencyModel', {
         name: 'agency',
         displayName: 'Agency',
-		url: 'agencys',
-        fields: {            name: {
+        url: 'agencys',
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true

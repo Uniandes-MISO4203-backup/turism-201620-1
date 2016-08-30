@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.entities;
 
 import java.io.Serializable;
@@ -31,6 +31,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.persistence.Temporal;
 
 /**
  * @generated
@@ -41,6 +43,17 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String image;
 
     private Long price;
+    
+    private Integer quota;
+    
+    private Integer duration;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date;
+    
+    private String origin;
+    
+    private String destination;    
 
     @PodamExclude
     @ManyToOne
@@ -50,13 +63,17 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany
     private List<CategoryEntity> category = new ArrayList<>();
 
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<CommentEntity> comments = new ArrayList<>();
+
     /**
      * Obtiene el atributo image.
      *
      * @return atributo image.
      * @generated
      */
-    public String getImage(){
+    public String getImage() {
         return image;
     }
 
@@ -66,7 +83,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param image nuevo valor del atributo
      * @generated
      */
-    public void setImage(String image){
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -76,7 +93,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return atributo price.
      * @generated
      */
-    public Long getPrice(){
+    public Long getPrice() {
         return price;
     }
 
@@ -86,7 +103,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @param price nuevo valor del atributo
      * @generated
      */
-    public void setPrice(Long price){
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -128,5 +145,105 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+    
+    /**
+     * Obtiene el atributo quota.
+     * @return quota
+     */
+    public Integer getQuota(){
+        return quota;
+    }
+
+    /**
+     * Establece el valor del atributo duration.
+     * @param duration 
+     */
+    public void setDuration(Integer duration){
+        this.duration = duration;
+    }
+    
+     /**
+     * Obtiene el atributo quota.
+     * @return quota
+     */
+    public Integer getDuration(){
+        return duration;
+    }
+
+    /**
+     * Establece el valor del atributo quota.
+     * @param quota 
+     */
+    public void setQuota(Integer quota){
+        this.quota = quota;
+    }
+    
+    /**
+     * Obtiene el atributo date.
+     * 
+     * @return atributo date.
+     * @generated
+     */
+    public Date getDate() {
+        return date;
+    }
+    
+    /**
+     * Establece el valor del atributo date.
+     * 
+     * @param date nuevo valor del atributo
+     * @generated
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    /**
+     * Obtiene el atributo origin.
+     * 
+     * @return atributo origin.
+     * @generated
+     */
+    public String getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Establece el valor del atributo origin.
+     * 
+     * @param origin nuevo valor del atributo
+     * @generated
+     */
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+    
+    /**
+     * Obtiene el atributo destination.
+     * 
+     * @return atributo destination.
+     * @generated
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Establece el valor del atributo destination.
+     * 
+     * @param destination nuevo valor del atributo
+     * @generated
+     */
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 }

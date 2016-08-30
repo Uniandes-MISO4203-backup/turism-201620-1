@@ -25,6 +25,9 @@ package co.edu.uniandes.csw.turism.dtos.detail;
 
 import co.edu.uniandes.csw.turism.dtos.minimum.*;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.FAQEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,7 +36,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class AgencyDetailDTO extends AgencyDTO{
 
+    private List<FAQDTO> faqs;
 
+    public List<FAQDTO> getFaqs() {
+        return faqs;
+    }
+
+    public void setFaqs(List<FAQDTO> faqs) {
+        this.faqs = faqs;
+    }
 
     /**
      * @generated
@@ -49,8 +60,7 @@ public class AgencyDetailDTO extends AgencyDTO{
      * @generated
      */
     public AgencyDetailDTO(AgencyEntity entity) {
-        super(entity);
-        
+        super(entity);    
     }
 
     /**

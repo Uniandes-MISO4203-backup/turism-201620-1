@@ -74,6 +74,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('tripList');
                     }
+                },
+                faqs: {
+                    displayName: 'Faqs',
+                    icon: 'question-sign',
+                    fn: function () {
+                        $state.go('faqList');
+                    }
                 }
             };
         }]);

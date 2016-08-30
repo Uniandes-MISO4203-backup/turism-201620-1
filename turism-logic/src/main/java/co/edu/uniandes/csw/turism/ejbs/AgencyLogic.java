@@ -25,11 +25,13 @@ package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
+import co.edu.uniandes.csw.turism.api.IFAQLogic;
 
 /**
  * @generated
@@ -38,6 +40,9 @@ import javax.persistence.NoResultException;
 public class AgencyLogic implements IAgencyLogic {
 
     @Inject private AgencyPersistence persistence;
+    
+    
+    @Inject private IFAQLogic faqLogic;
 
 
     /**
@@ -119,6 +124,54 @@ public class AgencyLogic implements IAgencyLogic {
     @Override
     public void deleteAgency(Long id) {
         persistence.delete(id);
+    }    
+    
+      @Override
+    public List<FAQEntity> listFAQs(Long agencyId) {
+        return persistence.find(agencyId).getFaqs();
+    }
+
+    @Override
+    public FAQEntity getFAQ(Long agencyId, Long faqId) {
+         List<FAQEntity> list = persistence.find(agencyId).getFaqs();
+        FAQEntity faqEntity = new FAQEntity();
+        faqEntity.setId(faqId);
+        int index = list.indexOf(faqEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    @Override
+    public FAQEntity addFAQ(Long agencyId, Long faqId) {
+        AgencyEntity agencyEntity = persistence.find(agencyId);
+        FAQEntity faqEntity = faqLogic.getFAQ(faqId);
+        faqEntity.setAgency(agencyEntity);
+        return faqEntity; 
+    }
+
+    @Override
+    public List<FAQEntity> replaceFAQs(Long agencyId, List<FAQEntity> list) {
+         AgencyEntity agencyEntity = persistence.find(agencyId);
+        List<FAQEntity> faqList = faqLogic.getFAQs();
+        for (FAQEntity faq : faqList) {
+            if (list.contains(faq)) {
+                faq.setAgency(agencyEntity);
+            } else {
+                if (faq.getAgency()!= null && faq.getAgency().equals(agencyEntity)) {
+                    faq.setAgency(null);
+                }
+            }
+        }
+        agencyEntity.setFaqs(list);
+        return agencyEntity.getFaqs();
+    }
+
+    @Override
+    public void removeFAQ(Long agencyId, Long faqId) {
+         FAQEntity entity = faqLogic.getFAQ(faqId);
+        entity.setAgency(null);
     }
   
 }

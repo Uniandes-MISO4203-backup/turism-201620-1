@@ -41,7 +41,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.AgencyDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.FAQDTO;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import com.stormpath.sdk.account.Account;
 import com.stormpath.sdk.group.Group;
 import java.util.ArrayList;
@@ -180,4 +182,9 @@ public class AgencyResource {
         return TripResource.class;
     }
     
+     @Path("{agencysId: \\d+}/faqs")
+    public Class<FAQResource> getFAQResource(@PathParam("agencysId") Long agencysId){
+        existsAgency(agencysId);
+        return FAQResource.class;
+    }
 }

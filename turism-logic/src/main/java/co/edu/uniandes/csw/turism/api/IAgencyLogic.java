@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.api;
 
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import java.util.List;
 
 public interface IAgencyLogic {
@@ -34,4 +35,9 @@ public interface IAgencyLogic {
     public AgencyEntity createAgency(AgencyEntity entity); 
     public AgencyEntity updateAgency(AgencyEntity entity);
     public void deleteAgency(Long id);
+    public List<FAQEntity> listFAQs(Long agencyId);
+    public FAQEntity getFAQ(Long agencyId, Long faqId);
+    public FAQEntity addFAQ(Long agencyId, Long faqId);
+    public List<FAQEntity> replaceFAQs(Long agencyId, List<FAQEntity> list);
+    public void removeFAQ(Long agencyId, Long faqId);
 }
