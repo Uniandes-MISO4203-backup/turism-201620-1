@@ -24,6 +24,10 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.tests.selenium.pages.trip;
 
 import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -45,6 +49,12 @@ public class TripDetailPage {
     private WebElement image;
     @FindBy(id = "price")
     private WebElement price;
+    @FindBy(id = "date")
+    private WebElement date;
+    @FindBy(id = "origin")
+    private WebElement origin;
+    @FindBy(id = "destination")
+    private WebElement destination;
 
     public void list() {
         listBtn.click();
@@ -63,6 +73,13 @@ public class TripDetailPage {
         trip.setName(name.getText());
         trip.setImage(image.getText());
         trip.setPrice(Long.parseLong(price.getText()));
+        try {
+            trip.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(date.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(TripDetailPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        trip.setOrigin(origin.getText());
+        trip.setDestination(destination.getText());
         return trip;
     }
 }

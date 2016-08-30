@@ -31,6 +31,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.persistence.Temporal;
 
 /**
  * @generated
@@ -41,6 +43,13 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String image;
 
     private Long price;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date;
+    
+    private String origin;
+    
+    private String destination;    
 
     @PodamExclude
     @ManyToOne
@@ -129,4 +138,66 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setCategory(List<CategoryEntity> category) {
         this.category = category;
     }
+    
+    /**
+     * Obtiene el atributo date.
+     * 
+     * @return atributo date.
+     * @generated
+     */
+    public Date getDate() {
+        return date;
+    }
+    
+    /**
+     * Establece el valor del atributo date.
+     * 
+     * @param date nuevo valor del atributo
+     * @generated
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    /**
+     * Obtiene el atributo origin.
+     * 
+     * @return atributo origin.
+     * @generated
+     */
+    public String getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Establece el valor del atributo origin.
+     * 
+     * @param origin nuevo valor del atributo
+     * @generated
+     */
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+    
+    /**
+     * Obtiene el atributo destination.
+     * 
+     * @return atributo destination.
+     * @generated
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Establece el valor del atributo destination.
+     * 
+     * @param destination nuevo valor del atributo
+     * @generated
+     */
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    
 }

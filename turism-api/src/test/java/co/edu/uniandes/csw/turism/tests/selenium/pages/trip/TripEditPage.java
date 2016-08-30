@@ -37,6 +37,12 @@ public class TripEditPage {
     private WebElement imageInput;
     @FindBy(id = "price")
     private WebElement priceInput;
+    @FindBy(id = "date")
+    private WebElement dateInput;
+    @FindBy(id = "origin")
+    private WebElement originInput;
+    @FindBy(id = "destination")
+    private WebElement destinationInput;    
 
     @FindBy(id = "save-trip")
     private WebElement saveBtn;
@@ -54,6 +60,15 @@ public class TripEditPage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(trip.getPrice().toString());
+         waitGui().until().element(dateInput).is().visible();
+         dateInput.clear();
+         dateInput.sendKeys(trip.getDate().toString());
+         waitGui().until().element(originInput).is().visible();
+         originInput.clear();
+         originInput.sendKeys(trip.getOrigin());
+         waitGui().until().element(destinationInput).is().visible();
+         destinationInput.clear();
+         destinationInput.sendKeys(trip.getDestination());         
         guardAjax(saveBtn).click();
     }
 }

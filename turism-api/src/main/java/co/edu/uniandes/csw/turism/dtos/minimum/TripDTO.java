@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.turism.dtos.minimum;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @generated
@@ -37,6 +38,9 @@ public class TripDTO implements Serializable{
     private String name;
     private String image;
     private Long price;
+    private Date date;
+    private String origin;
+    private String destination;    
 
     /**
      * @generated
@@ -56,6 +60,9 @@ public class TripDTO implements Serializable{
         this.name=entity.getName();
         this.image=entity.getImage();
         this.price=entity.getPrice();
+        this.date=entity.getDate();
+        this.origin=entity.getOrigin();
+        this.destination=entity.getDestination();        
        }
     }
 
@@ -71,6 +78,9 @@ public class TripDTO implements Serializable{
         entity.setName(this.getName());
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
+ 	entity.setDate(this.getDate());
+        entity.setOrigin(this.getOrigin());
+        entity.setDestination(this.getDestination());       
     return entity;
     }
 
@@ -153,5 +163,67 @@ public class TripDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+    /**
+     * Obtiene el atributo date.
+     * 
+     * @return atributo date.
+     * @generated
+     */
+    public Date getDate() {
+        return date;
+    }
+    
+    /**
+     * Establece el valor del atributo date.
+     * 
+     * @param date nuevo valor del atributo
+     * @generated
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    /**
+     * Obtiene el atributo origin.
+     * 
+     * @return atributo origin.
+     * @generated
+     */
+    public String getOrigin() {
+        return origin;
+    }
+
+    /**
+     * Establece el valor del atributo origin.
+     * 
+     * @param origin nuevo valor del atributo
+     * @generated
+     */
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+    
+    /**
+     * Obtiene el atributo destination.
+     * 
+     * @return atributo destination.
+     * @generated
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Establece el valor del atributo destination.
+     * 
+     * @param destination nuevo valor del atributo
+     * @generated
+     */
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    
 
 }
