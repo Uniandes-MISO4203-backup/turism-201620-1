@@ -37,6 +37,8 @@ public class TripDTO implements Serializable{
     private String name;
     private String image;
     private Long price;
+    private Integer quota;
+    private Integer duration;
 
     /**
      * @generated
@@ -56,6 +58,8 @@ public class TripDTO implements Serializable{
         this.name=entity.getName();
         this.image=entity.getImage();
         this.price=entity.getPrice();
+        this.quota=entity.getQuota();
+        this.duration=entity.getDuration();
        }
     }
 
@@ -71,6 +75,8 @@ public class TripDTO implements Serializable{
         entity.setName(this.getName());
         entity.setImage(this.getImage());
         entity.setPrice(this.getPrice());
+        entity.setQuota(this.getQuota());
+        entity.setDuration(duration);
     return entity;
     }
 
@@ -154,4 +160,43 @@ public class TripDTO implements Serializable{
         this.price = price;
     }
 
+    /**
+     * Obtiene el atributo quota.
+     *
+     * @return atributo quota.
+     * @generated
+     */
+    public Integer getQuota() {
+        return quota;
+    }
+
+    /**
+     * Establece el valor del atributo duration.
+     *
+     * @param duration nuevo valor del atributo
+     * @generated
+     */
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+    
+     /**
+     * Obtiene el atributo duration.
+     *
+     * @return atributo duration.
+     * @generated
+     */
+    public Integer getDuration() {
+        return duration;
+    }
+
+    /**
+     * Establece el valor del atributo name.
+     *
+     * @param quota nuevo valor del atributo
+     * @generated
+     */
+    public void setQuota(Integer quota) {
+        this.quota = quota;
+    }
 }
