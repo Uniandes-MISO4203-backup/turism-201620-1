@@ -52,7 +52,24 @@ SOFTWARE.
                 displayName: 'Duration',
                 type: 'Integer',
                 required: true
-            }        }
+            },        
+            date: {
+                displayName: 'Date',
+                type: 'Date',
+                required: true 
+            },
+            origin:{
+                displayName: 'Origin',
+                type: 'String',
+                required: true
+            },
+            destination:{
+                displayName: 'Destination',
+                type: 'String',
+                required: true
+            } 
+            
+        }
     });
 
     mod.config(['$stateProvider',

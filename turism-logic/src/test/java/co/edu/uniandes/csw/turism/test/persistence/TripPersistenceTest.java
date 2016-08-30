@@ -25,8 +25,13 @@ package co.edu.uniandes.csw.turism.test.persistence;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
+import co.edu.uniandes.csw.turism.test.logic.TripLogicTest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -155,10 +160,22 @@ public class TripPersistenceTest {
         Assert.assertNotNull(result);
 
         TripEntity entity = em.find(TripEntity.class, result.getId());
+        
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        String strNewEntityDate = sf.format(newEntity.getDate());
+        String strEntityDate = sf.format(entity.getDate());
+
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        try {
+            Assert.assertEquals(sf.parse(strNewEntityDate),sf.parse(strEntityDate));
+        } catch (ParseException ex) {
+            Logger.getLogger(TripPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Assert.assertEquals(newEntity.getOrigin(), entity.getOrigin());
+        Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
     }
 
     /**
@@ -190,10 +207,24 @@ public class TripPersistenceTest {
     public void getTripTest() {
         TripEntity entity = data.get(0);
         TripEntity newEntity = tripPersistence.find(entity.getAgency().getId(), entity.getId());
+        
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        String strNewEntityDate = sf.format(newEntity.getDate());
+        String strEntityDate = sf.format(entity.getDate());
+        
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        
+        
+        try {
+            Assert.assertEquals(sf.parse(strEntityDate),sf.parse(strNewEntityDate));
+        } catch (ParseException ex) {
+            Logger.getLogger(TripPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Assert.assertEquals(entity.getOrigin(), newEntity.getOrigin());
+        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());        
     }
 
     /**
@@ -225,9 +256,18 @@ public class TripPersistenceTest {
         tripPersistence.update(newEntity);
 
         TripEntity resp = em.find(TripEntity.class, entity.getId());
+        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = sf.format(newEntity.getDate());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+        try {
+            Assert.assertEquals(sf.parse(strDate),resp.getDate());
+        } catch (ParseException ex) {
+            Logger.getLogger(TripPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Assert.assertEquals(newEntity.getOrigin(), resp.getOrigin());
+        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());        
     }
 }
