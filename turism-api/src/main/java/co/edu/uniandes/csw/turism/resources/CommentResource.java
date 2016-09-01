@@ -46,23 +46,23 @@ public class CommentResource {
     @QueryParam("limit")
     private Integer maxRecords;
 
-    @PathParam("tipId")
-    private Long tripId;
+    @PathParam("tripsId")
+    private Long tripsId;
 
     @GET
     public List<CommentDetailDTO> getComments() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", commentLogic.countComments());
-            return listEntity2DTO(commentLogic.getComments(tripId));
+            return listEntity2DTO(commentLogic.getComments(tripsId));
         }
-        return listEntity2DTO(commentLogic.getComments(tripId));
+        return listEntity2DTO(commentLogic.getComments(tripsId));
     }
 
     @GET
     @Path("{commentId: \\d+}")
     public CommentDetailDTO getComment(@PathParam("commentId") Long commentId) {
         CommentEntity entity = commentLogic.getComment(commentId);
-        if (entity.getTrip() != null && !tripId.equals(entity.getTrip().getId())) {
+        if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
             throw new WebApplicationException(404);
         }
         return new CommentDetailDTO(entity);
@@ -71,7 +71,7 @@ public class CommentResource {
     @POST
     @StatusCreated
     public CommentDetailDTO createComment(CommentDetailDTO dto) {
-        return new CommentDetailDTO(commentLogic.createComment(tripId, dto.toEntity()));
+        return new CommentDetailDTO(commentLogic.createComment(tripsId, dto.toEntity()));
     }
 
     private List<CommentDetailDTO> listEntity2DTO(List<CommentEntity> entityList) {

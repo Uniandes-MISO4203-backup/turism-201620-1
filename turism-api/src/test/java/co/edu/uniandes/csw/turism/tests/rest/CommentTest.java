@@ -63,7 +63,8 @@ public class CommentTest {
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
 
     private final static List<CommentEntity> oraculo = new ArrayList<>();
-
+    
+    private final String agencyPath = "agencys";
     private final String tripPath = "trips";
     private final String commentPath = "comments";
 
@@ -145,8 +146,10 @@ public class CommentTest {
             }
         }
         target = createWebTarget()
-                .path(tripPath)
+                .path(agencyPath)
                 .path(agencyEntity.getId().toString())
+                .path(tripPath)
+                .path(tripEntity.getId().toString())
                 .path(commentPath);
     }
 
@@ -181,7 +184,7 @@ public class CommentTest {
         Response response = target
                 .request().cookie(cookieSessionId)
                 .post(Entity.entity(comment, MediaType.APPLICATION_JSON));
-        String responseS = (String) response.readEntity(String.class);
+        
         CommentDTO commentTest = (CommentDTO) response.readEntity(CommentDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());
