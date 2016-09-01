@@ -25,10 +25,6 @@ public class CommentEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
     @ManyToOne
-    private ClientEntity client;
-
-    @PodamExclude
-    @ManyToOne
     private TripEntity trip;
 
     @Temporal(TemporalType.DATE)
@@ -36,14 +32,6 @@ public class CommentEntity extends BaseEntity implements Serializable {
     private Date date;
 
     private String text;
-
-    public ClientEntity getClient() {
-        return client;
-    }
-
-    public void setClient(ClientEntity client) {
-        this.client = client;
-    }
 
     public TripEntity getTrip() {
         return trip;

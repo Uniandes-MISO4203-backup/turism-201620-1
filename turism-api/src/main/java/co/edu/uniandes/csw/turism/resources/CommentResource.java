@@ -53,9 +53,9 @@ public class CommentResource {
     public List<CommentDetailDTO> getComments() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", commentLogic.countComments());
-            return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+            return listEntity2DTO(commentLogic.getComments(tripId));
         }
-        return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+        return listEntity2DTO(commentLogic.getComments(tripId));
     }
 
     @GET
@@ -71,22 +71,8 @@ public class CommentResource {
     @POST
     @StatusCreated
     public CommentDetailDTO createComment(CommentDetailDTO dto) {
-        return new CommentDetailDTO(commentLogic.createComment(dto.getClient().getId(), tripId, dto.toEntity()));
+        return new CommentDetailDTO(commentLogic.createComment(tripId, dto.toEntity()));
     }
-    
-//    @PUT
-//    @Path("{commentId: \\d+}")
-//    public CommentDetailDTO updateComment(@PathParam("commentId") Long commentId, CommentDetailDTO dto) {
-//        CommentEntity entity = dto.toEntity();
-//        entity.setId(commentId);
-//        return new CommentDetailDTO(commentLogic.updateComment(tripId, entity));
-//    }
-//
-//    @DELETE
-//    @Path("{commentId: \\d+}")
-//    public void deleteComment(@PathParam("commentId") Long commentId) {
-//        commentLogic.deleteComment(commentId);
-//    }
 
     private List<CommentDetailDTO> listEntity2DTO(List<CommentEntity> entityList) {
         List<CommentDetailDTO> list = new ArrayList<>();

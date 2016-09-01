@@ -69,7 +69,6 @@ public class CommentTest {
 
     AgencyEntity agencyEntity;
     TripEntity tripEntity;
-    ClientEntity clientEntity;
 
     @ArquillianResource
     private URL deploymentURL;
@@ -92,7 +91,7 @@ public class CommentTest {
                 // El archivo web.xml es necesario para el despliegue de los servlets
                 .setWebXML(new File("src/main/webapp/WEB-INF/web.xml"));
     }
-    
+
     private WebTarget createWebTarget() {
         return ClientBuilder.newClient().target(deploymentURL.toString()).path(apiPath);
     }
@@ -106,7 +105,6 @@ public class CommentTest {
     private void clearData() {
         em.createQuery("delete from TripEntity").executeUpdate();
         em.createQuery("delete from AgencyEntity").executeUpdate();
-        em.createQuery("delete from ClientEntity").executeUpdate();
         em.createQuery("delete from CommentEntity").executeUpdate();
         oraculo.clear();
     }
@@ -121,9 +119,14 @@ public class CommentTest {
         tripEntity.setAgency(agencyEntity);
         em.persist(tripEntity);
 
-        clientEntity = factory.manufacturePojo(ClientEntity.class);
-        clientEntity.setId(1L);
-        em.persist(clientEntity);
+        for (int i = 0; i < 3; i++) {
+            CommentEntity comment = factory.manufacturePojo(CommentEntity.class);
+            comment.setId(1 + 1L);
+            comment.setTrip(tripEntity);
+            em.persist(comment);
+            oraculo.add(comment);
+        }
+
     }
 
     @Before
@@ -168,18 +171,17 @@ public class CommentTest {
             return null;
         }
     }
-    
+
     @Test
-    @Ignore
     public void createCommentTest() throws IOException {
         CommentDTO comment = factory.manufacturePojo(CommentDTO.class);
-        
+
         Cookie cookieSessionId = login(username, password);
 
         Response response = target
                 .request().cookie(cookieSessionId)
                 .post(Entity.entity(comment, MediaType.APPLICATION_JSON));
-        String responseS = (String)response.readEntity(String.class);
+        String responseS = (String) response.readEntity(String.class);
         CommentDTO commentTest = (CommentDTO) response.readEntity(CommentDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());
