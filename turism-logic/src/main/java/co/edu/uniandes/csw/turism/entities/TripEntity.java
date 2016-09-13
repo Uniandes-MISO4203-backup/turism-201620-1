@@ -167,3 +167,4 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.category = category;
     }
 }
+
