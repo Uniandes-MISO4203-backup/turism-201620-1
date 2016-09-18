@@ -5,9 +5,12 @@
  */
 package co.edu.uniandes.csw.turism.dtos.detail;
 
-import co.edu.uniandes.csw.turism.dtos.minimum.AgencyDTO;
-import co.edu.uniandes.csw.turism.dtos.minimum.FAQDTO;
-import co.edu.uniandes.csw.turism.entities.FAQEntity;
+import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.TaxDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.TaxDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
+import co.edu.uniandes.csw.turism.entities.TaxEntity;
+import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -16,15 +19,15 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author lm.ariza10
  */
 @XmlRootElement
-public class FAQDetailDTO extends FAQDTO {
+public class TaxDetailDTO extends TaxDTO {
     
-  @PodamExclude
-  private AgencyDTO agency;
+     @PodamExclude
+  private TripDTO trip;
 
     /**
      * @generated
      */
-    public FAQDetailDTO() {
+    public TaxDetailDTO() {
         super();
     }
 
@@ -34,12 +37,8 @@ public class FAQDetailDTO extends FAQDTO {
      * @param entity Entidad TripEntity desde la cual se va a crear el nuevo objeto.
      * @generated
      */
-    public FAQDetailDTO(FAQEntity entity) {
-        super(entity);
-        if (entity.getAgency()!=null){
-        this.agency = new AgencyDTO(entity.getAgency());
-        }
-        
+    public TaxDetailDTO(TaxEntity entity) {
+        super();        
     }
 
     /**
@@ -49,21 +48,21 @@ public class FAQDetailDTO extends FAQDTO {
      * @generated
      */
     @Override
-    public FAQEntity toEntity() {
-        FAQEntity entity = super.toEntity();
-        if (this.getAgency()!=null){
-        entity.setAgency(this.getAgency().toEntity());
+    public TaxEntity toEntity() {
+        TaxEntity entity = super.toEntity();
+        if (this.getTrip()!=null){
+        entity.setTrip(this.getTrip().toEntity());
         }
         return entity;
     }
  
 
-    public AgencyDTO getAgency() {
-        return agency;
+    public TripDTO getTrip() {
+        return trip;
     }
 
-    public void setAgency(AgencyDTO agency) {
-        this.agency = agency;
+    public void setTrip(TripDTO trip) {
+        this.trip = trip;
     }
     
 }

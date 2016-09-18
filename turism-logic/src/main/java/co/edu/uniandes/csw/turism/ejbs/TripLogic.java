@@ -28,9 +28,11 @@ import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
 import co.edu.uniandes.csw.turism.api.ICommentLogic;
+import co.edu.uniandes.csw.turism.api.ITaxLogic;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -47,6 +49,10 @@ public class TripLogic implements ITripLogic {
 
     @Inject
     private IAgencyLogic agencyLogic;
+    
+    
+    @Inject 
+    private ITaxLogic taxLogic;
 
     /**
      * Obtiene el número de registros de Trip.
@@ -245,6 +251,56 @@ public class TripLogic implements ITripLogic {
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setId(categoryId);
         entity.getCategory().remove(categoryEntity);
+    }
+    
+    
+      
+    @Override
+    public List<TaxEntity> listTaxes(Long tripId) {
+        return persistence.find(tripId).getTaxes();
+    }
+
+    @Override
+    public TaxEntity getTax(Long tripId, Long taxId) {
+        List<TaxEntity> list = persistence.find(tripId).getTaxes();
+        TaxEntity taxEntity = new TaxEntity();
+        taxEntity.setId(taxId);
+        int index = list.indexOf(taxEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    @Override
+    public TaxEntity addTax(Long tripId, Long taxId) {
+        TripEntity tripEntity = persistence.find(tripId);
+        TaxEntity taxEntity = taxLogic.getTax(taxId);
+        taxEntity.setTrip(tripEntity);
+        return taxEntity; 
+    }
+
+    @Override
+    public List<TaxEntity> replaceTaxes(Long tripId, List<TaxEntity> list) {
+         TripEntity tripEntity = persistence.find(tripId);
+        List<TaxEntity> taxList = taxLogic.getTaxes();
+        for (TaxEntity tax : taxList) {
+            if (list.contains(tax)) {
+                tax.setTrip(tripEntity);
+            } else {
+                if (tax.getTrip()!= null && tax.getTrip().equals(tripEntity)) {
+                    tax.setTrip(null);
+                }
+            }
+        }
+        tripEntity.setTaxes(list);
+        return tripEntity.getTaxes();
+    }
+
+    @Override
+    public void removeTax(Long tripId, Long taxId) {
+         TaxEntity entity = taxLogic.getTax(taxId);
+        entity.setTrip(null);
     }
 
 }

@@ -80,7 +80,7 @@ public class FAQResource {
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteAward(@PathParam("id") Long id) {
+    public void deleteFAQ(@PathParam("id") Long id) {
         faqLogic.deleteFAQ(id);
     }
     

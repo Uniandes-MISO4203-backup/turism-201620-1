@@ -35,6 +35,7 @@ SOFTWARE.
         'authModule',
         'roleModule',
         'faqModule',
+        'taxModule',
         'commentModule'
     ]);
 

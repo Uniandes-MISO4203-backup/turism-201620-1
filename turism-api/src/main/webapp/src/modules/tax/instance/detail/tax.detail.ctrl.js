@@ -23,31 +23,31 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("tripModule");
+    var mod = ng.module("taxModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip",
-        function ($scope, $state, trip) {
-            $scope.currentRecord = trip;
+    mod.controller("taxDetailCtrl", ['$scope', "$state", "tax",
+        function ($scope, $state, tax) {
+            $scope.currentRecord = tax;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('tripNew');
+                        $state.go('taxNew');
                     }
                 },
                 edit: {
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function () {
-                        $state.go('tripEdit');
+                        $state.go('taxEdit');
                     }
                 },
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('tripDelete');
+                        $state.go('taxDelete');
                     }
                 },
                 refresh: {
@@ -60,27 +60,6 @@ SOFTWARE.
                 list: {
                     displayName: 'List',
                     icon: 'th-list',
-                    fn: function () {
-                        $state.go('tripList');
-                    }
-                },
-                category: {
-                    displayName: 'Category',
-                    icon: 'link',
-                    fn: function () {
-                        $state.go('tripCategoryList');
-                    }
-                },
-                comments: {
-                    displayName: 'Comments',
-                    icon: 'comment',
-                    fn: function () {
-                        $state.go('commentList');
-                    }
-                },
-                taxes: {
-                    displayName: 'Taxes',
-                    icon: 'usd',
                     fn: function () {
                         $state.go('taxList');
                     }
