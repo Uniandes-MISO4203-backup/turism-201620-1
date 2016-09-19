@@ -23,31 +23,31 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("tripModule");
+    var mod = ng.module("raitingModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip",
-        function ($scope, $state, trip) {
-            $scope.currentRecord = trip;
+    mod.controller("raitingDetailCtrl", ['$scope', "$state", "raiting",
+        function ($scope, $state, raiting) {
+            $scope.currentRecord = raiting;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('tripNew');
+                        $state.go('raitingNew');
                     }
                 },
                 edit: {
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function () {
-                        $state.go('tripEdit');
+                        $state.go('raitingEdit');
                     }
                 },
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('tripDelete');
+                        $state.go('raitingDelete');
                     }
                 },
                 refresh: {
@@ -60,27 +60,6 @@ SOFTWARE.
                 list: {
                     displayName: 'List',
                     icon: 'th-list',
-                    fn: function () {
-                        $state.go('tripList');
-                    }
-                },
-                category: {
-                    displayName: 'Category',
-                    icon: 'link',
-                    fn: function () {
-                        $state.go('tripCategoryList');
-                    }
-                },
-                comments: {
-                    displayName: 'Comments',
-                    icon: 'comment',
-                    fn: function () {
-                        $state.go('commentList');
-                    }
-                },
-                raitings: {
-                    displayName: 'Raitings',
-                    icon: 'star',
                     fn: function () {
                         $state.go('raitingList');
                     }

@@ -24,17 +24,14 @@ SOFTWARE.
 <header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Qty: </strong></label><span id="qty"> {{currentRecord.qty}}</span>
-        </p>
-        <p><label><strong>Trip: </strong></label><span id="trip"> {{currentRecord.trip.name}}</span></p>
-        <p><label><strong>Product: </strong></label><span id="product"> {{currentRecord.product.name}}</span></p>
-    </div>
-</div>
-<div ui-view="itemChieldView"></div>
-<!-- TODO -->
+<list-records fields="model.fields" records="records" actions="recordActions"></list-records>
+<pagination ng-if="ctrl.itemsPerPage < ctrl.totalItems"
+            total-items="ctrl.totalItems"
+            max-size="5"
+            ng-model="ctrl.currentPage"
+            ng-change="ctrl.pageChanged()"
+            items-per-page="ctrl.itemsPerPage"
+            class="pagination-md" 
+            boundary-links="true" 
+            rotate="false">
+</pagination>

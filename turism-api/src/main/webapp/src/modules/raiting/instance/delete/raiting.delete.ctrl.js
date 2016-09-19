@@ -1,4 +1,4 @@
-<!--
+/*
 The MIT License (MIT)
 
 Copyright (c) 2015 Los Andes University
@@ -20,21 +20,16 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
--->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Qty: </strong></label><span id="qty"> {{currentRecord.qty}}</span>
-        </p>
-        <p><label><strong>Trip: </strong></label><span id="trip"> {{currentRecord.trip.name}}</span></p>
-        <p><label><strong>Product: </strong></label><span id="product"> {{currentRecord.product.name}}</span></p>
-    </div>
-</div>
-<div ui-view="itemChieldView"></div>
-<!-- TODO -->
+*/
+(function (ng) {
+
+    var mod = ng.module("raitingModule");
+
+    mod.controller("raitingDeleteCtrl", ["$state", "raiting", function ($state, raiting) {
+            this.confirmDelete = function () {
+                raiting.remove().then(function () {
+                    $state.go('raitingList', null, {reload: true});
+                });
+            };
+        }]);
+})(window.angular);
