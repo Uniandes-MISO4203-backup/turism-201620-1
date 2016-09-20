@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'trip',
         displayName: 'Trip',
 		url: 'trips',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -67,8 +68,17 @@ SOFTWARE.
                 displayName: 'Destination',
                 type: 'String',
                 required: true
-            } 
-            
+            }, 
+            transportType: {
+                displayName: 'Transport Type',
+                type: 'String',
+                required: true
+            },
+            specialRequirements: {
+                displayName: 'Special Requirements',
+                type: 'String',
+                required: false
+            }
         }
     });
 
@@ -205,6 +215,50 @@ SOFTWARE.
                         }]
                 }
             });
+            
+            $sp.state('tripNews', {
+                url: '/news',
+                parent: 'tripDetail',
+                abstract: true,
+                views: {
+                    tripChieldView: {
+                        template: '<div ui-view="tripNewsView"></div>'
+                    }
+                },
+                resolve: {
+                    category: ['trip', function (trip) {
+                            return trip.getList('news');
+                        }],
+                    model: 'newsModel'
+                }
+            });
+            $sp.state('tripNewsList', {
+                url: '/list',
+                parent: 'tripNews',
+                views: {
+                    tripNewsView: {
+                        templateUrl: baseInstancePath + 'news/list/trip.news.list.tpl.html',
+                        controller: 'tripNewsListCtrl'
+                    }
+                }
+            });
+            $sp.state('tripNewsEdit', {
+                url: '/edit',
+                parent: 'tripNews',
+                views: {
+                    tripNewsView: {
+                        templateUrl: baseInstancePath + 'news/edit/trip.news.edit.tpl.html',
+                        controller: 'tripNewsEditCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                resolve: {
+                    pool: ['Restangular', 'model', function (r, model) {
+                            return r.all(model.url).getList();
+                        }]
+                }
+            });
+            
             $sp.state('tripGallery', {
                 url: '/tripGallery',
                 views: {
@@ -220,5 +274,32 @@ SOFTWARE.
                             return r.all(model.url).getList($params);
                         }]                }
             });
+            
+            $sp.state('tripContent', {
+                url: '/content',
+                parent: 'tripDetail',
+                abstract: true,
+                views: {
+                    tripChieldView: {
+                        template: '<div ui-view="tripContentView"></div>'
+                    }
+                },
+                resolve: {
+                    category: ['trip', function (trip) {
+                            return trip.getList('content');
+                        }],
+                    model: 'contentModel'
+                }
+            });
+            $sp.state('tripContentList', {
+                url: '/list',
+                parent: 'tripContent',
+                views: {
+                    tripContentView: {
+                        templateUrl: baseInstancePath + 'content/list/trip.content.list.tpl.html',
+                        controller: 'tripContentListCtrl'
+                    }
+                }
+            });            
 	}]);
 })(window.angular);

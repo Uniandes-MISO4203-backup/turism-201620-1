@@ -32,12 +32,16 @@ import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @generated
  */
 @Entity
+@XmlRootElement
 public class TripEntity extends BaseEntity implements Serializable {
 
     private String image;
@@ -55,6 +59,11 @@ public class TripEntity extends BaseEntity implements Serializable {
     
     private String destination;    
 
+    private String transportType;
+    
+    private String specialRequirements;
+
+
     @PodamExclude
     @ManyToOne
     private AgencyEntity agency;
@@ -66,6 +75,21 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<CommentEntity> comments = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TaxEntity> taxes = new ArrayList<>();
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<RaitingEntity> raitings = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<NewsEntity> news = new ArrayList<>();
+
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<ContentEntity> contents = new ArrayList<>();
 
     /**
      * Obtiene el atributo image.
@@ -106,7 +130,40 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+    /**
+     * Obtiene el atributo tipo de transporte
+     * @return  atributo transportType
+     */
+    public String getTransportType() {
+        return transportType;
+    }
+    
+    /**
+     * Establece el valor del atributo transportType
+     * @param transportType nuevo valor del aributo
+     */
+    public void setTransportType(String transportType) {
+        this.transportType = transportType;
+    }
+    
+    /**
+     * Obtiene el aributo requerimientos especiales
+     * (en cuanto a ropa, elementos deportivos especiales, etc.
+     * @return atributo specialRequirements
+     */
+    public String getSpecialRequirements() {
+        return specialRequirements;
+    }
 
+    /**
+     * Establece el valor del atributo specialRequirements
+     * @param specialRequirements nuevo valor del atributo
+     */
+    public void setSpecialRequirements(String specialRequirements) {
+        this.specialRequirements = specialRequirements;
+    }
+        
     /**
      * Obtiene el atributo agency.
      *
@@ -133,6 +190,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return colección category.
      * @generated
      */
+    @XmlTransient
     public List<CategoryEntity> getCategory() {
         return category;
     }
@@ -147,6 +205,7 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.category = category;
     }
 
+    @XmlTransient
     public List<CommentEntity> getComments() {
         return comments;
     }
@@ -245,5 +304,62 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public List<TaxEntity> getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(List<TaxEntity> taxes) {
+        this.taxes = taxes;
+    }
+
+    public List<RaitingEntity> getRaitings() {
+        return raitings;
+    }
+
+    public void setRaitings(List<RaitingEntity> raitings) {
+        this.raitings = raitings;
+    }
+    
+
+     /**
+     * Obtiene la colección de news.
+     *
+     * @return colección news.
+     * @generated
+     */
+    public List<NewsEntity> getNews() {
+        return news;
+    }
+    
+    /**
+     * Establece el valor de la colección de trips.
+     *
+     * @param trips nuevo valor de la colección.
+     * @generated
+     */
+    public void setNews(List<NewsEntity> news) {
+        this.news = news;
+    }
+    /**
+     * Obtiene la colección de content.
+     *
+     * @return colección content.
+     * @generated
+     */
+    @XmlTransient
+    public List<ContentEntity> getContents() {
+        return contents;
+    }
+
+    /**
+     * Establece el valor de la colección de content.
+     *
+     * @param contents nuevo valor de la colección.
+     * @generated
+     */    
+    public void setContents(List<ContentEntity> contents) {
+        this.contents = contents;
     }
 }

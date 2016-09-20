@@ -16,16 +16,10 @@ public interface ICommentLogic {
 
     public int countComments();
 
-    public List<CommentEntity> getCommentsByTrip(Long tripId);
-
-    public List<CommentEntity> getCommentsByTrip(Integer page, Integer maxRecords, Long tripId);
-    
-    public List<CommentEntity> getCommentsByClient(Long clientId);
-
-    public List<CommentEntity> getCommentsByClient(Integer page, Integer maxRecords, Long clientId);
+    public List<CommentEntity> getComments(Long tripId);
 
     public CommentEntity getComment(Long id);
 
-    public CommentEntity createComment(Long clientId, Long tripId, CommentEntity entity);
+    public CommentEntity createComment(Long tripId, CommentEntity entity);
 
 }

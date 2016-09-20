@@ -25,7 +25,10 @@ package co.edu.uniandes.csw.turism.api;
 
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
+import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import co.edu.uniandes.csw.turism.entities.RaitingEntity;
+import co.edu.uniandes.csw.turism.entities.ContentEntity;
 import java.util.List;
 
 public interface ITripLogic {
@@ -44,5 +47,22 @@ public interface ITripLogic {
     public CategoryEntity addCategory(Long tripId, Long categoryId);
     public List<CategoryEntity> replaceCategory(Long tripId, List<CategoryEntity> list);
     public void removeCategory(Long tripId, Long categoryId);
+    
+    
+    public List<TaxEntity> listTaxes(Long tripId);
+    public TaxEntity getTax(Long tripId, Long taxId);
+    public TaxEntity addTax(Long tripId, Long taxId);
+    public List<TaxEntity> replaceTaxes(Long tripId, List<TaxEntity> list);
+    public void removeTax(Long tripId, Long taxId);
+    
+
+    public List<RaitingEntity> listRaiting(Long tripId);
+    public RaitingEntity getRaiting(Long tripId, Long raitingId);
+
+    public List<ContentEntity> listContent(Long tripId);
+    public ContentEntity getContent(Long tripId, Long contentId);
+    public ContentEntity addContent(Long tripId, Long contentId);
+    public List<ContentEntity> replaceContent(Long tripId, List<ContentEntity> list);
+    public void removeContent(Long tripId, Long contentId);
     
 }

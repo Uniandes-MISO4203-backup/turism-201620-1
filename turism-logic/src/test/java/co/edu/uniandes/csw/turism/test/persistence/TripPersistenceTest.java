@@ -169,6 +169,7 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getImage(), entity.getImage());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+
         try {
             Assert.assertEquals(sf.parse(strNewEntityDate),sf.parse(strEntityDate));
         } catch (ParseException ex) {
@@ -176,6 +177,10 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), entity.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        Assert.assertEquals(newEntity.getTransportType(), entity.getTransportType());
+        Assert.assertEquals(newEntity.getSpecialRequirements(), entity.getSpecialRequirements());
+        Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
     }
 
     /**
@@ -216,7 +221,7 @@ public class TripPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getImage(), newEntity.getImage());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
-        
+       
         
         try {
             Assert.assertEquals(sf.parse(strEntityDate),sf.parse(strNewEntityDate));
@@ -225,6 +230,12 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(entity.getOrigin(), newEntity.getOrigin());
         Assert.assertEquals(entity.getDestination(), newEntity.getDestination());        
+        Assert.assertEquals(entity.getTransportType(), newEntity.getTransportType());
+        Assert.assertEquals(entity.getSpecialRequirements(), newEntity.getSpecialRequirements());
+
+        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());   
+        Assert.assertEquals(entity.getQuota(), newEntity.getQuota());
+        Assert.assertEquals(entity.getDuration(), newEntity.getDuration());
     }
 
     /**
@@ -262,6 +273,7 @@ public class TripPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getImage(), resp.getImage());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+
         try {
             Assert.assertEquals(sf.parse(strDate),resp.getDate());
         } catch (ParseException ex) {
@@ -269,5 +281,10 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), resp.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), resp.getDestination());        
+        Assert.assertEquals(newEntity.getTransportType(), resp.getTransportType());
+        Assert.assertEquals(newEntity.getSpecialRequirements(), resp.getSpecialRequirements());
+        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());  
+        Assert.assertEquals(newEntity.getQuota(), resp.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), resp.getDuration());
     }
 }

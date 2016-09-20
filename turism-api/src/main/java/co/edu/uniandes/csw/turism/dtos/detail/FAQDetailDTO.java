@@ -18,7 +18,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @XmlRootElement
 public class FAQDetailDTO extends FAQDTO {
     
-     @PodamExclude
+  @PodamExclude
   private AgencyDTO agency;
 
     /**

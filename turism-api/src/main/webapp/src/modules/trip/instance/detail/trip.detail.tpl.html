@@ -30,10 +30,10 @@ SOFTWARE.
         <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
         </p>
         <p>
-        <label><strong>Image: </strong></label><span id="image"> {{currentRecord.image}}</span>
+        <label><strong>Content: </strong></label><span id="content"> {{currentRecord.content}}</span>
         </p>
         <p>
-        <label><strong>Price: </strong></label><span id="price"> {{currentRecord.price|currency}}</span>
+        <label><strong>Date: </strong></label><span id="price"> {{currentRecord.date}}</span>
         </p>
         <p>
         <label><strong>Quota: </strong></label><span id="quota"> {{currentRecord.quota}}</span>
@@ -50,6 +50,12 @@ SOFTWARE.
         <p>
         <label><strong>Destination: </strong></label><span id="destination"> {{currentRecord.destination}}</span>
         </p>        
+        <p>
+        <label><strong>Transport Type: </strong></label><span id="transportType"> {{currentRecord.transportType}}</span>
+        </p>
+        <p>
+        <label><strong>Special Requirements: </strong></label><span id="specialRequirements"> {{currentRecord.specialRequirements}}</span>
+        </p>
     </div>
 </div>
 <div ui-view="tripChieldView"></div>

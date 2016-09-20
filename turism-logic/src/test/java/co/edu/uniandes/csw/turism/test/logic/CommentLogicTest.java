@@ -40,7 +40,6 @@ public class CommentLogicTest {
      * @generated
      */
     AgencyEntity agencyEntity;
-    ClientEntity clientEntity;
     TripEntity tripEntity;
 
     /**
@@ -134,10 +133,6 @@ public class CommentLogicTest {
         tripEntity.setAgency(agencyEntity);
         em.persist(tripEntity);
 
-        clientEntity = factory.manufacturePojo(ClientEntity.class);
-        clientEntity.setId(1L);
-        em.persist(clientEntity);
-
     }
 
     /**
@@ -148,7 +143,7 @@ public class CommentLogicTest {
     @Test
     public void createCommentTest() {
         CommentEntity newEntity = factory.manufacturePojo(CommentEntity.class);
-        CommentEntity result = commentLogic.createComment(clientEntity.getId(), tripEntity.getId(), newEntity);
+        CommentEntity result = commentLogic.createComment(tripEntity.getId(), newEntity);
         Assert.assertNotNull(result);
         CommentEntity entity = em.find(CommentEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());

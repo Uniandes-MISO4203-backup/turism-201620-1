@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.turism.resources;
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
 import co.edu.uniandes.csw.turism.api.ICommentLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.CommentDetailDTO;
-import co.edu.uniandes.csw.turism.dtos.detail.TripDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,23 +45,23 @@ public class CommentResource {
     @QueryParam("limit")
     private Integer maxRecords;
 
-    @PathParam("tipId")
-    private Long tripId;
+    @PathParam("tripsId")
+    private Long tripsId;
 
     @GET
     public List<CommentDetailDTO> getComments() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", commentLogic.countComments());
-            return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+            return listEntity2DTO(commentLogic.getComments(tripsId));
         }
-        return listEntity2DTO(commentLogic.getCommentsByTrip(tripId));
+        return listEntity2DTO(commentLogic.getComments(tripsId));
     }
 
     @GET
     @Path("{commentId: \\d+}")
     public CommentDetailDTO getComment(@PathParam("commentId") Long commentId) {
         CommentEntity entity = commentLogic.getComment(commentId);
-        if (entity.getTrip() != null && !tripId.equals(entity.getTrip().getId())) {
+        if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
             throw new WebApplicationException(404);
         }
         return new CommentDetailDTO(entity);
@@ -71,22 +70,8 @@ public class CommentResource {
     @POST
     @StatusCreated
     public CommentDetailDTO createComment(CommentDetailDTO dto) {
-        return new CommentDetailDTO(commentLogic.createComment(dto.getClient().getId(), tripId, dto.toEntity()));
+        return new CommentDetailDTO(commentLogic.createComment(tripsId, dto.toEntity()));
     }
-    
-//    @PUT
-//    @Path("{commentId: \\d+}")
-//    public CommentDetailDTO updateComment(@PathParam("commentId") Long commentId, CommentDetailDTO dto) {
-//        CommentEntity entity = dto.toEntity();
-//        entity.setId(commentId);
-//        return new CommentDetailDTO(commentLogic.updateComment(tripId, entity));
-//    }
-//
-//    @DELETE
-//    @Path("{commentId: \\d+}")
-//    public void deleteComment(@PathParam("commentId") Long commentId) {
-//        commentLogic.deleteComment(commentId);
-//    }
 
     private List<CommentDetailDTO> listEntity2DTO(List<CommentEntity> entityList) {
         List<CommentDetailDTO> list = new ArrayList<>();
