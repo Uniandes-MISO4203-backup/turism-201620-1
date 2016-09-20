@@ -81,8 +81,7 @@ public class TripCreatePage {
          transportTypeInput.sendKeys(trip.getTransportType());
          waitGui().until().element(specialRequirementsInput).is().visible();
          specialRequirementsInput.clear();
-         specialRequirementsInput.sendKeys(trip.getSpecialRequirements());
-         destinationInput.sendKeys(trip.getDestination());    
+         specialRequirementsInput.sendKeys(trip.getSpecialRequirements());    
          waitGui().until().element(quotaInput).is().visible();
          quotaInput.clear();
          quotaInput.sendKeys(trip.getQuota().toString());
