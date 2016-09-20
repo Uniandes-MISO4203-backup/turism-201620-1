@@ -73,11 +73,40 @@ SOFTWARE.
                 },
                 comments: {
                     displayName: 'Comments',
-                    icon: 'comment',
+                    icon:'comment',
                     fn: function () {
                         $state.go('commentList');
                     }
+                },
+                taxes: {
+                    displayName: 'Taxes',
+                    icon: 'usd',
+                    fn: function () {
+                        $state.go('taxList');
+                    }
+                },
+                raitings: {
+                    displayName: 'Raitings',
+                    icon: 'star',
+                    fn: function () {
+                        $state.go('raitingList');
+                    }
+                },
+                news: {
+                    displayName: 'News',
+                    icon: 'pencil',
+                    fn: function () {
+                        $state.go('tripNewsList');
+                    }    
+                },    
+                contents: {
+                    displayName: 'Contents',
+                    icon: 'film',
+                    fn: function () {
+                        $state.go('tripContentList');
+                    }
                 }
+                
             };
         }]);
 })(window.angular);

@@ -63,6 +63,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('itemList');
                     }
+                },
+                raitingTrip: {
+                    displayName: 'Rate Trip',
+                    icon: 'star',
+                    fn: function () {
+                        $state.go('raitingTrip');
+                    }
                 }
             };
         }]);

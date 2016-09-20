@@ -211,6 +211,8 @@ public class TripTest {
         Assert.assertEquals(trip.getName(), tripTest.getName());
         Assert.assertEquals(trip.getImage(), tripTest.getImage());
         Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
+        Assert.assertEquals(trip.getTransportType(), tripTest.getTransportType());
+        Assert.assertEquals(trip.getSpecialRequirements(), tripTest.getSpecialRequirements());
 
         TripEntity entity = em.find(TripEntity.class, tripTest.getId());
         Assert.assertNotNull(entity);
@@ -233,6 +235,8 @@ public class TripTest {
         Assert.assertEquals(tripTest.getName(), oraculo.get(0).getName());
         Assert.assertEquals(tripTest.getImage(), oraculo.get(0).getImage());
         Assert.assertEquals(tripTest.getPrice(), oraculo.get(0).getPrice());
+        Assert.assertEquals(tripTest.getTransportType(), oraculo.get(0).getTransportType());
+        Assert.assertEquals(tripTest.getSpecialRequirements(), oraculo.get(0).getSpecialRequirements());
     }
 
     /**
@@ -268,6 +272,8 @@ public class TripTest {
         trip.setName(tripChanged.getName());
         trip.setImage(tripChanged.getImage());
         trip.setPrice(tripChanged.getPrice());
+        trip.setTransportType(tripChanged.getTransportType());
+        trip.setSpecialRequirements(tripChanged.getSpecialRequirements());
 
         Response response = target
             .path(trip.getId().toString())
@@ -280,6 +286,8 @@ public class TripTest {
         Assert.assertEquals(trip.getName(), tripTest.getName());
         Assert.assertEquals(trip.getImage(), tripTest.getImage());
         Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
+        Assert.assertEquals(trip.getTransportType(), tripTest.getTransportType());
+        Assert.assertEquals(trip.getSpecialRequirements(), tripTest.getSpecialRequirements());
     }
 
     /**

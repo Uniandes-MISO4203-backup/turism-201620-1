@@ -148,4 +148,21 @@ public class ItemResource {
         itemLogic.deleteItem(itemId);
     }
     
+    public void existsItemAndTrip(Long itemsId){
+        ItemDetailDTO item = getItem(itemsId);
+        if (item== null) {
+            throw new WebApplicationException(404);
+        }
+        if(item.getTrip()==null)
+        {
+            throw new WebApplicationException("El item no tiene un viaje que calificar", 404);
+        }
+    }
+    
+    @Path("{itemsId: \\d+}/raitings")
+    public Class<TripRaitingResource> getRaitingResource(@PathParam("itemsId") Long itemsId){
+        existsItemAndTrip(itemsId);
+        return TripRaitingResource.class;
+    }
+    
 }

@@ -43,6 +43,9 @@ public class TripDTO implements Serializable{
     private Date date;
     private String origin;
     private String destination;    
+    private String transportType;
+    private String specialRequirements;
+   
 
     /**
      * @generated
@@ -67,6 +70,9 @@ public class TripDTO implements Serializable{
         this.date=entity.getDate();
         this.origin=entity.getOrigin();
         this.destination=entity.getDestination();        
+        this.transportType=entity.getTransportType();
+        this.specialRequirements=entity.getSpecialRequirements();
+
        }
     }
 
@@ -87,6 +93,9 @@ public class TripDTO implements Serializable{
  	entity.setDate(this.getDate());
         entity.setOrigin(this.getOrigin());
         entity.setDestination(this.getDestination());       
+        entity.setTransportType(this.getTransportType());
+        entity.setSpecialRequirements(this.getSpecialRequirements());
+
     return entity;
     }
 
@@ -271,4 +280,37 @@ public class TripDTO implements Serializable{
     public void setQuota(Integer quota) {
         this.quota = quota;
     }
+
+    /*
+     * Obtiene el atributo transportType
+     * @return atributo transportType
+     */
+    public String getTransportType() {
+        return transportType;
+    }
+    
+    /**
+     * Establece el valor del atributo transportType
+     * @param transportType  nuevo valor del atributo
+     */
+    public void setTransportType(String transportType) {
+        this.transportType = transportType;
+    }
+    
+    /**
+     * Obtiene el atributo specialRequirements
+     * @return atributo specialRequirements
+     */
+    public String getSpecialRequirements() {
+        return specialRequirements;
+    }
+
+    /**
+     * Establce el valor del atributo specialRequirements
+     * @param specialRequirements nuevo valor del atributo
+     */
+    public void setSpecialRequirements(String specialRequirements) {
+        this.specialRequirements = specialRequirements;
+    }
+
 }

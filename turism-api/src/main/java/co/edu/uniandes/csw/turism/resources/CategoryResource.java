@@ -83,6 +83,7 @@ public class CategoryResource {
      */
     @GET
     public List<CategoryDetailDTO> getCategorys() {
+        System.out.println("co.edu.uniandes.csw.turism.resources.CategoryResource.getCategorys()");
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", categoryLogic.countCategorys());
             return listEntity2DTO(categoryLogic.getCategorys(page, maxRecords));
