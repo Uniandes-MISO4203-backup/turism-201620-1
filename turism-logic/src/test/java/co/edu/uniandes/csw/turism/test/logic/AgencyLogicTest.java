@@ -27,7 +27,6 @@ import co.edu.uniandes.csw.turism.ejbs.AgencyLogic;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
-import co.edu.uniandes.csw.turism.entities.TripEntity;
 import java.util.ArrayList;
 import java.util.List;
 

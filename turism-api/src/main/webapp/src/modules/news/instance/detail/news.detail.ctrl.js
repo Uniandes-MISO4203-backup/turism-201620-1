@@ -23,31 +23,31 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("tripModule");
+    var mod = ng.module("newsModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip",
-        function ($scope, $state, trip) {
-            $scope.currentRecord = trip;
+    mod.controller("newsDetailCtrl", ['$scope', "$state", "news",
+        function ($scope, $state, news) {
+            $scope.currentRecord = news;
             $scope.actions = {
                 create: {
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('tripNew');
+                        $state.go('newsNew');
                     }
                 },
                 edit: {
                     displayName: 'Edit',
                     icon: 'edit',
                     fn: function () {
-                        $state.go('tripEdit');
+                        $state.go('newsEdit');
                     }
                 },
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('tripDelete');
+                        $state.go('newsDelete');
                     }
                 },
                 refresh: {
@@ -61,42 +61,7 @@ SOFTWARE.
                     displayName: 'List',
                     icon: 'th-list',
                     fn: function () {
-                        $state.go('tripList');
-                    }
-                },
-                category: {
-                    displayName: 'Category',
-                    icon: 'link',
-                    fn: function () {
-                        $state.go('tripCategoryList');
-                    }
-                },
-                comments: {
-                    displayName: 'Comments',
-                    icon:'comment',
-                    fn: function () {
-                        $state.go('commentList');
-                    }
-                },
-                taxes: {
-                    displayName: 'Taxes',
-                    icon: 'usd',
-                    fn: function () {
-                        $state.go('taxList');
-                    }
-                },
-                raitings: {
-                    displayName: 'Raitings',
-                    icon: 'star',
-                    fn: function () {
-                        $state.go('raitingList');
-                    }
-                },
-                news: {
-                    displayName: 'News',
-                    icon: 'pencil',
-                    fn: function () {
-                        $state.go('tripNewsList');
+                        $state.go('newsList');
                     }
                 }
             };

@@ -34,6 +34,8 @@ import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
+import co.edu.uniandes.csw.turism.entities.AgencyEntity;
+import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;

@@ -47,6 +47,11 @@ public class TripEditPage {
     private WebElement transportTypeInput;
     @FindBy(id = "specialRequirements")
     private WebElement specialRequirementsInput;
+    @FindBy(id = "quota")
+    private WebElement quotaInput;
+    @FindBy(id = "duration")
+    private WebElement durationInput;
+    
     @FindBy(id = "save-trip")
     private WebElement saveBtn;
 
@@ -78,6 +83,14 @@ public class TripEditPage {
          waitGui().until().element(specialRequirementsInput).is().visible();
          specialRequirementsInput.clear();
          specialRequirementsInput.sendKeys(trip.getSpecialRequirements());
+         destinationInput.sendKeys(trip.getDestination());  
+         waitGui().until().element(quotaInput).is().visible();
+         quotaInput.clear();
+         quotaInput.sendKeys(trip.getQuota().toString());
+         waitGui().until().element(durationInput).is().visible();
+         durationInput.clear();
+         durationInput.sendKeys(trip.getDuration().toString());
+
         guardAjax(saveBtn).click();
     }
 }

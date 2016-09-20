@@ -73,13 +73,17 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "trip")
     private List<CommentEntity> comments = new ArrayList<>();
     
-    
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxEntity> taxes = new ArrayList<>();
     @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<RaitingEntity> raitings = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<NewsEntity> news = new ArrayList<>();
+
 
     /**
      * Obtiene el atributo image.
@@ -294,6 +298,7 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.destination = destination;
     }
     
+
     public List<TaxEntity> getTaxes() {
         return taxes;
     }
@@ -310,5 +315,25 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.raitings = raitings;
     }
     
+
+     /**
+     * Obtiene la colección de news.
+     *
+     * @return colección news.
+     * @generated
+     */
+    public List<NewsEntity> getNews() {
+        return news;
+    }
+    
+    /**
+     * Establece el valor de la colección de trips.
+     *
+     * @param trips nuevo valor de la colección.
+     * @generated
+     */
+    public void setNews(List<NewsEntity> news) {
+        this.news = news;
+    }
 }
 

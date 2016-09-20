@@ -37,7 +37,8 @@ SOFTWARE.
         'faqModule',
         'taxModule',
         'commentModule',
-        'raitingModule'
+        'raitingModule',
+        'newsModule'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {
