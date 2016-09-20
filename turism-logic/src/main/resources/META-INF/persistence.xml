@@ -5,7 +5,6 @@
     <jta-data-source>java:app/jdbc/Turism</jta-data-source>
     <class>co.edu.uniandes.csw.turism.entities.ClientEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.ItemEntity</class>
-    <class>co.edu.uniandes.csw.turism.entities.FAQEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.TripEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.ProductEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.AgencyEntity</class>
