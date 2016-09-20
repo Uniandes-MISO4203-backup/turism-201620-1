@@ -205,6 +205,50 @@ SOFTWARE.
                         }]
                 }
             });
+            
+            $sp.state('tripNews', {
+                url: '/news',
+                parent: 'tripDetail',
+                abstract: true,
+                views: {
+                    tripChieldView: {
+                        template: '<div ui-view="tripNewsView"></div>'
+                    }
+                },
+                resolve: {
+                    category: ['trip', function (trip) {
+                            return trip.getList('news');
+                        }],
+                    model: 'newsModel'
+                }
+            });
+            $sp.state('tripNewsList', {
+                url: '/list',
+                parent: 'tripNews',
+                views: {
+                    tripNewsView: {
+                        templateUrl: baseInstancePath + 'news/list/trip.news.list.tpl.html',
+                        controller: 'tripNewsListCtrl'
+                    }
+                }
+            });
+            $sp.state('tripNewsEdit', {
+                url: '/edit',
+                parent: 'tripNews',
+                views: {
+                    tripNewsView: {
+                        templateUrl: baseInstancePath + 'news/edit/trip.news.edit.tpl.html',
+                        controller: 'tripNewsEditCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                },
+                resolve: {
+                    pool: ['Restangular', 'model', function (r, model) {
+                            return r.all(model.url).getList();
+                        }]
+                }
+            });
+            
             $sp.state('tripGallery', {
                 url: '/tripGallery',
                 views: {

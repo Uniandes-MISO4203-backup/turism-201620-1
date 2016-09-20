@@ -32,6 +32,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Temporal;
 
 /**
@@ -66,6 +67,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<CommentEntity> comments = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<NewsEntity> news = new ArrayList<>();
 
     /**
      * Obtiene el atributo image.
@@ -245,5 +250,25 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+    
+     /**
+     * Obtiene la colección de news.
+     *
+     * @return colección news.
+     * @generated
+     */
+    public List<NewsEntity> getNews() {
+        return news;
+    }
+    
+    /**
+     * Establece el valor de la colección de trips.
+     *
+     * @param trips nuevo valor de la colección.
+     * @generated
+     */
+    public void setNews(List<NewsEntity> news) {
+        this.news = news;
     }
 }

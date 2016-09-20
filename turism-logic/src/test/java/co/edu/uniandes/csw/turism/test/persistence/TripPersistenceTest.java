@@ -176,6 +176,8 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), entity.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
     }
 
     /**
@@ -224,7 +226,9 @@ public class TripPersistenceTest {
             Logger.getLogger(TripPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
         Assert.assertEquals(entity.getOrigin(), newEntity.getOrigin());
-        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());        
+        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());   
+        Assert.assertEquals(entity.getQuota(), newEntity.getQuota());
+        Assert.assertEquals(entity.getDuration(), newEntity.getDuration());
     }
 
     /**
@@ -268,6 +272,8 @@ public class TripPersistenceTest {
             Logger.getLogger(TripPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
         Assert.assertEquals(newEntity.getOrigin(), resp.getOrigin());
-        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());        
+        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());  
+        Assert.assertEquals(newEntity.getQuota(), resp.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), resp.getDuration());
     }
 }

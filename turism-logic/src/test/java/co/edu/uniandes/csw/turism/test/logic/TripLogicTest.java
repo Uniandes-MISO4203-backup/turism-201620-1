@@ -200,6 +200,8 @@ public class TripLogicTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), entity.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
+        Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
     }
 
     /**
@@ -250,6 +252,8 @@ public class TripLogicTest {
         }
         Assert.assertEquals(entity.getOrigin(), resultEntity.getOrigin());
         Assert.assertEquals(entity.getDestination(), resultEntity.getDestination());
+        Assert.assertEquals(entity.getQuota(),resultEntity.getQuota());
+        Assert.assertEquals(entity.getDuration(),resultEntity.getDuration());
     }
 
     /**
@@ -297,6 +301,8 @@ public class TripLogicTest {
 
         Assert.assertEquals(pojoEntity.getOrigin(), resp.getOrigin());
         Assert.assertEquals(pojoEntity.getDestination(), resp.getDestination());
+        Assert.assertEquals(pojoEntity.getQuota(), resp.getQuota());
+        Assert.assertEquals(pojoEntity.getDuration(),resp.getDuration());
     }
 
     /**

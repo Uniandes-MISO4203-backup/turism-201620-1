@@ -42,7 +42,11 @@ public class TripCreatePage {
     @FindBy(id = "origin")
     private WebElement originInput;
     @FindBy(id = "destination")
-    private WebElement destinationInput;     
+    private WebElement destinationInput;   
+    @FindBy(id = "quota")
+    private WebElement quotaInput; 
+    @FindBy(id = "duration")
+    private WebElement durationInput; 
 
     @FindBy(id = "save-trip")
     private WebElement saveBtn;
@@ -68,7 +72,13 @@ public class TripCreatePage {
          originInput.sendKeys(trip.getOrigin());
          waitGui().until().element(destinationInput).is().visible();
          destinationInput.clear();
-         destinationInput.sendKeys(trip.getDestination());  
+         destinationInput.sendKeys(trip.getDestination());    
+         waitGui().until().element(quotaInput).is().visible();
+         quotaInput.clear();
+         quotaInput.sendKeys(trip.getQuota().toString());
+         waitGui().until().element(durationInput).is().visible();
+         durationInput.clear();
+         durationInput.sendKeys(trip.getDuration().toString());
         guardAjax(saveBtn).click();
     }
 }

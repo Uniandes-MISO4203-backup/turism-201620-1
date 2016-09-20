@@ -21,36 +21,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+<div ng-messages="newsForm.$error" multiple>
+    <ng-message when="required">
+        <alert type="warning">Please, Fill the required fields!</alert>
+    </ng-message>
+    <ng-message when="url">
+        <alert type="warning">Image field must be a URL</alert>
+    </ng-message>
+</div>
 <header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Content: </strong></label><span id="content"> {{currentRecord.content}}</span>
-        </p>
-        <p>
-        <label><strong>Date: </strong></label><span id="price"> {{currentRecord.date}}</span>
-        </p>
-        <p>
-        <label><strong>Quota: </strong></label><span id="quota"> {{currentRecord.quota}}</span>
-        </p>
-        <p>
-        <label><strong>Duration: </strong></label><span id="duration"> {{currentRecord.duration}}</span>
-        </p>
-        <p>
-        <label><strong>Date: </strong></label><span id="date"> {{currentRecord.date}}</span>
-        </p>
-        <p>
-        <label><strong>Origin: </strong></label><span id="origin"> {{currentRecord.origin}}</span>
-        </p>
-        <p>
-        <label><strong>Destination: </strong></label><span id="destination"> {{currentRecord.destination}}</span>
-        </p>        
-    </div>
-</div>
-<div ui-view="tripChieldView"></div>
-<!-- TODO -->
+<form novalidate name="newsForm" role="form">
+    <fieldset>
+        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
+    </fieldset>
+</form>
