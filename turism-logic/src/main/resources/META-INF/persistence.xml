@@ -11,6 +11,8 @@
     <class>co.edu.uniandes.csw.turism.entities.AgencyEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.CategoryEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.TaxEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.RaitingEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.FAQEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.CommentEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>

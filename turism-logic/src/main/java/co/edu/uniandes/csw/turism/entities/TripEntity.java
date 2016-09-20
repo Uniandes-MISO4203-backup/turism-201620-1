@@ -77,6 +77,9 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxEntity> taxes = new ArrayList<>();
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<RaitingEntity> raitings = new ArrayList<>();
 
     /**
      * Obtiene el atributo image.
@@ -291,7 +294,6 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.destination = destination;
     }
     
-    
     public List<TaxEntity> getTaxes() {
         return taxes;
     }
@@ -299,5 +301,14 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setTaxes(List<TaxEntity> taxes) {
         this.taxes = taxes;
     }
+
+    public List<RaitingEntity> getRaitings() {
+        return raitings;
+    }
+
+    public void setRaitings(List<RaitingEntity> raitings) {
+        this.raitings = raitings;
+    }
+    
 }
 

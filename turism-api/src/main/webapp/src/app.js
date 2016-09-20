@@ -36,7 +36,8 @@ SOFTWARE.
         'roleModule',
         'faqModule',
         'taxModule',
-        'commentModule'
+        'commentModule',
+        'raitingModule'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {

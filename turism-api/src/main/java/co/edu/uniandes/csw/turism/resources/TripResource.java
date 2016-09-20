@@ -170,4 +170,11 @@ public class TripResource {
         return TaxResource.class;
     }
     
+    @Path("{tripsId: \\d+}/raitings")
+    public Class<TripRaitingResource> getTripRaitingResource(@PathParam("tripsId") Long tripsId){
+        existsTrip(tripsId);
+        return TripRaitingResource.class;
+
+    }
+    
 }

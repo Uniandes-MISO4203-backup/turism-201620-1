@@ -45,6 +45,10 @@ public class ClientEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "client")
     private List<CommentEntity> comments = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "client")
+    private List<RaitingEntity> raitings = new ArrayList<>();
 
     /**
      * Obtiene la colección de wishList.
@@ -73,5 +77,15 @@ public class ClientEntity extends BaseEntity implements Serializable {
     public void setComments(List<CommentEntity> comments) {
         this.comments = comments;
     }
+
+    public List<RaitingEntity> getRaitings() {
+        return raitings;
+    }
+
+    public void setRaitings(List<RaitingEntity> raitings) {
+        this.raitings = raitings;
+    }
+    
+    
 
 }

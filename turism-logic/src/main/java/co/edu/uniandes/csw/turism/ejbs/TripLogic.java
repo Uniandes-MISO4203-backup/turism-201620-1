@@ -33,6 +33,7 @@ import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
+import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -303,4 +304,21 @@ public class TripLogic implements ITripLogic {
         entity.setTrip(null);
     }
 
+    @Override
+    public List<RaitingEntity> listRaiting(Long tripId) {
+       return persistence.find(tripId).getRaitings();
+    }
+
+    @Override
+    public RaitingEntity getRaiting(Long tripId, Long raitingId) {
+        List<RaitingEntity> list = persistence.find(tripId).getRaitings();
+        RaitingEntity raitingEntity = new RaitingEntity();
+        raitingEntity.setId(tripId);
+        int index = list.indexOf(raitingEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+    
 }
