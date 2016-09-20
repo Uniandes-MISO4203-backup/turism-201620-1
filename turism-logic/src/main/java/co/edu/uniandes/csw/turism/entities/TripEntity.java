@@ -33,11 +33,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Temporal;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @generated
  */
 @Entity
+@XmlRootElement
 public class TripEntity extends BaseEntity implements Serializable {
 
     private String image;
@@ -66,6 +69,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<CommentEntity> comments = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "trip")
+    private List<ContentEntity> contents = new ArrayList<>();
 
     /**
      * Obtiene el atributo image.
@@ -133,6 +140,7 @@ public class TripEntity extends BaseEntity implements Serializable {
      * @return colección category.
      * @generated
      */
+    @XmlTransient
     public List<CategoryEntity> getCategory() {
         return category;
     }
@@ -147,6 +155,7 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.category = category;
     }
 
+    @XmlTransient
     public List<CommentEntity> getComments() {
         return comments;
     }
@@ -245,5 +254,26 @@ public class TripEntity extends BaseEntity implements Serializable {
      */
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    /**
+     * Obtiene la colección de content.
+     *
+     * @return colección content.
+     * @generated
+     */
+    @XmlTransient
+    public List<ContentEntity> getContents() {
+        return contents;
+    }
+
+    /**
+     * Establece el valor de la colección de content.
+     *
+     * @param contents nuevo valor de la colección.
+     * @generated
+     */    
+    public void setContents(List<ContentEntity> contents) {
+        this.contents = contents;
     }
 }

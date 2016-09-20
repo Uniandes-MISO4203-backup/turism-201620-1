@@ -77,7 +77,15 @@ SOFTWARE.
                     fn: function () {
                         $state.go('commentList');
                     }
+                },
+                contents: {
+                    displayName: 'Contents',
+                    icon: 'film',
+                    fn: function () {
+                        $state.go('tripContentList');
+                    }
                 }
+                
             };
         }]);
 })(window.angular);

@@ -26,6 +26,7 @@ package co.edu.uniandes.csw.turism.api;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
+import co.edu.uniandes.csw.turism.entities.ContentEntity;
 import java.util.List;
 
 public interface ITripLogic {
@@ -44,5 +45,11 @@ public interface ITripLogic {
     public CategoryEntity addCategory(Long tripId, Long categoryId);
     public List<CategoryEntity> replaceCategory(Long tripId, List<CategoryEntity> list);
     public void removeCategory(Long tripId, Long categoryId);
+    
+    public List<ContentEntity> listContent(Long tripId);
+    public ContentEntity getContent(Long tripId, Long contentId);
+    public ContentEntity addContent(Long tripId, Long contentId);
+    public List<ContentEntity> replaceContent(Long tripId, List<ContentEntity> list);
+    public void removeContent(Long tripId, Long contentId);
     
 }

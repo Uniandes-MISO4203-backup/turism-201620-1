@@ -31,11 +31,14 @@ import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.CascadeType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @generated
  */
 @Entity
+@XmlRootElement
 public class AgencyEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
@@ -54,6 +57,7 @@ public class AgencyEntity extends BaseEntity implements Serializable {
      * @return colección trips.
      * @generated
      */
+    @XmlTransient
     public List<TripEntity> getTrips() {
         return trips;
     }
@@ -68,6 +72,7 @@ public class AgencyEntity extends BaseEntity implements Serializable {
         this.trips = trips;
     }
     
+    @XmlTransient
      public List<FAQEntity> getFaqs() {
         return faqs;
     }
