@@ -87,6 +87,7 @@ public class TripEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "trip")
     private List<NewsEntity> news = new ArrayList<>();
 
+    @PodamExclude
     @OneToMany(mappedBy = "trip")
     private List<ContentEntity> contents = new ArrayList<>();
 
