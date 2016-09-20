@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -24,7 +25,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class CommentEntity extends BaseEntity implements Serializable {
 
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.REMOVE)
     private TripEntity trip;
 
     @Temporal(TemporalType.DATE)

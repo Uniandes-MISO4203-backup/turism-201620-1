@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.turism.resources;
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
 import co.edu.uniandes.csw.turism.api.ICommentLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.CommentDetailDTO;
-import co.edu.uniandes.csw.turism.dtos.detail.TripDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import java.util.ArrayList;
 import java.util.List;

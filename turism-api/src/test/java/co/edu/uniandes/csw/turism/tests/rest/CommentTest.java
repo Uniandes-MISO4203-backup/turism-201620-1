@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.auth.model.UserDTO;
 import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.turism.dtos.minimum.CommentDTO;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
-import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.resources.CommentResource;
@@ -30,6 +29,7 @@ import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -63,7 +63,7 @@ public class CommentTest {
     private final int OkWithoutContent = Status.NO_CONTENT.getStatusCode();
 
     private final static List<CommentEntity> oraculo = new ArrayList<>();
-    
+
     private final String agencyPath = "agencys";
     private final String tripPath = "trips";
     private final String commentPath = "comments";
@@ -104,9 +104,9 @@ public class CommentTest {
     private UserTransaction utx;
 
     private void clearData() {
+        em.createQuery("delete from CommentEntity").executeUpdate();
         em.createQuery("delete from TripEntity").executeUpdate();
         em.createQuery("delete from AgencyEntity").executeUpdate();
-        em.createQuery("delete from CommentEntity").executeUpdate();
         oraculo.clear();
     }
 
@@ -184,7 +184,7 @@ public class CommentTest {
         Response response = target
                 .request().cookie(cookieSessionId)
                 .post(Entity.entity(comment, MediaType.APPLICATION_JSON));
-        
+
         CommentDTO commentTest = (CommentDTO) response.readEntity(CommentDTO.class);
 
         Assert.assertEquals(Created, response.getStatus());
@@ -194,6 +194,33 @@ public class CommentTest {
 
         CommentEntity entity = em.find(CommentEntity.class, commentTest.getId());
         Assert.assertNotNull(entity);
+    }
+
+    @Test
+    public void getCommentByIdTest() {
+        Cookie cookieSessionId = login(username, password);
+
+        CommentDTO commentTest = target
+                .path(oraculo.get(0).getId().toString())
+                .request().cookie(cookieSessionId).get(CommentDTO.class);
+        
+        Assert.assertEquals(commentTest.getId(), oraculo.get(0).getId());
+        Assert.assertEquals(commentTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(commentTest.getText(), oraculo.get(0).getText());
+        Assert.assertEquals(commentTest.getDate(), oraculo.get(0).getDate());
+    }
+    
+    @Test
+    public void lisCommentTest () throws IOException {
+        Cookie cookieSessionId = login(username, password);
+
+        Response response = target
+            .request().cookie(cookieSessionId).get();
+        
+        String listComment = response.readEntity(String.class);
+        List<CommentDTO> listCommentTest = new ObjectMapper().readValue(listComment, List.class);
+        Assert.assertEquals(Ok, response.getStatus());
+        Assert.assertEquals(3, listCommentTest.size());
     }
 
 }

@@ -38,7 +38,7 @@ public class CommentLogic implements ICommentLogic {
 
     @Override
     public CommentEntity getComment(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return persistence.find(id);
     }
 
     @Override
