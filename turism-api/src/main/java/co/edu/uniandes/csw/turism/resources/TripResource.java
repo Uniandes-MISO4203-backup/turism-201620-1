@@ -192,5 +192,5 @@ public class TripResource {
         existsTrip(tripsId);
         return ContentResource.class;
     }
-    s
+    
 }
