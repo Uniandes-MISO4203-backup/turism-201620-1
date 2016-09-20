@@ -56,6 +56,11 @@ public class TripEntity extends BaseEntity implements Serializable {
     
     private String destination;    
 
+    private String transportType;
+    
+    private String specialRequirements;
+
+
     @PodamExclude
     @ManyToOne
     private AgencyEntity agency;
@@ -112,7 +117,40 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setPrice(Long price) {
         this.price = price;
     }
+    
+    /**
+     * Obtiene el atributo tipo de transporte
+     * @return  atributo transportType
+     */
+    public String getTransportType() {
+        return transportType;
+    }
+    
+    /**
+     * Establece el valor del atributo transportType
+     * @param transportType nuevo valor del aributo
+     */
+    public void setTransportType(String transportType) {
+        this.transportType = transportType;
+    }
+    
+    /**
+     * Obtiene el aributo requerimientos especiales
+     * (en cuanto a ropa, elementos deportivos especiales, etc.
+     * @return atributo specialRequirements
+     */
+    public String getSpecialRequirements() {
+        return specialRequirements;
+    }
 
+    /**
+     * Establece el valor del atributo specialRequirements
+     * @param specialRequirements nuevo valor del atributo
+     */
+    public void setSpecialRequirements(String specialRequirements) {
+        this.specialRequirements = specialRequirements;
+    }
+        
     /**
      * Obtiene el atributo agency.
      *
@@ -262,3 +300,4 @@ public class TripEntity extends BaseEntity implements Serializable {
         this.taxes = taxes;
     }
 }
+

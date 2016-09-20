@@ -28,7 +28,8 @@ SOFTWARE.
         name: 'trip',
         displayName: 'Trip',
 		url: 'trips',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
@@ -67,8 +68,17 @@ SOFTWARE.
                 displayName: 'Destination',
                 type: 'String',
                 required: true
-            } 
-            
+            }, 
+            transportType: {
+                displayName: 'Transport Type',
+                type: 'String',
+                required: true
+            },
+            specialRequirements: {
+                displayName: 'Special Requirements',
+                type: 'String',
+                required: false
+            }
         }
     });
 

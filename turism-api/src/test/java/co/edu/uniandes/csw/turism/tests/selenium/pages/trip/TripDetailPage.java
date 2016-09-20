@@ -55,6 +55,10 @@ public class TripDetailPage {
     private WebElement origin;
     @FindBy(id = "destination")
     private WebElement destination;
+    @FindBy(id = "transportType")
+    private WebElement transportType;
+    @FindBy(id = "specialRequirements")
+    private WebElement specialRequirements;
 
     public void list() {
         listBtn.click();
@@ -80,6 +84,8 @@ public class TripDetailPage {
         }
         trip.setOrigin(origin.getText());
         trip.setDestination(destination.getText());
+        trip.setTransportType(transportType.getText());
+        trip.setSpecialRequirements(specialRequirements.getText());
         return trip;
     }
 }
