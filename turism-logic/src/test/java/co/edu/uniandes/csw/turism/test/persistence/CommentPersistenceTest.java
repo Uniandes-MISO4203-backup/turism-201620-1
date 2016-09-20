@@ -37,7 +37,6 @@ public class CommentPersistenceTest {
 
     private AgencyEntity agencyEntity;
     private TripEntity tripEntity;
-    private ClientEntity clientEntity;
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -85,7 +84,6 @@ public class CommentPersistenceTest {
      */
     private void clearData() {
         em.createQuery("delete from TripEntity").executeUpdate();
-        em.createQuery("delete from ClientEntity").executeUpdate();
         em.createQuery("delete from CommentEntity").executeUpdate();
     }
 
@@ -112,10 +110,6 @@ public class CommentPersistenceTest {
         tripEntity.setAgency(agencyEntity);
         em.persist(tripEntity);
 
-        clientEntity = factory.manufacturePojo(ClientEntity.class);
-        clientEntity.setId(1L);
-        em.persist(clientEntity);
-
     }
 
     /**
@@ -128,7 +122,6 @@ public class CommentPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         CommentEntity newEntity = factory.manufacturePojo(CommentEntity.class);
         newEntity.setTrip(tripEntity);
-        newEntity.setClient(clientEntity);
         CommentEntity result = commentPersistence.create(newEntity);
 
         Assert.assertNotNull(result);

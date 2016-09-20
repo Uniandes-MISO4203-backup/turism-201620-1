@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
@@ -46,19 +46,24 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  * URI: agencys/{tripsId: \\d+}/trips/
+ *
  * @generated
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TripResource {
 
-    @Inject private ITripLogic tripLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("limit") private Integer maxRecords;
-    @PathParam("agencysId") private Long agencysId;
+    @Inject
+    private ITripLogic tripLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("limit")
+    private Integer maxRecords;
+    @PathParam("agencysId")
+    private Long agencysId;
 
-   
     /**
      * Convierte una lista de TripEntity a una lista de TripDetailDTO
      *
@@ -66,14 +71,13 @@ public class TripResource {
      * @return Lista de TripDetailDTO convertida
      * @generated
      */
-    private List<TripDetailDTO> listEntity2DTO(List<TripEntity> entityList){
+    private List<TripDetailDTO> listEntity2DTO(List<TripEntity> entityList) {
         List<TripDetailDTO> list = new ArrayList<>();
         for (TripEntity entity : entityList) {
             list.add(new TripDetailDTO(entity));
         }
         return list;
     }
-
 
     /**
      * Obtiene la lista de los registros de Trip asociados a un Agency
@@ -91,7 +95,8 @@ public class TripResource {
     }
 
     /**
-     * Obtiene los datos de una instancia de Trip a partir de su ID asociado a un Agency
+     * Obtiene los datos de una instancia de Trip a partir de su ID asociado a
+     * un Agency
      *
      * @param tripId Identificador de la instancia a consultar
      * @return Instancia de TripDetailDTO con los datos del Trip consultado
@@ -149,20 +154,26 @@ public class TripResource {
     public void deleteTrip(@PathParam("tripId") Long tripId) {
         tripLogic.deleteTrip(tripId);
     }
-    public void existsTrip(Long tripsId){
+
+    public void existsTrip(Long tripsId) {
         TripDetailDTO trip = getTrip(tripsId);
-        if (trip== null) {
+        if (trip == null) {
             throw new WebApplicationException(404);
         }
     }
-    
-    
+
     @Path("{tripsId: \\d+}/category")
-    public Class<TripCategoryResource> getTripCategoryResource(@PathParam("tripsId") Long tripsId){
+    public Class<TripCategoryResource> getTripCategoryResource(@PathParam("tripsId") Long tripsId) {
         existsTrip(tripsId);
         return TripCategoryResource.class;
     }
     
+    @Path("{tripsId: \\d+}/comments")
+    public Class<CommentResource> GetCommentResource(@PathParam("tripsId") Long tripId) {
+        existsTrip(tripId);
+        return CommentResource.class;
+    }
+
     
     @Path("{tripsId: \\d+}/taxes")
     public Class<TaxResource> getTaxesResource(@PathParam("tripsId") Long tripsId){
@@ -181,5 +192,5 @@ public class TripResource {
         existsTrip(tripsId);
         return ContentResource.class;
     }
-    
+    s
 }

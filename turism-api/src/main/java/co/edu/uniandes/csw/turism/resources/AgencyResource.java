@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
@@ -52,22 +52,28 @@ import javax.ws.rs.WebApplicationException;
 
 /**
  * URI: agencys/
+ *
  * @generated
  */
 @Path("/agencys")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AgencyResource {
+
     private static final String AGENCY_HREF = "https://api.stormpath.com/v1/groups/3HLGWgwc7MezMbiUHKWIKO";
     private static final String ADMIN_HREF = "https://api.stormpath.com/v1/groups/4ayxsJyhONfx4NUCF5HmTg";
 
-    @Inject private IAgencyLogic agencyLogic;
-    @Context private HttpServletResponse response;
-    @Context private HttpServletRequest req;
-    @QueryParam("page") private Integer page;
-    @QueryParam("limit") private Integer maxRecords;
+    @Inject
+    private IAgencyLogic agencyLogic;
+    @Context
+    private HttpServletResponse response;
+    @Context
+    private HttpServletRequest req;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("limit")
+    private Integer maxRecords;
 
-   
     /**
      * Convierte una lista de AgencyEntity a una lista de AgencyDetailDTO.
      *
@@ -75,14 +81,13 @@ public class AgencyResource {
      * @return Lista de AgencyDetailDTO convertida.
      * @generated
      */
-    private List<AgencyDetailDTO> listEntity2DTO(List<AgencyEntity> entityList){
+    private List<AgencyDetailDTO> listEntity2DTO(List<AgencyEntity> entityList) {
         List<AgencyDetailDTO> list = new ArrayList<>();
         for (AgencyEntity entity : entityList) {
             list.add(new AgencyDetailDTO(entity));
         }
         return list;
     }
-
 
     /**
      * Obtiene la lista de los registros de Agency
@@ -99,10 +104,10 @@ public class AgencyResource {
                 switch (gr.getHref()) {
                     case ADMIN_HREF:
                         if (page != null && maxRecords != null) {
-                        this.response.setIntHeader("X-Total-Count", agencyLogic.countAgencys());
-                        return listEntity2DTO(agencyLogic.getAgencys(page, maxRecords));
-                    }
-                    return listEntity2DTO(agencyLogic.getAgencys());
+                            this.response.setIntHeader("X-Total-Count", agencyLogic.countAgencys());
+                            return listEntity2DTO(agencyLogic.getAgencys(page, maxRecords));
+                        }
+                        return listEntity2DTO(agencyLogic.getAgencys());
                     case AGENCY_HREF:
                         Integer id = (int) account.getCustomData().get("agency_id");
                         List<AgencyDetailDTO> list = new ArrayList();
@@ -110,7 +115,7 @@ public class AgencyResource {
                         return list;
                 }
             }
-        } 
+        }
         return null;
     }
 
@@ -168,22 +173,22 @@ public class AgencyResource {
     public void deleteAgency(@PathParam("id") Long id) {
         agencyLogic.deleteAgency(id);
     }
-    public void existsAgency(Long agencysId){
+
+    public void existsAgency(Long agencysId) {
         AgencyDetailDTO agency = getAgency(agencysId);
-        if (agency== null) {
+        if (agency == null) {
             throw new WebApplicationException(404);
         }
     }
-    
-    
+
     @Path("{agencysId: \\d+}/trips")
-    public Class<TripResource> getTripResource(@PathParam("agencysId") Long agencysId){
+    public Class<TripResource> getTripResource(@PathParam("agencysId") Long agencysId) {
         existsAgency(agencysId);
         return TripResource.class;
     }
-    
-     @Path("{agencysId: \\d+}/faqs")
-    public Class<FAQResource> getFAQResource(@PathParam("agencysId") Long agencysId){
+
+    @Path("{agencysId: \\d+}/faqs")
+    public Class<FAQResource> getFAQResource(@PathParam("agencysId") Long agencysId) {
         existsAgency(agencysId);
         return FAQResource.class;
     }
