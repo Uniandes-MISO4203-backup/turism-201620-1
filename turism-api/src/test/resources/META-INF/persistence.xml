@@ -13,6 +13,7 @@
     <class>co.edu.uniandes.csw.turism.entities.RaitingEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.TaxEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.NewsEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.ContentEntity</class>    
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

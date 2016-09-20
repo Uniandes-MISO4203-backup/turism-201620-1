@@ -97,8 +97,16 @@ SOFTWARE.
                     icon: 'pencil',
                     fn: function () {
                         $state.go('tripNewsList');
+                    }    
+                },    
+                contents: {
+                    displayName: 'Contents',
+                    icon: 'film',
+                    fn: function () {
+                        $state.go('tripContentList');
                     }
                 }
+                
             };
         }]);
 })(window.angular);

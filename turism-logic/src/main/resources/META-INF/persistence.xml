@@ -14,6 +14,7 @@
     <class>co.edu.uniandes.csw.turism.entities.RaitingEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.CommentEntity</class>
     <class>co.edu.uniandes.csw.turism.entities.NewsEntity</class>
+    <class>co.edu.uniandes.csw.turism.entities.ContentEntity</class>    
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

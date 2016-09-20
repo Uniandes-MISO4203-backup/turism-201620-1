@@ -36,6 +36,7 @@ import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
+import co.edu.uniandes.csw.turism.entities.ContentEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -166,7 +167,6 @@ public class TripLogic implements ITripLogic {
      * Elimina una instancia de Trip de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
-     * @param agencyid id del Agency el cual es padre del Trip.
      * @generated
      */
     @Override
@@ -322,5 +322,85 @@ public class TripLogic implements ITripLogic {
         }
         return null;
     }
-    
+        
+    /**
+     * Obtiene una colección de instancias de ContentEntity asociadas a una
+     * instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @return Colección de instancias de ContentEntity asociadas a la
+     * instancia de Trip
+     * @generated
+     */
+    @Override
+    public List<ContentEntity> listContent(Long tripId) {
+        return getTrip(tripId).getContents();
+    }
+
+    /**
+     * Obtiene una instancia de ContentEntity asociada a una instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param contentId Identificador de la instancia de Content
+     * @generated
+     */
+    @Override
+    public ContentEntity getContent(Long tripId, Long contentId) {
+        List<ContentEntity> list = getTrip(tripId).getContents();
+        ContentEntity contentEntity = new ContentEntity();
+        contentEntity.setId(contentId);
+        int index = list.indexOf(contentEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+
+    /**
+     * Asocia un Content existente a un Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param contentId Identificador de la instancia de Content
+     * @return Instancia de ContentEntity que fue asociada a Trip
+     * @generated
+     */
+    @Override
+    public ContentEntity addContent(Long tripId, Long contentId) {
+        TripEntity tripEntity = getTrip(tripId);
+        ContentEntity contentEntity = new ContentEntity();
+        contentEntity.setId(contentId);
+        tripEntity.getContents().add(contentEntity);
+        return getContent(tripId, contentId);
+    }
+
+    /**
+     * Remplaza las instancias de Content asociadas a una instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param list Colección de instancias de ContentEntity a asociar a
+     * instancia de Trip
+     * @return Nueva colección de ContentEntity asociada a la instancia de Trip
+     * @generated
+     */
+    @Override
+    public List<ContentEntity> replaceContent(Long tripId, List<ContentEntity> list) {
+        TripEntity tripEntity = getTrip(tripId);
+        tripEntity.setContents(list);
+        return tripEntity.getContents();
+    }
+
+    /**
+     * Desasocia un Content existente de un Trip existente
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param contentId Identificador de la instancia de Content
+     * @generated
+     */
+    @Override
+    public void removeContent(Long tripId, Long contentId) {
+        TripEntity entity = getTrip(tripId);
+        ContentEntity contentEntity = new ContentEntity();
+        contentEntity.setId(contentId);
+        entity.getCategory().remove(contentEntity);
+    }
 }

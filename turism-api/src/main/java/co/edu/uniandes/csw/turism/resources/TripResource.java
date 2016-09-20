@@ -174,7 +174,12 @@ public class TripResource {
     public Class<TripRaitingResource> getTripRaitingResource(@PathParam("tripsId") Long tripsId){
         existsTrip(tripsId);
         return TripRaitingResource.class;
+    }    
 
+    @Path("{tripsId: \\d+}/content")
+    public Class<ContentResource> getContentsResource(@PathParam("tripsId") Long tripsId){
+        existsTrip(tripsId);
+        return ContentResource.class;
     }
     
 }
