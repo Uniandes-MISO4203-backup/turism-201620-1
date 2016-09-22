@@ -68,7 +68,14 @@ SOFTWARE.
                     displayName: 'Rate Trip',
                     icon: 'star',
                     fn: function () {
-                        $state.go('raitingTrip');
+                        $state.go('raitingItemTripList', {tripId: item.trip.id});
+                    }
+                },
+                trips: {
+                    displayName: 'Trip Related',
+                    icon: 'link',
+                    fn: function () {
+                        $state.go('tripDetailItem', {tripId: item.trip.id});
                     }
                 }
             };
