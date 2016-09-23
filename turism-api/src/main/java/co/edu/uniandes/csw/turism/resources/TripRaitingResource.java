@@ -59,7 +59,6 @@ public class TripRaitingResource {
      *
      * @param dtos Lista de RaitingDetailDTO a convertir.
      * @return Lista de RaitingEntity convertida.
-     * @generated
      */
     private List<RaitingEntity> raitingListDTO2Entity(List<RaitingDetailDTO> dtos){
         List<RaitingEntity> list = new ArrayList<>();
@@ -75,7 +74,6 @@ public class TripRaitingResource {
      *
      * @param tripsId Identificador de la instancia de Trip
      * @return Colección de instancias de RaitingDetailDTO asociadas a la instancia de Trip
-     * @generated
      */
     @GET
     public List<RaitingDetailDTO> listRaiting(@PathParam("tripsId") Long tripsId) {
@@ -87,7 +85,6 @@ public class TripRaitingResource {
      *
      * @param tripsId Identificador de la instancia de Trip
      * @param raitingId Identificador de la instancia de Raiting
-     * @generated
      */
     @GET
     @Path("{raitingId: \\d+}")

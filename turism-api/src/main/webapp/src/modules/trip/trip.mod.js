@@ -103,9 +103,36 @@ SOFTWARE.
                             return agency.getList(model.url, $params);
                         }]                }
             });
+            $sp.state('tripItem', {
+                url: '/trips?page&limit',
+                abstract: true,
+                parent: 'itemDetail',
+                views: {
+                     itemChieldView: {
+                        templateUrl: basePath + 'trip.tpl.html',
+                        controller: 'tripCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trips: ['item', '$stateParams', 'model', function (item, $params, model) {
+                            return item.getList(model.url, $params);
+                        }]                }
+            });
             $sp.state('tripList', {
                 url: '/list',
                 parent: 'trip',
+                views: {
+                    tripView: {
+                        templateUrl: basePath + 'list/trip.list.tpl.html',
+                        controller: 'tripListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
+            $sp.state('tripListItem', {
+                url: '/list',
+                parent: 'tripItem',
                 views: {
                     tripView: {
                         templateUrl: basePath + 'list/trip.list.tpl.html',
@@ -140,9 +167,34 @@ SOFTWARE.
                         }]
                 }
             });
+             $sp.state('tripInstanceItem', {
+                url: '/{tripId:int}',
+                abstract: true,
+                parent: 'tripItem',
+                views: {
+                    tripView: {
+                        template: '<div ui-view="tripInstanceView"></div>'
+                    }
+                },
+                resolve: {
+                    trip: ['trips', '$stateParams', function (trips, $params) {
+                            return trips.get($params.tripId);
+                        }]
+                }
+            });
             $sp.state('tripDetail', {
                 url: '/details',
                 parent: 'tripInstance',
+                views: {
+                    tripInstanceView: {
+                        templateUrl: baseInstancePath + 'detail/trip.detail.tpl.html',
+                        controller: 'tripDetailCtrl'
+                    }
+                }
+            });
+            $sp.state('tripDetailItem', {
+                url: '/details',
+                parent: 'tripInstanceItem',
                 views: {
                     tripInstanceView: {
                         templateUrl: baseInstancePath + 'detail/trip.detail.tpl.html',

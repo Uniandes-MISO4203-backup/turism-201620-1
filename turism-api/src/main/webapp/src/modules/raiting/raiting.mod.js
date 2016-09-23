@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('raitingModule', ['ngCrud']);
+    var mod = ng.module('raitingModule', ['ngCrud','ui.router']);
 
     mod.constant('raitingModel', {
         name: 'raiting',
@@ -40,6 +40,33 @@
                             return trip.getList(model.url, $params);
                         }]                }
             });
+            $sp.state('raitingItemTrip', {
+                url: '/raitings?page&limit',
+                abstract: true,
+                parent: 'tripDetailItem',
+                views: {
+                    tripChieldView: {
+                        templateUrl: basePath + 'raiting.tpl.html',
+                        controller: 'raitingCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'raitingModel',
+                    raitings: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url, $params);
+                        }]                }
+            });
+            $sp.state('raitingItemTripList', {
+                url: '/list',
+                parent: 'raitingItemTrip',
+                views: {
+                     tripChieldView: {
+                        templateUrl: basePath + 'list/raiting.list.tpl.html',
+                        controller: 'raitingListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
             $sp.state('raitingList', {
                 url: '/list',
                 parent: 'raiting',
@@ -56,17 +83,6 @@
                 parent: 'raiting',
                 views: {
                     raitingView: {
-                        templateUrl: basePath + 'new/raiting.new.tpl.html',
-                        controller: 'raitingNewCtrl',
-                        controllerAs: 'ctrl'
-                    }
-                }
-            });
-            $sp.state('raitingTrip', {
-                url: '/raitings',
-                parent: 'itemDetail',
-                views: {
-                     itemChieldView: {
                         templateUrl: basePath + 'new/raiting.new.tpl.html',
                         controller: 'raitingNewCtrl',
                         controllerAs: 'ctrl'
