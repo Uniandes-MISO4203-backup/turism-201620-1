@@ -193,4 +193,9 @@ public class TripResource {
         return ContentResource.class;
     }
     
+    @Path("{tripsId: \\d+}/news")
+    public Class<NewsResource> getNewsResource(@PathParam("tripsId") Long tripsId){
+        existsTrip(tripsId);
+        return NewsResource.class;
+    }
 }

@@ -215,5 +215,48 @@ SOFTWARE.
                         }]
                 }
             });
+            
+            $sp.state('tripGallery', {
+                url: '/tripGallery',
+                views: {
+                     mainView: {
+                        templateUrl: basePath + 'list/trip.gallery.tpl.html',
+                        controller: 'tripListCtrl',
+                        controllerAs: 'ctrl'    
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                            return r.all(model.url).getList($params);
+                        }]                }
+            });
+            
+            $sp.state('tripContent', {
+                url: '/content',
+                parent: 'tripDetail',
+                abstract: true,
+                views: {
+                    tripChieldView: {
+                        template: '<div ui-view="tripContentView"></div>'
+                    }
+                },
+                resolve: {
+                    category: ['trip', function (trip) {
+                            return trip.getList('content');
+                        }],
+                    model: 'contentModel'
+                }
+            });
+            $sp.state('tripContentList', {
+                url: '/list',
+                parent: 'tripContent',
+                views: {
+                    tripContentView: {
+                        templateUrl: baseInstancePath + 'content/list/trip.content.list.tpl.html',
+                        controller: 'tripContentListCtrl'
+                    }
+                }
+            });            
 	}]);
 })(window.angular);

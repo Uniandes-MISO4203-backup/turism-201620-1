@@ -96,7 +96,7 @@ SOFTWARE.
                     displayName: 'News',
                     icon: 'pencil',
                     fn: function () {
-                        $state.go('tripNewsList');
+                        $state.go('newsList');
                     }    
                 },    
                 contents: {
