@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('newsModule', ['ngCrud', 'ui.router']);
+    var mod = ng.module('newsModule', ['ngCrud']);
 
     mod.constant('newsModel', {
         name: 'news',
@@ -41,13 +41,13 @@
                 },
                 resolve: {
                     model: 'newsModel',
-                    news: ['news', '$stateParams', 'model', function (agency, $params, model) {
-                            return agency.getList(model.url, $params);
+                    news: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url);
                         }]                }
             });
             $sp.state('newsList', {
                 url: '/list',
-                parent: 'tripDetail',
+                parent: 'news',
                 views: {
                     newsView: {
                         templateUrl: basePath + 'list/news.list.tpl.html',

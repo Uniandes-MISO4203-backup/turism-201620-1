@@ -34,14 +34,7 @@ SOFTWARE.
             this.currentPage = $params.page;
             this.totalItems = news.totalRecords;
             
-            $scope.categorys = [];
-            
-      
-            //$scope.filtrar = function (parentCategory) {
-            //    Restangular.all("news").customGET(parentCategory).then(function (response) {                    
-            //            $scope.records=response;
-            //    });
-            //};
+            $scope.news = [];
 
             this.pageChanged = function () {
                 $state.go('newsList', {page: this.currentPage});
@@ -60,6 +53,13 @@ SOFTWARE.
                     icon: 'refresh',
                     fn: function () {
                         $state.reload();
+                    }
+                },
+                cancel: {
+                    displayName: 'Go back',
+                    icon: 'arrow-left',
+                    fn: function () {
+                        $state.go('agencyDetail');
                     }
                 } };
             $scope.recordActions = {

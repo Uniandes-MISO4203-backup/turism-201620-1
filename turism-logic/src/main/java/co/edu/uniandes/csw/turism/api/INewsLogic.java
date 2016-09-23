@@ -17,9 +17,7 @@ public interface INewsLogic {
     public int countNews();
     public List<NewsEntity> getAllNews();
     public List<NewsEntity> getAllNews(Integer page, Integer maxRecords);
-    public List<NewsEntity> getNewsByTrip(Integer page, Integer maxRecords,Long tripId);
-    public List<NewsEntity> getNewsByTrip(Long tripId);
-    public NewsEntity getNewsById(Long id);
+    public NewsEntity getNews(Long id);
     public NewsEntity createNews(NewsEntity entity);
     public NewsEntity updateNews(NewsEntity entity);
     public void deleteNews(Long id);

@@ -30,7 +30,7 @@ public class NewsPersistence extends CrudPersistence<NewsEntity>{
     protected Class<NewsEntity> getEntityClass() {
         return NewsEntity.class;
     }
-    
+    /*
     public NewsEntity getNewsById(Long newsId) {
         TypedQuery<NewsEntity> q =   em.createQuery("select p from NewsEntity p where p.id = :newsId", NewsEntity.class);
         return q.getSingleResult();
@@ -43,5 +43,5 @@ public class NewsPersistence extends CrudPersistence<NewsEntity>{
             q.setMaxResults(maxRecords);
         }
         return q.getResultList();
-    }
+    }*/
 }

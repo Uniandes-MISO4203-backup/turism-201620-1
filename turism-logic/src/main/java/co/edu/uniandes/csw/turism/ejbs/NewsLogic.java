@@ -22,9 +22,6 @@ public class NewsLogic implements INewsLogic {
 
     @Inject private NewsPersistence persistence;
     
-    @Inject
-    private ITripLogic tripLogic;
-    
     @Override
     public int countNews() {
         return persistence.count();
@@ -38,6 +35,11 @@ public class NewsLogic implements INewsLogic {
     @Override
     public List<NewsEntity> getAllNews(Integer page, Integer maxRecords) {
         return persistence.findAll(page, maxRecords);
+    }
+    
+    @Override
+    public NewsEntity getNews(Long id) {
+        return persistence.find(id);
     }
 
     @Override
@@ -54,45 +56,5 @@ public class NewsLogic implements INewsLogic {
     @Override
     public void deleteNews(Long id) {
         persistence.delete(id);
-    }
-    
-    /**
-     * Obtiene la lista de los registros de Category indicando su padre.
-     *
-     * * @param parentCategoryid Categoria padre.
-     * @return Colección de objetos de CategoryEntity.
-     * @generated
-     */
-    @Override
-    public List<NewsEntity> getNewsByTrip(Integer page, Integer maxRecords,Long tripId) {
-         //TripEntity trip = tripLogic.getTrip(tripId);
-        //return trip.getNews();
-        return persistence.getNewsByTrip(page,maxRecords,tripId);
-    }
-     /**
-     * Obtiene la lista de los registros de Category indicando su padre.
-     *
-     * * @param parentCategoryid Categoria padre.
-     * @return Colección de objetos de CategoryEntity.
-     * @generated
-     */
-    @Override
-    public List<NewsEntity> getNewsByTrip(Long tripId) {
-         /*TripEntity trip = tripLogic.getTrip(tripId);
-        return trip.getNews();*/
-         return persistence.getNewsByTrip(null,null,tripId);
-    }
-    
-    /**
-     * Obtiene  el registro de News indicando su id.
-     *
-     * * @param newsId .
-     * @return  objeto de NewsEntity.
-     * @generated
-     */
-    @Override
-    public NewsEntity getNewsById(Long newsId) {
-        return persistence.getNewsById(newsId);
-    }
-    
+    }    
 }
