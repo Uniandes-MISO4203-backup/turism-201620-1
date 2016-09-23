@@ -103,7 +103,7 @@ SOFTWARE.
                     displayName: 'Contents',
                     icon: 'film',
                     fn: function () {
-                        $state.go('tripContentList');
+                        $state.go('contentList');
                     }
                 }
                 

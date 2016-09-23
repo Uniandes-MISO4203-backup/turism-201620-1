@@ -7,8 +7,12 @@ package co.edu.uniandes.csw.turism.resources;
 
 import co.edu.uniandes.csw.auth.provider.StatusCreated;
 import co.edu.uniandes.csw.turism.api.IContentLogic;
+import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.ContentDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.ContentDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.TaxDTO;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
+import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -22,22 +26,25 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
- * URI: trips/{tripsId: \\d+}/contents/
+ * URI: agencys/{agencysId: \\d+}/trips/{tripsId: \\d+}/content
  * @generated
  */
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ContentResource {
-    @Inject private IContentLogic contentLogic;
+    @Inject private ITripLogic tripLogic;
     @Context private HttpServletResponse response;
+    
+    @Inject private IContentLogic contentLogic;
+    
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
     @PathParam("tripsId") private Long tripsId;
+
     
     /**
      * Convierte una lista de ContentEntity a una lista de ContentDetailDTO
@@ -46,30 +53,41 @@ public class ContentResource {
      * @return Lista de ContentDetailDTO convertida
      * @generated
      */
-    private List<ContentDetailDTO> listEntity2DTO(List<ContentEntity> entityList){
-        List<ContentDetailDTO> list = new ArrayList<>();
-        for (ContentEntity entity : entityList) {
-            list.add(new ContentDetailDTO(entity));
+    private List<ContentEntity> contentlistEntity2DTO(List<ContentDetailDTO> dtos){
+        List<ContentEntity> list = new ArrayList<>();
+        for (ContentDetailDTO dto : dtos) {
+            list.add(dto.toEntity());
         }
         return list;
     }
     
-        /**
-     * Obtiene la lista de los registros de Trip asociados a un Agency
+    
+    /**
+     * Obtiene una colección de instancias de ContentDetailDTO asociadas a una
+     * instancia de Trip
      *
-     * @return Colección de objetos de TripDetailDTO
+     * @param tripsId Identificador de la instancia de Trip
+     * @return Colección de instancias de ContentDetailDTO asociadas a la instancia de Trip
      * @generated
      */
     @GET
-    public List<ContentDetailDTO> getContents() {
+    public List<ContentDTO> listContent(@PathParam("tripsId") Long tripsId) {
+        List<ContentDTO> list = new ArrayList<>();
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", contentLogic.countContents());
-            return listEntity2DTO(contentLogic.getContents(page, maxRecords, tripsId));
+           for(ContentEntity contentEntity: contentLogic.getContents(page, maxRecords)) {
+               list.add(new ContentDTO(contentEntity));
+           }
+        } else {
+              for(ContentEntity contentEntity: contentLogic.getContents()) {
+               list.add(new ContentDTO(contentEntity));
+           }
         }
-        return listEntity2DTO(contentLogic.getContents(tripsId));
+        return list;
     }
-    
-       /**
+
+
+    /**
      * Obtiene los datos de una instancia de Content a partir de su ID asociado a un Trip
      *
      * @param contentId Identificador de la instancia a consultar
@@ -78,13 +96,10 @@ public class ContentResource {
      */
     @GET
     @Path("{contentId: \\d+}")
-    public ContentDetailDTO getContent(@PathParam("contentId") Long contentId) {
-        ContentEntity entity = contentLogic.getContent(contentId);
-        if (entity.getTrip() != null && !tripsId.equals(entity.getTrip().getId())) {
-            throw new WebApplicationException(404);
-        }
-        return new ContentDetailDTO(entity);
+    public ContentDTO getContent(@PathParam("contentId") Long contentId) {
+        return new ContentDTO(contentLogic.getContent(contentId));
     }
+    
     
     /**
      * Asocia un Content existente a un Trip
@@ -95,46 +110,40 @@ public class ContentResource {
      */
     @POST
     @StatusCreated
-    public ContentDetailDTO createContent(ContentDetailDTO dto) {
-        return new ContentDetailDTO(contentLogic.createContent(tripsId, dto.toEntity()));
+    public ContentDetailDTO addContent(@PathParam("tripsId") Long tripsId, ContentDTO dto) {
+        ContentEntity entity = dto.toEntity();
+        ContentEntity contentEntity = contentLogic.createContent(entity);
+        tripLogic.addContent(tripsId, contentEntity.getId());
+        return new ContentDetailDTO(contentEntity);
     }
     
     
     /**
      * Actualiza la información de una instancia de Content.
      *
-     * @param contentId Identificador de la instancia de Content a modificar
+     * @param id Identificador de la instancia de Content a modificar
      * @param dto Instancia de ContentDetailDTO con los nuevos datos.
      * @return Instancia de ContentDetailDTO con los datos actualizados.
      * @generated
      */
     @PUT
     @Path("{contentId: \\d+}")
-    public ContentDetailDTO updateTrip(@PathParam("contentId") Long contentId, ContentDetailDTO dto) {
+    public ContentDTO updateContent(@PathParam("id") Long id, ContentDTO dto) {
         ContentEntity entity = dto.toEntity();
-        entity.setId(contentId);
-        ContentEntity oldEntity = contentLogic.getContent(contentId);
-        //entity.setCategory(oldEntity.getCategory());
-        return new ContentDetailDTO(contentLogic.updateContent(tripsId, entity));
+        entity.setId(id);
+        return new ContentDTO(contentLogic.updateContent(entity));
     }
     
     
     /**
      * Elimina una instancia de Content de la base de datos.
      *
-     * @param contentId Identificador de la instancia a eliminar.
+     * @param id Identificador de la instancia a eliminar.
      * @generated
      */
     @DELETE
-    @Path("{contentId: \\d+}")
-    public void deleteTrip(@PathParam("contentId") Long contentId) {
-        contentLogic.deleteContent(contentId);
+    @Path("{id: \\d+}")
+    public void deleteContent(@PathParam("id") Long id) {
+        contentLogic.deleteContent(id);
     }
-    public void existsContent(Long contentsId){
-        ContentDetailDTO content = getContent(contentsId);
-        if (content== null) {
-            throw new WebApplicationException(404);
-        }
-    }
-
 }

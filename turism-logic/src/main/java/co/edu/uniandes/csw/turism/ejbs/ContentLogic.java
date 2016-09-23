@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.IContentLogic;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
-import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.ContentPersistence;
@@ -25,9 +24,7 @@ public class ContentLogic implements IContentLogic{
     @Inject
     private ContentPersistence persistence;
 
-    @Inject
-    private ITripLogic tripLogic;   
-    
+   
    /**
      * Obtiene el número de registros de Content.
      *
@@ -41,14 +38,12 @@ public class ContentLogic implements IContentLogic{
     /**
      * Obtiene la lista de los registros de Content que pertenecen a un Trip.
      *
-     * @param tripid id del Trip el cual es padre de los Contents.
      * @return Colección de objetos de ContentEntity.
      * @generated
      */
     @Override
-    public List<ContentEntity> getContents(Long tripid) {
-        TripEntity trip = tripLogic.getTrip(tripid);
-        return trip.getContents();
+    public List<ContentEntity> getContents() {
+        return persistence.findAll();
     }
     
     /**
@@ -57,12 +52,11 @@ public class ContentLogic implements IContentLogic{
      *
      * @param page Número de página.
      * @param maxRecords Número de registros que se mostraran en cada página.
-     * @param tripid id del Trip el cual es padre de los Contents.
      * @return Colección de objetos de ContentEntity.
      * @generated
      */
     @Override
-    public List<ContentEntity> getContents(Integer page, Integer maxRecords, Long tripid) {
+    public List<ContentEntity> getContents(Integer page, Integer maxRecords) {
             return persistence.findAll(page, maxRecords);
     }
     
@@ -87,14 +81,11 @@ public class ContentLogic implements IContentLogic{
      * Se encarga de crear un Content en la base de datos.
      *
      * @param entity Objeto de ContentEntity con los datos nuevos
-     * @param tripid id del Trip el cual sera padre del nuevo Content.
      * @return Objeto de ContentEntity con los datos nuevos y su ID.
      * @generated
      */
     @Override
-    public ContentEntity createContent(Long tripid, ContentEntity entity) {
-        TripEntity trip = tripLogic.getTrip(tripid);
-        entity.setTrip(trip);
+    public ContentEntity createContent(ContentEntity entity) {
         entity = persistence.create(entity);
         return entity;
     }
@@ -103,14 +94,11 @@ public class ContentLogic implements IContentLogic{
      * Actualiza la información de una instancia de Content.
      *
      * @param entity Instancia de ContentEntity con los nuevos datos.
-     * @param tripid id del Trip el cual sera padre del Content actualizado.
      * @return Instancia de ContentEntity con los datos actualizados.
      * @generated
      */
     @Override
-    public ContentEntity updateContent(Long tripid, ContentEntity entity) {
-        TripEntity trip = tripLogic.getTrip(tripid);
-        entity.setTrip(trip);
+    public ContentEntity updateContent(ContentEntity entity) {
         return persistence.update(entity);
     }
     
@@ -122,7 +110,6 @@ public class ContentLogic implements IContentLogic{
      */
     @Override
     public void deleteContent(Long id) {
-        ContentEntity old = getContent(id);
-        persistence.delete(old.getId());
+        persistence.delete(id);
     }
 }

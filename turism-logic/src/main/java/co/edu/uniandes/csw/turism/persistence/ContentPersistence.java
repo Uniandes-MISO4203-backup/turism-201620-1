@@ -21,6 +21,7 @@ public class ContentPersistence extends CrudPersistence<ContentEntity>{
     protected EntityManager em;
 
     /**
+     * @return 
      * @generated
      */
     @Override
@@ -29,6 +30,7 @@ public class ContentPersistence extends CrudPersistence<ContentEntity>{
     }
 
     /**
+     * @return 
      * @generated
      */
     @Override

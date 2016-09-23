@@ -187,7 +187,7 @@ public class TripResource {
         return TripRaitingResource.class;
     }    
 
-    @Path("{tripsId: \\d+}/content")
+    @Path("{tripsId: \\d+}/contents")
     public Class<ContentResource> getContentsResource(@PathParam("tripsId") Long tripsId){
         existsTrip(tripsId);
         return ContentResource.class;
