@@ -49,7 +49,8 @@ public class ContentDTO implements Serializable{
         ContentEntity entity = new ContentEntity();
         entity.setId(this.getId());
  	entity.setDate(this.getDate());
-        entity.setContentValue(this.getContentValue());       
+        entity.setContentValue(this.getContentValue());
+        entity.setName(this.getName());
     return entity;
     }   
     
