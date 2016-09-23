@@ -85,7 +85,6 @@ public class NewsResource {
     /**
      * * Obtiene una colección de instancias de NewsDetailDTO asociadas a una
      * instancia de Trip
-     * 
      * @param tripId Identificador de la instancia de Trip
      * @return Colección de instancias de NewsDetailDTO asociadas a la instancia de Trip
      */
