@@ -13,7 +13,7 @@
             },
             contentValue: {
                 displayName: 'Content',
-                type: 'String',
+                type: 'Image',
                 required: true
             },
             date: {
@@ -21,13 +21,6 @@
                 type: 'Date',
                 required: true
             }
-        },
-        parentContent: {
-            displayName: 'Parent Content',
-            type: 'Reference',
-            model: 'contentModel',
-            options: [],
-            required: false
         }
     });
 
@@ -39,24 +32,18 @@
             $sp.state('content', {
                 url: '/contents?page&limit',
                 abstract: true,
-
+                parent: 'tripDetail',
                 views: {
-                    mainView: {
+                    tripChieldView: {
                         templateUrl: basePath + 'content.tpl.html',
                         controller: 'contentCtrl'
                     }
                 },
                 resolve: {
-                    references: ['$q', 'Restangular', function ($q, r) {
-                            return $q.all({
-                                parentContent: r.all('contents').getList()
-                            });
-                        }],
                     model: 'contentModel',
-                    contents: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url).getList($params);
-                        }]
-                }
+                    contents: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url);
+                        }]                }
             });
             $sp.state('contentList', {
                 url: '/list',
@@ -81,7 +68,7 @@
                 }
             });
             $sp.state('contentInstance', {
-                url: '/{cotentId:int}',
+                url: '/{contentId:int}',
                 abstract: true,
                 parent: 'content',
                 views: {

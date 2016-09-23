@@ -59,10 +59,10 @@ public interface ITripLogic {
     public List<RaitingEntity> listRaiting(Long tripId);
     public RaitingEntity getRaiting(Long tripId, Long raitingId);
 
-    public List<ContentEntity> listContent(Long tripId);
+    public List<ContentEntity> listContents(Long tripId);
     public ContentEntity getContent(Long tripId, Long contentId);
     public ContentEntity addContent(Long tripId, Long contentId);
-    public List<ContentEntity> replaceContent(Long tripId, List<ContentEntity> list);
+    public List<ContentEntity> replaceContents(Long tripId, List<ContentEntity> list);
     public void removeContent(Long tripId, Long contentId);
     
 }

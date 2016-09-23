@@ -96,14 +96,14 @@ SOFTWARE.
                     displayName: 'News',
                     icon: 'pencil',
                     fn: function () {
-                        $state.go('tripNewsList');
+                        $state.go('newsList');
                     }    
                 },    
                 contents: {
                     displayName: 'Contents',
                     icon: 'film',
                     fn: function () {
-                        $state.go('tripContentList');
+                        $state.go('contentList');
                     }
                 }
                 

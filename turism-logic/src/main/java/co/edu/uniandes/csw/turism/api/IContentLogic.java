@@ -15,10 +15,10 @@ import java.util.List;
 public interface IContentLogic {
     public int countContents();
         
-    public List<ContentEntity> getContents(Long tripid);
-    public List<ContentEntity> getContents(Integer page, Integer maxRecords, Long tripid);
+    public List<ContentEntity> getContents();
+    public List<ContentEntity> getContents(Integer page, Integer maxRecords);
     public ContentEntity getContent(Long contentid);
-    public ContentEntity createContent(Long tripid, ContentEntity entity);
-    public ContentEntity updateContent(Long tripid, ContentEntity entity);
+    public ContentEntity createContent(ContentEntity entity);
+    public ContentEntity updateContent(ContentEntity entity);
     public void deleteContent(Long id);
 }

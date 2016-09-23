@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -20,16 +19,23 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class NewsEntity extends BaseEntity implements Serializable {
- 
+    
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    private String content;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date;
     
     @PodamExclude
     @ManyToOne
     private TripEntity  trip;
-    
-    
-    private String content;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date date;
 
     /**
      * Obtiene el atributo trip.

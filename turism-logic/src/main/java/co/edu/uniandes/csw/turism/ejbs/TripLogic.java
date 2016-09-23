@@ -27,11 +27,8 @@ import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
-import co.edu.uniandes.csw.turism.api.ICommentLogic;
+import co.edu.uniandes.csw.turism.api.IContentLogic;
 import co.edu.uniandes.csw.turism.api.ITaxLogic;
-import co.edu.uniandes.csw.turism.entities.AgencyEntity;
-import co.edu.uniandes.csw.turism.entities.CategoryEntity;
-import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
@@ -57,6 +54,9 @@ public class TripLogic implements ITripLogic {
     
     @Inject 
     private ITaxLogic taxLogic;
+    
+    @Inject 
+    private IContentLogic contentLogic;
 
     /**
      * Obtiene el número de registros de Trip.
@@ -333,8 +333,8 @@ public class TripLogic implements ITripLogic {
      * @generated
      */
     @Override
-    public List<ContentEntity> listContent(Long tripId) {
-        return getTrip(tripId).getContents();
+    public List<ContentEntity> listContents(Long tripId) {
+        return persistence.find(tripId).getContents();
     }
 
     /**
@@ -346,7 +346,7 @@ public class TripLogic implements ITripLogic {
      */
     @Override
     public ContentEntity getContent(Long tripId, Long contentId) {
-        List<ContentEntity> list = getTrip(tripId).getContents();
+        List<ContentEntity> list = persistence.find(tripId).getContents();
         ContentEntity contentEntity = new ContentEntity();
         contentEntity.setId(contentId);
         int index = list.indexOf(contentEntity);
@@ -355,7 +355,7 @@ public class TripLogic implements ITripLogic {
         }
         return null;
     }
-
+    
     /**
      * Asocia un Content existente a un Trip
      *
@@ -366,11 +366,10 @@ public class TripLogic implements ITripLogic {
      */
     @Override
     public ContentEntity addContent(Long tripId, Long contentId) {
-        TripEntity tripEntity = getTrip(tripId);
-        ContentEntity contentEntity = new ContentEntity();
+        TripEntity tripEntity = persistence.find(tripId);
+        ContentEntity contentEntity = contentLogic.getContent(contentId);
         contentEntity.setId(contentId);
-        tripEntity.getContents().add(contentEntity);
-        return getContent(tripId, contentId);
+        return contentEntity;
     }
 
     /**
@@ -383,8 +382,18 @@ public class TripLogic implements ITripLogic {
      * @generated
      */
     @Override
-    public List<ContentEntity> replaceContent(Long tripId, List<ContentEntity> list) {
-        TripEntity tripEntity = getTrip(tripId);
+    public List<ContentEntity> replaceContents(Long tripId, List<ContentEntity> list) {
+        TripEntity tripEntity = persistence.find(tripId);
+        List<ContentEntity> contentList = contentLogic.getContents();
+        for (ContentEntity content : contentList) {
+            if (list.contains(content)) {
+                content.setTrip(tripEntity);
+            } else {
+                if (content.getTrip()!= null && content.getTrip().equals(tripEntity)) {
+                    content.setTrip(null);
+                }
+            }
+        }
         tripEntity.setContents(list);
         return tripEntity.getContents();
     }
@@ -398,9 +407,7 @@ public class TripLogic implements ITripLogic {
      */
     @Override
     public void removeContent(Long tripId, Long contentId) {
-        TripEntity entity = getTrip(tripId);
-        ContentEntity contentEntity = new ContentEntity();
-        contentEntity.setId(contentId);
-        entity.getCategory().remove(contentEntity);
+        ContentEntity entity = contentLogic.getContent(contentId);
+        entity.setTrip(null);
     }
 }
