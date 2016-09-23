@@ -64,14 +64,7 @@ SOFTWARE.
                         $state.go('itemList');
                     }
                 },
-                raitingTrip: {
-                    displayName: 'Rate Trip',
-                    icon: 'star',
-                    fn: function () {
-                        $state.go('raitingItemTripList', {tripId: item.trip.id});
-                    }
-                },
-                trips: {
+                tripRelated: {
                     displayName: 'Trip Related',
                     icon: 'link',
                     fn: function () {

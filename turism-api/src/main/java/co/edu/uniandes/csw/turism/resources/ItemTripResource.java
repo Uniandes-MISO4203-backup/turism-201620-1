@@ -70,19 +70,19 @@ public class ItemTripResource {
      * Obtiene los datos de una instancia de Trip a partir de su ID asociado a
      * un Agency
      *
-     * @param tripId Identificador de la instancia a consultar
+     * @param tripsId Identificador de la instancia a consultar
      * @return Instancia de TripDetailDTO con los datos del Trip consultado
      */
     @GET
-    @Path("{tripId: \\d+}")
-    public TripDetailDTO getTripFromItem(@PathParam("tripId") Long tripId) {
-        TripEntity entity = tripLogic.getTrip(tripId);
+    @Path("{tripsId: \\d+}")
+    public TripDetailDTO getTripFromItem(@PathParam("tripsId") Long tripsId) {
+        TripEntity entity = tripLogic.getTrip(tripsId);
         return new TripDetailDTO(entity);
     }
     
-    @GET
     @Path("{tripsId: \\d+}/raitings")
-    public List<RaitingDetailDTO> listRaitingFromItem(@PathParam("tripsId") Long tripsId) {
-        return raitingListEntity2DTO(tripLogic.listRaiting(tripsId));
+    public Class<TripRaitingResource> getTripRaitingResource(@PathParam("tripsId") Long tripsId) {
+         
+        return TripRaitingResource.class;
     }
 }

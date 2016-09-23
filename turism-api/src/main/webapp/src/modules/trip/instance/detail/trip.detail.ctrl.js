@@ -105,6 +105,13 @@ SOFTWARE.
                     fn: function () {
                         $state.go('tripContentList');
                     }
+                },
+                raitingTrip: {
+                    displayName: 'Rate Trip',
+                    icon: 'star',
+                    fn: function () {
+                        $state.go('raitingItemTripList');
+                    }
                 }
                 
             };
