@@ -159,10 +159,12 @@ public class ItemResource {
         }
     }
     
-    @Path("{itemsId: \\d+}/raitings")
-    public Class<TripRaitingResource> getRaitingResource(@PathParam("itemsId") Long itemsId){
+    @Path("{itemsId: \\d+}/trips")
+    public Class<ItemTripResource> getTripResource(@PathParam("itemsId") Long itemsId){
         existsItemAndTrip(itemsId);
-        return TripRaitingResource.class;
+        return ItemTripResource.class;
     }
     
+    
+        
 }

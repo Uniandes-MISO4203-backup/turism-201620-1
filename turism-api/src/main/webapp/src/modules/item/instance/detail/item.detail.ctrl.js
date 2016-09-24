@@ -64,11 +64,11 @@ SOFTWARE.
                         $state.go('itemList');
                     }
                 },
-                raitingTrip: {
-                    displayName: 'Rate Trip',
-                    icon: 'star',
+                tripRelated: {
+                    displayName: 'Trip Related',
+                    icon: 'link',
                     fn: function () {
-                        $state.go('raitingTrip');
+                        $state.go('tripDetailItem', {tripId: item.trip.id});
                     }
                 }
             };
