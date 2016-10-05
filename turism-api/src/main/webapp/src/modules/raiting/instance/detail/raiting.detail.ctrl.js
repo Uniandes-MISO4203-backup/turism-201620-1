@@ -61,7 +61,7 @@ SOFTWARE.
                     displayName: 'List',
                     icon: 'th-list',
                     fn: function () {
-                        $state.go('raitingList');
+                        $state.go('raitingItemTripList');
                     }
                 }
             };

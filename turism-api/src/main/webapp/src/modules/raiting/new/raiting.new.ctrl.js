@@ -46,7 +46,7 @@ SOFTWARE.
                     displayName: 'Cancel',
                     icon: 'remove',
                     fn: function () {
-                        $state.go('raitingList');
+                        $state.go('raitingItemTripList');
                     }
                 }
             };
