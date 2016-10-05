@@ -28,7 +28,7 @@ SOFTWARE.
     mod.controller("raitingDeleteCtrl", ["$state", "raiting", function ($state, raiting) {
             this.confirmDelete = function () {
                 raiting.remove().then(function () {
-                    $state.go('raitingList', null, {reload: true});
+                    $state.go('raitingItemTripList', null, {reload: true});
                 });
             };
         }]);

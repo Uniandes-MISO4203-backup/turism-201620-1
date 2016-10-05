@@ -60,7 +60,7 @@
                 url: '/list',
                 parent: 'raitingItemTrip',
                 views: {
-                     tripChieldView: {
+                     raitingView: {
                         templateUrl: basePath + 'list/raiting.list.tpl.html',
                         controller: 'raitingListCtrl',
                         controllerAs: 'ctrl'
@@ -80,7 +80,7 @@
             });
             $sp.state('raitingNew', {
                 url: '/new',
-                parent: 'raiting',
+                parent: 'raitingItemTrip',
                 views: {
                     raitingView: {
                         templateUrl: basePath + 'new/raiting.new.tpl.html',
@@ -92,7 +92,7 @@
             $sp.state('raitingInstance', {
                 url: '/{raitingId:int}',
                 abstract: true,
-                parent: 'raiting',
+                parent: 'raitingItemTrip',
                 views: {
                     raitingView: {
                         template: '<div ui-view="raitingInstanceView"></div>'

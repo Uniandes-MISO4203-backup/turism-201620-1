@@ -16,6 +16,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -105,6 +106,16 @@ public class TripRaitingResource {
     public RaitingDetailDTO createRatingTripFromItem(@PathParam("clientsId") Long clientsId, @PathParam("itemsId") Long itemsId, RaitingDetailDTO dto) {   
         return new RaitingDetailDTO(raitingLogic.createRaitingFromItem(clientsId, itemsId, dto.toEntity()));
     }
-   
+    
+    @PUT
+    @Path("{raitingId: \\d+}")
+    public RaitingDetailDTO updateRatingTripFromItem(@PathParam("clientsId") Long clientsId, @PathParam("itemsId") Long itemsId, RaitingDetailDTO dto) {   
+        return new RaitingDetailDTO(raitingLogic.updateRaitingFromItem(clientsId, itemsId, dto.toEntity()));
+    }
+    @DELETE
+    @Path("{raitingId: \\d+}")
+    public void deleteRaiting(@PathParam("id") Long id) {
+        raitingLogic.deleteRaiting(id);
+    }
     
 }

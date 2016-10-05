@@ -315,7 +315,7 @@ public class TripLogic implements ITripLogic {
     public RaitingEntity getRaiting(Long tripId, Long raitingId) {
         List<RaitingEntity> list = persistence.find(tripId).getRaitings();
         RaitingEntity raitingEntity = new RaitingEntity();
-        raitingEntity.setId(tripId);
+        raitingEntity.setId(raitingId);
         int index = list.indexOf(raitingEntity);
         if (index >= 0) {
             return list.get(index);
