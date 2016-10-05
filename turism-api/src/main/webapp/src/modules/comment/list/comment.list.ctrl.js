@@ -13,9 +13,8 @@
             
             $scope.categorys = [];
             
-      
             $scope.filtrar = function (parentCategory) {
-                Restangular.all("comments").customGET(parentCategory).then(function (response) {                    
+                Restangular.all("comments").customGET(parentCategory).then(function (response) {                        
                         $scope.records=response;
                 });
             };

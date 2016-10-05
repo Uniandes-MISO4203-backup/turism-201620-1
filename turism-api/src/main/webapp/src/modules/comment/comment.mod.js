@@ -34,7 +34,7 @@
                 abstract: true,
                 parent: 'tripDetail',
                 views: {
-                    agencyChieldView: {
+                    tripChieldView: {
                         templateUrl: basePath + 'comment.tpl.html',
                         controller: 'commentCtrl'
                     }
