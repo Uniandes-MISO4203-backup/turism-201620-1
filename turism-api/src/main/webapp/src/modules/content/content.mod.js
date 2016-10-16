@@ -13,7 +13,7 @@
             },
             contentValue: {
                 displayName: 'Content',
-                type: 'Image',
+                type: 'String',
                 required: true
             },
             date: {
