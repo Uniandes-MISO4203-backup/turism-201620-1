@@ -23,7 +23,6 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests.selenium.pages.content;
 
-import co.edu.uniandes.csw.turism.tests.selenium.pages.content.*;
 import co.edu.uniandes.csw.turism.dtos.minimum.ContentDTO;
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
 import org.openqa.selenium.WebElement;
