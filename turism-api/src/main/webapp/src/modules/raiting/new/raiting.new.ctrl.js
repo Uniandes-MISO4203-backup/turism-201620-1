@@ -28,7 +28,6 @@ SOFTWARE.
 
     mod.controller("raitingNewCtrl", ["$scope", "$state", "raitings",
         function ($scope, $state, raitings) {
-            console.log("llego a su create raiting");
             $scope.currentRecord = {};
             $scope.actions = {
                 save: {

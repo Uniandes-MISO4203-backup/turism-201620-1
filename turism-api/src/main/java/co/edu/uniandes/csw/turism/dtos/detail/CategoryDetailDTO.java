@@ -34,7 +34,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @XmlRootElement
 public class CategoryDetailDTO extends CategoryDTO{
 
-
+    /**
+     * 
+     */
     @PodamExclude
     private CategoryDTO parentCategory;
 

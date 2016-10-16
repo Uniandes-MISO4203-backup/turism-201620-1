@@ -42,7 +42,6 @@ import co.edu.uniandes.csw.turism.api.ICategoryLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.CategoryDetailDTO;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import java.util.ArrayList;
-import javax.ws.rs.WebApplicationException;
 
 /**
  * URI: categorys/
