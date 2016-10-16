@@ -23,9 +23,7 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.tests.selenium.pages.content;
 
-import co.edu.uniandes.csw.turism.tests.selenium.pages.content.*;
 import static org.jboss.arquillian.graphene.Graphene.guardAjax;
-import static org.jboss.arquillian.graphene.Graphene.waitGui;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import static org.jboss.arquillian.graphene.Graphene.waitGui;
