@@ -31,6 +31,8 @@ import javax.ws.rs.core.MediaType;
  * URI: agencys/{agencysId: \\d+}/trips/{tripsId: \\d+}/content
  * @generated
  */
+
+@Path("/contents")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ContentResource {
