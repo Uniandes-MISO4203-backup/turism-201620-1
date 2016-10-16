@@ -45,7 +45,7 @@ public class ContentResource {
 
     
     /**
-     * Convierte una lista de ContentEntity a una lista de ContentDetailDTO
+     * Convierte una lista de ContentEntity a una lista ContentDetailDTO
      *
      * @param entityList Lista de ContentEntity a convertir
      * @return Lista de ContentDetailDTO convertida
