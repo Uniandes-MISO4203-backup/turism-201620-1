@@ -81,8 +81,6 @@ public class RaitingTest {
 
     private final static List<RaitingEntity> oraculo = new ArrayList<>();
 
-    private final String clientPath = "clients";
-    private final String itemPath = "wishList";
     private final String tripPath = "trips";
     private final String raitingPath = "raitings";
 
@@ -165,9 +163,7 @@ public class RaitingTest {
                 e1.printStackTrace();
             }
         }
-        target = createWebTarget()
-                //.path(tripPath)
-                //.path(fatherTripEntity.getId().toString())
+        target = createWebTarget()         
                 .path(raitingPath);
     }
 
