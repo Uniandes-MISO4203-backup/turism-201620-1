@@ -41,7 +41,6 @@ import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.TaxDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.TaxDTO;
-import co.edu.uniandes.csw.turism.entities.FAQEntity;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import java.util.ArrayList;
 import javax.ws.rs.QueryParam;
