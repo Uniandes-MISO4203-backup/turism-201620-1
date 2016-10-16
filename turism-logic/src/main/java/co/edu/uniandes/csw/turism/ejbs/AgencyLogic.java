@@ -30,7 +30,6 @@ import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 import co.edu.uniandes.csw.turism.api.IFAQLogic;
 
 /**
@@ -126,11 +125,24 @@ public class AgencyLogic implements IAgencyLogic {
         persistence.delete(id);
     }    
     
-      @Override
+    
+    /**
+     * Obtiene la lista de FAQs de una Agency de la base de datos.
+     *
+     * @param agencyId Identificador de la instancia a eliminar.
+     * @generated
+     */
+    @Override
     public List<FAQEntity> listFAQs(Long agencyId) {
         return persistence.find(agencyId).getFaqs();
     }
 
+    /**
+     * Obtiene un FAQ por agencyId y el faqId de FAQ 
+     * @param agencyId
+     * @param faqId
+     * @return 
+     */
     @Override
     public FAQEntity getFAQ(Long agencyId, Long faqId) {
          List<FAQEntity> list = persistence.find(agencyId).getFaqs();
@@ -143,6 +155,13 @@ public class AgencyLogic implements IAgencyLogic {
         return null;
     }
 
+    
+    /**
+     * Crea un FAQ por agencyId y faqId
+     * @param agencyId
+     * @param faqId
+     * @return 
+     */
     @Override
     public FAQEntity addFAQ(Long agencyId, Long faqId) {
         AgencyEntity agencyEntity = persistence.find(agencyId);
@@ -151,6 +170,12 @@ public class AgencyLogic implements IAgencyLogic {
         return faqEntity; 
     }
 
+    /**
+     * 
+     * @param agencyId
+     * @param list
+     * @return 
+     */
     @Override
     public List<FAQEntity> replaceFAQs(Long agencyId, List<FAQEntity> list) {
          AgencyEntity agencyEntity = persistence.find(agencyId);
@@ -168,6 +193,11 @@ public class AgencyLogic implements IAgencyLogic {
         return agencyEntity.getFaqs();
     }
 
+    /**
+     * Elimina un FAQ
+     * @param agencyId
+     * @param faqId 
+     */
     @Override
     public void removeFAQ(Long agencyId, Long faqId) {
          FAQEntity entity = faqLogic.getFAQ(faqId);
