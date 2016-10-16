@@ -9,3 +9,4 @@ jdk:
   - oraclejdk8
 after_success:
   - mvn sonar:sonar
+sudo: required  

@@ -114,7 +114,7 @@ public class TripRaitingResource {
     }
     @DELETE
     @Path("{raitingId: \\d+}")
-    public void deleteRaiting(@PathParam("id") Long id) {
+    public void deleteRaiting(@PathParam("raitingId") Long id) {
         raitingLogic.deleteRaiting(id);
     }
     

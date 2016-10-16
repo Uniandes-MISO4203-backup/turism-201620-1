@@ -34,7 +34,10 @@ public class ContentDetailDTO extends ContentDTO{
      * @generated
      */
     public ContentDetailDTO(ContentEntity entity) {
-        super();
+        super(entity);
+        if (entity.getTrip()!=null){
+        this.trip = new TripDTO(entity.getTrip());
+        }
     }
 
     /**

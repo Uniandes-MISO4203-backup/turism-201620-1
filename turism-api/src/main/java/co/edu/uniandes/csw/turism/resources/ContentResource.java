@@ -10,9 +10,7 @@ import co.edu.uniandes.csw.turism.api.IContentLogic;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.ContentDetailDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.ContentDTO;
-import co.edu.uniandes.csw.turism.dtos.minimum.TaxDTO;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
-import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -33,6 +31,8 @@ import javax.ws.rs.core.MediaType;
  * URI: agencys/{agencysId: \\d+}/trips/{tripsId: \\d+}/content
  * @generated
  */
+
+@Path("/contents")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ContentResource {
@@ -47,7 +47,7 @@ public class ContentResource {
 
     
     /**
-     * Convierte una lista de ContentEntity a una lista de ContentDetailDTO
+     * Convierte una lista de ContentEntity a una lista ContentDetailDTO
      *
      * @param entityList Lista de ContentEntity a convertir
      * @return Lista de ContentDetailDTO convertida

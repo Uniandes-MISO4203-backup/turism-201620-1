@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.turism.persistence;
 
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
-import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import java.util.List;
 import javax.ejb.Stateless;
