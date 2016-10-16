@@ -21,38 +21,70 @@ public class FAQLogic implements IFAQLogic{
 
     @Inject private FAQPersistence persistence;
     
-    
+    /**
+     * Conteo de FAQs
+     * @return int conteo de FAQs
+     */
     @Override
     public int countFAQs() {
         return persistence.count();
     }
 
+    /**
+     * Obtiene todos los FAQs
+     * @return 
+     */
     @Override
     public List<FAQEntity> getFAQs() {
         return persistence.findAll();
     }
-
+    
+    /**
+     * Obtiene una lista de FAQs paginados
+     * @param page
+     * @param maxRecords
+     * @return 
+     */
     @Override
     public List<FAQEntity> getFAQs(Integer page, Integer maxRecords) {
         return persistence.findAll(page, maxRecords);
     }
-
+    
+    /**
+     * Obtiene un FAQ
+     * @param id
+     * @return 
+     */
     @Override
     public FAQEntity getFAQ(Long id) {
         return persistence.find(id);
     }
-
+    
+    /**
+     * Crea un FAQ
+     * @param entity
+     * @return 
+     */
     @Override
     public FAQEntity createFAQ(FAQEntity entity) {
         persistence.create(entity);
         return entity;
     }
-
+    
+    /**
+     * Actualiza un FAQ
+     * @param entity
+     * @return 
+     */
     @Override
     public FAQEntity updateFAQ(FAQEntity entity) {
         return persistence.update(entity);
     }
 
+    /**
+     * Elimina un FAQ
+     * @param id 
+     */
     @Override
     public void deleteFAQ(Long id) {
         persistence.delete(id);

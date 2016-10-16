@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.turism.test.logic;
 import co.edu.uniandes.csw.turism.api.ICommentLogic;
 import co.edu.uniandes.csw.turism.ejbs.CommentLogic;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
-import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.CommentPersistence;

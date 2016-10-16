@@ -28,7 +28,6 @@ import co.edu.uniandes.csw.auth.security.JWT;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
-import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
 import co.edu.uniandes.csw.turism.dtos.minimum.CategoryDTO;
 import co.edu.uniandes.csw.turism.resources.TripResource;
 import co.edu.uniandes.csw.turism.tests.Utils;

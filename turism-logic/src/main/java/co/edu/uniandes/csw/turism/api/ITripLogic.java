@@ -26,7 +26,6 @@ package co.edu.uniandes.csw.turism.api;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
-import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
 import java.util.List;

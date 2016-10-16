@@ -29,7 +29,6 @@ import co.edu.uniandes.csw.turism.persistence.CategoryPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.NoResultException;
 
 /**
  * @generated

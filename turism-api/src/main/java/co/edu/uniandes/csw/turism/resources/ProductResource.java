@@ -42,7 +42,6 @@ import co.edu.uniandes.csw.turism.api.IProductLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.ProductDetailDTO;
 import co.edu.uniandes.csw.turism.entities.ProductEntity;
 import java.util.ArrayList;
-import javax.ws.rs.WebApplicationException;
 
 /**
  * URI: products/

@@ -23,7 +23,6 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.test.persistence;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
-import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.AgencyPersistence;
 import java.util.ArrayList;
 import java.util.List;

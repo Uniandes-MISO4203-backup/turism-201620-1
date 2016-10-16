@@ -26,7 +26,6 @@ package co.edu.uniandes.csw.turism.test.logic;
 import co.edu.uniandes.csw.turism.ejbs.ItemLogic;
 import co.edu.uniandes.csw.turism.api.IItemLogic;
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
-import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.persistence.ItemPersistence;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.entities.ClientEntity;
