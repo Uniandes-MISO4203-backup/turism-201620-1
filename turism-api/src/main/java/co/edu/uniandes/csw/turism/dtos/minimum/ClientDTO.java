@@ -37,7 +37,7 @@ public class ClientDTO implements Serializable{
     private String name;
 
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public ClientDTO() {
     }

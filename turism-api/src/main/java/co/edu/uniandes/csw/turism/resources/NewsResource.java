@@ -49,6 +49,7 @@ import javax.ws.rs.QueryParam;
  *
  * @author dp.espitia
  */
+@Path("/news")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class NewsResource {
@@ -59,7 +60,7 @@ public class NewsResource {
 
     @QueryParam("page") private Integer page;
     @QueryParam("limit") private Integer maxRecords;
-    @PathParam("tripsId") private Long tripId;
+    
     
     
     /**
@@ -84,22 +85,7 @@ public class NewsResource {
         }
         return list;
     }
-    
-    
-    /**
-     * 
-     * @return 
-     */
-     /*@GET
-    public List<NewsDetailDTO> getAllNews() {
-         System.out.println("Algo Hizo");
-        List<NewsDTO> list = new ArrayList<>();
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", newsLogic.countNews());
-            return listEntity2DTO(newsLogic.getAllNews(page, maxRecords));
-        }
-        return listEntity2DTO(newsLogic.getAllNews());
-    }*/
+
     /**
      * * Obtiene una colección de instancias de NewsDetailDTO asociadas a una
      * instancia de Trip
@@ -108,7 +94,7 @@ public class NewsResource {
      */
     
     @GET
-     public List<NewsDTO> listNews(@PathParam("tripsId") Long tripId) {
+     public List<NewsDTO> getAllNews(@PathParam("tripsId") Long tripId) {
         List<NewsDTO> list = new ArrayList<>();
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", newsLogic.countNews());
@@ -123,62 +109,37 @@ public class NewsResource {
         return list;
     }
 
-    /**
-     * 
-     * @param id
-     * @return 
-     *//*
-     @GET
-    @Path("{id: \\d+}")
-    public List<NewsDetailDTO> getNews(@PathParam("id") Long id) {
-        System.out.println("Algo Hizo");
-        List<NewsDTO> list = new ArrayList<>();
-        if (page != null && maxRecords != null) {
-            this.response.setIntHeader("X-Total-Count", newsLogic.countNews());
-            return listEntity2DTO(newsLogic.getNewsByTrip(page, maxRecords, tripId));
-        }
-        return listEntity2DTO(newsLogic.getNewsByTrip(tripId));
-    }*/
+   
      
      /**
      * Obtiene una instancia de News asociada a una instancia de Trip
      *
      * @param tripId Identificador de la instancia de Trip
      * @param NewsId Identificador de la instancia de Tax
+     * @return 
      * @generated
      */
     @GET
-    @Path("{newsId: \\d+}")
-    public NewsDTO getNews(@PathParam("newsId") Long newsId) {
+    @Path("{id: \\d+}")
+    public NewsDTO getNews(@PathParam("id") Long newsId) {
         return new NewsDTO(newsLogic.getNews(newsId));
     }
-    
-    /**
-     * Se encarga de crear un News y  lo asoci al trip
-     * @param dto
-     * @return 
-     *//*
-    @POST
-    @StatusCreated
-    public NewsDetailDTO createNeews(NewsDetailDTO dto) {
-        return new NewsDetailDTO(newsLogic.createNews(dto.toEntity()));
-    }*/
     
     /**
      *
      * Crea un News y lo asocia a un Trip
      *
      * @param tripId Identificador de la instancia de Trip
-     * @param newsId Identificador de la instancia de News
+     * @param dto
      * @return Instancia de NewsDetailDTO que fue asociada a Trip
      * @generated
      */
-     @POST
+    @POST
     @StatusCreated
     public NewsDetailDTO addNews(@PathParam("tripsId") Long tripId, NewsDTO dto) {
          NewsEntity entity = dto.toEntity();
          NewsEntity newsEntity = newsLogic.createNews(entity);
-         tripLogic.addTax(tripId, newsEntity.getId());
+         tripLogic.addNews(tripId, newsEntity.getId());
         return new NewsDetailDTO(newsEntity);
     }
     

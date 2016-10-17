@@ -39,8 +39,8 @@ public class TaxDTO implements Serializable {
     private String description;
     private Long value;
     
-     /**
-     * @generated
+    /**
+     * Constructor de la clase DTO mínima
      */
     public TaxDTO() {
     }

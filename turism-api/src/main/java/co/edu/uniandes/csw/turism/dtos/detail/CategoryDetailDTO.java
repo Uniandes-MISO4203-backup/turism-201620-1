@@ -89,7 +89,7 @@ public class CategoryDetailDTO extends CategoryDTO{
     /**
      * Establece el valor del atributo parentCategory.
      *
-     * @param parentCategory nuevo valor del atributo
+     * @param parentcategory
      * @generated
      */
     public void setParentCategory(CategoryDTO parentcategory) {

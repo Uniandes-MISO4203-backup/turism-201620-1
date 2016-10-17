@@ -38,7 +38,7 @@ public class ItemDTO implements Serializable{
     private Long qty;
 
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public ItemDTO() {
     }

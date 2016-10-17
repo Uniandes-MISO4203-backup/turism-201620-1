@@ -39,8 +39,8 @@ public class FAQDTO implements Serializable {
     private String question;
     private String response;
     
-     /**
-     * @generated
+    /**
+     * Constructor de la clase DTO mínima
      */
     public FAQDTO() {
     }

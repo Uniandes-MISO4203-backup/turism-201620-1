@@ -40,6 +40,9 @@ public class RaitingDTO implements Serializable{
     private Integer value;
     private Date date;
     
+    /**
+     * Constructor de la clase DTO mínima
+     */    
     public RaitingDTO(){
     }
 

@@ -123,6 +123,7 @@ public class RaitingResource {
         RaitingEntity entity = dto.toEntity();
         entity.setId(id);
         RaitingEntity oldEntity = raitingLogic.getRaiting(id);
+        System.out.println(oldEntity.toString());
         return new RaitingDetailDTO(raitingLogic.updateRaiting(entity));
     }
 

@@ -50,6 +50,7 @@ public class ItemLogic implements IItemLogic {
      * @return Número de registros de Item.
      * @generated
      */
+    @Override
     public int countItems() {
         return persistence.count();
     }
@@ -94,6 +95,7 @@ public class ItemLogic implements IItemLogic {
         try {
             return persistence.find(itemid);
         }catch(NoResultException e){
+            System.err.println(e.getMessage());
             throw new IllegalArgumentException("El Item no existe");
         }
     }
@@ -110,8 +112,8 @@ public class ItemLogic implements IItemLogic {
     public ItemEntity createItem(Long clientid, ItemEntity entity) {
         ClientEntity client = clientLogic.getClient(clientid);
         entity.setClient(client);
-        entity = persistence.create(entity);
-        return entity;
+        ItemEntity newEntity = persistence.create(entity);
+        return newEntity;
     }
 
     /**
@@ -133,7 +135,6 @@ public class ItemLogic implements IItemLogic {
      * Elimina una instancia de Item de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
-     * @param clientid id del Client el cual es padre del Item.
      * @generated
      */
     @Override

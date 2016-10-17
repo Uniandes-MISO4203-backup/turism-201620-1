@@ -37,7 +37,7 @@ public class CategoryDTO implements Serializable{
     private String name;
 
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public CategoryDTO() {
     }

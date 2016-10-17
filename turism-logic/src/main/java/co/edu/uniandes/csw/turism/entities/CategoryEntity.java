@@ -52,7 +52,7 @@ public class CategoryEntity extends BaseEntity implements Serializable {
     /**
      * Establece el valor del atributo parentCategory.
      *
-     * @param parentCategory nuevo valor del atributo
+     * @param parentcategory
      * @generated
      */
     public void setParentCategory(CategoryEntity parentcategory) {

@@ -55,16 +55,13 @@ public class TripRaitingResource {
     
     @Inject private IRaitingLogic raitingLogic;
     
-    @Context private HttpServletResponse response;
-    
-    
     /**
      * Convierte una lista de RaitingEntity a una lista de RaitingDetailDTO.
      *
      * @param entityList Lista de RaitingEntity a convertir.
      * @return Lista de RaitingDetailDTO convertida.
      */
-    private List<RaitingDetailDTO> raitingListEntity2DTO(List<RaitingEntity> entityList){
+    public List<RaitingDetailDTO> raitingListEntity2DTO(List<RaitingEntity> entityList){
         List<RaitingDetailDTO> list = new ArrayList<>();
         for (RaitingEntity entity : entityList) {
             list.add(new RaitingDetailDTO(entity));
@@ -78,7 +75,7 @@ public class TripRaitingResource {
      * @param dtos Lista de RaitingDetailDTO a convertir.
      * @return Lista de RaitingEntity convertida.
      */
-    private List<RaitingEntity> raitingListDTO2Entity(List<RaitingDetailDTO> dtos){
+    public List<RaitingEntity> raitingListDTO2Entity(List<RaitingDetailDTO> dtos){
         List<RaitingEntity> list = new ArrayList<>();
         for (RaitingDetailDTO dto : dtos) {
             list.add(dto.toEntity());
@@ -103,6 +100,7 @@ public class TripRaitingResource {
      *
      * @param tripsId Identificador de la instancia de Trip
      * @param raitingId Identificador de la instancia de Raiting
+     * @return 
      */
     @GET
     @Path("{raitingId: \\d+}")

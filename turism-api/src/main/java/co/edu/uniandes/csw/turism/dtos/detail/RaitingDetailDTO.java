@@ -61,6 +61,11 @@ public class RaitingDetailDTO extends RaitingDTO{
         }
     }
     
+    /**
+     * 
+     * @return 
+     */
+    @Override
     public RaitingEntity toEntity(){
         RaitingEntity entity = super.toEntity();
         if (this.getTrip() != null) {

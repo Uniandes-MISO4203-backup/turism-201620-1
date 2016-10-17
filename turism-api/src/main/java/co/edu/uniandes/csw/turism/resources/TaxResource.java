@@ -69,7 +69,7 @@ public class TaxResource {
      * @return Lista de TaxEntity convertida.
      * @generated
      */
-    private List<TaxEntity> taxListDTO2Entity(List<TaxDetailDTO> dtos){
+    public List<TaxEntity> taxListDTO2Entity(List<TaxDetailDTO> dtos){
         List<TaxEntity> list = new ArrayList<>();
         for (TaxDetailDTO dto : dtos) {
             list.add(dto.toEntity());

@@ -129,6 +129,7 @@ public class ProductResource {
         ProductEntity entity = dto.toEntity();
         entity.setId(id);
         ProductEntity oldEntity = productLogic.getProduct(id);
+        System.out.println(oldEntity.toString());
         return new ProductDetailDTO(productLogic.updateProduct(entity));
     }
 

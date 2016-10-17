@@ -38,7 +38,7 @@ public class ProductDTO implements Serializable{
     private Long price;
 
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public ProductDTO() {
     }
