@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.INewsLogic;
-import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.entities.NewsEntity;
 import co.edu.uniandes.csw.turism.persistence.NewsPersistence;
 import java.util.List;
@@ -38,7 +37,8 @@ import javax.inject.Inject;
 @Stateless
 public class NewsLogic implements INewsLogic {
 
-    @Inject private NewsPersistence persistence;
+    @Inject 
+    private NewsPersistence persistence;
     
     @Override
     public int countNews() {

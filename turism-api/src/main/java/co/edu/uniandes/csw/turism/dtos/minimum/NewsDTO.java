@@ -26,11 +26,13 @@ package co.edu.uniandes.csw.turism.dtos.minimum;
 import co.edu.uniandes.csw.turism.entities.NewsEntity;
 import java.io.Serializable;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author dp.espitia
  */
+@XmlRootElement
 public class NewsDTO implements Serializable{
     
     private Long id;
