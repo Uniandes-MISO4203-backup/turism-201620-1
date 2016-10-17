@@ -25,7 +25,6 @@ package co.edu.uniandes.csw.turism.ejbs;
 
 import co.edu.uniandes.csw.turism.api.IClientLogic;
 import co.edu.uniandes.csw.turism.api.IItemLogic;
-import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
@@ -48,9 +47,6 @@ public class RaitingLogic implements IRaitingLogic {
     private IClientLogic clientLogic;
     
     @Inject
-    private ITripLogic tripLogic;
-    
-    @Inject
     private IItemLogic itemLogic;
     
     //------------------------------------------------
@@ -59,51 +55,85 @@ public class RaitingLogic implements IRaitingLogic {
     
    /**
     * Conteo de Ratings
-    * @return 
+    * @return int
     */
     @Override
     public int countRaitings() {
        return persistence.count();
     }
 
-    
+    /**
+     * 
+     * @return 
+     */
     @Override
     public List<RaitingEntity> getRaitings() {
         return persistence.findAll();
     }
     
+    /**
+     * 
+     * @param page
+     * @param maxRecords
+     * @return 
+     */
     @Override
     public List<RaitingEntity> getRaitings(Integer page, Integer maxRecords) {
         return persistence.findAll(page, maxRecords);
     }
     
-    
+    /**
+     * 
+     * @param purchaseRaitingId
+     * @return 
+     */
     @Override
     public RaitingEntity getRaiting(Long purchaseRaitingId) {
         try {
             return persistence.find(purchaseRaitingId);
         }catch(NoResultException e){
+            System.err.println(e.getMessage());
             throw new IllegalArgumentException("El raiting del viaje no existe");
         }
     }
     
+    /**
+     * 
+     * @param entity
+     * @return 
+     */
     @Override
     public RaitingEntity createRaiting(RaitingEntity entity) {
         persistence.create(entity);
         return entity;
     }
     
+    /**
+     * 
+     * @param entity
+     * @return 
+     */
      @Override
     public RaitingEntity updateRaiting(RaitingEntity entity) {
         return persistence.update(entity);
     }
     
+    /**
+     * 
+     * @param id 
+     */
     @Override
     public void deleteRaiting(Long id) {
         persistence.delete(id);
     }
       
-
+    /**
+     * 
+     * @param clientId
+     * @param itemId
+     * @param entity
+     * @return 
+     */
     @Override
     public RaitingEntity createRaitingFromItem(Long clientId, Long itemId, RaitingEntity entity) {
         ClientEntity client = clientLogic.getClient(clientId);
@@ -121,6 +151,13 @@ public class RaitingLogic implements IRaitingLogic {
         return entity;
     }
 
+    /**
+     * 
+     * @param clientId
+     * @param itemId
+     * @param entity
+     * @return 
+     */
     @Override
     public RaitingEntity updateRaitingFromItem(Long clientId, Long itemId, RaitingEntity entity) {
         ClientEntity client = clientLogic.getClient(clientId);

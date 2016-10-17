@@ -155,6 +155,7 @@ public class CategoryResource {
         CategoryEntity entity = dto.toEntity();
         entity.setId(id);
         CategoryEntity oldEntity = categoryLogic.getCategory(id);
+        System.out.println(oldEntity.toString());
         return new CategoryDetailDTO(categoryLogic.updateCategory(entity));
     }
 

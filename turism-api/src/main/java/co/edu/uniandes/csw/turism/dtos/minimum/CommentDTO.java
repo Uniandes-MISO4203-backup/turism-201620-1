@@ -22,6 +22,9 @@ public class CommentDTO implements Serializable {
     private String text;
     private Date date;
 
+    /**
+     * Constructor de la clase DTO mínima
+     */
     public CommentDTO() {
     }
 

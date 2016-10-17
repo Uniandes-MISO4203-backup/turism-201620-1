@@ -37,7 +37,7 @@ public class AgencyDTO implements Serializable{
     private String name;
 
     /**
-     * @generated
+     * Constructor de la clase AgencyDTO
      */
     public AgencyDTO() {
     }

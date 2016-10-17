@@ -39,10 +39,9 @@ public class NewsDTO implements Serializable{
     private Date date;
     
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public NewsDTO(){
-        
     }
 
     /**

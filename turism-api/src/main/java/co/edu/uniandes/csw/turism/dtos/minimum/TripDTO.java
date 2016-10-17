@@ -48,7 +48,7 @@ public class TripDTO implements Serializable{
    
 
     /**
-     * @generated
+     * Constructor de la clase DTO mínima
      */
     public TripDTO() {
     }
