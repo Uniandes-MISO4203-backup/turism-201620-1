@@ -29,6 +29,7 @@ import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.CommentEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
+import co.edu.uniandes.csw.turism.entities.NewsEntity;
 import java.util.List;
 
 public interface ITripLogic {
@@ -65,4 +66,9 @@ public interface ITripLogic {
     public List<ContentEntity> replaceContents(Long tripId, List<ContentEntity> list);
     public void removeContent(Long tripId, Long contentId);
     
+    public NewsEntity addNews(Long tripId, Long newsId);
+    public List<NewsEntity> listNews(Long tripId);
+    public NewsEntity getNews(Long tripId, Long newsId);
+    public List<NewsEntity> replaceNews(Long tripId, List<NewsEntity> list);
+    public void removeNews(Long tripId, Long newsId);
 }

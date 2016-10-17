@@ -20,15 +20,6 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class NewsEntity extends BaseEntity implements Serializable {
     
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
     private String content;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;

@@ -28,12 +28,14 @@ import co.edu.uniandes.csw.turism.entities.TripEntity;
 import co.edu.uniandes.csw.turism.persistence.TripPersistence;
 import co.edu.uniandes.csw.turism.api.IAgencyLogic;
 import co.edu.uniandes.csw.turism.api.IContentLogic;
+import co.edu.uniandes.csw.turism.api.INewsLogic;
 import co.edu.uniandes.csw.turism.api.ITaxLogic;
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.AgencyEntity;
 import co.edu.uniandes.csw.turism.entities.CategoryEntity;
 import co.edu.uniandes.csw.turism.entities.ContentEntity;
+import co.edu.uniandes.csw.turism.entities.NewsEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -54,6 +56,9 @@ public class TripLogic implements ITripLogic {
     
     @Inject 
     private ITaxLogic taxLogic;
+    
+    @Inject 
+    private INewsLogic newsLogic;
     
     @Inject 
     private IContentLogic contentLogic;
@@ -409,5 +414,87 @@ public class TripLogic implements ITripLogic {
     public void removeContent(Long tripId, Long contentId) {
         ContentEntity entity = contentLogic.getContent(contentId);
         entity.setTrip(null);
+    }
+    
+    
+    @Override
+    public NewsEntity addNews(Long tripId, Long newsId) {
+        TripEntity tripEntity = persistence.find(tripId);
+        NewsEntity newsEntity = newsLogic.getNews(newsId);
+        newsEntity.setTrip(tripEntity);
+        return newsEntity; 
+    }
+    
+    
+    /**
+     * Desasocia unna Noticia de un Trip existente
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param newsId Identificador de la instancia de Content
+     * @generated
+     */
+    @Override
+    public void removeNews(Long tripId, Long newsId) {
+        NewsEntity entity = newsLogic.getNews(newsId);
+        entity.setTrip(null);
+    }
+    
+    /**
+     * Remplaza las instancias de News asociadas a una instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param list Colección de instancias de NewsEntity a asociar a
+     * instancia de Trip
+     * @return Nueva colección de NewsEntity asociada a la instancia de Trip
+     * @generated
+     */
+    @Override
+    public List<NewsEntity> replaceNews(Long tripId, List<NewsEntity> list) {
+        TripEntity tripEntity = persistence.find(tripId);
+        List<NewsEntity> newsList = newsLogic.getAllNews();
+        for (NewsEntity news : newsList) {
+            if (list.contains(news)) {
+                news.setTrip(tripEntity);
+            } else {
+                if (news.getTrip()!= null && news.getTrip().equals(tripEntity)) {
+                    news.setTrip(null);
+                }
+            }
+        }
+        tripEntity.setNews(list);
+        return tripEntity.getNews();
+    }
+    
+    /**
+     * Obtiene una instancia de NewsEntity asociada a una instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @param newsId Identificador de la instancia de Content
+     * @generated
+     */
+    @Override
+    public NewsEntity getNews(Long tripId, Long newsId) {
+        List<NewsEntity> list = persistence.find(tripId).getNews();
+        NewsEntity newsEntity = new NewsEntity();
+        newsEntity.setId(newsId);
+        int index = list.indexOf(newsEntity);
+        if (index >= 0) {
+            return list.get(index);
+        }
+        return null;
+    }
+    
+     /**
+     * Obtiene una colección de instancias de NewsEntity asociadas a una
+     * instancia de Trip
+     *
+     * @param tripId Identificador de la instancia de Trip
+     * @return Colección de instancias de NewsEntity asociadas a la
+     * instancia de Trip
+     * @generated
+     */
+    @Override
+    public List<NewsEntity> listNews(Long tripId) {
+        return persistence.find(tripId).getNews();
     }
 }
