@@ -50,6 +50,7 @@ public class AgencyLogic implements IAgencyLogic {
      * @return Número de registros de Agency.
      * @generated
      */
+    @Override
     public int countAgencys() {
         return persistence.count();
     }
@@ -85,6 +86,7 @@ public class AgencyLogic implements IAgencyLogic {
      * @return Instancia de AgencyEntity con los datos del Agency consultado.
      * @generated
      */
+    @Override
     public AgencyEntity getAgency(Long id) {
         return persistence.find(id);
     }
@@ -130,6 +132,7 @@ public class AgencyLogic implements IAgencyLogic {
      * Obtiene la lista de FAQs de una Agency de la base de datos.
      *
      * @param agencyId Identificador de la instancia a eliminar.
+     * @return 
      * @generated
      */
     @Override

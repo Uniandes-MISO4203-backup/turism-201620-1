@@ -38,6 +38,13 @@ import javax.persistence.CascadeType;
 @Entity
 public class ClientEntity extends BaseEntity implements Serializable {
 
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String homeAddress;
+    
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> wishList = new ArrayList<>();
@@ -60,22 +67,152 @@ public class ClientEntity extends BaseEntity implements Serializable {
     /**
      * Establece el valor de la colección de wishList.
      *
-     * @param wishList nuevo valor de la colección.
+     * @param wishlist
      * @generated
      */
     public void setWishList(List<ItemEntity> wishlist) {
         this.wishList = wishlist;
     }
 
-
+    /**
+     * 
+     * @return 
+     */
     public List<RaitingEntity> getRaitings() {
         return raitings;
     }
 
+    /**
+     * 
+     * @param raitings 
+     */
     public void setRaitings(List<RaitingEntity> raitings) {
         this.raitings = raitings;
     }
-    
-    
 
+
+    /**
+     * Obtiene el atributo firstName.
+     *
+     * @return atributo firstName.
+     * @generated
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Establece el valor del atributo firstName.
+     *
+     * @param firstName nuevo valor del atributo
+     * @generated
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * Obtiene el atributo email.
+     *
+     * @return atributo email.
+     * @generated
+     */    
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Establece el valor del atributo email.
+     *
+     * @param email nuevo valor del atributo
+     * @generated
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Obtiene el atributo phoneNumber.
+     *
+     * @return atributo phoneNumber.
+     * @generated
+     */    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * Establece el valor del atributo phoneNumber.
+     *
+     * @param phoneNumber nuevo valor del atributo
+     * @generated
+     */    
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Obtiene el atributo homeAddress.
+     *
+     * @return atributo homeAddress.
+     * @generated
+     */    
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    
+    /**
+     * Establece el valor del atributo homeAddress.
+     *
+     * @param homeAddress nuevo valor del atributo
+     * @generated
+     */    
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    /**
+     * Obtiene el atributo middleName.
+     *
+     * @return atributo middleName.
+     * @generated
+     */        
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    /**
+     * Establece el valor del atributo middleName.
+     *
+     * @param middleName nuevo valor del atributo
+     * @generated
+     */
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    /**
+     * Obtiene el atributo lastName.
+     *
+     * @return atributo lastName.
+     * @generated
+     */    
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Establece el valor del atributo lastName.
+     *
+     * @param lastName nuevo valor del atributo
+     * @generated
+     */
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    
+    
 }

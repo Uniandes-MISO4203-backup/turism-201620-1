@@ -41,6 +41,24 @@ public class ClientDetailPage {
     
     @FindBy(id = "name")
     private WebElement name;
+    
+    @FindBy(id = "firstName")
+    private WebElement firstName;
+    
+    @FindBy(id = "middleName")
+    private WebElement middleName;
+    
+    @FindBy(id = "lastName")
+    private WebElement lastName;
+    
+    @FindBy(id = "email")
+    private WebElement email;
+    
+    @FindBy(id = "phoneNumber")
+    private WebElement phoneNumber;
+
+    @FindBy(id = "homeAddress")
+    private WebElement homeAddress;    
 
     public void list() {
         listBtn.click();

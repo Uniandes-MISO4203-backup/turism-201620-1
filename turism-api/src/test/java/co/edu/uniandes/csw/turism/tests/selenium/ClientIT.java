@@ -33,6 +33,7 @@ import co.edu.uniandes.csw.turism.tests.selenium.pages.client.ClientDetailPage;
 import co.edu.uniandes.csw.turism.tests.selenium.pages.client.ClientEditPage;
 import java.io.File;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.page.InitialPage;
@@ -129,10 +130,10 @@ public class ClientIT {
     @Test
     @InSequence(2)
     public void editClient(@InitialPage ClientListPage listPage) {
-        ClientDTO expected_client = factory.manufacturePojo(ClientDTO.class);
+       ClientDTO expected_client = factory.manufacturePojo(ClientDTO.class);
 
         listPage.editClient(0);
-
+       
         editPage.saveClient(expected_client);
 
         ClientDTO actual_client = detailPage.getData();

@@ -35,6 +35,12 @@ public class ClientDTO implements Serializable{
 
     private Long id;
     private String name;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private String homeAddress;
 
     /**
      * Constructor de la clase DTO mínima
@@ -52,6 +58,12 @@ public class ClientDTO implements Serializable{
 	   if (entity!=null){
         this.id=entity.getId();
         this.name=entity.getName();
+        this.firstName = entity.getFirstName();
+        this.middleName = entity.getMiddleName();
+        this.lastName = entity.getLastName();
+        this.email = entity.getEmail();
+        this.phoneNumber = entity.getPhoneNumber();
+        this.homeAddress = entity.getHomeAddress();
        }
     }
 
@@ -65,6 +77,12 @@ public class ClientDTO implements Serializable{
         ClientEntity entity = new ClientEntity();
         entity.setId(this.getId());
         entity.setName(this.getName());
+        entity.setFirstName(this.getFirstName());
+        entity.setMiddleName(this.getMiddleName());
+        entity.setLastName(this.getLastName());
+        entity.setEmail(this.getEmail());
+        entity.setPhoneNumber(this.getPhoneNumber());
+        entity.setHomeAddress(this.getHomeAddress());
     return entity;
     }
 
@@ -106,6 +124,127 @@ public class ClientDTO implements Serializable{
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    /**
+     * Obtiene el atributo firstName.
+     *
+     * @return atributo firstName.
+     * @generated
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Establece el valor del atributo firstName.
+     *
+     * @param firstName nuevo valor del atributo
+     * @generated
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * Obtiene el atributo middleName.
+     *
+     * @return atributo middleName.
+     * @generated
+     */        
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    /**
+     * Establece el valor del atributo middleName.
+     *
+     * @param middleName nuevo valor del atributo
+     * @generated
+     */
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    /**
+     * Obtiene el atributo lastName.
+     *
+     * @return atributo lastName.
+     * @generated
+     */    
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Establece el valor del atributo lastName.
+     *
+     * @param lastName nuevo valor del atributo
+     * @generated
+     */
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    /**
+     * Obtiene el atributo email.
+     *
+     * @return atributo email.
+     * @generated
+     */    
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Establece el valor del atributo email.
+     *
+     * @param email nuevo valor del atributo
+     * @generated
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * Obtiene el atributo phoneNumber.
+     *
+     * @return atributo phoneNumber.
+     * @generated
+     */    
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * Establece el valor del atributo phoneNumber.
+     *
+     * @param phoneNumber nuevo valor del atributo
+     * @generated
+     */    
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    /**
+     * Obtiene el atributo homeAddress.
+     *
+     * @return atributo homeAddress.
+     * @generated
+     */    
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    /**
+     * Establece el valor del atributo homeAddress.
+     *
+     * @param homeAddress nuevo valor del atributo
+     * @generated
+     */    
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
 }

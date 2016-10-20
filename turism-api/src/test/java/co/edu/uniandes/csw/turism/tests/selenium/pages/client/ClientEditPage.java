@@ -33,6 +33,24 @@ public class ClientEditPage {
 
     @FindBy(id = "name")
     private WebElement nameInput;
+    
+    @FindBy(id = "firstName")
+    private WebElement firstNameInput;
+    
+    @FindBy(id = "middleName")
+    private WebElement middleNameInput;
+    
+    @FindBy(id = "lastName")
+    private WebElement lastNameInput;
+    
+    @FindBy(id = "email")
+    private WebElement emailInput;
+    
+    @FindBy(id = "phoneNumber")
+    private WebElement phoneNumberInput;
+    
+    @FindBy(id = "homeAddress")
+    private WebElement homeAddressInput;    
 
     @FindBy(id = "save-client")
     private WebElement saveBtn;
@@ -44,6 +62,24 @@ public class ClientEditPage {
          waitGui().until().element(nameInput).is().visible();
          nameInput.clear();
          nameInput.sendKeys(client.getName());
+         waitGui().until().element(firstNameInput).is().visible();
+         firstNameInput.clear();
+         firstNameInput.sendKeys(client.getFirstName());
+         waitGui().until().element(middleNameInput).is().visible();
+         middleNameInput.clear();
+         middleNameInput.sendKeys(client.getMiddleName());
+         waitGui().until().element(lastNameInput).is().visible();
+         lastNameInput.clear();
+         lastNameInput.sendKeys(client.getLastName());
+         waitGui().until().element(emailInput).is().visible();
+         emailInput.clear();
+         emailInput.sendKeys(client.getEmail());
+         waitGui().until().element(phoneNumberInput).is().visible();
+         phoneNumberInput.clear();
+         phoneNumberInput.sendKeys(client.getPhoneNumber());
+         waitGui().until().element(homeAddressInput).is().visible();
+         homeAddressInput.clear();
+         homeAddressInput.sendKeys(client.getHomeAddress());         
         guardAjax(saveBtn).click();
     }
 }

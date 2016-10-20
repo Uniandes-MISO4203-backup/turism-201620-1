@@ -28,11 +28,43 @@ SOFTWARE.
         name: 'client',
         displayName: 'Client',
 		url: 'clients',
-        fields: {            name: {
+        fields: {            
+            name: {
                 displayName: 'Name',
                 type: 'String',
                 required: true
-            }        }
+            },
+            firstName: {
+                displayName: 'First Name',
+                type: 'String',
+                required: true
+            },
+            middleName: {
+                displayName: 'Middle Name',
+                type: 'String',
+                required: false
+            },
+            lastName: {
+                displayName: 'Last Name',
+                type: 'String',
+                required: true
+            },
+            email: {
+                displayName: 'Email',
+                type: 'String',
+                required: true
+            },
+            phoneNumber: {
+                displayName: 'Phone Number',
+                type: 'String',
+                required: true
+            },
+            homeAddress: {
+                displayName: 'Home Address',
+                type: 'String',
+                required: true
+            }
+        }
     });
 
     mod.config(['$stateProvider',
