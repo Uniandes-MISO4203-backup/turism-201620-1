@@ -24,6 +24,7 @@ SOFTWARE.
 (function (ng) {
     var mod = ng.module('mainApp', [
         //'ngCrudMock',
+        'ngMaterial',
         'ngCrud',
         'ui.router',
         'clientModule',
@@ -103,7 +104,7 @@ SOFTWARE.
                         id: 'product',
                         label: 'Product',
                         icon: 'list-alt',
-                        state: 'productList'                    
+                        state: 'productList'
                     }]
             });
         }]);
