@@ -32,6 +32,7 @@ SOFTWARE.
         <!-- build:css(<%= meta.src %>) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -44,6 +45,12 @@ SOFTWARE.
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-material/angular-material.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+
+
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="bower_components/angular-mocks/angular-mocks.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -127,7 +134,7 @@ SOFTWARE.
         <script src="src/modules/comment/instance/detail/comment.detail.ctrl.js"></script>
         <script src="src/modules/comment/instance/edit/comment.edit.ctrl.js"></script>
         <script src="src/modules/comment/instance/delete/comment.delete.ctrl.js"></script>
-      
+
         <script src="src/modules/raiting/raiting.mod.js"></script>
         <script src="src/modules/raiting/raiting.ctrl.js"></script>
         <script src="src/modules/raiting/list/raiting.list.ctrl.js"></script>
@@ -184,6 +191,9 @@ SOFTWARE.
                     </div> <!-- /.container-fluid -->
                 </nav>
             </div>
+            <md-button class="md-primary">Click me</md-button>
+<md-button class="md-accent">or maybe me</md-button>
+<md-button class="md-warn">Careful</md-button>
             <div ui-view="mainView"></div>
         </div>
     </body>
