@@ -62,6 +62,10 @@ public class TripEntity extends BaseEntity implements Serializable {
     private String transportType;
     
     private String specialRequirements;
+    
+    private String dailyDescription;
+    
+    private String includesDescription;
 
 
     @PodamExclude
@@ -163,6 +167,43 @@ public class TripEntity extends BaseEntity implements Serializable {
     public void setSpecialRequirements(String specialRequirements) {
         this.specialRequirements = specialRequirements;
     }
+
+     /**
+     * Obtiene el aributo dailyDescription
+     * (Que es una decripcion dia por dia de lo que se hara en un viaje)
+     * @return atributo dailyDescription
+     */
+    public String getDailyDescription() {
+        return dailyDescription;
+    }
+
+    /**
+     * Establece el valor del atributo dailyDescription
+     * @param dailyDescription nuevo valor del atributo
+     */
+    public void setDailyDescription(String dailyDescription) {
+        this.dailyDescription = dailyDescription;
+    }
+
+    /**
+     * Obtiene el aributo includesDescription
+     * (Que es una decripcion de lo que esta y no esta incluido en un viaje 
+     * para que un cliente pueda conocerlo) 
+     * @return atributo includesDescription
+     */
+    public String getIncludesDescription() {
+        return includesDescription;
+    }
+
+    
+     /**
+     * Establece el valor del atributo includesDescription
+     * @param includesDescription nuevo valor del atributo
+     */
+    public void setIncludesDescription(String includesDescription) {
+        this.includesDescription = includesDescription;
+    }
+        
         
     /**
      * Obtiene el atributo agency.
