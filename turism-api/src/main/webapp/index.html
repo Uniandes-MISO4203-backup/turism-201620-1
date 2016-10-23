@@ -34,6 +34,10 @@ SOFTWARE.
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
         <!-- endbower -->
+
+        <link rel="stylesheet" href="src/app.css" />
+        <link rel="stylesheet" href="src/modules/home/home.css" />
+
         <!-- endbuild -->
 
         <!-- build:css(<%= meta.src %>) styles/main.css -->
@@ -162,41 +166,26 @@ SOFTWARE.
         <!-- endbuild -->
 
     </head>
-    <body style="padding-top: 60px;">
-        <div class="container-fluid">
-            <div class="col-md-12">
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-bar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" ui-sref="tripGallery">Turism</a>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul ng-controller="roleCtrl"  class="nav navbar-nav">
-                                <li ng-if="client"><a ui-sref="clientList">Client</a></li>
-                                <li ng-if="agency"><a ui-sref="agencyList">Agency</a></li>
-                                <li ng-if="product"><a ui-sref="productList">Product</a></li>
-                                <li ng-if="category"><a ui-sref="categoryList">Category</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <login-button></login-button>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
-                    </div> <!-- /.container-fluid -->
-                </nav>
+    <body>
+      <div class="wrapper">
+        <header class="main-header">
+          <div class="container">
+            <div class="brand-logo">
+              <a href="/" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando</span>
+              </a>
             </div>
-            <md-button class="md-primary">Click me</md-button>
-<md-button class="md-accent">or maybe me</md-button>
-<md-button class="md-warn">Careful</md-button>
-            <div ui-view="mainView"></div>
-        </div>
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-sref="home" name="home" class="main-header__item" >Home</md-nav-item>
+              <md-nav-item md-nav-sref="clientList" name="" class="main-header__item" >Client</md-nav-item>
+              <md-nav-item md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
+              <md-nav-item md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
+              <md-nav-item md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
+            </md-nav-bar>
+          </div>
+        </header>
+
+        <div ui-view="mainView"></div>
+
+      </div>
     </body>
 </html>

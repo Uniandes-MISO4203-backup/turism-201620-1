@@ -1,0 +1,19 @@
+/**
+ * home-hero
+ */
+
+.home-hero {
+  background-color: #ffffff;
+  position: relative;
+  display: block;
+  padding: 80px 0;
+  overflow: hidden;
+
+  background-image: url('/assets/img/home-hero-girls.jpg');
+  background-attachment: fixed;
+  background-size: 1869.16px 1103px;
+  background-position: 50% -54.7997px;
+
+  width: 100%;
+  min-height: 800px;
+}
