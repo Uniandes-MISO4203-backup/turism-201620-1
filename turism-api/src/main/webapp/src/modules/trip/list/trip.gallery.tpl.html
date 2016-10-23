@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="list">            
+<div class="trip-gallery">            
     <div ng-if="true" class="col-md-2 well" >
         <h4>Categorías</h4>
         <span style="cursor: pointer" class="glyphicon glyphicon-repeat" ng-click="filtrar('')"></span>
@@ -7,38 +7,32 @@
             <li ng-repeat="category in categorys"><a ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
         </ul>
     </div>
-    <div class="col-md-10">
-        <md-content class="md-padding" layout-xs="column" layout="row">
-            <div flex-xs flex-gt-xs="25" layout="column" ng-repeat="trip in records">
-                <md-card>
-                    <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{trip.name}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p><strong>Price: </strong> {{trip.price| currency}}</p> 
-                        <p><strong>Date: </strong> {{trip.date}}</p> 
-                        <p><strong>Origin: </strong> {{trip.origin}}</p> 
-                        <p><strong>Destination: </strong> {{trip.destination}}</p> 
-                        <p><strong>Price: </strong> {{trip.price| currency}}</p>     
-                        <p><strong>Transport Type: </strong> {{trip.transportType}}</p> 
-                        <p><strong>Special Requirements: </strong> {{trip.specialRequirements}}</p> 
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" aria-label="Favorite">
-                            <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Settings">
-                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Share">
-                            <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-            </div>
-        </md-content>
-    </div>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="25" layout="column" ng-repeat="trip in records" trip-gallery__list>
+            <md-card class="trip-card">
+                <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
+                <md-card-title class="trip-card__title">
+                    <md-card-title-text>
+                        <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content class="trip-card__price">
+                    {{trip.price| currency}}
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center" class="trip-card__rating">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                </md-card-actions>
+                 <md-card-content class="trip-card__detail">
+                    <p><strong>Date: </strong> {{trip.date}}</p> 
+                    <p><strong>Origin: </strong> {{trip.origin}}</p> 
+                    <p><strong>Destination: </strong> {{trip.destination}}</p> 
+                    <p><strong>Price: </strong> {{trip.price| currency}}</p>     
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
 </div>
