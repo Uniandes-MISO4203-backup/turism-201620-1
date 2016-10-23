@@ -24,8 +24,10 @@ SOFTWARE.
 (function (ng) {
     var mod = ng.module('mainApp', [
         //'ngCrudMock',
+        'ngMaterial',
         'ngCrud',
         'ui.router',
+        'homeModule',
         'clientModule',
         'itemModule',
         'tripModule',
@@ -39,7 +41,8 @@ SOFTWARE.
         'commentModule',
         'raitingModule',
         'newsModule',
-        'contentModule'
+        'contentModule',
+        'ui.bootstrap'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {
@@ -63,7 +66,7 @@ SOFTWARE.
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/home');
         }]);
 
     mod.config(['authServiceProvider', function (auth) {
@@ -103,11 +106,16 @@ SOFTWARE.
                         id: 'product',
                         label: 'Product',
                         icon: 'list-alt',
-                        state: 'productList'                    
+                        state: 'productList'
                     }]
             });
         }]);
 
+    mod.config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('grey')
+        .accentPalette('amber');
+    });
     /*
      * When there's an error changing state, ui-router doesn't raise an error
      * This configuration allows to print said errors

@@ -1,0 +1,54 @@
+<section class="home-hero">
+  <div class="container home-hero__container">
+    <div class="search-form">
+      <header class="search-form__heading">
+        <h3 class="search-form__title" >Where are you going now?</h3>
+      </header>
+      <div class="search-form__content">
+        <md-content layout-padding class="search-form__fields">
+          <form name="userForm">
+            <md-input-container class="md-block">
+              <label>Destination</label>
+              <input ng-model="user.address">
+            </md-input-container>
+
+            <div layout-gt-xs="row">
+
+              <md-input-container>
+                <label>Start date</label>
+                <md-datepicker ng-model="user.startDate"></md-datepicker>
+              </md-input-container>
+
+              <md-input-container>
+                <label>End date</label>
+                <md-datepicker ng-model="user.endDAte"></md-datepicker>
+              </md-input-container>
+
+            </div>
+            <md-input-container class="md-icon-float md-icon-right md-block">
+              <label>Rating</label>
+              <md-select ng-model="rating" placeholder="Rating" class="">
+                <md-option value="5">*****</md-option>
+                <md-option value="4">****</md-option>
+                <md-option value="3">***</md-option>
+                <md-option value="2">**</md-option>
+                <md-option value="1">*</md-option>
+              </md-select>
+            </md-input-container>
+            <md-button class="search-form__cta md-raised md-accent">Find it!</md-button>
+
+          </form>
+        </md-content>
+
+      </div>
+    </div>
+
+    <div class="hero-message">
+      <h1>LET’S DISCOVER THE<br>WORLD TOGETHER</h1>
+      <p>Template based on deep research on the most popular travel booking websites such as booking.com, tripadvisor, yahoo travel, expedia, priceline, hotels.com, travelocity, kayak, orbitz, etc. This guys can’t be wrong. You should definitely give it a shot :)</p>
+      <md-button class="hero-message__cta md-raised md-accent">Read more</md-button>
+  </div>
+
+  </div>
+</section>
+<div ui-view="tripGalleryView"></div>
