@@ -78,6 +78,16 @@ SOFTWARE.
                 displayName: 'Special Requirements',
                 type: 'String',
                 required: false
+            },
+            dailyDescription: {
+                displayName: 'Daily Description',
+                type: 'String',
+                required: false
+            },
+            includesDescription: {
+                displayName: 'Includes and Not Includes',
+                type: 'String',
+                required: false
             }
         }
     });
