@@ -50,7 +50,11 @@ public class TripCreatePage {
     @FindBy(id = "quota")
     private WebElement quotaInput; 
     @FindBy(id = "duration")
-    private WebElement durationInput; 
+    private WebElement durationInput;
+    @FindBy(id = "dailyDescription")
+    private WebElement dailyDescriptionInput;
+    @FindBy(id = "includesDescription")
+    private WebElement includesDescriptionInput;
     @FindBy(id = "save-trip")
     private WebElement saveBtn;
 
@@ -67,6 +71,7 @@ public class TripCreatePage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(trip.getPrice().toString());
+         
          waitGui().until().element(dateInput).is().visible();
          dateInput.clear();
          dateInput.sendKeys(trip.getDate().toString());
@@ -76,18 +81,28 @@ public class TripCreatePage {
          waitGui().until().element(destinationInput).is().visible();
          destinationInput.clear();
          destinationInput.sendKeys(trip.getDestination());  
+        
          waitGui().until().element(transportTypeInput).is().visible();
          transportTypeInput.clear();
          transportTypeInput.sendKeys(trip.getTransportType());
          waitGui().until().element(specialRequirementsInput).is().visible();
          specialRequirementsInput.clear();
          specialRequirementsInput.sendKeys(trip.getSpecialRequirements());    
+        
          waitGui().until().element(quotaInput).is().visible();
          quotaInput.clear();
          quotaInput.sendKeys(trip.getQuota().toString());
          waitGui().until().element(durationInput).is().visible();
          durationInput.clear();
          durationInput.sendKeys(trip.getDuration().toString());
-        guardAjax(saveBtn).click();
+        
+         waitGui().until().element(dailyDescriptionInput).is().visible();
+         dailyDescriptionInput.clear();
+         dailyDescriptionInput.sendKeys(trip.getDailyDescription());
+         waitGui().until().element(includesDescriptionInput).is().visible();
+         includesDescriptionInput.clear();
+         includesDescriptionInput.sendKeys(trip.getIncludesDescription()); 
+         
+         guardAjax(saveBtn).click();
     }
 }

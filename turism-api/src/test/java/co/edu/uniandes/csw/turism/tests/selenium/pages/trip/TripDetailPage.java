@@ -63,6 +63,10 @@ public class TripDetailPage {
     private WebElement quota; 
     @FindBy(id = "duration")
     private WebElement duration;
+    @FindBy(id = "dailyDescription")
+    private WebElement dailyDescription;
+    @FindBy(id = "includesDescription")
+    private WebElement includesDescription;
 
     public void list() {
         listBtn.click();
@@ -92,6 +96,8 @@ public class TripDetailPage {
         trip.setSpecialRequirements(specialRequirements.getText());
         trip.setQuota(new Integer (quota.getText()));
         trip.setDuration(new Integer (duration.getText()));
+        trip.setDailyDescription(dailyDescription.getText());
+        trip.setIncludesDescription(includesDescription.getText());
         return trip;
     }
 }

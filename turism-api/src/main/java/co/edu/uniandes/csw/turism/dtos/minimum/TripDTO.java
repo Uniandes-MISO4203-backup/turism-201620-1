@@ -45,6 +45,8 @@ public class TripDTO implements Serializable{
     private String destination;    
     private String transportType;
     private String specialRequirements;
+    private String dailyDescription;
+    private String includesDescription;
    
 
     /**
@@ -72,6 +74,8 @@ public class TripDTO implements Serializable{
         this.destination=entity.getDestination();        
         this.transportType=entity.getTransportType();
         this.specialRequirements=entity.getSpecialRequirements();
+        this.dailyDescription=entity.getDailyDescription();
+        this.includesDescription=entity.getIncludesDescription();
 
        }
     }
@@ -95,6 +99,8 @@ public class TripDTO implements Serializable{
         entity.setDestination(this.getDestination());       
         entity.setTransportType(this.getTransportType());
         entity.setSpecialRequirements(this.getSpecialRequirements());
+        entity.setDailyDescription(this.getDailyDescription());
+        entity.setIncludesDescription(this.getIncludesDescription());
 
     return entity;
     }
@@ -312,5 +318,39 @@ public class TripDTO implements Serializable{
     public void setSpecialRequirements(String specialRequirements) {
         this.specialRequirements = specialRequirements;
     }
+
+    /**
+     * Obtiene el atributo dailyDescription
+     * @return atributo dailyDescription
+     */
+    public String getDailyDescription() {
+        return dailyDescription;
+    }
+
+    /**
+     * Establce el valor del atributo dailyDescription
+     * @param dailyDescription nuevo valor del atributo
+     */
+    public void setDailyDescription(String dailyDescription) {
+        this.dailyDescription = dailyDescription;
+    }
+
+    /**
+     * Obtiene el atributo includesDescription
+     * @return atributo includesDescription
+     */
+    public String getIncludesDescription() {
+        return includesDescription;
+    }
+
+    /**
+     * Establce el valor del atributo includesDescription
+     * @param includesDescription nuevo valor del atributo
+     */
+    public void setIncludesDescription(String includesDescription) {
+        this.includesDescription = includesDescription;
+    }
+    
+    
 
 }
