@@ -87,6 +87,7 @@ public class TripResource {
      */
     @GET
     public List<TripDetailDTO> getTrips() {
+        System.out.println("HOLA TRIPS" );
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
             return listEntity2DTO(tripLogic.getTrips(page, maxRecords, agencysId));
@@ -105,6 +106,7 @@ public class TripResource {
     @GET
     @Path("{tripId: \\d+}")
     public TripDetailDTO getTrip(@PathParam("tripId") Long tripId) {
+        System.out.println(" HOLA TRIP ID= "+ tripId);
         TripEntity entity = tripLogic.getTrip(tripId);
         if (entity.getAgency() != null && !agencysId.equals(entity.getAgency().getId())) {
             throw new WebApplicationException(404);
