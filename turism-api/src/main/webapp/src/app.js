@@ -110,6 +110,11 @@ SOFTWARE.
             });
         }]);
 
+    mod.config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('grey')
+        .accentPalette('amber');
+    });
     /*
      * When there's an error changing state, ui-router doesn't raise an error
      * This configuration allows to print said errors
