@@ -27,6 +27,7 @@ SOFTWARE.
         'ngMaterial',
         'ngCrud',
         'ui.router',
+        'homeModule',
         'clientModule',
         'itemModule',
         'tripModule',
@@ -64,7 +65,7 @@ SOFTWARE.
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/home');
         }]);
 
     mod.config(['authServiceProvider', function (auth) {
