@@ -33,7 +33,7 @@
 .trip-card__rating { 
     position: absolute;
     right: 0;
-    color: #FFFFFF;
+    color: rgb(255,215,64);
 }
 
 .trip-card__detail {

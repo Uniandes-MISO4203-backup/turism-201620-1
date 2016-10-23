@@ -41,7 +41,8 @@ SOFTWARE.
         'commentModule',
         'raitingModule',
         'newsModule',
-        'contentModule'
+        'contentModule',
+        'ui.bootstrap'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {

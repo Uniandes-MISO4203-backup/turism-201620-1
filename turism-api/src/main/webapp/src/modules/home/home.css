@@ -9,7 +9,7 @@
   padding: 80px 0;
   overflow: hidden;
 
-  background-image: url('/assets/img/home-hero-girls.jpg');
+  background-image: url('../../../assets/img/home-hero-girls.jpg');
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
