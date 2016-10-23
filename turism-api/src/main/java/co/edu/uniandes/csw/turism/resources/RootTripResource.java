@@ -36,8 +36,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.TripDetailDTO;
+import co.edu.uniandes.csw.turism.ejbs.RaitingLogic;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @generated
@@ -113,7 +116,7 @@ public class RootTripResource {
     @GET
     @Path("/detail/{tripId: \\d+}")
     public TripDetailDTO getTrip(@PathParam("tripId") Long tripId) {
-        System.out.println("GET TRIP DIRECTO= " + tripId);
+        Logger.getLogger(RootTripResource.class.getName()).log(Level.INFO, ("GET TRIP DIRECTO= " + tripId));
         TripEntity entity = tripLogic.getTrip(tripId);
         return new TripDetailDTO(entity);
         

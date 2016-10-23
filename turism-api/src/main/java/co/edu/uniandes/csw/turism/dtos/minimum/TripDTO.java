@@ -20,19 +20,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
+import co.edu.uniandes.csw.turism.ejbs.RaitingLogic;
+import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @generated
  */
 @XmlRootElement
-public class TripDTO implements Serializable{
+public class TripDTO implements Serializable {
 
     private Long id;
     private String name;
@@ -42,12 +47,12 @@ public class TripDTO implements Serializable{
     private Integer duration;
     private Date date;
     private String origin;
-    private String destination;    
+    private String destination;
     private String transportType;
     private String specialRequirements;
     private String dailyDescription;
     private String includesDescription;
-   
+    private Integer raitingAverage;
 
     /**
      * Constructor de la clase DTO mínima
@@ -58,26 +63,54 @@ public class TripDTO implements Serializable{
     /**
      * Crea un objeto TripDTO a partir de un objeto TripEntity.
      *
-     * @param entity Entidad TripEntity desde la cual se va a crear el nuevo objeto.
+     * @param entity Entidad TripEntity desde la cual se va a crear el nuevo
+     * objeto.
      * @generated
      */
     public TripDTO(TripEntity entity) {
-	   if (entity!=null){
-        this.id=entity.getId();
-        this.name=entity.getName();
-        this.image=entity.getImage();
-        this.price=entity.getPrice();
-        this.quota=entity.getQuota();
-        this.duration=entity.getDuration();
-        this.date=entity.getDate();
-        this.origin=entity.getOrigin();
-        this.destination=entity.getDestination();        
-        this.transportType=entity.getTransportType();
-        this.specialRequirements=entity.getSpecialRequirements();
-        this.dailyDescription=entity.getDailyDescription();
-        this.includesDescription=entity.getIncludesDescription();
+        if (entity != null) {
+            this.id = entity.getId();
+            this.name = entity.getName();
+            this.image = entity.getImage();
+            this.price = entity.getPrice();
+            this.quota = entity.getQuota();
+            this.duration = entity.getDuration();
+            this.date = entity.getDate();
+            this.origin = entity.getOrigin();
+            this.destination = entity.getDestination();
+            this.transportType = entity.getTransportType();
+            this.specialRequirements = entity.getSpecialRequirements();
+            this.dailyDescription = entity.getDailyDescription();
+            this.includesDescription = entity.getIncludesDescription();
+            this.raitingAverage = calculateRaitingAverage(entity);
+        }
+    }
 
-       }
+    /**
+     *
+     * @return
+     */
+    private Integer calculateRaitingAverage(TripEntity entity) {
+        List<RaitingEntity> raitings = entity.getRaitings();
+        Float sumaRaitings = 0.0F;
+
+        if (raitings.size() > 0) {
+            for (RaitingEntity raiting : raitings) {
+                sumaRaitings += raiting.getValue();
+            }
+
+            Float average = sumaRaitings / raitings.size();
+
+            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, ("SUMA RAITING = " + sumaRaitings));
+            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, ("AVERAGE RAITING = " + average));
+
+            Integer averageRaiting = Math.round(average);
+            return averageRaiting;
+
+        } else {
+            return 0;
+        }
+
     }
 
     /**
@@ -94,15 +127,15 @@ public class TripDTO implements Serializable{
         entity.setPrice(this.getPrice());
         entity.setQuota(this.getQuota());
         entity.setDuration(duration);
- 	entity.setDate(this.getDate());
+        entity.setDate(this.getDate());
         entity.setOrigin(this.getOrigin());
-        entity.setDestination(this.getDestination());       
+        entity.setDestination(this.getDestination());
         entity.setTransportType(this.getTransportType());
         entity.setSpecialRequirements(this.getSpecialRequirements());
         entity.setDailyDescription(this.getDailyDescription());
         entity.setIncludesDescription(this.getIncludesDescription());
 
-    return entity;
+        return entity;
     }
 
     /**
@@ -184,30 +217,30 @@ public class TripDTO implements Serializable{
     public void setPrice(Long price) {
         this.price = price;
     }
-    
+
     /**
      * Obtiene el atributo date.
-     * 
+     *
      * @return atributo date.
      * @generated
      */
     public Date getDate() {
         return date;
     }
-    
+
     /**
      * Establece el valor del atributo date.
-     * 
+     *
      * @param date nuevo valor del atributo
      * @generated
      */
     public void setDate(Date date) {
         this.date = date;
     }
-    
+
     /**
      * Obtiene el atributo origin.
-     * 
+     *
      * @return atributo origin.
      * @generated
      */
@@ -217,17 +250,17 @@ public class TripDTO implements Serializable{
 
     /**
      * Establece el valor del atributo origin.
-     * 
+     *
      * @param origin nuevo valor del atributo
      * @generated
      */
     public void setOrigin(String origin) {
         this.origin = origin;
     }
-    
+
     /**
      * Obtiene el atributo destination.
-     * 
+     *
      * @return atributo destination.
      * @generated
      */
@@ -237,15 +270,13 @@ public class TripDTO implements Serializable{
 
     /**
      * Establece el valor del atributo destination.
-     * 
+     *
      * @param destination nuevo valor del atributo
      * @generated
      */
     public void setDestination(String destination) {
         this.destination = destination;
     }
-
-    
 
     /**
      * Obtiene el atributo quota.
@@ -266,8 +297,8 @@ public class TripDTO implements Serializable{
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
-    
-     /**
+
+    /**
      * Obtiene el atributo duration.
      *
      * @return atributo duration.
@@ -294,17 +325,19 @@ public class TripDTO implements Serializable{
     public String getTransportType() {
         return transportType;
     }
-    
+
     /**
      * Establece el valor del atributo transportType
-     * @param transportType  nuevo valor del atributo
+     *
+     * @param transportType nuevo valor del atributo
      */
     public void setTransportType(String transportType) {
         this.transportType = transportType;
     }
-    
+
     /**
      * Obtiene el atributo specialRequirements
+     *
      * @return atributo specialRequirements
      */
     public String getSpecialRequirements() {
@@ -313,6 +346,7 @@ public class TripDTO implements Serializable{
 
     /**
      * Establce el valor del atributo specialRequirements
+     *
      * @param specialRequirements nuevo valor del atributo
      */
     public void setSpecialRequirements(String specialRequirements) {
@@ -321,6 +355,7 @@ public class TripDTO implements Serializable{
 
     /**
      * Obtiene el atributo dailyDescription
+     *
      * @return atributo dailyDescription
      */
     public String getDailyDescription() {
@@ -329,6 +364,7 @@ public class TripDTO implements Serializable{
 
     /**
      * Establce el valor del atributo dailyDescription
+     *
      * @param dailyDescription nuevo valor del atributo
      */
     public void setDailyDescription(String dailyDescription) {
@@ -337,6 +373,7 @@ public class TripDTO implements Serializable{
 
     /**
      * Obtiene el atributo includesDescription
+     *
      * @return atributo includesDescription
      */
     public String getIncludesDescription() {
@@ -345,12 +382,29 @@ public class TripDTO implements Serializable{
 
     /**
      * Establce el valor del atributo includesDescription
+     *
      * @param includesDescription nuevo valor del atributo
      */
     public void setIncludesDescription(String includesDescription) {
         this.includesDescription = includesDescription;
     }
-    
-    
+
+    /**
+     * Obtiene el atributo raitingAverage
+     *
+     * @return atributo raitingAverage
+     */
+    public Integer getRaitingAverage() {
+        return raitingAverage;
+    }
+
+    /**
+     * Establce el valor del atributo raitingAverage
+     *
+     * @param raitingAverage nuevo valor del atributo
+     */
+    public void setRaitingAverage(Integer raitingAverage) {
+        this.raitingAverage = raitingAverage;
+    }
 
 }

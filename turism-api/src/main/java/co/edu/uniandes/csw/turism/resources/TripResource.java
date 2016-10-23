@@ -40,8 +40,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import co.edu.uniandes.csw.turism.api.ITripLogic;
 import co.edu.uniandes.csw.turism.dtos.detail.TripDetailDTO;
+import co.edu.uniandes.csw.turism.dtos.minimum.TripDTO;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -87,7 +90,7 @@ public class TripResource {
      */
     @GET
     public List<TripDetailDTO> getTrips() {
-        System.out.println("HOLA TRIPS" );
+        Logger.getLogger(TripResource.class.getName()).log(Level.INFO, ("HOLA TRIPS" ));
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
             return listEntity2DTO(tripLogic.getTrips(page, maxRecords, agencysId));
@@ -106,7 +109,7 @@ public class TripResource {
     @GET
     @Path("{tripId: \\d+}")
     public TripDetailDTO getTrip(@PathParam("tripId") Long tripId) {
-        System.out.println(" HOLA TRIP ID= "+ tripId);
+        Logger.getLogger(TripResource.class.getName()).log(Level.INFO, (" HOLA TRIP ID= "+ tripId));
         TripEntity entity = tripLogic.getTrip(tripId);
         if (entity.getAgency() != null && !agencysId.equals(entity.getAgency().getId())) {
             throw new WebApplicationException(404);
