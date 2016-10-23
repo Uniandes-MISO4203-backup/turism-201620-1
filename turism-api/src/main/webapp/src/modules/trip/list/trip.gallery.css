@@ -1,0 +1,51 @@
+.trip-gallery {
+    
+}
+
+.trip-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.trip-card__title {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.57);
+    width: 100%;
+    font-size: 6px;
+    padding: 3px 13px 3px;
+    color: white;
+}
+
+.trip-card__title__text {
+    font-size: 17px;
+}
+
+
+.trip-card__price {
+    position: absolute;
+    font-size: 18px;
+    padding: 3px 13px 3px;
+    bottom: 0;
+    right: 0;
+    color: white;
+}
+
+.trip-card__rating { 
+    position: absolute;
+    right: 0;
+    color: #FFFFFF;
+}
+
+.trip-card__detail {
+    opacity: 0;
+    transition: 0.3s ease;
+    position: absolute;
+    background-color: rgba(230, 223, 209, 0.74);
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.trip-card__detail:hover {
+      opacity: 1;
+}
