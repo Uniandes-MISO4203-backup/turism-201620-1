@@ -41,6 +41,7 @@ public class ItemPersistence extends CrudPersistence<ItemEntity> {
     protected EntityManager em;
 
     /**
+     * @return 
      * @generated
      */
     @Override
@@ -49,6 +50,7 @@ public class ItemPersistence extends CrudPersistence<ItemEntity> {
     }
 
     /**
+     * @return 
      * @generated
      */
     @Override

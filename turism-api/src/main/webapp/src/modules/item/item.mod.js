@@ -51,6 +51,12 @@ SOFTWARE.
                 model: 'productModel',
                 options: [],
                 required: true
+            },
+            itemState: {
+                displayName: 'State',
+                type: 'String',
+                editable: false
+                
             }        }
     });
 

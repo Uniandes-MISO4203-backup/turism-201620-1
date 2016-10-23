@@ -35,6 +35,8 @@ public class ItemCreatePage {
     private WebElement nameInput;
     @FindBy(id = "qty")
     private WebElement qtyInput;
+    @FindBy(id = "itemState")
+    private WebElement itemStateInput;
 
     @FindBy(id = "save-item")
     private WebElement saveBtn;
@@ -49,6 +51,9 @@ public class ItemCreatePage {
          waitGui().until().element(qtyInput).is().visible();
          qtyInput.clear();
          qtyInput.sendKeys(item.getQty().toString());
+         waitGui().until().element(itemStateInput).is().visible();
+         itemStateInput.clear();
+         itemStateInput.sendKeys(item.getQty().toString());
         guardAjax(saveBtn).click();
     }
 }

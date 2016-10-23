@@ -37,7 +37,13 @@ SOFTWARE.
                 displayName: 'Price',
                 type: 'Long',
                 required: true
-            }        }
+            }, 
+            payment: {
+                displayName: 'Payment',
+                type: 'String',
+                required: true
+            }
+        }
     });
 
     mod.config(['$stateProvider',
