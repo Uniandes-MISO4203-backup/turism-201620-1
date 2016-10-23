@@ -284,6 +284,22 @@ SOFTWARE.
                         }]                }
             });
             
+             $sp.state('tripGalleryHome', {
+                url: '/home',
+                views: {
+                     tripGalleryHome: {
+                        templateUrl: basePath + 'list/trip.gallery.tpl.html',
+                        controller: 'tripListCtrl',
+                        controllerAs: 'ctrl'    
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                            return r.all(model.url).getList($params);
+                        }]                }
+            });
+            
             $sp.state('tripContent', {
                 url: '/content',
                 parent: 'tripDetail',
