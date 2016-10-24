@@ -32,6 +32,7 @@ SOFTWARE.
         <!-- build:css(<%= meta.src %>) styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
         <!-- endbower -->
 
@@ -192,7 +193,33 @@ SOFTWARE.
         </header>
 
         <div ui-view="mainView"></div>
-
+        
+        <footer>
+                <div class="row">
+                    <div id="footer" class="col-md-12">
+                        <div class="row">
+                            <ul>
+                                <li><a>Preguntas Frecuentes</a></li>
+                                <li><a>Noticias</a></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <h4>Follow us</h4>
+                            <div class="col-md-12">
+                                <i class="fa fa-facebook-official  fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                                <i class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p>
+                                Copyright 2015 - 2016 Powered by Diegosoft y Asociadas
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
       </div>
     </body>
 </html>

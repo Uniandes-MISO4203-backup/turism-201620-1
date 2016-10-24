@@ -70,3 +70,29 @@
   font-weight: lighter;
   text-shadow: none;
 }
+
+#footer {
+    background-color: #e0e1e2;
+    text-align: center;
+    padding: 20px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#footer i {
+    padding: 0 10px;
+}
+
+#footer ul {
+    list-style: none;
+}
+
+#footer ul li {
+    text-align: left;
+}
+
+#header {
+    height: 84px;
+    background-color: white;
+}
