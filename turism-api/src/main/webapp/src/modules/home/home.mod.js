@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('homeModule', []);
+    var mod = ng.module('homeModule', ['ui.router']);
 
   
      mod.config(['$stateProvider',
@@ -7,7 +7,7 @@
             var basePath = 'src/modules/home/';
 
             $sp.state('home', {
-                url: '/home',
+                url: '/home?categoryId',
                 abstract: true,
                 views: {
                      mainView: {

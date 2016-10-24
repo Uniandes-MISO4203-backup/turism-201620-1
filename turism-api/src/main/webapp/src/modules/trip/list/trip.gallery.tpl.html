@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <div class="trip-gallery">            
-    <div ng-if="true" class="col-md-2 well" >
-        <h4>Categorías</h4>
-        <span style="cursor: pointer" class="glyphicon glyphicon-repeat" ng-click="filtrar('')"></span>
-        <ul style="list-style:none">
-            <li ng-repeat="category in categorys"><a ng-click="filtrar(category.id)" style="cursor: pointer">{{category.name}}</a></li>
-        </ul>
-    </div>
+
     <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="25" layout="column" ng-repeat="trip in records" trip-gallery__list>
-            <md-card class="trip-card">
+            <a ui-sref="tripDetailInstance">dadfasdf</a><md-card class="trip-card">
                 <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
                 <md-card-title class="trip-card__title">
                     <md-card-title-text>

@@ -28,6 +28,7 @@ SOFTWARE.
         'ngCrud',
         'ui.router',
         'homeModule',
+        'tripviewModule',
         'clientModule',
         'itemModule',
         'tripModule',

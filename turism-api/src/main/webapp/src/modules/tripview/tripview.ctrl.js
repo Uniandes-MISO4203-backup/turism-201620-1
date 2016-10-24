@@ -22,11 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 (function (ng) {
-    var mod = ng.module('homeModule');
+    var mod = ng.module('tripviewModule');
 
-    mod.controller('homeCtrl', ['$scope', 'Restangular', '$state', '$stateParams',
-        function ($scope, Restangular, $state, $stateParams) {
-           $scope.showCategorys = false;
+    mod.controller('tripviewCtrl', ['$scope', 
+        function ($scope) {
+           
             //Alertas
             $scope.alerts = [];
             this.closeAlert = function (index) {
@@ -52,23 +52,6 @@ SOFTWARE.
             $scope.showSuccess = function (msg) {
                 showMessage(msg, "success");
             };
-            
-            $scope.getCategorys = function (parentCategory) {
-                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
-                    if (response.length>0) {
-                        $scope.categorys=response;
-                        $scope.showCategorys = true;
-                        $scope.selectedCategory = $scope.categorys.find(function(category){
-                            return category.id == $stateParams.categoryId;
-                        });
-                    } 
-                });
-            };
-            
-            $scope.filterByCategory = function(categoryId){
-                $state.go('homeTripGallery', {categoryId: categoryId});
-            }
-             $scope.getCategorys("");
         }]);
 
 })(window.angular);

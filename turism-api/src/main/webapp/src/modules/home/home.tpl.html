@@ -26,13 +26,9 @@
 
             </div>
             <md-input-container class="md-icon-float md-icon-right md-block">
-              <label>Rating</label>
-              <md-select ng-model="rating" placeholder="Rating" class="">
-                <md-option value="5">*****</md-option>
-                <md-option value="4">****</md-option>
-                <md-option value="3">***</md-option>
-                <md-option value="2">**</md-option>
-                <md-option value="1">*</md-option>
+              <label>Category</label>
+              <md-select ng-if="showCategorys" ng-model="selectedCategory" placeholder="Category" class="">
+                <md-option ng-repeat="category in categorys" value="category.id" ng-click="filterByCategory(category.id)">{{category.name}}</md-option>
               </md-select>
             </md-input-container>
             <md-button class="search-form__cta md-raised md-accent">Find it!</md-button>
@@ -48,7 +44,6 @@
       <p>Template based on deep research on the most popular travel booking websites such as booking.com, tripadvisor, yahoo travel, expedia, priceline, hotels.com, travelocity, kayak, orbitz, etc. This guys can’t be wrong. You should definitely give it a shot :)</p>
       <md-button class="hero-message__cta md-raised md-accent">Read more</md-button>
   </div>
-
   </div>
 </section>
 <div ui-view="tripGalleryView"></div>

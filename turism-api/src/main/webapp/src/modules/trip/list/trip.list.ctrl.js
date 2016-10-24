@@ -36,20 +36,18 @@ SOFTWARE.
             
             $scope.categorys = [];
             
-            $scope.getCategorys = function (parentCategory) {
-                Restangular.all("categorys").customGET('parents/'+parentCategory).then(function (response) {
-                    if (response.length>0) {
-                        $scope.categorys=response;
-                    } 
-                });
-            };
+        
+            
             $scope.filtrar = function (parentCategory) {
                 $scope.getCategorys(parentCategory);
                 Restangular.all("trips").customGET(parentCategory).then(function (response) {                    
                         $scope.records=response;
                 });
             };
-            $scope.getCategorys("");
+            
+            if($params.categoryId){
+                $scope.filtrar($state.params.categoryId);
+            }
 
             this.pageChanged = function () {
                 $state.go('tripList', {page: this.currentPage});
@@ -79,6 +77,7 @@ SOFTWARE.
                 }
 
             };
+            
             $scope.recordActions = {
                 detail: {
                     displayName: 'Detail',

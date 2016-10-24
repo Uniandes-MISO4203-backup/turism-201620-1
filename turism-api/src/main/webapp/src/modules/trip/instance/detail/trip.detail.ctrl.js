@@ -25,11 +25,11 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "trip",
+    mod.controller("tripDetailCtrl1", ['$scope', "$state", "trip",
         function ($scope, $state, trip) {
             $scope.currentRecord = trip;
             $scope.actions = {
-                create: {
+                create: { 
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
