@@ -31,8 +31,6 @@ SOFTWARE.
 
         <!-- build:css(<%= meta.src %>) styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />  
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
         <!-- endbower -->
@@ -175,54 +173,6 @@ SOFTWARE.
 
     </head>
     <body>
-      <div class="wrapper">
-        <header class="main-header">
-          <div class="container">
-            <div class="brand-logo">
-              <a href="/" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando</span>
-              </a>
-            </div>
-            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-              <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" >Home</md-nav-item>
-              <md-nav-item md-nav-sref="clientList" name="" class="main-header__item" >Client</md-nav-item>
-              <md-nav-item md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
-              <md-nav-item md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
-              <md-nav-item md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
-              
-              <md-nav-item md-nav-sref="tripview" class="main-header__item">tripDetailInstance</md-nav-item>
-            </md-nav-bar>
-          </div>
-        </header>
-
-        <div ui-view="mainView"></div>
-        
-        <footer>
-                <div class="row">
-                    <div id="footer" class="col-md-12">
-                        <div class="row">
-                            <ul>
-                                <li><a>Preguntas Frecuentes</a></li>
-                                <li><a>Noticias</a></li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <h4>Follow us</h4>
-                            <div class="col-md-12">
-                                <i class="fa fa-facebook-official  fa-2x" aria-hidden="true"></i>
-                                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
-                                <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
-                                <i class="fa fa-google-plus fa-2x" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p>
-                                Copyright 2015 - 2016 Powered by Diegosoft y Asociadas
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-      </div>
         <div class="wrapper">
             <header class="main-header">
                 <div class="container" ng-controller="roleCtrl">
@@ -255,9 +205,9 @@ SOFTWARE.
                         <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                             <div class="brand-logo footer__logo">
                                 <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
-                                </a>
+                                </a>}
+                                <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                             </div>
-                             <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                             <div class="footer__copyright">
                                 © 2016. All rights reserved. Powered by Diegosoft & Asociadas
                             </div>
@@ -284,6 +234,7 @@ SOFTWARE.
                     </div><!-- end row -->
                 </div><!-- end container -->
             </footer>
+
         </div>
     </body>
 </html>
