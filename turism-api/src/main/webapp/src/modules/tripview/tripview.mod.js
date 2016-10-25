@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('tripviewModule', []);
+    var mod = ng.module('tripviewModule', ['ui.bootstrap']);
 
   
      mod.config(['$stateProvider',
@@ -19,10 +19,10 @@
             });
             
              $sp.state('tripDetailInstance', {
-                url: '',
+                url: '/{tripId:int}',
                 parent: 'tripview',
                views: {
-                     tripGalleryView: {
+                     tripDetailView: {
                         templateUrl: 'src/modules/trip/instance/detail/trip.detail.tpl.html',
                         controller: 'tripDetailCtrl',
                         controllerAs: 'ctrl'    

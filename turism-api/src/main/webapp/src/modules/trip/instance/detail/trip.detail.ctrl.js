@@ -25,9 +25,17 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripDetailCtrl1", ['$scope', "$state", "trip",
-        function ($scope, $state, trip) {
-            $scope.currentRecord = trip;
+    mod.controller("tripDetailCtrl", ['$scope', "$state", "$http", "$stateParams",
+        function ($scope, $state, $http, $stateParams) {
+            
+            $http.get("/turism-api/api/trips/detail/" + $stateParams.tripId).then(function(response){
+                $scope.currentRecord = response.data;
+            });
+            
+            $scope.edit = function(){
+                $state.go('tripEdit');
+            };
+            
             $scope.actions = {
                 create: { 
                     displayName: 'Create',
