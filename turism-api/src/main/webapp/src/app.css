@@ -168,6 +168,14 @@
     background: transparent;
 }
 
+#turism-view-container .navbar-header{
+    visibility: hidden;
+}
+
+tr, td, th {
+    border: none !important;
+    color: white;
+}
 
 /* Custom ScrollBar */
 ::-webkit-scrollbar {
