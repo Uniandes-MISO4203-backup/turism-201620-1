@@ -79,3 +79,14 @@
    border-radius: 30px;
    padding: 7px 49px;
  }
+
+ .ligth-section {
+    background-color: #ece6e6;
+    position: relative;
+    display: block;
+    top: 0;
+    margin: 0;
+    padding: 22px;
+    color: #807777;
+    text-align: center;
+ }

@@ -29,6 +29,7 @@ SOFTWARE.
            $scope.showCategorys = false;
             //Alertas
             $scope.alerts = [];
+            $scope.filters = {};
             this.closeAlert = function (index) {
                 $scope.alerts.splice(index, 1);
             };
@@ -58,15 +59,13 @@ SOFTWARE.
                     if (response.length>0) {
                         $scope.categorys=response;
                         $scope.showCategorys = true;
-                        $scope.selectedCategory = $scope.categorys.find(function(category){
-                            return category.id == $stateParams.categoryId;
-                        });
+                        $scope.filters.selectedCategory = $stateParams.categoryId?parseInt($stateParams.categoryId):null;
                     } 
                 });
             };
             
-            $scope.filterByCategory = function(categoryId){
-                $state.go('homeTripGallery', {categoryId: categoryId});
+            $scope.filter = function(){
+                $scope.filters.selectedCategory !== -1 ?$state.go('homeTripGallery', {categoryId: $scope.filters.selectedCategory}):$state.go('homeTripGallery',  {categoryId: undefined});
             }
              $scope.getCategorys("");
         }]);

@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <div class="trip-gallery">            
 
-    <md-content class="md-padding" layout-xs="column" layout="row">
-        <div flex-xs flex-gt-xs="25" layout="column" ng-repeat="trip in records" trip-gallery__list>
-            <a ui-sref="tripDetailInstance">dadfasdf</a><md-card class="trip-card">
-                <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
-                <md-card-title class="trip-card__title">
-                    <md-card-title-text>
-                        <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
-                    </md-card-title-text>
-                </md-card-title>
-                <md-card-content class="trip-card__price">
-                    {{trip.price| currency}}
-                </md-card-content>
-                <md-card-actions layout="row" layout-align="end center" class="trip-card__rating">
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                    <i class="glyphicon glyphicon-star"></i>
-                </md-card-actions>
-                 <md-card-content class="trip-card__detail">
-                    <p><strong>Date: </strong> {{trip.date}}</p> 
-                    <p><strong>Origin: </strong> {{trip.origin}}</p> 
-                    <p><strong>Destination: </strong> {{trip.destination}}</p> 
-                    <p><strong>Price: </strong> {{trip.price| currency}}</p>     
-                </md-card-content>
-            </md-card>
+    <md-content layout="row" layout-wrap>
+        <div flex="25"  ng-repeat="trip in records" trip-gallery__list>
+            
+            <md-card class="trip-card">
+                    <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
+                    <md-card-title class="trip-card__title">
+                        <md-card-title-text>
+                            <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
+                            <span>
+                                <i ng-if="trip.raitingAverage > 0" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 1" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 2" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 3" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 4" class="glyphicon glyphicon-star"></i>
+                            </span>
+                        </md-card-title-text>
+                        <span class="sm-headline trip-card__price">{{trip.price| currency}}</span>
+                    </md-card-title>
+                  
+                    <md-card-content class="trip-card__detail">
+                        <p><strong>Date: </strong> {{trip.date}}</p> 
+                        <p><strong>Origin: </strong> {{trip.origin}}</p> 
+                        <p><strong>Destination: </strong> {{trip.destination}}</p> 
+                        <p><strong>Price: </strong> {{trip.price| currency}}</p>     
+                        
+                        <button ui-sref="tripDetailInstance({tripId: trip.id})" class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto">View Detail</button>
+                    </md-card-content>
+                </md-card>
         </div>
     </md-content>
 </div>

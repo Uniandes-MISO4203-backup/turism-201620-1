@@ -31,13 +31,14 @@ SOFTWARE.
 
         <!-- build:css(<%= meta.src %>) styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />  
         <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
         <!-- endbower -->
 
         <link rel="stylesheet" href="src/app.css" />
         <link rel="stylesheet" href="src/modules/home/home.css" />
         <link rel="stylesheet" href="src/modules/trip/list/trip.gallery.css" />
+        <link rel="stylesheet" href="src/modules/trip/instance/detail/trip.detail.css" />
 
         <!-- endbuild -->
 
@@ -172,27 +173,68 @@ SOFTWARE.
 
     </head>
     <body>
-      <div class="wrapper">
-        <header class="main-header">
-          <div class="container">
-            <div class="brand-logo">
-              <a href="/" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando</span>
-              </a>
-            </div>
-            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-              <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" >Home</md-nav-item>
-              <md-nav-item md-nav-sref="clientList" name="" class="main-header__item" >Client</md-nav-item>
-              <md-nav-item md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
-              <md-nav-item md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
-              <md-nav-item md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
-              
-              <md-nav-item md-nav-sref="tripview" class="main-header__item">tripDetailInstance</md-nav-item>
-            </md-nav-bar>
-          </div>
-        </header>
+        <div class="wrapper">
+            <header class="main-header">
+                <div class="container" ng-controller="roleCtrl">
+                    <div class="brand-logo">
+                        <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
+                        </a>
+                    </div>
+                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" >
+                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" >Home</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" >Client</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item">SigIn</md-nav-item>
 
-        <div ui-view="mainView"></div>
+                    </md-nav-bar>
+                    <a ng-if="!visitor" class="main-header__item">
+                        <span ng-controller="authController" class='logout-option'>
+                            <span ng-click="logout()" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
+                        </span>
+                    </a>
+                </div>
+            </header>
 
-      </div>
+            <div ui-view="mainView" class='main-view-container'></div>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <div class="brand-logo footer__logo">
+                                <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
+                                </a>
+                            </div>
+                             <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
+                            <div class="footer__copyright">
+                                © 2016. All rights reserved. Powered by Diegosoft & Asociadas
+                            </div>
+                        </div><!-- end col -->
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="widget">
+                                <div class="widget-title">
+                                    <h3>NEWSLETTER</h3>
+                                </div><!-- end title -->
+                                <div class="newsletterwidget">
+                                    <p>Subscribe to our newsletter to receive news &amp; updates. We promise not spamming you, super promise! </p>
+                                    <form id="newsletter" class="form-inline">
+                                        <md-input-container class="footer__email">
+                                            <label>Your email here</label>
+                                            <input >
+                                        </md-input-container>
+                                        <button class="md-raised md-accent md-button md-ink-ripple ">Send</button>
+
+                                    </form>
+                                </div><!-- end newsletter widget -->
+                            </div><!-- end widget -->
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </footer>
+
+        </div>
     </body>
 </html>

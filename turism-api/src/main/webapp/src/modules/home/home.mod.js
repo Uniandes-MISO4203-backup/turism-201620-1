@@ -27,12 +27,7 @@
                         controller: 'tripListCtrl',
                         controllerAs: 'ctrl'    
                     }
-                },
-                resolve: {
-                    model: 'tripModel',
-                    trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
-                            return r.all(model.url).getList($params);
-                        }]                }
+                }
             });
 	}]);
 })(window.angular);

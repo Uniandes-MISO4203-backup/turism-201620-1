@@ -25,28 +25,31 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripListCtrl", ["$scope", '$state', 'trips', '$stateParams','Restangular',
-        function ($scope, $state, trips, $params,Restangular) {
-            $scope.records = trips;
+    mod.controller("tripListCtrl", ["$scope", '$state', '$stateParams','Restangular', "$http",
+        function ($scope, $state, $params, Restangular, $http) {
+            $scope.records=[];
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
-            this.totalItems = trips.totalRecords;
             
             $scope.categorys = [];
             
-        
-            
             $scope.filtrar = function (parentCategory) {
                 $scope.getCategorys(parentCategory);
-                Restangular.all("trips").customGET(parentCategory).then(function (response) {                    
-                        $scope.records=response;
-                });
+                if(parentCategory > 0) {
+                    $http.get("/turism-api/api/trips/" + parentCategory).then(function (response) {                    
+                            $scope.records=response.data;
+                    });
+                }
             };
             
             if($params.categoryId){
                 $scope.filtrar($state.params.categoryId);
+            } else {
+                $http.get("/turism-api/api/trips").then(function (response) {                    
+                        $scope.records=response.data;
+                });
             }
 
             this.pageChanged = function () {
