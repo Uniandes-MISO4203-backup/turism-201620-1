@@ -1,0 +1,227 @@
+/**
+ * Layout
+ */
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1170px;
+}
+
+
+/**
+ * Header
+ */
+.main-header {
+  box-shadow: none;
+  display: flex;
+  position: absolute;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, .3) !important;
+}
+
+.main-header .md-nav-bar {
+  float: right;
+  height: 100px;
+}
+
+.md-nav-bar md-nav-ink-bar {
+  height: 3px;
+}
+
+.main-header .md-button._md-nav-button.md-unselected {
+  color: #fff;
+}
+
+.main-header__item .md-button  {
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 40px 15px;
+}
+
+
+/**
+ * logo
+*/
+.brand-logo {
+  float: left;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo__link {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: #000 2px 2px 9px;
+    font-weight: 300;
+    letter-spacing: -3px;
+}
+
+.brand-logo__link:hover, .brand-logo__link:active, .brand-logo__link:focus {
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand-logo__link--secondary {
+    font-weight: lighter;
+    text-shadow: none;
+    letter-spacing: -6px;
+    font-size: 63px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+
+.footer {
+    background-color: #222222;
+    padding: 80px 0 60px;
+    font-size: 15px;
+    color: #aaaaaa;
+}
+
+.footer__email label{
+    color: white !important;
+}
+.footer__logo {
+    zoom: 46%;
+    text-align: center;
+    width: 100%;
+    margin-left: 293px;
+}
+
+.footer__copyright{
+    margin-top: 100px;    
+}
+
+.copyrights {
+    background-color: #111111;
+    padding: 30px 0;
+    font-size: 15px;
+    color: #aaaaaa;
+    font-family: 'aqua_grotesqueregular', serif;
+}
+
+
+.main-view-container {
+    display: block;
+    position: relative;
+}
+
+.logout-option {
+    position: absolute;
+    right: 11px;
+    color: white;
+    top: 10px;
+}
+
+
+#turism-view-container {
+    padding-top: 202px;
+    background: url("./../assets/img/hero-views-beach.jpg");
+}
+
+#turism-view-container .navbar-default{
+    background: transparent !important;
+    border: none;
+    float: right;
+}
+#turism-view-container button {
+    color: rgba(0,0,0,0.87);
+    background-color: rgb(255,215,64);display: inline-block;
+    position: relative;
+    cursor: pointer;
+    min-height: 36px;
+    min-width: 88px;
+    line-height: 36px;
+    vertical-align: middle;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 0;
+    padding: 0 6px;
+    margin: 6px 8px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: inherit;
+    font-variant: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+
+#turism-view-container tr.ng-scope{
+    background: transparent;
+}
+
+#turism-view-container .navbar-header{
+    visibility: hidden;
+}
+
+tr, td, th {
+    border: none !important;
+    color: white;
+}
+
+/* Custom ScrollBar */
+::-webkit-scrollbar {
+width: 5px;
+height:5px;
+}
+::-webkit-scrollbar-button {
+width: 25px;
+height:5px;
+}
+
+::-webkit-scrollbar-track {
+background:rgba(31, 28, 21, 0.64);
+border-radius:10px;
+}
+::-webkit-scrollbar-thumb {
+background:rgba(255, 215, 64, 0.64);
+border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+background:rgba(255, 215, 64, 0.64);
+}
+
+#footer {
+    background-color: #e0e1e2;
+    text-align: center;
+    padding: 20px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#footer i {
+    padding: 0 10px;
+}
+
+#footer ul {
+    list-style: none;
+}
+
+#footer ul li {
+    text-align: left;
+}
+
+#header {
+    height: 84px;
+    background-color: white;
+}
+/* End Scroll */

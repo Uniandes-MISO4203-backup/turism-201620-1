@@ -34,6 +34,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import co.edu.uniandes.csw.turism.api.IRaitingLogic;
+import co.edu.uniandes.csw.turism.persistence.TripPersistence;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -92,7 +95,7 @@ public class RaitingLogic implements IRaitingLogic {
         try {
             return persistence.find(purchaseRaitingId);
         }catch(NoResultException e){
-            System.err.println(e.getMessage());
+            Logger.getLogger(RaitingLogic.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             throw new IllegalArgumentException("El raiting del viaje no existe");
         }
     }

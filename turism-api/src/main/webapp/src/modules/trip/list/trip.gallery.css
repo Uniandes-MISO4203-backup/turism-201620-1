@@ -1,0 +1,89 @@
+.trip-gallery {
+    max-height: 600px;
+    width: 80%;
+    margin: auto;
+    overflow-y: scroll;
+}
+
+.trip-card {
+    position: relative;
+    cursor: pointer;
+    height: 200px;
+}
+
+.trip-card:hover .trip-card__title, .trip-card:hover .trip-card__text{
+    opacity: 0;
+}
+
+.trip-card:hover .trip-card__detail {
+    opacity: 1;
+}
+
+.md-card-image{
+    height: 100%;
+}
+
+.trip-card__title {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.57);
+    width: 100%;
+    font-size: 6px;
+    padding: 3px 13px 3px;
+    color: #40120a;
+    transition: opacity 0.3s ease;
+    letter-spacing: 1px;
+    height: 58px;
+    bottom: 0;
+}
+
+.trip-card__title__text {
+    font-size: 17px;
+    transition: opacity 0.3s ease;
+    color: rgb(218, 215, 213);
+}
+
+
+.trip-card__price {
+    position: absolute;
+    font-size: 18px;
+    padding: 3px 13px 3px;
+    bottom: 0;
+    right: 0;
+    color: white;
+    text-shadow: #0d0707 1px 1px;
+}
+
+.trip-card__rating { 
+    position: absolute;
+    right: 0;
+    color: rgb(255,215,64);
+}
+
+.trip-card__detail {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    background-color: rgba(236, 230, 230, 0.75);
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #211c08;
+    text-align: justify;
+    padding: 39px;
+    height: 100%;
+}
+
+.trip-card__detail__goto {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.trip-card__rating {
+  position: absolute;
+  top: 9px;
+  right: 6px;
+}
+
+.trip-card__rating i {
+    color: #ffd740;
+}

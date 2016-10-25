@@ -36,7 +36,9 @@ import javax.persistence.ManyToOne;
 public class ItemEntity extends BaseEntity implements Serializable {
 
     private Long qty;
-
+    
+    private String itemState;
+    
     @PodamExclude
     @ManyToOne
     private TripEntity trip;
@@ -67,6 +69,22 @@ public class ItemEntity extends BaseEntity implements Serializable {
      */
     public void setQty(Long qty){
         this.qty = qty;
+    }
+    
+    /**
+     * 
+     * @return atributo itemState
+     */
+    public String getItemState() {
+        return itemState;
+    }
+
+    /**
+     *  Establece el valor del atributo itemState
+     * @param itemState 
+     */
+    public void setItemState(String itemState) {
+        this.itemState = itemState;
     }
 
     /**

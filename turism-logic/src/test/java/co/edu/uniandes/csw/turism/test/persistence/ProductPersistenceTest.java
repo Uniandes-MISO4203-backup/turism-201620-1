@@ -150,6 +150,7 @@ public class ProductPersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(newEntity.getPayment(), entity.getPayment());
     }
 
     /**
@@ -184,6 +185,7 @@ public class ProductPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getPrice(), newEntity.getPrice());
+        Assert.assertEquals(entity.getPayment(), newEntity.getPayment());
     }
 
     /**
@@ -218,5 +220,6 @@ public class ProductPersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(newEntity.getPayment(), resp.getPayment());
     }
 }

@@ -195,6 +195,7 @@ public class ItemLogicTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getQty(), entity.getQty());
+        Assert.assertEquals(newEntity.getItemState(), entity.getItemState());
     }
 
     /**
@@ -231,6 +232,7 @@ public class ItemLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getQty(), resultEntity.getQty());
+        Assert.assertEquals(entity.getItemState(), resultEntity.getItemState());
     }
 
     /**
@@ -265,6 +267,7 @@ public class ItemLogicTest {
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getQty(), resp.getQty());
+        Assert.assertEquals(pojoEntity.getItemState(), resp.getItemState());
     }
 }
 

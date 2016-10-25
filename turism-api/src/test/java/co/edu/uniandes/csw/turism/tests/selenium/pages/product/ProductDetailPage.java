@@ -43,6 +43,8 @@ public class ProductDetailPage {
     private WebElement name;
     @FindBy(id = "price")
     private WebElement price;
+    @FindBy(id = "payment")
+    private WebElement payment;
 
     public void list() {
         listBtn.click();
@@ -60,6 +62,7 @@ public class ProductDetailPage {
         ProductDTO product = new ProductDTO();        
         product.setName(name.getText());
         product.setPrice(Long.parseLong(price.getText()));
+        product.setPayment(payment.getText());
         return product;
     }
 }

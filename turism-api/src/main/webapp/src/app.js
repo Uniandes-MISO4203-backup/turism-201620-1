@@ -24,8 +24,11 @@ SOFTWARE.
 (function (ng) {
     var mod = ng.module('mainApp', [
         //'ngCrudMock',
+        'ngMaterial',
         'ngCrud',
         'ui.router',
+        'homeModule',
+        'tripviewModule',
         'clientModule',
         'itemModule',
         'tripModule',
@@ -39,7 +42,8 @@ SOFTWARE.
         'commentModule',
         'raitingModule',
         'newsModule',
-        'contentModule'
+        'contentModule',
+        'ui.bootstrap'
     ]);
 
     mod.config(['$logProvider', function ($logProvider) {
@@ -63,13 +67,13 @@ SOFTWARE.
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-                $urlRouterProvider.otherwise('/');
+                $urlRouterProvider.otherwise('/home');
         }]);
 
     mod.config(['authServiceProvider', function (auth) {
             auth.setValues({
                 apiUrl: 'api/users/',
-                successState: 'tripGallery'
+                successState: 'homeTripGallery'
             });
             auth.setRoles({
                 'client': [{
@@ -103,16 +107,25 @@ SOFTWARE.
                         id: 'product',
                         label: 'Product',
                         icon: 'list-alt',
-                        state: 'productList'                    
+                        state: 'productList'
                     }]
             });
         }]);
 
+    mod.config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('grey')
+        .accentPalette('amber');
+    });
     /*
      * When there's an error changing state, ui-router doesn't raise an error
      * This configuration allows to print said errors
      */
     mod.run(['$rootScope', '$log', function ($rootScope, $log) {
+            $rootScope.isLoginView = location.hash === "#/login";
+            $rootScope.changeIsLoginView = function(parameter){
+                $rootScope.isLoginView = parameter;
+            }
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 $log.warn(error);
             });

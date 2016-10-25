@@ -78,6 +78,16 @@ SOFTWARE.
                 displayName: 'Special Requirements',
                 type: 'String',
                 required: false
+            },
+            dailyDescription: {
+                displayName: 'Daily Description',
+                type: 'String',
+                required: false
+            },
+            includesDescription: {
+                displayName: 'Includes and Not Includes',
+                type: 'String',
+                required: false
             }
         }
     });
@@ -272,6 +282,22 @@ SOFTWARE.
                 url: '/tripGallery',
                 views: {
                      mainView: {
+                        templateUrl: basePath + 'list/trip.gallery.tpl.html',
+                        controller: 'tripListCtrl',
+                        controllerAs: 'ctrl'    
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
+                            return r.all(model.url).getList($params);
+                        }]                }
+            });
+            
+             $sp.state('tripGalleryHome', {
+                url: '/home',
+                views: {
+                     tripGalleryHome: {
                         templateUrl: basePath + 'list/trip.gallery.tpl.html',
                         controller: 'tripListCtrl',
                         controllerAs: 'ctrl'    

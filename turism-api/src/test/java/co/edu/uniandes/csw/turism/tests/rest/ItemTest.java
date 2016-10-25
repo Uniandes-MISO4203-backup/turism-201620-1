@@ -210,6 +210,7 @@ public class ItemTest {
 
         Assert.assertEquals(item.getName(), itemTest.getName());
         Assert.assertEquals(item.getQty(), itemTest.getQty());
+        Assert.assertEquals(item.getItemState(), itemTest.getItemState());
 
         ItemEntity entity = em.find(ItemEntity.class, itemTest.getId());
         Assert.assertNotNull(entity);
@@ -231,6 +232,7 @@ public class ItemTest {
         Assert.assertEquals(itemTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(itemTest.getName(), oraculo.get(0).getName());
         Assert.assertEquals(itemTest.getQty(), oraculo.get(0).getQty());
+        Assert.assertEquals(itemTest.getItemState(),oraculo.get(0).getItemState());
     }
 
     /**
@@ -276,6 +278,7 @@ public class ItemTest {
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(item.getName(), itemTest.getName());
         Assert.assertEquals(item.getQty(), itemTest.getQty());
+        Assert.assertEquals(item.getItemState(),itemTest.getItemState());
     }
 
     /**

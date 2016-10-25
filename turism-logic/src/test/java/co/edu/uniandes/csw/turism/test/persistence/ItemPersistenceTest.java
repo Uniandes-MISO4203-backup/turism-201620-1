@@ -158,6 +158,7 @@ public class ItemPersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getQty(), entity.getQty());
+        Assert.assertEquals(newEntity.getItemState(), entity.getItemState());
     }
 
     /**
@@ -192,6 +193,7 @@ public class ItemPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getQty(), newEntity.getQty());
+        Assert.assertEquals(entity.getItemState(), newEntity.getItemState());
     }
 
     /**
@@ -226,5 +228,6 @@ public class ItemPersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getQty(), resp.getQty());
+        Assert.assertEquals(newEntity.getItemState(), resp.getItemState());
     }
 }

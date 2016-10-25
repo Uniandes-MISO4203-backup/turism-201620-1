@@ -177,10 +177,15 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), entity.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), entity.getDestination());
+        
         Assert.assertEquals(newEntity.getTransportType(), entity.getTransportType());
         Assert.assertEquals(newEntity.getSpecialRequirements(), entity.getSpecialRequirements());
+       
         Assert.assertEquals(newEntity.getQuota(), entity.getQuota());
         Assert.assertEquals(newEntity.getDuration(), entity.getDuration());
+        
+        Assert.assertEquals(newEntity.getDailyDescription(), entity.getDailyDescription());
+        Assert.assertEquals(newEntity.getIncludesDescription(), entity.getIncludesDescription());
     }
 
     /**
@@ -230,12 +235,15 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(entity.getOrigin(), newEntity.getOrigin());
         Assert.assertEquals(entity.getDestination(), newEntity.getDestination());        
+        
         Assert.assertEquals(entity.getTransportType(), newEntity.getTransportType());
         Assert.assertEquals(entity.getSpecialRequirements(), newEntity.getSpecialRequirements());
-
-        Assert.assertEquals(entity.getDestination(), newEntity.getDestination());   
+  
         Assert.assertEquals(entity.getQuota(), newEntity.getQuota());
         Assert.assertEquals(entity.getDuration(), newEntity.getDuration());
+        
+        Assert.assertEquals(newEntity.getDailyDescription(), entity.getDailyDescription());
+        Assert.assertEquals(newEntity.getIncludesDescription(), entity.getIncludesDescription());
     }
 
     /**
@@ -281,10 +289,14 @@ public class TripPersistenceTest {
         }
         Assert.assertEquals(newEntity.getOrigin(), resp.getOrigin());
         Assert.assertEquals(newEntity.getDestination(), resp.getDestination());        
+        
         Assert.assertEquals(newEntity.getTransportType(), resp.getTransportType());
         Assert.assertEquals(newEntity.getSpecialRequirements(), resp.getSpecialRequirements());
-        Assert.assertEquals(newEntity.getDestination(), resp.getDestination());  
+        
         Assert.assertEquals(newEntity.getQuota(), resp.getQuota());
         Assert.assertEquals(newEntity.getDuration(), resp.getDuration());
+        
+        Assert.assertEquals(newEntity.getDailyDescription(), resp.getDailyDescription());
+        Assert.assertEquals(newEntity.getIncludesDescription(), resp.getIncludesDescription());
     }
 }

@@ -23,7 +23,6 @@ SOFTWARE.
 */
 package co.edu.uniandes.csw.turism.test.persistence;
 import co.edu.uniandes.csw.turism.entities.ClientEntity;
-import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import co.edu.uniandes.csw.turism.persistence.ClientPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +49,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class ClientPersistenceTest {
 
     /**
+     * @return 
      * @generated
      */
     @Deployment
@@ -119,7 +119,7 @@ public class ClientPersistenceTest {
     /**
      * @generated
      */
-    private List<ClientEntity> data = new ArrayList<ClientEntity>();
+    private final List<ClientEntity> data = new ArrayList<ClientEntity>();
 
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las pruebas.
@@ -151,6 +151,13 @@ public class ClientPersistenceTest {
         ClientEntity entity = em.find(ClientEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getFirstName(), entity.getFirstName());
+        Assert.assertEquals(newEntity.getMiddleName(), entity.getMiddleName());
+        Assert.assertEquals(newEntity.getLastName(), entity.getLastName());        
+        Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
+        Assert.assertEquals(newEntity.getPhoneNumber(), entity.getPhoneNumber());
+        Assert.assertEquals(newEntity.getHomeAddress(), entity.getHomeAddress());
+        
     }
 
     /**
@@ -184,8 +191,15 @@ public class ClientPersistenceTest {
         ClientEntity newEntity = clientPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
-    }
+        Assert.assertEquals(entity.getFirstName(), newEntity.getFirstName());
+        Assert.assertEquals(entity.getMiddleName(), newEntity.getMiddleName());
+        Assert.assertEquals(entity.getLastName(), newEntity.getLastName());        
+        Assert.assertEquals(entity.getEmail(), newEntity.getEmail());
+        Assert.assertEquals(entity.getHomeAddress(), newEntity.getHomeAddress());
+        Assert.assertEquals(entity.getPhoneNumber(), newEntity.getPhoneNumber());
 
+    }
+    
     /**
      * Prueba para eliminar un Client.
      *
@@ -217,5 +231,11 @@ public class ClientPersistenceTest {
         ClientEntity resp = em.find(ClientEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getFirstName(), resp.getFirstName());
+        Assert.assertEquals(newEntity.getMiddleName(), resp.getMiddleName());
+        Assert.assertEquals(newEntity.getLastName(), resp.getLastName());
+        Assert.assertEquals(newEntity.getEmail(), resp.getEmail());
+        Assert.assertEquals(newEntity.getPhoneNumber(), resp.getPhoneNumber());
+        Assert.assertEquals(newEntity.getHomeAddress(), resp.getHomeAddress());
     }
 }

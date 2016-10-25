@@ -34,6 +34,27 @@ import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 public class ProductEntity extends BaseEntity implements Serializable {
 
     private Long price;
+    private String payment;
+
+    /**
+     * Obtiene el atributo payment.
+     *
+     * @return atributo payment.
+     * @generated
+     */
+    public String getPayment() {
+        return payment;
+    }
+
+    /**
+     * Establece el valor del atributo payment.
+     *
+     * @param payment nuevo valor del atributo
+     * @generated
+     */
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
 
     /**
      * Obtiene el atributo price.

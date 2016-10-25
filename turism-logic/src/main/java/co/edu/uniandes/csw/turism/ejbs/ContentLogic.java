@@ -86,11 +86,7 @@ public class ContentLogic implements IContentLogic{
      */
     @Override
     public ContentEntity getContent(Long contentid) {
-        try {
-            return persistence.find(contentid);
-        } catch (NoResultException e) {
-            throw new IllegalArgumentException("El Content no existe");
-        }
+        return persistence.find(contentid);
     } 
     
     /**

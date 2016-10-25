@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+<div id='turism-view-container'>
 <header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
 </header>
@@ -29,7 +30,26 @@ SOFTWARE.
         <p>
         <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
         </p>
+        <p>
+        <label><strong>First Name: </strong></label><span id="fistName"> {{currentRecord.firstName}}</span>
+        </p>
+        <p>
+        <label><strong>Middle Name: </strong></label><span id="middleName"> {{currentRecord.middleName}}</span>
+        </p>
+        <p>
+        <label><strong>Last Name: </strong></label><span id="lastName"> {{currentRecord.lastName}}</span>
+        </p>
+        <p>
+        <label><strong>Email: </strong></label><span id="email"> {{currentRecord.email}}</span>
+        </p>
+        <p>
+        <label><strong>Phone Number: </strong></label><span id="phoneNumber"> {{currentRecord.phoneNumber}}</span>
+        </p>
+        <p>
+        <label><strong>Home Address: </strong></label><span id="homeAddress"> {{currentRecord.homeAddress}}</span>
+        </p>        
     </div>
 </div>
 <div ui-view="clientChieldView"></div>
 <!-- TODO -->
+</div>

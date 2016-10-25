@@ -36,6 +36,7 @@ public class ItemDTO implements Serializable{
     private Long id;
     private String name;
     private Long qty;
+    private String itemState;
 
     /**
      * Constructor de la clase DTO mínima
@@ -54,6 +55,7 @@ public class ItemDTO implements Serializable{
         this.id=entity.getId();
         this.name=entity.getName();
         this.qty=entity.getQty();
+        this.itemState = entity.getItemState();
        }
     }
 
@@ -68,6 +70,7 @@ public class ItemDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setQty(this.getQty());
+        entity.setItemState(this.getItemState());
     return entity;
     }
 
@@ -130,5 +133,20 @@ public class ItemDTO implements Serializable{
     public void setQty(Long qty) {
         this.qty = qty;
     }
-
+    
+    /**
+     * Obtiene el atributo itemState
+     * @return 
+     */
+     public String getItemState() {
+        return itemState;
+    }
+     
+     /**
+      * Establece el valor del atributo itemState
+      * @param itemState 
+      */
+    public void setItemState(String itemState) {
+        this.itemState = itemState;
+    }
 }

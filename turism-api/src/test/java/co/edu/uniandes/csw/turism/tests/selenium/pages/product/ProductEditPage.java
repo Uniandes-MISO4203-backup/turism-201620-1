@@ -35,6 +35,8 @@ public class ProductEditPage {
     private WebElement nameInput;
     @FindBy(id = "price")
     private WebElement priceInput;
+    @FindBy(id = "payment")
+    private WebElement paymentInput;
 
     @FindBy(id = "save-product")
     private WebElement saveBtn;
@@ -49,6 +51,9 @@ public class ProductEditPage {
          waitGui().until().element(priceInput).is().visible();
          priceInput.clear();
          priceInput.sendKeys(product.getPrice().toString());
+         waitGui().until().element(paymentInput).is().visible();
+         paymentInput.clear();
+         paymentInput.sendKeys(product.getPrice().toString());
         guardAjax(saveBtn).click();
     }
 }

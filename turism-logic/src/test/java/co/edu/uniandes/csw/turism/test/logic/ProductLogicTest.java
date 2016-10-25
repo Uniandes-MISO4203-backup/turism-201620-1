@@ -155,6 +155,7 @@ public class ProductLogicTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getPrice(), entity.getPrice());
+        Assert.assertEquals(newEntity.getPayment(), entity.getPayment());
     }
 
     /**
@@ -191,6 +192,7 @@ public class ProductLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getPrice(), resultEntity.getPrice());
+        Assert.assertEquals(entity.getPayment(), resultEntity.getPayment());
     }
 
     /**
@@ -225,6 +227,7 @@ public class ProductLogicTest {
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getPrice(), resp.getPrice());
+        Assert.assertEquals(pojoEntity.getPayment(), resp.getPayment());
     }
 }
 

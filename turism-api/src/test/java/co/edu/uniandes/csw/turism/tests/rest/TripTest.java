@@ -209,9 +209,20 @@ public class TripTest {
         Assert.assertEquals(trip.getName(), tripTest.getName());
         Assert.assertEquals(trip.getImage(), tripTest.getImage());
         Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
+        
+        Assert.assertEquals(trip.getOrigin(), tripTest.getOrigin());
+        Assert.assertEquals(trip.getDestination(), tripTest.getDestination());
+        
+        Assert.assertEquals(trip.getDuration(), tripTest.getDuration());
+        Assert.assertEquals(trip.getQuota(), tripTest.getQuota());
+
         Assert.assertEquals(trip.getTransportType(), tripTest.getTransportType());
         Assert.assertEquals(trip.getSpecialRequirements(), tripTest.getSpecialRequirements());
 
+        Assert.assertEquals(trip.getDailyDescription(), tripTest.getDailyDescription());
+        Assert.assertEquals(trip.getIncludesDescription(), tripTest.getIncludesDescription());
+       
+        
         TripEntity entity = em.find(TripEntity.class, tripTest.getId());
         Assert.assertNotNull(entity);
     }
@@ -233,8 +244,22 @@ public class TripTest {
         Assert.assertEquals(tripTest.getName(), oraculo.get(0).getName());
         Assert.assertEquals(tripTest.getImage(), oraculo.get(0).getImage());
         Assert.assertEquals(tripTest.getPrice(), oraculo.get(0).getPrice());
+        
+        Assert.assertEquals(tripTest.getOrigin(), oraculo.get(0).getOrigin());
+        Assert.assertEquals(tripTest.getDestination(), oraculo.get(0).getDestination());
+    
+        Assert.assertEquals(tripTest.getDuration(), oraculo.get(0).getDuration());
+        Assert.assertEquals(tripTest.getQuota(), oraculo.get(0).getQuota());
+    
         Assert.assertEquals(tripTest.getTransportType(), oraculo.get(0).getTransportType());
         Assert.assertEquals(tripTest.getSpecialRequirements(), oraculo.get(0).getSpecialRequirements());
+    
+        Assert.assertEquals(tripTest.getDailyDescription(), oraculo.get(0).getDailyDescription());
+        Assert.assertEquals(tripTest.getIncludesDescription(), oraculo.get(0).getIncludesDescription());
+    
+    
+    
+    
     }
 
     /**
@@ -270,8 +295,18 @@ public class TripTest {
         trip.setName(tripChanged.getName());
         trip.setImage(tripChanged.getImage());
         trip.setPrice(tripChanged.getPrice());
+        
+        trip.setDuration(tripChanged.getDuration());
+        trip.setQuota(tripChanged.getQuota());
+        
+        trip.setOrigin(tripChanged.getOrigin());
+        trip.setDestination(tripChanged.getDestination());
+        
         trip.setTransportType(tripChanged.getTransportType());
         trip.setSpecialRequirements(tripChanged.getSpecialRequirements());
+        
+        trip.setDailyDescription(tripChanged.getDailyDescription());
+        trip.setIncludesDescription(tripChanged.getIncludesDescription());
 
         Response response = target
             .path(trip.getId().toString())
@@ -284,8 +319,19 @@ public class TripTest {
         Assert.assertEquals(trip.getName(), tripTest.getName());
         Assert.assertEquals(trip.getImage(), tripTest.getImage());
         Assert.assertEquals(trip.getPrice(), tripTest.getPrice());
+        
+        Assert.assertEquals(trip.getDuration(), tripTest.getDuration());
+        Assert.assertEquals(trip.getQuota(), tripTest.getQuota());
+        
+        Assert.assertEquals(trip.getOrigin(), tripTest.getOrigin());
+        Assert.assertEquals(trip.getDestination(), tripTest.getDestination());
+        
         Assert.assertEquals(trip.getTransportType(), tripTest.getTransportType());
         Assert.assertEquals(trip.getSpecialRequirements(), tripTest.getSpecialRequirements());
+        
+        Assert.assertEquals(trip.getDailyDescription(), tripTest.getDailyDescription());
+        Assert.assertEquals(trip.getIncludesDescription(), tripTest.getIncludesDescription());
+        
     }
 
     /**

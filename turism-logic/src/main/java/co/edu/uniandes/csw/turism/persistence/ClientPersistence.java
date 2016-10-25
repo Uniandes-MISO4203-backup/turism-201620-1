@@ -39,6 +39,7 @@ public class ClientPersistence extends CrudPersistence<ClientEntity> {
     protected EntityManager em;
 
     /**
+     * @return 
      * @generated
      */
     @Override
@@ -47,6 +48,7 @@ public class ClientPersistence extends CrudPersistence<ClientEntity> {
     }
 
     /**
+     * @return 
      * @generated
      */
     @Override

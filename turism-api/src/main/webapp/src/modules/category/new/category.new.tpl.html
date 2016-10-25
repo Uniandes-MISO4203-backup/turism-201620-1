@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+<div id='turism-view-container'>
 <div ng-messages="categoryForm.$error" multiple>
     <ng-message when="required">
         <alert type="warning">Please, Fill the required fields!</alert>
@@ -37,3 +38,4 @@ SOFTWARE.
         <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
     </fieldset>
 </form>
+</div>

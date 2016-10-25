@@ -182,6 +182,7 @@ public class ClientTest {
     /**
      * Prueba para crear un Client
      *
+     * @throws java.io.IOException
      * @generated
      */
     @Test
@@ -198,6 +199,12 @@ public class ClientTest {
         Assert.assertEquals(Created, response.getStatus());
 
         Assert.assertEquals(client.getName(), clientTest.getName());
+        Assert.assertEquals(client.getFirstName(), clientTest.getFirstName());
+        Assert.assertEquals(client.getMiddleName(), clientTest.getMiddleName());
+        Assert.assertEquals(client.getLastName(), clientTest.getLastName());
+        Assert.assertEquals(client.getEmail(), clientTest.getEmail());
+        Assert.assertEquals(client.getPhoneNumber(), clientTest.getPhoneNumber());
+        Assert.assertEquals(client.getHomeAddress(), clientTest.getHomeAddress());
 
         ClientEntity entity = em.find(ClientEntity.class, clientTest.getId());
         Assert.assertNotNull(entity);
@@ -218,6 +225,12 @@ public class ClientTest {
         
         Assert.assertEquals(clientTest.getId(), oraculo.get(0).getId());
         Assert.assertEquals(clientTest.getName(), oraculo.get(0).getName());
+        Assert.assertEquals(clientTest.getFirstName(), oraculo.get(0).getFirstName());
+        Assert.assertEquals(clientTest.getMiddleName(), oraculo.get(0).getMiddleName());
+        Assert.assertEquals(clientTest.getLastName(), oraculo.get(0).getLastName());        
+        Assert.assertEquals(clientTest.getEmail(), oraculo.get(0).getEmail());
+        Assert.assertEquals(clientTest.getPhoneNumber(), oraculo.get(0).getPhoneNumber());
+        Assert.assertEquals(clientTest.getHomeAddress(), oraculo.get(0).getHomeAddress());
     }
 
     /**
@@ -251,6 +264,12 @@ public class ClientTest {
         ClientDTO clientChanged = factory.manufacturePojo(ClientDTO.class);
 
         client.setName(clientChanged.getName());
+        client.setFirstName(clientChanged.getFirstName());
+        client.setMiddleName(clientChanged.getMiddleName());
+        client.setLastName(clientChanged.getLastName());
+        client.setEmail(clientChanged.getEmail());
+        client.setPhoneNumber(clientChanged.getPhoneNumber());
+        client.setHomeAddress(clientChanged.getHomeAddress());
 
         Response response = target
             .path(client.getId().toString())
@@ -261,6 +280,12 @@ public class ClientTest {
 
         Assert.assertEquals(Ok, response.getStatus());
         Assert.assertEquals(client.getName(), clientTest.getName());
+        Assert.assertEquals(client.getFirstName(), clientTest.getFirstName());
+        Assert.assertEquals(client.getMiddleName(), clientTest.getMiddleName());
+        Assert.assertEquals(client.getLastName(), clientTest.getLastName());
+        Assert.assertEquals(client.getEmail(), clientTest.getEmail());
+        Assert.assertEquals(client.getPhoneNumber(), clientTest.getPhoneNumber());
+        Assert.assertEquals(client.getHomeAddress(), clientTest.getHomeAddress());
     }
 
     /**

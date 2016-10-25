@@ -36,6 +36,7 @@ public class ProductDTO implements Serializable{
     private Long id;
     private String name;
     private Long price;
+    private String payment;
 
     /**
      * Constructor de la clase DTO mínima
@@ -54,6 +55,7 @@ public class ProductDTO implements Serializable{
         this.id=entity.getId();
         this.name=entity.getName();
         this.price=entity.getPrice();
+        this.payment=entity.getPayment();
        }
     }
 
@@ -68,6 +70,7 @@ public class ProductDTO implements Serializable{
         entity.setId(this.getId());
         entity.setName(this.getName());
         entity.setPrice(this.getPrice());
+        entity.setPayment(this.getPayment());
     return entity;
     }
 
@@ -129,6 +132,27 @@ public class ProductDTO implements Serializable{
      */
     public void setPrice(Long price) {
         this.price = price;
+    }
+    
+    /**
+     * Obtiene el atributo payment.
+     *
+     * @return atributo payment.
+     * @generated
+     */
+    public String getPayment() {
+        return payment;
+    }
+    
+    /**
+     * Establece el valor del atributo payment.
+     *
+     * @param payment nuevo valor del atributo
+     * @generated
+     */
+
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
 }

@@ -58,6 +58,7 @@ public class ContentDTO implements Serializable{
      * Constructor de la clase DTO mínima
      */
     public ContentDTO() {
+        super();
     }
 
     /**

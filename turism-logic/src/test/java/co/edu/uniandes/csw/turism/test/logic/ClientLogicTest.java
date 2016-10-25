@@ -27,7 +27,6 @@ import co.edu.uniandes.csw.turism.ejbs.ClientLogic;
 import co.edu.uniandes.csw.turism.api.IClientLogic;
 import co.edu.uniandes.csw.turism.entities.ClientEntity;
 import co.edu.uniandes.csw.turism.persistence.ClientPersistence;
-import co.edu.uniandes.csw.turism.entities.ItemEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +58,7 @@ public class ClientLogicTest {
     /**
      * @generated
      */
-    private PodamFactory factory = new PodamFactoryImpl();
+    private final PodamFactory factory = new PodamFactoryImpl();
 
     /**
      * @generated
@@ -82,9 +81,10 @@ public class ClientLogicTest {
     /**
      * @generated
      */
-    private List<ClientEntity> data = new ArrayList<ClientEntity>();
+    private final List<ClientEntity> data = new ArrayList<ClientEntity>();
 
     /**
+     * @return 
      * @generated
      */
     @Deployment
@@ -156,6 +156,12 @@ public class ClientLogicTest {
         ClientEntity entity = em.find(ClientEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getFirstName(), entity.getFirstName());
+        Assert.assertEquals(newEntity.getMiddleName(), entity.getMiddleName());
+        Assert.assertEquals(newEntity.getLastName(), entity.getLastName());                
+        Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
+        Assert.assertEquals(newEntity.getHomeAddress(), entity.getHomeAddress());
+        Assert.assertEquals(newEntity.getPhoneNumber(), entity.getPhoneNumber());
     }
 
     /**
@@ -191,6 +197,13 @@ public class ClientLogicTest {
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getFirstName(), resultEntity.getFirstName());
+        Assert.assertEquals(entity.getMiddleName(), resultEntity.getMiddleName());
+        Assert.assertEquals(entity.getLastName(), resultEntity.getLastName());
+        Assert.assertEquals(entity.getEmail(), resultEntity.getEmail());
+        Assert.assertEquals(entity.getHomeAddress(), resultEntity.getHomeAddress());
+        Assert.assertEquals(entity.getPhoneNumber(), resultEntity.getPhoneNumber());
+        
     }
 
     /**
@@ -224,6 +237,14 @@ public class ClientLogicTest {
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(pojoEntity.getFirstName(), resp.getFirstName());
+        Assert.assertEquals(pojoEntity.getMiddleName(), resp.getMiddleName());
+        Assert.assertEquals(pojoEntity.getLastName(), resp.getLastName());        
+        Assert.assertEquals(pojoEntity.getEmail(), resp.getEmail());
+        Assert.assertEquals(pojoEntity.getHomeAddress(), resp.getHomeAddress());
+        Assert.assertEquals(pojoEntity.getPhoneNumber(), resp.getPhoneNumber());
+        
+        
     }
 }
 

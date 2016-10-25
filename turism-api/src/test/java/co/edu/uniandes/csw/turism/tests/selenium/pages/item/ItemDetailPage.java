@@ -43,6 +43,8 @@ public class ItemDetailPage {
     private WebElement name;
     @FindBy(id = "qty")
     private WebElement qty;
+    @FindBy(id = "itemState")
+    private WebElement itemState;
 
     public void list() {
         listBtn.click();
@@ -60,6 +62,7 @@ public class ItemDetailPage {
         ItemDTO item = new ItemDTO();        
         item.setName(name.getText());
         item.setQty(Long.parseLong(qty.getText()));
+        item.setItemState(itemState.getText());
         return item;
     }
 }
