@@ -123,6 +123,9 @@ SOFTWARE.
      */
     mod.run(['$rootScope', '$log', function ($rootScope, $log) {
             $rootScope.isLoginView = location.hash === "#/login";
+            $rootScope.changeIsLoginView = function(parameter){
+                $rootScope.isLoginView = parameter;
+            }
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
                 $log.warn(error);
             });

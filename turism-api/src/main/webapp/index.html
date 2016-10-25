@@ -181,17 +181,17 @@ SOFTWARE.
                         </a>
                     </div>
                     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" >
-                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" >Home</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" >Client</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
-                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item">SigIn</md-nav-item>
+                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Home</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Client</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item" ng-click="changeIsLoginView(false)">Agency</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item" ng-click="changeIsLoginView(false)">Product</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item" ng-click="changeIsLoginView(false)">Category</md-nav-item>
+                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item" ng-click="changeIsLoginView(true)">SigIn</md-nav-item>
 
                     </md-nav-bar>
                     <a ng-if="!visitor" class="main-header__item">
                         <span ng-controller="authController" class='logout-option'>
-                            <span ng-click="logout()" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
+                            <span ng-click="logout(); changeIsLoginView(true)" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
                         </span>
                     </a>
                 </div>
