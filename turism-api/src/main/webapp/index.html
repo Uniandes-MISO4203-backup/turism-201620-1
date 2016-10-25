@@ -197,7 +197,11 @@ SOFTWARE.
                 </div>
             </header>
 
+            <div ng-if="!isLoginView" ui-view="mainView" class='main-view-container'></div>
+            
+            <div id='turism-view-container' ng-if="isLoginView">
             <div ui-view="mainView" class='main-view-container'></div>
+            </div>
 
             <footer class="footer">
                 <div class="container">
