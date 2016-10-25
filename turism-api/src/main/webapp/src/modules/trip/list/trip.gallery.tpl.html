@@ -6,16 +6,16 @@
             
             <md-card class="trip-card">
                     <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
-                    <md-card-title class="trip-card__title">
-                        <md-card-title-text>
-                            <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
-                            <span>
+                            <span class="trip-card__rating">
                                 <i ng-if="trip.raitingAverage > 0" class="glyphicon glyphicon-star"></i>
                                 <i ng-if="trip.raitingAverage > 1" class="glyphicon glyphicon-star"></i>
                                 <i ng-if="trip.raitingAverage > 2" class="glyphicon glyphicon-star"></i>
                                 <i ng-if="trip.raitingAverage > 3" class="glyphicon glyphicon-star"></i>
                                 <i ng-if="trip.raitingAverage > 4" class="glyphicon glyphicon-star"></i>
                             </span>
+                    <md-card-title class="trip-card__title">
+                        <md-card-title-text>
+                            <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
                         </md-card-title-text>
                         <span class="sm-headline trip-card__price">{{trip.price| currency}}</span>
                     </md-card-title>

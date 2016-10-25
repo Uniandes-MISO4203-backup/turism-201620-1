@@ -78,3 +78,12 @@
     bottom: 0;
     right: 0;
 }
+.trip-card__rating {
+  position: absolute;
+  top: 9px;
+  right: 6px;
+}
+
+.trip-card__rating i {
+    color: #ffd740;
+}
