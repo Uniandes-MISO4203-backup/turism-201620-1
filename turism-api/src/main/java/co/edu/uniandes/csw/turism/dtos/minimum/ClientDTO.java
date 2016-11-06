@@ -46,6 +46,7 @@ public class ClientDTO implements Serializable{
      * Constructor de la clase DTO mínima
      */
     public ClientDTO() {
+        super();
     }
 
     /**

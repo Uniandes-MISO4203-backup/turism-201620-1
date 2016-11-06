@@ -44,6 +44,7 @@ public class RaitingDTO implements Serializable{
      * Constructor de la clase DTO mínima
      */    
     public RaitingDTO(){
+        super();        
     }
 
     public RaitingDTO(RaitingEntity purchaseRaitingEntity) {

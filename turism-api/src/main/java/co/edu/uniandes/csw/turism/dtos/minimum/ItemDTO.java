@@ -42,6 +42,7 @@ public class ItemDTO implements Serializable{
      * Constructor de la clase DTO mínima
      */
     public ItemDTO() {
+        super();
     }
 
     /**
