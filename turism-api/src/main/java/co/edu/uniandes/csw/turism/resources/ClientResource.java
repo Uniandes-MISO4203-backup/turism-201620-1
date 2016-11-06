@@ -152,8 +152,6 @@ public class ClientResource {
     public ClientDetailDTO updateClient(@PathParam("id") Long id, ClientDetailDTO dto) {
         ClientEntity entity = dto.toEntity();
         entity.setId(id);
-        ClientEntity oldEntity = clientLogic.getClient(id);
-        System.out.println(oldEntity.toString());
         return new ClientDetailDTO(clientLogic.updateClient(entity));
     }
 

@@ -43,6 +43,7 @@ public class FAQDTO implements Serializable {
      * Constructor de la clase DTO mínima
      */
     public FAQDTO() {
+        super();    
     }
 
     /**

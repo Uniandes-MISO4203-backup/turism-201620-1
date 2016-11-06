@@ -23,7 +23,6 @@ SOFTWARE.
  */
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
-import co.edu.uniandes.csw.turism.ejbs.RaitingLogic;
 import co.edu.uniandes.csw.turism.entities.RaitingEntity;
 import co.edu.uniandes.csw.turism.entities.TripEntity;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -58,6 +57,7 @@ public class TripDTO implements Serializable {
      * Constructor de la clase DTO mínima
      */
     public TripDTO() {
+        super();
     }
 
     /**
@@ -94,18 +94,17 @@ public class TripDTO implements Serializable {
         List<RaitingEntity> raitings = entity.getRaitings();
         Float sumaRaitings = 0.0F;
 
-        if (raitings.size() > 0) {
+        if (raitings.isEmpty()) {
             for (RaitingEntity raiting : raitings) {
                 sumaRaitings += raiting.getValue();
             }
 
             Float average = sumaRaitings / raitings.size();
 
-            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, ("SUMA RAITING = " + sumaRaitings));
-            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, ("AVERAGE RAITING = " + average));
+            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, "SUMA RAITING = " + sumaRaitings);
+            Logger.getLogger(TripDTO.class.getName()).log(Level.INFO, "AVERAGE RAITING = " + average);
 
-            Integer averageRaiting = Math.round(average);
-            return averageRaiting;
+            return Math.round(average);
 
         } else {
             return 0;

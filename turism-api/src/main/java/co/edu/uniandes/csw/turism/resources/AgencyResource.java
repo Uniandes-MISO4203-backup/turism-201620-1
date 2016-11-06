@@ -156,7 +156,6 @@ public class AgencyResource {
     public AgencyDetailDTO updateAgency(@PathParam("id") Long id, AgencyDetailDTO dto) {
         AgencyEntity entity = dto.toEntity();
         entity.setId(id);
-        AgencyEntity oldEntity = agencyLogic.getAgency(id);
         return new AgencyDetailDTO(agencyLogic.updateAgency(entity));
     }
 
