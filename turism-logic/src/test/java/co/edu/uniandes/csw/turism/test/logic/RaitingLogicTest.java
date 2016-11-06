@@ -166,6 +166,7 @@ public class RaitingLogicTest {
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getValue(), resultEntity.getValue());
         Assert.assertEquals(entity.getDate(), resultEntity.getDate());
+        Assert.assertEquals(entity.getTextComment(), resultEntity.getTextComment());
     }
 
     /**
@@ -200,6 +201,7 @@ public class RaitingLogicTest {
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getValue(), resp.getValue());
         Assert.assertEquals(pojoEntity.getDate(), resp.getDate());
+        Assert.assertEquals(pojoEntity.getTextComment(), resp.getTextComment());
     }
 
 
