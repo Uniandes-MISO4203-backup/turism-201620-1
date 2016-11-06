@@ -213,6 +213,7 @@ public class RaitingTest {
         Assert.assertEquals(raiting.getName(), raitingTest.getName());
         Assert.assertEquals(raiting.getValue(), raitingTest.getValue());
         Assert.assertEquals(raiting.getDate(), raitingTest.getDate());
+        Assert.assertEquals(raiting.getTextComment(), raitingTest.getTextComment());
 
         RaitingEntity entity = em.find(RaitingEntity.class, raitingTest.getId());
         Assert.assertNotNull(entity);
@@ -235,6 +236,7 @@ public class RaitingTest {
         Assert.assertEquals(raitingTest.getName(), oraculo.get(0).getName());
         Assert.assertEquals(raitingTest.getValue(), oraculo.get(0).getValue());
         Assert.assertEquals(raitingTest.getDate(), oraculo.get(0).getDate());
+        Assert.assertEquals(raitingTest.getTextComment(), oraculo.get(0).getTextComment());
     }
 
     /**
@@ -284,6 +286,7 @@ public class RaitingTest {
         Assert.assertEquals(raiting.getName(), raitingTest.getName());
         Assert.assertEquals(raiting.getValue(), raitingTest.getValue());
         Assert.assertEquals(raiting.getDate(), raitingTest.getDate());
+        Assert.assertEquals(raiting.getTextComment(), raitingTest.getTextComment());
     }
 
     /**

@@ -39,6 +39,7 @@ public class RaitingDTO implements Serializable{
     private String name;
     private Integer value;
     private Date date;
+    private String textComment;
     
     /**
      * Constructor de la clase DTO mínima
@@ -54,6 +55,7 @@ public class RaitingDTO implements Serializable{
             this.name = purchaseRaitingEntity.getName();
             this.value = purchaseRaitingEntity.getValue();
             this.date = purchaseRaitingEntity.getDate();
+            this.textComment = purchaseRaitingEntity.getTextComment();
         }
     }
     
@@ -65,6 +67,7 @@ public class RaitingDTO implements Serializable{
         purchaseRaitingEntity.setName(this.getName());
         purchaseRaitingEntity.setValue(this.getValue());
         purchaseRaitingEntity.setDate(this.getDate());
+        purchaseRaitingEntity.setTextComment(this.getTextComment());
         
         return purchaseRaitingEntity;
     }
@@ -100,7 +103,14 @@ public class RaitingDTO implements Serializable{
     public void setDate(Date date) {
         this.date = date;
     }
-    
+
+    public String getTextComment() {
+        return textComment;
+    }
+
+    public void setTextComment(String textComment) {
+        this.textComment = textComment;
+    }
     
       
 }

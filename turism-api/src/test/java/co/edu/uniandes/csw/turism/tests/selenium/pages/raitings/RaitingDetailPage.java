@@ -51,6 +51,8 @@ public class RaitingDetailPage {
     private WebElement value;
     @FindBy(id = "date")
     private WebElement date;
+    @FindBy(id = "textComment")
+    private WebElement textComment;
 
     public void list() {
         listBtn.click();
@@ -72,6 +74,7 @@ public class RaitingDetailPage {
         } catch (ParseException ex) {
             Logger.getLogger(RaitingDetailPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        raiting.setTextComment(textComment.getText());
         return raiting;
     }
 }
