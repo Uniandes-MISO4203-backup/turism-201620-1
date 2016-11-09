@@ -1,10 +1,9 @@
 (function (ng) {
     var mod = ng.module('roleModule', ['ngCrud']);
     mod.controller('roleCtrl', ['$rootScope', 'Restangular','$state', function ($rootScope, Restangular) {
-        $rootScope.isLoginView = location.hash === "#/login";
-        $rootScope.auth = function () {
+        $rootScope.auth = function () { 
                 Restangular.all("users").customGET('me').then(function (response) {
-                    $rootScope.isLoginView = location.hash === "#/login";
+                    $rootScope.isLoginView = location.hash === "#/login" || location.hash === "#/register";
                     if (response == null) {
                         $rootScope.category = false;
                         $rootScope.agency = false;

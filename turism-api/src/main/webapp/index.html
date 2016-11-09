@@ -36,7 +36,10 @@ SOFTWARE.
         <!-- endbower -->
 
         <link rel="stylesheet" href="src/app.css" />
+        <link rel="stylesheet" href="src/login.css" />
+        <link rel="stylesheet" href="src/register.css" />
         <link rel="stylesheet" href="src/modules/home/home.css" />
+        <link rel="stylesheet" href="src/modules/agency/list/agency.list.css" />
         <link rel="stylesheet" href="src/modules/trip/list/trip.gallery.css" />
         <link rel="stylesheet" href="src/modules/trip/instance/detail/trip.detail.css" />
 
@@ -174,13 +177,13 @@ SOFTWARE.
     </head>
     <body>
         <div class="wrapper">
-            <header class="main-header">
+            <header class="main-header" ng-class="{'main-header--dark': isLoginView}">
                 <div class="container" ng-controller="roleCtrl">
                     <div class="brand-logo">
                         <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
                         </a>
                     </div>
-                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" >
+                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" md-button--dark >
                         <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Home</md-nav-item>
                         <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Client</md-nav-item>
                         <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item" ng-click="changeIsLoginView(false)">Agency</md-nav-item>
@@ -199,8 +202,8 @@ SOFTWARE.
 
             <div ng-if="!isLoginView" ui-view="mainView" class='main-view-container'></div>
             
-            <div id='turism-view-container' ng-if="isLoginView">
-            <div ui-view="mainView" class='main-view-container'></div>
+            <div id='turism-view-auth' ng-if="isLoginView">
+                <div ui-view="mainView" class='main-view-container'></div>
             </div>
 
             <footer class="footer">
@@ -209,9 +212,9 @@ SOFTWARE.
                         <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                             <div class="brand-logo footer__logo">
                                 <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
-                                </a>}
-                                <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
+                                </a>    
                             </div>
+                            <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                             <div class="footer__copyright">
                                 © 2016. All rights reserved. Powered by Diegosoft & Asociadas
                             </div>

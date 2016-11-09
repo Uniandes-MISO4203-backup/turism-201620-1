@@ -36,6 +36,18 @@
   color: #fff;
 }
 
+.main-header .md-button._md-nav-button.md-unselected:hover {
+ color: #ffd740;   
+}
+
+.main-header.main-header--dark .md-button._md-nav-button {
+    color: #a44d28;
+}
+
+.main-header .md-button._md-nav-button.md-unselected.md-button--dark {
+    color: #b13e24;
+}
+
 .main-header__item .md-button  {
   text-transform: uppercase;
   font-size: 15px;
@@ -60,6 +72,7 @@
     text-shadow: #000 2px 2px 9px;
     font-weight: 300;
     letter-spacing: -3px;
+    margin: auto;
 }
 
 .brand-logo__link:hover, .brand-logo__link:active, .brand-logo__link:focus {
@@ -90,7 +103,6 @@
     zoom: 46%;
     text-align: center;
     width: 100%;
-    margin-left: 293px;
 }
 
 .footer__copyright{
@@ -121,7 +133,6 @@
 
 #turism-view-container {
     padding-top: 202px;
-    background: url("./../assets/img/hero-views-beach.jpg");
 }
 
 #turism-view-container .navbar-default{
@@ -225,3 +236,6 @@ background:rgba(255, 215, 64, 0.64);
     background-color: white;
 }
 /* End Scroll */
+
+
+

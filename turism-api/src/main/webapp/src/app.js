@@ -122,7 +122,7 @@ SOFTWARE.
      * This configuration allows to print said errors
      */
     mod.run(['$rootScope', '$log', function ($rootScope, $log) {
-            $rootScope.isLoginView = location.hash === "#/login";
+            $rootScope.isLoginView = location.hash === "#/login" || location.hash === "#/register";
             $rootScope.changeIsLoginView = function(parameter){
                 $rootScope.isLoginView = parameter;
             }

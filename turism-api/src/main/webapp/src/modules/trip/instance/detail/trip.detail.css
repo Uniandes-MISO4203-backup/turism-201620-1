@@ -71,6 +71,7 @@
     position: relative;
     top: -193px;
     height: 509px;
+    padding: 50px 100px;
 }
 
 
@@ -91,4 +92,9 @@
 
 .trip-info__title{
     font-weight: bold;
+}
+
+.trip-info__rating {
+    float: right;
+    color: #e4bb43;
 }

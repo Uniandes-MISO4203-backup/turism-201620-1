@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06-nov-2016, 16:28:31
+    Author     : lm.ariza10
+*/
+
+
+#turism-view-auth {
+    display: block;
+    position: relative;
+    padding-top: 300px; 
+    background: url("./../assets/img/bg-login.jpg");    
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#turism-view-auth .main-view-container.ng-scope {
+    display: block;
+    position: relative;
+    height: 660px; 
+}
+
+
+#turism-view-auth .main-view-container.ng-scope input[type=text] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid rgb(179, 63, 37);
+}
+
+#turism-view-auth .main-view-container.ng-scope input[type=password] {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid rgb(179, 63, 37);
+}
+
+#turism-view-auth .main-view-container.ng-scope input#email-input {
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin: auto;
+    text-align: center;
+    border: 1px solid rgb(179, 63, 37);
+}
+
+#turism-view-auth .main-view-container.ng-scope .btn {
+    width: 260px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a18d6c;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+    text-align: center;
+    background: rgba(167, 44, 32, 0.63);
+    color: white;
+    border: none;
+    margin: 1em auto;
+}
+
+#turism-view-auth .main-view-container.ng-scope .btn:hover {
+    background: rgba(111, 28, 20, 0.76);
+}
+
+#turism-view-auth .main-view-container.ng-scope input::-webkit-input-placeholder {
+   color: #96281c;
+}
+
+#turism-view-auth .main-view-container.ng-scope input:-moz-placeholder { /* Firefox 18- */
+   color: #96281c;  
+}
+
+#turism-view-auth .main-view-container.ng-scope input::-moz-placeholder {  /* Firefox 19+ */
+   color: #96281c;  
+}
+
+
+#turism-view-auth .main-view-container.ng-scope .panel-heading {
+    display: none;
+}
+
+#turism-view-auth .main-view-container.ng-scope .panel.panel-default {
+    border: none;
+    background-color: rgba(226, 195, 92, 0.75);
+}
+
+#turism-view-auth .main-view-container.ng-scope .text-right {
+    display: none;
+}
+
+#turism-view-auth .main-view-container.ng-scope .checkbox {
+    display: none;
+}
+
+
+#turism-view-auth .main-view-container.ng-scope .form-group.col-xs-6 {
+    width: 100%;
+}
+
+#turism-view-auth .main-view-container.ng-scope .panel-body {
+    text-align: center;
+        color: rgb(47, 7, 44);
+    font-size: 18px;
+    font-weight: 100;
+}
+
+#turism-view-auth .main-view-container.ng-scope .form-group {
+    margin: 0.5em 0;
+}
+
+#turism-view-auth .main-view-container.ng-scope .form-group .col-xs-6 {
+    width: 30%;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+#turism-view-auth .main-view-container.ng-scope .form-group .col-xs-6 strong.ng-binding {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
+#turism-view-auth .main-view-container.ng-scope .form-group label{
+    font-size: 18px;
+    font-weight: 100;
+}
