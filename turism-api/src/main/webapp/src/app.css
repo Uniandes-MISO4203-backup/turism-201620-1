@@ -130,11 +130,6 @@
     top: 10px;
 }
 
-
-#turism-view-container {
-    padding-top: 202px;
-}
-
 #turism-view-container .navbar-default{
     background: transparent !important;
     border: none;
@@ -237,5 +232,16 @@ background:rgba(255, 215, 64, 0.64);
 }
 /* End Scroll */
 
+.turism-loading-page {
+    background: url("./../assets/img/loading-page.gif");
+    width: 100%;
+    height: 100%;
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-
+.tourism-tooltip .md-content {
+    background-color: rgba(253, 238, 107, 0.75);
+    color: black;
+}

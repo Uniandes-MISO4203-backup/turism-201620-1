@@ -1,89 +1,89 @@
-<section class="home-hero">
-  <div class="container home-hero__container">
-    <div class="search-form">
-      <header class="search-form__heading">
-        <h3 class="search-form__title" >Where are you going now?</h3>
-      </header>
-      <div class="search-form__content">
-        <md-content layout-padding class="search-form__fields">
-          <form name="userForm">
-            <md-input-container class="md-block">
-              <label>Destination</label>
-              <input ng-model="user.address">
-            </md-input-container>
+    <section class="home-hero">
+     <div class="container home-hero__container">
+       <div class="search-form">
+         <header class="search-form__heading">
+           <h3 class="search-form__title" >Where are you going now?</h3>
+         </header>
+         <div class="search-form__content">
+           <md-content layout-padding class="search-form__fields">
+             <form name="userForm">
+               <md-input-container class="md-block">
+                 <label>Destination</label>
+                 <input ng-model="user.address">
+               </md-input-container>
 
-            <div layout-gt-xs="row">
+               <div layout-gt-xs="row">
 
-              <md-input-container>
-                <label>Start date</label>
-                <md-datepicker ng-model="user.startDate"></md-datepicker>
-              </md-input-container>
+                 <md-input-container>
+                   <label>Start date</label>
+                   <md-datepicker ng-model="user.startDate"></md-datepicker>
+                 </md-input-container>
 
-              <md-input-container>
-                <label>End date</label>
-                <md-datepicker ng-model="user.endDAte"></md-datepicker>
-              </md-input-container>
+                 <md-input-container>
+                   <label>End date</label>
+                   <md-datepicker ng-model="user.endDAte"></md-datepicker>
+                 </md-input-container>
 
-            </div>
-            <md-input-container class="md-icon-float md-icon-right md-block">
-              <label>Category</label>
-              <md-select ng-if="showCategorys" ng-model="filters.selectedCategory" placeholder="Category" class="">
-                <md-option ng-value="-1">All categories</md-option>
-                <md-option ng-repeat="category in categorys" ng-value="category.id">{{category.name}}</md-option>
-              </md-select>
-            </md-input-container>
-            <md-button class="search-form__cta md-raised md-accent" ng-click="filter()">Find it!</md-button>
+               </div>
+               <md-input-container class="md-icon-float md-icon-right md-block">
+                 <label>Category</label>
+                 <md-select ng-if="showCategorys" ng-model="filters.selectedCategory" placeholder="Category" class="">
+                   <md-option ng-value="-1">All categories</md-option>
+                   <md-option ng-repeat="category in categorys" ng-value="category.id">{{category.name}}</md-option>
+                 </md-select>
+               </md-input-container>
+               <md-button class="search-form__cta md-raised md-accent" ng-click="filter()">Find it!</md-button>
 
-          </form>
-        </md-content>
+             </form>
+           </md-content>
 
-      </div>
-    </div>
+         </div>
+       </div>
 
-    <div class="hero-message">
-      <h1>LET’S DISCOVER THE<br>WORLD TOGETHER</h1>
-      <p>It's not just another travel booking website such as booking.com, tripadvisor, yahoo travel, expedia, priceline, hotels.com, travelocity, kayak, orbitz, etc. This guys can’t be wrong. You should definitely give it a shot :)</p>
-      <md-button class="hero-message__cta md-raised md-accent">Read more</md-button>
-  </div>
-  </div>
-</section>
-<div class="ligth-section">
-    <h3>TOP POPULAR DESTINATIONS</h3>
-</div>
-<div ui-view="tripGalleryView"></div>
+       <div class="hero-message">
+         <h1>LET’S DISCOVER THE<br>WORLD TOGETHER</h1>
+         <p>It's not just another travel booking website such as booking.com, tripadvisor, yahoo travel, expedia, priceline, hotels.com, travelocity, kayak, orbitz, etc. This guys can’t be wrong. You should definitely give it a shot :)</p>
+         <md-button class="hero-message__cta md-raised md-accent">Read more</md-button>
+     </div>
+     </div>
+   </section>
+   <div class="ligth-section">
+       <h3>TOP POPULAR DESTINATIONS</h3>
+   </div>
+   <div ui-view="tripGalleryView"></div>
 
-<div class="container">
-            <div class="row row-wrap" data-gutter="60">
-                <div class="col-md-4">
-                    <div class="thumb">
-                        <header class="thumb-header"><i class="fa fa-dollar box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
-                        </header>
-                        <div class="thumb-caption">
-                            <h5 class="thumb-title"><a class="text-darken" href="#">Best Price Guarantee</a></h5>
-                            <p class="thumb-desc">Eu lectus non vivamus ornare lacinia elementum faucibus natoque parturient ullamcorper placerat</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumb">
-                        <header class="thumb-header"><i class="fa fa-lock box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
-                        </header>
-                        <div class="thumb-caption">
-                            <h5 class="thumb-title"><a class="text-darken" href="#">Trust &amp; Safety</a></h5>
-                            <p class="thumb-desc">Imperdiet nisi potenti fermentum vehicula eleifend elementum varius netus adipiscing neque quisque</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="thumb">
-                        <header class="thumb-header"><i class="fa fa-thumbs-o-up box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
-                        </header>
-                        <div class="thumb-caption">
-                            <h5 class="thumb-title"><a class="text-darken" href="#">Best Travel Agent</a></h5>
-                            <p class="thumb-desc">Curae urna fusce massa a lacus nisl id velit magnis venenatis consequat</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gap gap-small"></div>
-        </div>
+   <div class="container">
+               <div class="row row-wrap" data-gutter="60">
+                   <div class="col-md-4">
+                       <div class="thumb">
+                           <header class="thumb-header"><i class="fa fa-dollar box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                           </header>
+                           <div class="thumb-caption">
+                               <h5 class="thumb-title"><a class="text-darken" href="#">Best Price Guarantee</a></h5>
+                               <p class="thumb-desc">Eu lectus non vivamus ornare lacinia elementum faucibus natoque parturient ullamcorper placerat</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-md-4">
+                       <div class="thumb">
+                           <header class="thumb-header"><i class="fa fa-lock box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                           </header>
+                           <div class="thumb-caption">
+                               <h5 class="thumb-title"><a class="text-darken" href="#">Trust &amp; Safety</a></h5>
+                               <p class="thumb-desc">Imperdiet nisi potenti fermentum vehicula eleifend elementum varius netus adipiscing neque quisque</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-md-4">
+                       <div class="thumb">
+                           <header class="thumb-header"><i class="fa fa-thumbs-o-up box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                           </header>
+                           <div class="thumb-caption">
+                               <h5 class="thumb-title"><a class="text-darken" href="#">Best Travel Agent</a></h5>
+                               <p class="thumb-desc">Curae urna fusce massa a lacus nisl id velit magnis venenatis consequat</p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="gap gap-small"></div>
+           </div>

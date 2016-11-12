@@ -29,8 +29,10 @@ SOFTWARE.
     </div>
 </div>
 <div class="trip-content" layout="row">
-    <img class="trip-content__image" flex ng-src="{{currentRecord.image}}"/>
-    <div class="trip-content__detail" flex>
+    <div flex="70" class="trip-content__image">
+        <img ng-src="{{currentRecord.image}}"/>
+    </div>
+    <div class="trip-content__detail" flex="30">
         <div class="trip-info">
             <h4>Trip Info  <span class="trip-info__rating">
                     <i ng-if="currentRecord.raitingAverage > 0" class="glyphicon glyphicon-star"></i>
@@ -40,7 +42,7 @@ SOFTWARE.
                     <i ng-if="currentRecord.raitingAverage > 4" class="glyphicon glyphicon-star"></i>
                 </span></h4>
             <md-divider></md-divider>
-            <div class="info-content">
+            <div class="trip-info__content">
                 <p>
                     <label><strong>Date: </strong></label><span id="price"> {{currentRecord.date}}</span>
                 </p>

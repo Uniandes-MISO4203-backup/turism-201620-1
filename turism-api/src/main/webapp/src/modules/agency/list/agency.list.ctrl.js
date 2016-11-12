@@ -85,7 +85,7 @@ SOFTWARE.
                         $state.go('agencyDelete', {agencyId: rc.id});
                     },
                     show: function () {
-                        return (roles.indexOf("admin") !== -1);
+                        return true;
                     }
                 }
             };

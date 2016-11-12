@@ -22,7 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<html ng-app="mainApp">
+<html >
     <head>
         <title>Turism</title>
         <meta charset="utf-8">
@@ -175,8 +175,9 @@ SOFTWARE.
         <!-- endbuild -->
 
     </head>
-    <body>
-        <div class="wrapper">
+    <body ng-app="mainApp">
+        <div class="turism-loading-page" ng-if="loadingPage || loadingPage===undefined"></div>
+        <div class="wrapper" ng-if="!loadingPage">
             <header class="main-header" ng-class="{'main-header--dark': isLoginView}">
                 <div class="container" ng-controller="roleCtrl">
                     <div class="brand-logo">
@@ -184,23 +185,23 @@ SOFTWARE.
                         </a>
                     </div>
                     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" md-button--dark >
-                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Home</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Client</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item" ng-click="changeIsLoginView(false)">Agency</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item" ng-click="changeIsLoginView(false)">Product</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item" ng-click="changeIsLoginView(false)">Category</md-nav-item>
-                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item" ng-click="changeIsLoginView(true)">SigIn</md-nav-item>
+                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item">Home</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item">Client</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item">SigIn</md-nav-item>
 
                     </md-nav-bar>
                     <a ng-if="!visitor" class="main-header__item">
                         <span ng-controller="authController" class='logout-option'>
-                            <span ng-click="logout(); changeIsLoginView(true)" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
+                            <span ng-click="logout();" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
                         </span>
                     </a>
                 </div>
             </header>
 
-            <div ng-if="!isLoginView" ui-view="mainView" class='main-view-container'></div>
+            <div ng-if="!isLoginView" ui-view="mainView"></div>
             
             <div id='turism-view-auth' ng-if="isLoginView">
                 <div ui-view="mainView" class='main-view-container'></div>
