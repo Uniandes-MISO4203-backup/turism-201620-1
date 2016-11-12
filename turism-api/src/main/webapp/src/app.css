@@ -245,3 +245,7 @@ background:rgba(255, 215, 64, 0.64);
     background-color: rgba(253, 238, 107, 0.75);
     color: black;
 }
+
+.tourism-tooltip {
+    box-shadow: 2px 2px 3px 0 rgb(25, 22, 21);
+}

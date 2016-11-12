@@ -45,9 +45,6 @@ SOFTWARE.
                     icon: 'plus',
                     fn: function () {
                         $state.go('agencyNew');
-                    },
-                    show: function () {
-                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {

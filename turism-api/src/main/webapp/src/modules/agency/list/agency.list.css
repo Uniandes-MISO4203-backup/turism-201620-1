@@ -15,7 +15,8 @@
 .turism-list-view__title {
     text-transform: uppercase;
     font-weight: 500;
-    color: #FFF;
+    color: #21201e;
+    text-shadow: 3px 3px 6px #190103;
     text-align: center;
 }
 
@@ -63,10 +64,24 @@
 
 .turism-list-view__toolbar {
     position: absolute;
-    top: 0;
-    right: 27px;
+    top: 8em;
+    right: 0px;
     display: block;
-    height: 100px;
-    width: 100px;
-    background: red;
+    height: auto;
+    width: 40px;
+    background: rgba(0, 0, 0, 0.81);
+    padding: 1em 0.5em;
+}
+
+.turism-list-view__toolbar__item {
+    padding: 8px 0px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px 0 rgb(53, 29, 10);
+    opacity: 0.9;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+    max-width: 33px;
+    max-height: 33px;
 }
