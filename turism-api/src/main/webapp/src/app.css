@@ -16,7 +16,8 @@
 .main-header {
   box-shadow: none;
   display: flex;
-  position: absolute;
+  position: relative;
+  background: black;
   left: 0;
   z-index: 1000;
   width: 100%;

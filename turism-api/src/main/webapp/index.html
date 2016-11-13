@@ -186,10 +186,10 @@ SOFTWARE.
                     </div>
                     <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" md-button--dark >
                         <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item">Home</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item">Client</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="clientList" name="" class="main-header__item">Client</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="categoryList" class="main-header__item">Category</md-nav-item>
                         <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item">SigIn</md-nav-item>
 
                     </md-nav-bar>
