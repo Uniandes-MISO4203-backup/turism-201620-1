@@ -2,11 +2,11 @@
  * Layout
  */
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 1170px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1170px;
 }
 
 
@@ -14,31 +14,38 @@
  * Header
  */
 .main-header {
-  box-shadow: none;
-  display: flex;
-  position: absolute;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, .3) !important;
+    box-shadow: none;
+    display: flex;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, .3) !important;
+    background: #000;
 }
 
+
+.main-header--homeTripGallery {
+    background: transparent;
+    position: absolute;
+}
+
+
 .main-header .md-nav-bar {
-  float: right;
-  height: 100px;
+    float: right;
+    height: 100px;
 }
 
 .md-nav-bar md-nav-ink-bar {
-  height: 3px;
+    height: 3px;
 }
 
 .main-header .md-button._md-nav-button.md-unselected {
-  color: #fff;
-  font-weight: bold;  
+    color: #fff;
+    font-weight: bold;  
 }
 
 .main-header .md-button._md-nav-button.md-unselected:hover {
- color: #ffd740;   
+    color: #ffd740;   
 }
 
 .main-header.main-header--dark .md-button._md-nav-button {
@@ -47,12 +54,13 @@
 
 .main-header .md-button._md-nav-button.md-unselected.md-button--dark {
     color: #b13e24;
+    background: transparent;
 }
 
 .main-header__item .md-button  {
-  text-transform: uppercase;
-  font-size: 15px;
-  padding: 40px 15px;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 40px 15px;
 }
 
 
@@ -60,11 +68,11 @@
  * logo
 */
 .brand-logo {
-  float: left;
-  width: 30%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+    float: left;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .brand-logo__link {
@@ -77,8 +85,8 @@
 }
 
 .brand-logo__link:hover, .brand-logo__link:active, .brand-logo__link:focus {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .brand-logo__link--secondary {
@@ -186,24 +194,24 @@ tr, td, th {
 
 /* Custom ScrollBar */
 ::-webkit-scrollbar {
-width: 5px;
-height:5px;
+    width: 5px;
+    height:5px;
 }
 ::-webkit-scrollbar-button {
-width: 25px;
-height:5px;
+    width: 25px;
+    height:5px;
 }
 
 ::-webkit-scrollbar-track {
-background:rgba(31, 28, 21, 0.64);
-border-radius:10px;
+    background:rgba(31, 28, 21, 0.64);
+    border-radius:10px;
 }
 ::-webkit-scrollbar-thumb {
-background:rgba(255, 215, 64, 0.64);
-border-radius:10px;
+    background:rgba(255, 215, 64, 0.64);
+    border-radius:10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-background:rgba(255, 215, 64, 0.64);
+    background:rgba(255, 215, 64, 0.64);
 }
 
 #footer {
@@ -242,15 +250,6 @@ background:rgba(255, 215, 64, 0.64);
     background-position: center;
 }
 
-.tourism-tooltip .md-content {
-    background-color: rgba(253, 238, 107, 0.75);
-    color: black;
-}
-
-.tourism-tooltip {
-    box-shadow: 2px 2px 3px 0 rgb(25, 22, 21);
-}
-
 .turism-view-container {
-    
+    background: #FFF;
 }

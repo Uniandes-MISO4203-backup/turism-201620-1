@@ -180,7 +180,7 @@ SOFTWARE.
     <body ng-app="mainApp">
         <div class="turism-loading-page" ng-if="loadingPage || loadingPage===undefined"></div>
         <div class="wrapper" ng-if="!loadingPage">
-            <header class="main-header" ng-class="{'main-header--dark': isLoginView}">
+            <header class="main-header main-header--{{currentPage}}">
                 <div class="container" ng-controller="roleCtrl">
                     <div class="brand-logo">
                         <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
