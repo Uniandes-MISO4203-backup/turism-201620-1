@@ -21,35 +21,45 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>First Name: </strong></label><span id="fistName"> {{currentRecord.firstName}}</span>
-        </p>
-        <p>
-        <label><strong>Middle Name: </strong></label><span id="middleName"> {{currentRecord.middleName}}</span>
-        </p>
-        <p>
-        <label><strong>Last Name: </strong></label><span id="lastName"> {{currentRecord.lastName}}</span>
-        </p>
-        <p>
-        <label><strong>Email: </strong></label><span id="email"> {{currentRecord.email}}</span>
-        </p>
-        <p>
-        <label><strong>Phone Number: </strong></label><span id="phoneNumber"> {{currentRecord.phoneNumber}}</span>
-        </p>
-        <p>
-        <label><strong>Home Address: </strong></label><span id="homeAddress"> {{currentRecord.homeAddress}}</span>
-        </p>        
-    </div>
+<div class="turism-client-list-view"> 
+    
+    <h2 class="turism-client-list-view__title">Client Detail</h2>
+    <div class="turism-list-view__scroll">  
+        <md-content class="turism-client-list-md-content" layout-xs="column" layout="row">
+          <div flex-xs flex-gt-xs="100" layout="column" class="turism-client-list-md-content">    
+            <md-card class="turism-client-list-md-content">
+              <md-card-title class="turism-client-md-content">
+                <md-card-title-text class="turism-client-md-content" >
+                  <span class="md-headline">Perfil de Usuario</span>
+                  <span class="md-subhead"><b>NickName:</b> {{currentRecord.name}}</span>
+                  <span class="md-subhead"><b>First Name:</b> {{currentRecord.firstName}}</span>
+                  <span class="md-subhead"><b>Middle Name:</b> {{currentRecord.middleName}}</span>
+                  <span class="md-subhead"><b>last Name:</b> {{currentRecord.lastName}}</span>
+                  <span class="md-subhead"><b>Phone Number:</b> {{currentRecord.phoneNumber}}</span>
+                  <span class="md-subhead"><b>Home Address:</b> {{currentRecord.homeAddress}}</span>
+                  <span class="md-subhead"><b>E-mail:</b> {{currentRecord.email}}</span>
+                </md-card-title-text>
+                <md-card-title-media>
+                   <img src="https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/user-128.png" height="20px"/> 
+                  <div class="md-media-lg card-media" ></div>
+                </md-card-title-media>
+              </md-card-title>
+              <md-card-actions layout="row" layout-align="end center">
+              </md-card-actions>
+            </md-card>
+            </div>
+        </md-content> 
+</div>
+    
+    <div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
+    </div>    
+    
 </div>
 <div ui-view="clientChieldView"></div>
-<!-- TODO -->
-</div>

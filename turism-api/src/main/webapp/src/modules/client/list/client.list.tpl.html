@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div class="turism-list-view"> 
+<div class="turism-client-list-view"> 
     <h2 class="turism-list-view__title">Client List</h2>
     <div class="turism-list-view__scroll">        
          <md-grid-list
@@ -38,8 +38,10 @@ SOFTWARE.
                          <span class="glyphicon glyphicon-{{recordAction.icon}}" aria-hidden="true"></span>
                      </div>
                  </div>
+
                  <md-grid-tile-footer class="turism-list-view__options__item__footer">
-                     <h3>{{record.firstName}} {{record.lastName}}</h3>
+                    <img src="https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/user-64.png" height="20px"/>                      
+                    <h3>{{record.firstName}} {{record.lastName}}</h3>
                  </md-grid-tile-footer>
              </md-grid-tile>
          </md-grid-list>

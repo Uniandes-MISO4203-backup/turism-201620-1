@@ -34,6 +34,7 @@
 
 .main-header .md-button._md-nav-button.md-unselected {
   color: #fff;
+  font-weight: bold;  
 }
 
 .main-header .md-button._md-nav-button.md-unselected:hover {

@@ -45,9 +45,6 @@ SOFTWARE.
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
-                    },
-                    show: function () {
-                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {
@@ -85,7 +82,7 @@ SOFTWARE.
                         $state.go('clientDelete', {clientId: rc.id});
                     },
                     show: function () {
-                        return (roles.indexOf("admin") !== -1);
+                        return true;
                     }
                 }
             };
