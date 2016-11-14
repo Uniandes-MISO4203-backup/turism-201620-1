@@ -37,7 +37,7 @@ and open the template in the editor.
     font-weight: 400;
     padding: 4px;
     margin: auto;
-    text-align: center;
+    text-align: left;
     border: 1px solid rgb(179, 63, 37);
 }
 
@@ -54,7 +54,7 @@ and open the template in the editor.
     padding: 4px;
     margin-top: 10px;
     margin: auto;
-    text-align: center;
+    text-align: left;
     border: 1px solid rgb(179, 63, 37);
 }
 
@@ -70,7 +70,7 @@ and open the template in the editor.
     font-weight: 400;
     padding: 4px;
     margin: auto;
-    text-align: center;
+    text-align: left;
     border: 1px solid rgb(179, 63, 37);
 }
 
@@ -86,14 +86,18 @@ and open the template in the editor.
     padding: 6px;
     margin-top: 10px;
     text-align: center;
-    background: rgba(167, 44, 32, 0.63);
+    background: rgb(88, 30, 18);
     color: white;
     border: none;
     margin: 1em auto;
 }
 
+#turism-view-auth .main-view-container.ng-scope .btn.btn-default {
+    background: rgb(140, 50, 31);
+}
+
 #turism-view-auth .main-view-container.ng-scope .btn:hover {
-    background: rgba(111, 28, 20, 0.76);
+    background: rgba(88, 30, 18, 0.88);
 }
 
 #turism-view-auth .main-view-container.ng-scope input::-webkit-input-placeholder {
@@ -115,7 +119,7 @@ and open the template in the editor.
 
 #turism-view-auth .main-view-container.ng-scope .panel.panel-default {
     border: none;
-    background-color: rgba(226, 195, 92, 0.75);
+    background-color: rgba(255,255,255,0.8);
 }
 
 #turism-view-auth .main-view-container.ng-scope .text-right {
@@ -133,7 +137,7 @@ and open the template in the editor.
 
 #turism-view-auth .main-view-container.ng-scope .panel-body {
     text-align: center;
-        color: rgb(47, 7, 44);
+    color: rgb(47, 7, 44);
     font-size: 18px;
     font-weight: 100;
 }

@@ -16,8 +16,7 @@
 .main-header {
   box-shadow: none;
   display: flex;
-  position: relative;
-  background: black;
+  position: absolute;
   left: 0;
   z-index: 1000;
   width: 100%;
@@ -250,4 +249,8 @@ background:rgba(255, 215, 64, 0.64);
 
 .tourism-tooltip {
     box-shadow: 2px 2px 3px 0 rgb(25, 22, 21);
+}
+
+.turism-view-container {
+    
 }
