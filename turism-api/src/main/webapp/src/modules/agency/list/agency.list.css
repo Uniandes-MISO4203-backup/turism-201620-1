@@ -10,12 +10,23 @@
 }
 
 .turism-list__hero {
+    position: relative;
 }
 
 
 .turism-list__hero__img {
     max-width: 100%;
     width: 100%;
+}
+
+
+.turism-list__hero__title {
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    font-size: 57px;
+    color: rgba(255, 215, 64, 0.97);
+    text-shadow: 2px 2px 2px #6c7b74;
 }
 
 .turism-list-view__title {

@@ -62,8 +62,8 @@ SOFTWARE.
                     }
                 },
                 list: {
-                    displayName: 'List',
-                    icon: 'th-list',
+                    displayName: 'go back',
+                    icon: 'arrow-left',
                     fn: function () {
                         $state.go('agencyList');
                     }

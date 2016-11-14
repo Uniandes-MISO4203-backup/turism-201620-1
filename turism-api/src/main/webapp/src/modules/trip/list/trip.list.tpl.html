@@ -42,12 +42,11 @@ SOFTWARE.
                     </md-card-title>
                   
                     <md-card-content class="trip-card__detail">
-                        <p><strong>Date: </strong> {{trip.date}}</p> 
-                        <p><strong>Origin: </strong> {{trip.origin}}</p> 
-                        <p><strong>Destination: </strong> {{trip.destination}}</p> 
-                        <p><strong>Price: </strong> {{trip.price| currency}}</p>     
-                        
                         <button ui-sref="tripDetailInstance({tripId: trip.id})" class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto">View Detail</button>
+                        <button ng-repeat="(recordActionName, recordAction) in recordActions " 
+                            class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto"
+                            ng-click="recordAction.fn()">{{recordAction.displayName}}</button> 
+                        
                     </md-card-content>
                 </md-card>
         </div>
