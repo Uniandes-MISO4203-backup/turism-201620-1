@@ -22,12 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 
-<div class="trip-hero">
-    <div class="trip-hero__layer trip-hero__reveal">
-        <h3 class="trip-hero__reveal__quote">The best for you</h3>
-        <h1 class="trip-hero__title">{{currentRecord.name}}</h1>
-    </div>
-</div>
 <div class="trip-content" layout="row">
     <div flex="50" class="trip-content__image">
         <img ng-src="{{currentRecord.image}}"/>
@@ -73,7 +67,7 @@ SOFTWARE.
                  <p>
                     <label><strong>Daily Description: </strong></label><span id="dailyDescription"> {{currentRecord.dailyDescription}}</span>
                 </p>
-                <md-button class="md-fab" ng-if="client || admin" ng-click="edit()">
+                <md-button class="md-fab" ng-if="client" ng-click="edit()">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </md-button>
                  <md-button class="md-fab" ng-if="client || admin" ng-click="rateTrip()">
@@ -83,6 +77,6 @@ SOFTWARE.
         </div>
     </div>
 </div>
-<div class"trip-content__chield" layout="row">
-    <div ui-view="tripChieldView"></div>
+<div class="trip-content__chield" layout="row">
+    <div ui-view="tripChieldView" flex="100"></div>
 </div>

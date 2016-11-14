@@ -18,14 +18,14 @@
                             $rootScope.product = false;
                             $rootScope.visitor = false;
                         }
-                        if (roles.indexOf("agency") !== -1) {
+                        else if (roles.indexOf("agency") !== -1) {
                             $rootScope.category = false;
                             $rootScope.agency = true;
                             $rootScope.client = false;
                             $rootScope.product = false;
                             $rootScope.visitor = false;
                         }
-                        if (roles.indexOf("admin") !== -1) {
+                        else if (roles.indexOf("admin") !== -1) {
                             $rootScope.category = true;
                             $rootScope.agency = true;
                             $rootScope.client = true;
