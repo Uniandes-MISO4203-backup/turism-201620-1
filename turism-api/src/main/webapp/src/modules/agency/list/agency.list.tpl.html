@@ -24,12 +24,12 @@ SOFTWARE.
 <div class="turism-list-view"> 
     <div class="turism-list__hero">
         <img class="turism-list__hero__img" src="assets/img/bg-item.jpg"/> 
+        <h2 class="turism-list__hero__title">Agencies</h2>
     </div> 
-    <h2 class="turism-list-view__title">Agency List</h2>
     <md-list class="turism-list-view__list">
 
-        <md-list-item ng-repeat="record in records" class="noright" ng-click="recordActions.detail.fn(record)">
-            <p>{{record.name}}</p>
+        <md-list-item ng-repeat="record in records" class="noright turism-list-view__list__item" ng-click="recordActions.detail.fn(record)">
+            <p class="turism-list-view__list__item__text">{{record.name}}</p>
             <div ng-repeat="(recordActionName, recordAction) in recordActions" flex="noshrink" class="turism-list-view__options__item"
                  ng-click="recordAction.fn(record)" ng-if="recordAction.show && recordAction.show(record)">
                 <md-tooltip md-direction="top" class="tourism-tooltip">
@@ -49,6 +49,5 @@ SOFTWARE.
             </md-tooltip>
             <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
         </div>
-        <!--<toolbar name="model.name" display-name="model.displayName" actions='actions' class="turism-toolbar"></toolbar>-->
     </div>
 </div>

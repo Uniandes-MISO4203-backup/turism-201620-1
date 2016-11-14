@@ -44,7 +44,7 @@ SOFTWARE.
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('agencyNew');
+                        $state.go('agencyNewMain');
                     },
                     show: function () {
                         return (roles.indexOf("admin") !== -1);

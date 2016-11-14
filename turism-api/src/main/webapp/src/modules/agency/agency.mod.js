@@ -69,11 +69,23 @@ SOFTWARE.
                     }
                 }
             });
-            $sp.state('agencyNew', {
+            
+            $sp.state('agencyNewMain', {
                 url: '/new',
                 parent: 'agency',
                 views: {
                     agencyView: {
+                        templateUrl: basePath + 'new/agency.new.tpl.html',
+                        controller: 'agencyNewCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
+            $sp.state('agencyNew', {
+                url: '/new',
+                parent: 'agencyDetail',
+                views: {
+                    agencyChieldView: {
                         templateUrl: basePath + 'new/agency.new.tpl.html',
                         controller: 'agencyNewCtrl',
                         controllerAs: 'ctrl'

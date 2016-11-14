@@ -103,3 +103,10 @@
     max-width: 33px;
     max-height: 33px;
 }
+
+.turism-list-view__list__item__text {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
