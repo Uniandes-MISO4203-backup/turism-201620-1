@@ -45,6 +45,9 @@ SOFTWARE.
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {
