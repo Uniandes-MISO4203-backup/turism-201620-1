@@ -207,7 +207,7 @@ SOFTWARE.
                 parent: 'tripInstanceItem',
                 views: {
                     tripInstanceView: {
-                        templateUrl: baseInstancePath + 'detail/trip.detail.tpl.html',
+                        templateUrl: baseInstancePath + 'detail/trip.detail.wishlist.tpl.html',
                         controller: 'tripDetailCtrl'
                     }
                 }

@@ -94,7 +94,7 @@ public class TripDTO implements Serializable {
         List<RaitingEntity> raitings = entity.getRaitings();
         Float sumaRaitings = 0.0F;
 
-        if (raitings.isEmpty()) {
+        if (!raitings.isEmpty()) {
             for (RaitingEntity raiting : raitings) {
                 sumaRaitings += raiting.getValue();
             }
