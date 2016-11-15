@@ -22,7 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<html ng-app="mainApp">
+<html >
     <head>
         <title>Turism</title>
         <meta charset="utf-8">
@@ -36,8 +36,16 @@ SOFTWARE.
         <!-- endbower -->
 
         <link rel="stylesheet" href="src/app.css" />
+        <link rel="stylesheet" href="src/login.css" />
+        <link rel="stylesheet" href="src/register.css" />
         <link rel="stylesheet" href="src/modules/home/home.css" />
+        <link rel="stylesheet" href="src/modules/agency/list/agency.list.css" />
+        <link rel="stylesheet" href="src/modules/agency/new/agency.new.css" />
+        <link rel="stylesheet" href="src/modules/agency/instance/detail/agency.detail.css" />
+        <link rel="stylesheet" href="src/modules/client/list/client.list.css" />
+        <link rel="stylesheet" href="src/modules/raiting/list/raiting.list.css" />
         <link rel="stylesheet" href="src/modules/trip/list/trip.gallery.css" />
+        <link rel="stylesheet" href="src/modules/trip/list/trip.list.css" />
         <link rel="stylesheet" href="src/modules/trip/instance/detail/trip.detail.css" />
 
         <!-- endbuild -->
@@ -172,35 +180,36 @@ SOFTWARE.
         <!-- endbuild -->
 
     </head>
-    <body>
-        <div class="wrapper">
-            <header class="main-header">
+    <body ng-app="mainApp">
+        <div class="turism-loading-page" ng-if="loadingPage || loadingPage===undefined"></div>
+        <div class="wrapper" ng-if="!loadingPage">
+            <header class="main-header main-header--{{currentPage}}">
                 <div class="container" ng-controller="roleCtrl">
                     <div class="brand-logo">
                         <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
                         </a>
                     </div>
-                    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" >
-                        <md-nav-item md-nav-sref="homeTripGallery" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Home</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="clientList" name="" class="main-header__item" ng-click="changeIsLoginView(false)">Client</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="agencyList" class="main-header__item" ng-click="changeIsLoginView(false)">Agency</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="productList" class="main-header__item" ng-click="changeIsLoginView(false)">Product</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="categoryList" class="main-header__item" ng-click="changeIsLoginView(false)">Category</md-nav-item>
-                        <md-nav-item ng-if="visitor" md-nav-sref="login" class="main-header__item" ng-click="changeIsLoginView(true)">SigIn</md-nav-item>
+                    <md-nav-bar md-selected-nav-item="currentPage" nav-bar-aria-label="navigation links" md-button--dark >
+                        <md-nav-item md-nav-sref="homeTripGallery" name="homeTripGallery" class="main-header__item">Home</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="clientList" name="clientList" class="main-header__item">Client</md-nav-item>
+                        <md-nav-item ng-if="agency || admin" md-nav-sref="agencyList" name="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="productList" name="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="client || admin" md-nav-sref="categoryList" name="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="visitor" md-nav-sref="login" name="login" class="main-header__item">SigIn</md-nav-item>
 
                     </md-nav-bar>
                     <a ng-if="!visitor" class="main-header__item">
                         <span ng-controller="authController" class='logout-option'>
-                            <span ng-click="logout(); changeIsLoginView(true)" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
+                            <span ng-click="logout();" class="glyphicon glyphicon-log-out" aria-hidden="true">Logout</span>
                         </span>
                     </a>
                 </div>
             </header>
 
-            <div ng-if="!isLoginView" ui-view="mainView" class='main-view-container'></div>
+            <div ng-if="!isLoginView && roles" ui-view="mainView" class="turism-view-container"></div>
             
-            <div id='turism-view-container' ng-if="isLoginView">
-            <div ui-view="mainView" class='main-view-container'></div>
+            <div id='turism-view-auth' ng-if="isLoginView">
+                <div ui-view="mainView" class='main-view-container'></div>
             </div>
 
             <footer class="footer">
@@ -209,9 +218,9 @@ SOFTWARE.
                         <div class="col-md-6 col-sm-6 col-xs-12 text-center">
                             <div class="brand-logo footer__logo">
                                 <a ui-sref="homeTripGallery" class="brand-logo__link"> Viajando<span class="brand-logo__link--secondary">Ando.com</span>
-                                </a>}
-                                <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
+                                </a>    
                             </div>
+                            <p>Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                             <div class="footer__copyright">
                                 © 2016. All rights reserved. Powered by Diegosoft & Asociadas
                             </div>

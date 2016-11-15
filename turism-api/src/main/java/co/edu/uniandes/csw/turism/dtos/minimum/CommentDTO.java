@@ -26,6 +26,7 @@ public class CommentDTO implements Serializable {
      * Constructor de la clase DTO mínima
      */
     public CommentDTO() {
+        super();
     }
 
     public CommentDTO(CommentEntity commentEntity) {

@@ -15,6 +15,11 @@
                 displayName: 'Value',
                 type: 'Integer',
                 required: true
+            },
+             textComment:{
+                displayName: 'Comentario',
+                type: 'String',
+                required: false
             }
         }
     });

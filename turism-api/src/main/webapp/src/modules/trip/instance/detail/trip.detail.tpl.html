@@ -29,10 +29,12 @@ SOFTWARE.
     </div>
 </div>
 <div class="trip-content" layout="row">
-    <img class="trip-content__image" flex ng-src="{{currentRecord.image}}"/>
-    <div class="trip-content__detail" flex>
+    <div flex="50" class="trip-content__image">
+        <img ng-src="{{currentRecord.image}}"/>
+    </div>
+    <div class="trip-content__detail" flex="50">
         <div class="trip-info">
-            <h4>Trip Info  <span>
+            <h4>Trip Info  <span class="trip-info__rating">
                     <i ng-if="currentRecord.raitingAverage > 0" class="glyphicon glyphicon-star"></i>
                     <i ng-if="currentRecord.raitingAverage > 1" class="glyphicon glyphicon-star"></i>
                     <i ng-if="currentRecord.raitingAverage > 2" class="glyphicon glyphicon-star"></i>
@@ -40,7 +42,7 @@ SOFTWARE.
                     <i ng-if="currentRecord.raitingAverage > 4" class="glyphicon glyphicon-star"></i>
                 </span></h4>
             <md-divider></md-divider>
-            <div class="info-content">
+            <div class="trip-info__content">
                 <p>
                     <label><strong>Date: </strong></label><span id="price"> {{currentRecord.date}}</span>
                 </p>
@@ -66,16 +68,31 @@ SOFTWARE.
                     <label><strong>Special Requirements: </strong></label><span id="specialRequirements"> {{currentRecord.specialRequirements}}</span>
                 </p>
                  <p>
-                    <label><strong>Description: </strong></label><span id="specialRequirements"> {{currentRecord.includesDescription}}</span>
+                    <label><strong>Description: </strong></label><span id="includesDescription"> {{currentRecord.includesDescription}}</span>
                 </p>
                  <p>
-                    <label><strong>Daily Description: </strong></label><span id="specialRequirements"> {{currentRecord.dailyDescription}}</span>
+                    <label><strong>Daily Description: </strong></label><span id="dailyDescription"> {{currentRecord.dailyDescription}}</span>
                 </p>
-                <md-button class="md-fab" ng-if='client' ng-click='edit()'>
+                <md-button class="md-fab" ng-if="client || admin" ng-click="edit()">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </md-button>
+                 <md-button class="md-fab" ng-if="client || admin" ng-click="rateTrip()">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </md-button>
             </div>
         </div>
-
     </div>
 </div>
+<div class"trip-content__chield" layout="row">
+    <div ui-view="tripChieldView"></div>
+</div>
+
+  <div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
+    </div> 

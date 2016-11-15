@@ -81,11 +81,11 @@ SOFTWARE.
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
-                    fn: function (rc) {
+                    fn: function (rc) { 
                         $state.go('clientDelete', {clientId: rc.id});
                     },
                     show: function () {
-                        return (roles.indexOf("admin") !== -1);
+                        return true;
                     }
                 }
             };

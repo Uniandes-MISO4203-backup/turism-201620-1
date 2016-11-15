@@ -25,11 +25,9 @@ package co.edu.uniandes.csw.turism.persistence;
 
 import co.edu.uniandes.csw.crud.spi.persistence.CrudPersistence;
 import co.edu.uniandes.csw.turism.entities.NewsEntity;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 /**
  *

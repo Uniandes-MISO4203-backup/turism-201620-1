@@ -31,7 +31,6 @@
 
             $sp.state('faq', {
                 url: '/faqs?page&limit',
-                abstract: true,
                 parent: 'agencyDetail',
                 views: {
                      agencyChieldView: {

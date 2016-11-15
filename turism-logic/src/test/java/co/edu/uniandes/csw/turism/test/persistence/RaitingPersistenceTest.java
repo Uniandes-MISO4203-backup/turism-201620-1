@@ -162,6 +162,7 @@ public class RaitingPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getValue(), entity.getValue());
         Assert.assertEquals(newEntity.getDate(), entity.getDate());
+        Assert.assertEquals(newEntity.getTextComment(), entity.getTextComment());
     }
 
     /**
@@ -177,6 +178,7 @@ public class RaitingPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getValue(), newEntity.getValue());
         Assert.assertEquals(entity.getDate(), newEntity.getDate());
+        Assert.assertEquals(entity.getTextComment(), newEntity.getTextComment());
     }
 
     /**
@@ -212,6 +214,7 @@ public class RaitingPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getValue(), resp.getValue());
         Assert.assertEquals(newEntity.getDate(), resp.getDate());
+        Assert.assertEquals(newEntity.getTextComment(), resp.getTextComment());
     }
     
 }

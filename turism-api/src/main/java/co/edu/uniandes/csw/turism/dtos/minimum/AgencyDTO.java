@@ -40,6 +40,7 @@ public class AgencyDTO implements Serializable{
      * Constructor de la clase AgencyDTO
      */
     public AgencyDTO() {
+        super();
     }
 
     /**

@@ -54,6 +54,8 @@ public class RaitingEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date date;
+    
+    private String textComment;
 
     public ClientEntity getClient() {
         return client;
@@ -86,6 +88,15 @@ public class RaitingEntity extends BaseEntity implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String getTextComment() {
+        return textComment;
+    }
+
+    public void setTextComment(String textComment) {
+        this.textComment = textComment;
+    }
+    
     
     
 }

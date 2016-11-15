@@ -21,17 +21,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
+<div class="turism-list-view"> 
+    <div class="turism-list__hero">
+        <img class="turism-list__hero__img" src="assets/img/bg-item.jpg"/> 
+            <h1 class="turism-list__hero__title">
+                {{currentRecord.name}}
+            </h1>
+        <md-nav-bar md-selected-nav-item="currentPage" nav-bar-aria-label="navigation links" md-button--dark class="turism-list-view__nav-bar" md-selected-nav-item="currentNavItem">
+            <md-nav-item md-nav-sref="tripList" name="tripList" ng-class="{active: currentPage === 'tripList'}" class="turism-list-view__nav-bar__item">{{actions.trips.displayName}}</md-nav-item>
+            <md-nav-item md-nav-sref="faqList" name="faqList" ng-class="{active: currentPage === 'faqList'}" class="turism-list-view__nav-bar__item" ng-if="!actions.faqs.show || actions.faqs.show()">{{actions.faqs.displayName}}</md-nav-item>
+            <md-nav-item md-nav-sref="agencyNew" name="agencyNew" ng-class="{active: currentPage === 'agencyNew'}" class="turism-list-view__nav-bar__item" ng-if="!actions.create.show || actions.create.show()">{{actions.create.displayName}}</md-nav-item>
+            <md-nav-item md-nav-sref="agencyEdit" name="agencyEdit" ng-class="{active: currentPage === 'agencyEdit'}" class="turism-list-view__nav-bar__item" ng-if="!actions.edit.show || actions.edit.show()">{{actions.edit.displayName}}</md-nav-item>
+            <md-nav-item md-nav-sref="Delete" name="Delete" ng-class="{active: currentPage === 'Delete'}" class="turism-list-view__nav-bar__item" ng-if="!actions.delete.show || actions.delete.show()">{{actions.delete.displayName}}</md-nav-item>
+        </md-nav-bar>
+    </div> 
+    <div ui-view="agencyChieldView" class="turism-list-view__child-container"></div>
+    
+
+    <div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
+        <div flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="actions.refresh.fn()" ng-if="!actions.refresh.show || actions.refresh.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{actions.refresh.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{actions.refresh.icon}}" aria-hidden="true"></span>
+        </div>
+        <div flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="actions.list.fn()" ng-if="!actions.list.show || actions.list.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{actions.list.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{actions.list.icon}}" aria-hidden="true"></span>
+        </div>
+        <!--<toolbar name="model.name" display-name="model.displayName" actions='actions' class="turism-toolbar"></toolbar>-->
     </div>
-</div>
-<div ui-view="agencyChieldView"></div>
-<!-- TODO -->
+
+    <!-- TODO -->
 </div>

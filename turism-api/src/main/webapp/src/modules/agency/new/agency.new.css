@@ -1,0 +1,9 @@
+.turism-new-view__form {
+    width: 60%;
+    margin: auto;
+    background-color: #FFF;
+}  
+
+.turism-new-view__button span {
+    color: #1a4e62;
+}

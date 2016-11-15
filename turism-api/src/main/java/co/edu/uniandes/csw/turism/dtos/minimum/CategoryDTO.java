@@ -40,6 +40,7 @@ public class CategoryDTO implements Serializable{
      * Constructor de la clase DTO mínima
      */
     public CategoryDTO() {
+        super();
     }
 
     /**

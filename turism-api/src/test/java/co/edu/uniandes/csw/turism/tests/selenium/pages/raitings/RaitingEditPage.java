@@ -40,6 +40,8 @@ public class RaitingEditPage {
     private WebElement valueInput;
     @FindBy(id = "date")
     private WebElement dateInput;
+    @FindBy(id = "textComment")
+    private WebElement textCommentInput;
 
     @FindBy(id = "save-raiting")
     private WebElement saveBtn;
@@ -55,7 +57,10 @@ public class RaitingEditPage {
          waitGui().until().element(dateInput).is().visible();
          dateInput.clear();
          dateInput.sendKeys(raiting.getDate().toString());
-        guardAjax(saveBtn).click();
+         waitGui().until().element(textCommentInput).is().visible();
+         textCommentInput.clear();
+         textCommentInput.sendKeys(raiting.getTextComment());
+         guardAjax(saveBtn).click();
     }
 }
 

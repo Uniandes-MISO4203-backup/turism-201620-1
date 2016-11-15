@@ -24,7 +24,6 @@ SOFTWARE.
 package co.edu.uniandes.csw.turism.dtos.minimum;
 
 import co.edu.uniandes.csw.turism.entities.TaxEntity;
-import co.edu.uniandes.csw.turism.entities.TaxEntity;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -43,6 +42,7 @@ public class TaxDTO implements Serializable {
      * Constructor de la clase DTO mínima
      */
     public TaxDTO() {
+        super();
     }
 
     /**
