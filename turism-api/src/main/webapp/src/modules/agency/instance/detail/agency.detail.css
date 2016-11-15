@@ -1,0 +1,36 @@
+.turism-list-view__nav-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    height: 130px;
+}
+
+.turism-list-view__nav-bar .turism-list-view__nav-bar__item a span{
+    color: #FFF;
+}
+
+.turism-list-view__nav-bar .turism-list-view__nav-bar__item {
+    width: 20%;
+    border-right: 1px solid #FFF;
+}
+
+
+.turism-list-view__nav-bar .turism-list-view__nav-bar__item a {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.turism-list-view__nav-bar .md-nav-bar {
+    height: 130px;
+}
+
+.turism-list-view__nav-bar .turism-list-view__nav-bar__item.active {
+    background: rgba(255, 215, 64, 0.3);
+}
+
+.turism-list-view__child-container {
+    margin-top: 1em;
+}

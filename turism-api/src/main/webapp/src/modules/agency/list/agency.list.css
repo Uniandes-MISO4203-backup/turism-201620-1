@@ -1,15 +1,32 @@
-.turism-list-view {
-    padding: 8em 18em;
-    background: url(./../../../../assets/img/bg-list.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+.turism-list-view__list {
+    max-width: 802px;
+    margin: auto;
 }
 
 .turism-list-view__scroll {
     max-height: 480px;
     overflow-y: auto;
     padding: 1em 3em;
-    background: rgba(0, 0, 0, 0.28);
+}
+
+.turism-list__hero {
+    position: relative;
+}
+
+
+.turism-list__hero__img {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.turism-list__hero__title {
+    position: absolute;
+    top: 35%;
+    left: 8%;
+    font-size: 57px;
+    color: rgba(255, 215, 64, 0.97);
+    text-shadow: 2px 2px 2px #6c7b74;
 }
 
 .turism-list-view__title {
@@ -21,7 +38,9 @@
 }
 
 .turism-list-view__item figure {
-    height: 15em; 
+    border: 1px solid #676253;
+    border-radius: 5px;
+    background: url("./../../../../assets/img/bg-item.jpg");
 }
 
 .turism-list-view__options {
@@ -32,14 +51,13 @@
 }
 
 .turism-list-view__options__item {
-    padding: 8px 0px;
+    margin: 0.3em;
     border-radius: 50%;
     box-shadow: 0px 2px 5px 0 rgb(53, 29, 10);
     opacity: 0.9;
-    color: white;
+    color: #000;
     text-align: center;
     cursor: pointer;
-    margin: auto;
     max-width: 33px;
     max-height: 33px;
 }
@@ -84,4 +102,11 @@
     margin: auto;
     max-width: 33px;
     max-height: 33px;
+}
+
+.turism-list-view__list__item__text {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
 }

@@ -22,28 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 <div class="turism-list-view"> 
-    <h2 class="turism-list-view__title">Agency List</h2>
-    <div class="turism-list-view__scroll">        
-        <md-grid-list
-            md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="4"
-            md-row-height-gt-md="1:1" md-row-height="2:2" 
-            md-gutter="12px" md-gutter-gt-sm="8px" class="turism-list-view__grid-list" >
-            <md-grid-tile ng-repeat="record in records" class="turism-list-view__item" md-rowspan="1" md-colspan="1" md-colspan-sm="1">
-                <div class="turism-list-view__options" layout="row" layout-align="space-around center">
-                    <div ng-repeat="(recordActionName, recordAction) in recordActions" flex="noshrink" class="turism-list-view__options__item"
-                         ng-click="recordAction.fn(record)" ng-if="recordAction.show && recordAction.show(record)">
-                        <md-tooltip md-direction="top" class="tourism-tooltip">
-                            {{recordAction.displayName}}
-                        </md-tooltip>
-                        <span class="glyphicon glyphicon-{{recordAction.icon}}" aria-hidden="true"></span>
-                    </div>
-                </div>
-                <md-grid-tile-footer class="turism-list-view__options__item__footer">
-                    <h3>{{record.name}}</h3>
-                </md-grid-tile-footer>
-            </md-grid-tile>
-        </md-grid-list>
-    </div>
+    <div class="turism-list__hero">
+        <img class="turism-list__hero__img" src="assets/img/bg-item.jpg"/> 
+        <h2 class="turism-list__hero__title">Agencies</h2>
+    </div> 
+    <md-list class="turism-list-view__list">
+
+        <md-list-item ng-repeat="record in records" class="noright turism-list-view__list__item" ng-click="recordActions.detail.fn(record)">
+            <p class="turism-list-view__list__item__text">{{record.name}}</p>
+            <div ng-repeat="(recordActionName, recordAction) in recordActions" flex="noshrink" class="turism-list-view__options__item"
+                 ng-click="recordAction.fn(record)" ng-if="recordAction.show && recordAction.show(record)">
+                <md-tooltip md-direction="top" class="tourism-tooltip">
+                    {{recordAction.displayName}}
+                </md-tooltip>
+                <span class="glyphicon glyphicon-{{recordAction.icon}}" aria-hidden="true"></span>
+            </div>
+        </md-list-item>
+    </md-list>
+
 
     <div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
         <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__toolbar__item"
@@ -54,5 +50,4 @@ SOFTWARE.
             <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
         </div>
     </div>
-    <!--<toolbar name="model.name" display-name="model.displayName" actions='actions' class="turism-toolbar"></toolbar>-->
 </div>

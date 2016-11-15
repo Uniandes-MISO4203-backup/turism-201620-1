@@ -44,7 +44,10 @@ SOFTWARE.
                     displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('agencyNew');
+                        $state.go('agencyNewMain');
+                    },
+                    show: function () {
+                        return (roles.indexOf("admin") !== -1);
                     }
                 },
                 refresh: {
@@ -79,7 +82,7 @@ SOFTWARE.
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function (rc) {
-                        $state.go('agencyDelete', {agencyId: rc.id});
+                        $state.go('agencyDeleteMain', {agencyId: rc.id});
                     },
                     show: function () {
                         return true;

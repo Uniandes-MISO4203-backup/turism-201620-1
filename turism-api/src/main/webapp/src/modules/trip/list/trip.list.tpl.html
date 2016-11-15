@@ -22,10 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 <div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<list-records fields="model.fields" records="records" actions="recordActions"></list-records>
+ <md-content layout="row" layout-wrap>
+        <div flex="20"  ng-repeat="trip in records" trip-gallery__list>
+            
+            <md-card class="trip-card">
+                    <img ng-src="{{trip.image}}" class="md-card-image" alt="Washed Out">
+                            <span class="trip-card__rating">
+                                <i ng-if="trip.raitingAverage > 0" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 1" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 2" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 3" class="glyphicon glyphicon-star"></i>
+                                <i ng-if="trip.raitingAverage > 4" class="glyphicon glyphicon-star"></i>
+                            </span>
+                    <md-card-title class="trip-card__title">
+                        <md-card-title-text>
+                            <span class="sm-headline trip-card__title__text">{{trip.name}}</span>
+                        </md-card-title-text>
+                        <span class="sm-headline trip-card__price">{{trip.price| currency}}</span>
+                    </md-card-title>
+                  
+                    <md-card-content class="trip-card__detail">
+                        <button ui-sref="tripDetailInstance({tripId: trip.id})" class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto">View Detail</button>
+                        <button ng-repeat="(recordActionName, recordAction) in recordActions " 
+                            class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto"
+                            ng-click="recordAction.fn(trip)">{{recordAction.displayName}}</button> 
+                        
+                    </md-card-content>
+                </md-card>
+        </div>
+    </md-content>
 <pagination ng-if="ctrl.itemsPerPage < ctrl.totalItems"
             total-items="ctrl.totalItems"
             max-size="5"
@@ -37,3 +62,13 @@ SOFTWARE.
             rotate="false">
 </pagination>
 </div>
+<div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
+        <!--<toolbar name="model.name" display-name="model.displayName" actions='actions' class="turism-toolbar"></toolbar>-->
+    </div>

@@ -132,6 +132,7 @@ SOFTWARE.
             $rootScope.$on('$stateChangeSuccess', 
             function(event, toState, toParams, fromState, fromParams){ 
                 $rootScope.isLoginView = toState.url === "/login" || toState.url === "/register";
+                $rootScope.currentPage = toState.name;
                 $rootScope.loadingPage = false;
             });
             

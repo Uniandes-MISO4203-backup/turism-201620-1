@@ -3,12 +3,13 @@
     mod.controller('roleCtrl', ['$rootScope', 'Restangular','$state', function ($rootScope, Restangular) {
         $rootScope.auth = function () { 
                 Restangular.all("users").customGET('me').then(function (response) {
-                    if (response == null) {
+                    if (response == null || response === undefined) {
                         $rootScope.category = false;
                         $rootScope.agency = false;
                         $rootScope.client = false;
                         $rootScope.product = false;
                         $rootScope.visitor = true;
+                        var roles = $rootScope.roles = ["visitor"];
                     } else {
                         var roles = $rootScope.roles = response.roles;
                         if (roles.indexOf("client") !== -1) {
