@@ -27,7 +27,7 @@ SOFTWARE.
         <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-raiting-list-view__toolbar__item"
              ng-click="action.fn()" ng-if="!action.show || action.show()">
             <md-tooltip md-direction="left" class="tourism-tooltip">
-                {{action.displayName}}
+                {{action.displayName}} Raiting
             </md-tooltip>
             <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
         </div>
