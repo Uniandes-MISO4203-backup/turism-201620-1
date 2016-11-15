@@ -86,7 +86,7 @@ SOFTWARE.
                     displayName: 'Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
-                        $state.go('tripInstanceItem', {tripId: rc.id});
+                        $state.go('tripDetailInstance', {tripId: rc.id});
                     },
                     show: function () {
                         return true;

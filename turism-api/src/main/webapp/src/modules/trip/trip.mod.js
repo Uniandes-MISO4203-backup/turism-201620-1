@@ -177,7 +177,7 @@ SOFTWARE.
                         }]
                 }
             });
-            $sp.state('tripInstanceItem', {
+             $sp.state('tripInstanceItem', {
                 url: '/{tripId:int}',
                 abstract: true,
                 parent: 'tripItem',
@@ -276,7 +276,8 @@ SOFTWARE.
                             return r.all(model.url).getList();
                         }]
                 }
-            });         
+            });
+            
             $sp.state('tripGallery', {
                 url: '/tripGallery',
                 views: {
@@ -291,8 +292,9 @@ SOFTWARE.
                     trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
                         }]                }
-            });          
-            $sp.state('tripGalleryHome', {
+            });
+            
+             $sp.state('tripGalleryHome', {
                 url: '/home',
                 views: {
                      tripGalleryHome: {
@@ -306,7 +308,8 @@ SOFTWARE.
                     trips: ['Restangular', 'model', '$stateParams', function (r, model, $params) {
                             return r.all(model.url).getList($params);
                         }]                }
-            });  
+            });
+            
             $sp.state('tripContent', {
                 url: '/content',
                 parent: 'tripDetail',

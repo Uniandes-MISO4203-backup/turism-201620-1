@@ -86,3 +86,13 @@ SOFTWARE.
 <div class"trip-content__chield" layout="row">
     <div ui-view="tripChieldView"></div>
 </div>
+
+  <div class="turism-list-view__toolbar" layout="column" layout-align="space-around center">
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__toolbar__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()">
+            <md-tooltip md-direction="left" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
+    </div> 

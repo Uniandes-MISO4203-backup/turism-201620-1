@@ -119,21 +119,32 @@ SOFTWARE.
             });
             $sp.state('agencyEdit', {
                 url: '/edit',
-                sticky: true,
-                parent: 'agencyInstance',
+                parent: 'agencyDetail',
                 views: {
-                    agencyInstanceView: {
+                    agencyChieldView: {
                         templateUrl: baseInstancePath + 'edit/agency.edit.tpl.html',
                         controller: 'agencyEditCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
             });
+             
+            $sp.state('agencyDeleteMain', {
+                url: '/delete',
+                parent: 'agency',
+                views: {
+                    agencyView: {
+                          templateUrl: baseInstancePath + 'delete/agency.delete.tpl.html',
+                        controller: 'agencyDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
             $sp.state('agencyDelete', {
                 url: '/delete',
-                parent: 'agencyInstance',
+                parent: 'agencyDetail',
                 views: {
-                    agencyInstanceView: {
+                    agencyChieldView: {
                         templateUrl: baseInstancePath + 'delete/agency.delete.tpl.html',
                         controller: 'agencyDeleteCtrl',
                         controllerAs: 'ctrl'

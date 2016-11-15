@@ -51,7 +51,7 @@ SOFTWARE.
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function () {
-                        $state.go('agencyDelete');
+                        $state.go('agencyDelete', {agencyId: rc.id});
                     }
                 },
                 refresh: {

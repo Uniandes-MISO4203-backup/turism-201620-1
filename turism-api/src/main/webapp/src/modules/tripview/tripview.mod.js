@@ -29,5 +29,17 @@
                     }
                 }
             });
+            
+              $sp.state('tripViewDetail', {
+                url: '/trip/{tripId:int}',
+                parent: 'agencyDetail',
+               views: {
+                     agencyChieldView: {
+                        templateUrl: 'src/modules/trip/instance/detail/trip.detail.tpl.html',
+                        controller: 'tripDetailCtrl',
+                        controllerAs: 'ctrl'    
+                    }
+                }
+            });
 	}]);
 })(window.angular);

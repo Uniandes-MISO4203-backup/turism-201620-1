@@ -82,7 +82,7 @@ SOFTWARE.
                     displayName: 'Delete',
                     icon: 'minus',
                     fn: function (rc) {
-                        $state.go('agencyDelete', {agencyId: rc.id});
+                        $state.go('agencyDeleteMain', {agencyId: rc.id});
                     },
                     show: function () {
                         return true;
