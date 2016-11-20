@@ -52,6 +52,9 @@ public class ClientEditPage {
     @FindBy(id = "homeAddress")
     private WebElement homeAddressInput;    
 
+    @FindBy(id = "image")
+    private WebElement imageInput;        
+    
     @FindBy(id = "save-client")
     private WebElement saveBtn;
 
@@ -80,6 +83,9 @@ public class ClientEditPage {
          waitGui().until().element(homeAddressInput).is().visible();
          homeAddressInput.clear();
          homeAddressInput.sendKeys(client.getHomeAddress());         
+         waitGui().until().element(imageInput).is().visible();
+         imageInput.clear();
+         imageInput.sendKeys(client.getImage());         
         guardAjax(saveBtn).click();
     }
 }
