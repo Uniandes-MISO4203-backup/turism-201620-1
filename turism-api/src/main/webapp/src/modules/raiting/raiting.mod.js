@@ -83,6 +83,33 @@
                     }
                 }
             });
+            $sp.state('raitingHomeTrip', {
+                url: '/raitings?page&limit',
+                abstract: true,
+                parent: 'tripview',
+                views: {
+                    tripChieldView: {
+                        templateUrl: basePath + 'raiting.tpl.html',
+                        controller: 'raitingCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'raitingModel',
+                    raitings: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url, $params);
+                        }]                }
+            });
+            $sp.state('raitingHomeList', {
+                url: '/list',
+                parent: 'raitingHomeTrip',
+                views: {
+                    raitingListView: {
+                        templateUrl: basePath + 'list/raiting.list.tpl.html',
+                        controller: 'raitingListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
             $sp.state('raitingNew', {
                 url: '/new',
                 parent: 'raitingItemTrip',

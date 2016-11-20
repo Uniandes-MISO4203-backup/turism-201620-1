@@ -201,7 +201,7 @@ SOFTWARE.
                         controller: 'tripDetailCtrl'
                     }
                 }
-            });
+            });           
             $sp.state('tripDetailItem', {
                 url: '/details',
                 parent: 'tripInstanceItem',

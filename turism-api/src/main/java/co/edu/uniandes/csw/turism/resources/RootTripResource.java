@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-*/
+ */
 package co.edu.uniandes.csw.turism.resources;
 
 import java.util.List;
@@ -41,6 +41,7 @@ import co.edu.uniandes.csw.turism.entities.TripEntity;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * @generated
@@ -50,12 +51,15 @@ import java.util.logging.Logger;
 @Produces(MediaType.APPLICATION_JSON)
 public class RootTripResource {
 
-    @Inject private ITripLogic tripLogic;
-    @Context private HttpServletResponse response;
-    @QueryParam("page") private Integer page;
-    @QueryParam("limit") private Integer maxRecords;
+    @Inject
+    private ITripLogic tripLogic;
+    @Context
+    private HttpServletResponse response;
+    @QueryParam("page")
+    private Integer page;
+    @QueryParam("limit")
+    private Integer maxRecords;
 
-   
     /**
      * Convierte una lista de TripEntity a una lista de TripBasicDTO
      *
@@ -63,7 +67,7 @@ public class RootTripResource {
      * @return Lista de TripBasicDTO convertida
      * @generated
      */
-    private List<TripDetailDTO> listEntity2DTO(List<TripEntity> entityList){
+    private List<TripDetailDTO> listEntity2DTO(List<TripEntity> entityList) {
         List<TripDetailDTO> list = new ArrayList<>();
         for (TripEntity entity : entityList) {
             list.add(new TripDetailDTO(entity));
@@ -71,6 +75,12 @@ public class RootTripResource {
         return list;
     }
 
+    public void existsTrip(Long tripsId) {
+        TripDetailDTO trip = getTrip(tripsId);
+        if (trip == null) {
+            throw new WebApplicationException(404);
+        }
+    }
 
     /**
      * Obtiene la lista de los registros de Artist
@@ -82,11 +92,11 @@ public class RootTripResource {
     public List<TripDetailDTO> getTrips() {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
-            return listEntity2DTO(tripLogic.getTrips(page, maxRecords,null));
+            return listEntity2DTO(tripLogic.getTrips(page, maxRecords, null));
         }
-        return listEntity2DTO(tripLogic.getTrips(null,null,null));
+        return listEntity2DTO(tripLogic.getTrips(null, null, null));
     }
-    
+
     /**
      * Obtiene la lista de los registros de Trip por categoria.
      *
@@ -99,26 +109,32 @@ public class RootTripResource {
     public List<TripDetailDTO> getTripByCategory(@PathParam("categoryid") Long categoryid) {
         if (page != null && maxRecords != null) {
             this.response.setIntHeader("X-Total-Count", tripLogic.countTrips());
-            return listEntity2DTO(tripLogic.getTripByCategory(page, maxRecords,categoryid));
+            return listEntity2DTO(tripLogic.getTripByCategory(page, maxRecords, categoryid));
         }
-        return listEntity2DTO(tripLogic.getTripByCategory(null,null,categoryid));
+        return listEntity2DTO(tripLogic.getTripByCategory(null, null, categoryid));
     }
-    
+
     /**
-     * Obtiene los datos de una instancia de Trip a partir de su ID 
-     * SIN asociación a una agencia o a un cliente
+     * Obtiene los datos de una instancia de Trip a partir de su ID SIN
+     * asociación a una agencia o a un cliente
      *
      * @param tripId Identificador de la instancia a consultar
      * @return Instancia de TripDetailDTO con los datos del Trip consultado
      * @
      */
-    
     @GET
     @Path("/detail/{tripId: \\d+}")
     public TripDetailDTO getTrip(@PathParam("tripId") Long tripId) {
         Logger.getLogger(RootTripResource.class.getName()).log(Level.INFO, ("GET TRIP DIRECTO= " + tripId));
         TripEntity entity = tripLogic.getTrip(tripId);
         return new TripDetailDTO(entity);
-        
+
     }
+
+    @Path("{tripsId: \\d+}/raitings")
+    public Class<TripRaitingResource> getTripRaitingResource(@PathParam("tripsId") Long tripsId) {
+        existsTrip(tripsId);
+        return TripRaitingResource.class;
+    }
+
 }

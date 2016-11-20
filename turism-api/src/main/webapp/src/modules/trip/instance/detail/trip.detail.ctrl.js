@@ -37,7 +37,9 @@ SOFTWARE.
             };
             
             $scope.rateTrip = function(){
-                $state.go('raitingItemTripList');
+                console.log('Hello home');
+                $state.go('raitingHomeList');
+                //$state.go('raitingItemTripList');
             };
             
             $scope.actions = {
