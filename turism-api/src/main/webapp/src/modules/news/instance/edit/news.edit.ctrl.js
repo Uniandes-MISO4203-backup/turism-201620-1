@@ -33,11 +33,11 @@ SOFTWARE.
                     displayName: 'Save',
                     icon: 'save',
                     fn: function () {
-                        if ($scope.newsForm.$valid) {
+                        
                             $scope.currentRecord.put().then(function (rc) {
                                 $state.go('newsDetail', {newsId: rc.id}, {reload: true});
                             });
-                        }
+                        
                     }
                 },
                 cancel: {

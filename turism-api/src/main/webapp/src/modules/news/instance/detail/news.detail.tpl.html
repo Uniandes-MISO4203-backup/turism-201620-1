@@ -21,20 +21,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Content: </strong></label><span id="name"> {{currentRecord.content}}</span>
-        </p>
-        <p>
-        <label><strong>Date: </strong></label><span id="image"> {{currentRecord.date}}</span>
-        </p>
+<div class="turism-news-detail-view"> 
+
+    <md-toolbar>
+        <div class="md-toolbar-tools turism-news-detail-view__toolbar">
+            <h3>
+                <span>LASTEST NEWS</span>
+            </h3>
+        </div>
+    </md-toolbar>
+    <div >
+        <div class="col-md-12" layout="column" layout-xs="column" >
+            <label class="turism-news-detail-view__title">{{currentRecord.name}}</label>
+            <label class="turism-news-detail-view__content">{{currentRecord.content}}</label>
+            <label class="turism-news-detail-view-date">{{currentRecord.date}}</label>
+        </div>
     </div>
 </div>
-<!-- TODO -->
