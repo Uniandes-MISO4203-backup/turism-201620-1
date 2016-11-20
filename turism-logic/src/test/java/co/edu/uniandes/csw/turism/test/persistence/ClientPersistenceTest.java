@@ -157,7 +157,7 @@ public class ClientPersistenceTest {
         Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
         Assert.assertEquals(newEntity.getPhoneNumber(), entity.getPhoneNumber());
         Assert.assertEquals(newEntity.getHomeAddress(), entity.getHomeAddress());
-        
+        Assert.assertEquals(newEntity.getImage(), entity.getImage());        
     }
 
     /**
@@ -197,7 +197,7 @@ public class ClientPersistenceTest {
         Assert.assertEquals(entity.getEmail(), newEntity.getEmail());
         Assert.assertEquals(entity.getHomeAddress(), newEntity.getHomeAddress());
         Assert.assertEquals(entity.getPhoneNumber(), newEntity.getPhoneNumber());
-
+        Assert.assertEquals(entity.getImage(), newEntity.getImage());
     }
     
     /**
@@ -237,5 +237,6 @@ public class ClientPersistenceTest {
         Assert.assertEquals(newEntity.getEmail(), resp.getEmail());
         Assert.assertEquals(newEntity.getPhoneNumber(), resp.getPhoneNumber());
         Assert.assertEquals(newEntity.getHomeAddress(), resp.getHomeAddress());
+        Assert.assertEquals(newEntity.getImage(), resp.getImage());        
     }
 }

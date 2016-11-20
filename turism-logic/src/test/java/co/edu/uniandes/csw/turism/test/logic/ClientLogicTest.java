@@ -162,6 +162,7 @@ public class ClientLogicTest {
         Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
         Assert.assertEquals(newEntity.getHomeAddress(), entity.getHomeAddress());
         Assert.assertEquals(newEntity.getPhoneNumber(), entity.getPhoneNumber());
+        Assert.assertEquals(newEntity.getImage(), entity.getImage());
     }
 
     /**
@@ -203,7 +204,7 @@ public class ClientLogicTest {
         Assert.assertEquals(entity.getEmail(), resultEntity.getEmail());
         Assert.assertEquals(entity.getHomeAddress(), resultEntity.getHomeAddress());
         Assert.assertEquals(entity.getPhoneNumber(), resultEntity.getPhoneNumber());
-        
+        Assert.assertEquals(entity.getImage(), resultEntity.getImage());
     }
 
     /**
@@ -243,8 +244,7 @@ public class ClientLogicTest {
         Assert.assertEquals(pojoEntity.getEmail(), resp.getEmail());
         Assert.assertEquals(pojoEntity.getHomeAddress(), resp.getHomeAddress());
         Assert.assertEquals(pojoEntity.getPhoneNumber(), resp.getPhoneNumber());
-        
-        
+        Assert.assertEquals(pojoEntity.getImage(), resp.getImage());        
     }
 }
 
