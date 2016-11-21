@@ -22,12 +22,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 <div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<form novalidate name="faqForm" role="form">
-    <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
-    </fieldset>
-</form>
+<md-content layout-padding>
+        <div>
+            <form name="agencyForm" role="form" layout-gt-sm="column" layout-padding class="turism-news-new-view__form">
+               
+                <md-input-container  flex-gt-xs>
+                    <label>Title</label>
+                    <input name="name" ng-model="currentRecord.name" required>
+                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+                    </div>
+                </md-input-container> 
+                <md-input-container  flex-gt-xs>
+                    <label>Question</label>
+                    <input name="name" ng-model="currentRecord.question" required>
+                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+                    </div>
+                </md-input-container>  
+                <md-input-container>
+                    <label>Answer</label>
+                    <input name="name" ng-model="currentRecord.response" required>
+                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                        <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+                    </div>
+                </md-input-container >
+                
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" div flex="60" ng-repeat="(key, action) in actions">
+                        <md-button class="md-raised  md-warn" ng-click="action.fn(faq)" >
+                            <span class="glyphicon glyphicon-{{action.icon}}"></span>
+                            {{action.displayName}}
+                        </md-button> 
+                    </md-input-container>
+                </div>
+        </form>
+        </div>
+    </md-content>
 </div>

@@ -1,0 +1,39 @@
+.turism-faq-detail-view {
+    position: relative;
+    width: auto;
+}
+
+.turism-faq-detail-view__title {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    color: #9a9a99;
+}
+
+.turism-faq-detail-view__options__item__footer {
+    background: rgba(35, 28, 6, 0.69);
+}
+
+.turism-faq-detail-view__options__item:hover {
+    background: rgba(254, 243, 109, 0.45);
+}
+
+.turism-faq-detail-view__toolbar {
+    top: 8em;
+    right: 0px;
+    height: auto;
+    width: auto;
+    padding: 1em 0.5em;
+    background-color: #ffd740;
+}
+
+.turism-faq-detail-view__content{
+   font-size: 14px;
+   color: #000;
+}
+
+.turism-faq-detail-view__answer{
+   font-size: 13px;
+   color: #696963;
+   font-weight: normal;
+}
