@@ -26,72 +26,68 @@ SOFTWARE.
         <img class="turism-list__hero__img" src="assets/img/bg-item.jpg"/> 
         <h2 class="turism-list__hero__title">Clients</h2>
     </div>
-    
-   <md-toolbar class="md-warn">
+
+    <md-toolbar class="md-warn">
         <div class="md-toolbar-tools">
-          <h2 class="md-flex">Create Client</h2>
+            <h2 class="md-flex">Create Client</h2>
         </div>
     </md-toolbar>
-    
+
     <div class="turism-list-view__scroll"> 
-<div ng-messages="clientForm.$error" multiple>
-    <ng-message when="required">
-        <alert type="warning">Please, Fill the required fields!</alert>
-    </ng-message>
-    <ng-message when="url">
-        <alert type="warning">Image field must be a URL</alert>
-    </ng-message>
-    <ng-message when="email">
-        <alert type="warning">Your email address is invalid</alert>
-    </ng-message>
-</div>
-<form name="clientForm" role="form">
-      <md-input-container>
-        <label>NickName</label>
-        <input id="name" name="name" ng-model="currentRecord.name" required>
-      </md-input-container>
+        <div ng-messages="clientForm.$error" multiple>
+            <ng-message when="required">
+                <alert type="warning">Please, Fill the required fields!</alert>
+            </ng-message>
+            <ng-message when="url">
+                <alert type="warning">Image field must be a URL</alert>
+            </ng-message>
+            <ng-message when="email">
+                <alert type="warning">Your email address is invalid</alert>
+            </ng-message>
+        </div>
+        <form name="clientForm" role="form">
+            <md-input-container>
+                <label>NickName</label>
+                <input id="name" name="name" ng-model="currentRecord.name" required>
+            </md-input-container>
 
-      <md-input-container>
-        <label>First Name</label>
-        <input id="firstName" name="firstName" ng-model="currentRecord.firstName" required>
-      </md-input-container>        
-        
-      <md-input-container>
-        <label>Middle Name</label>
-        <input id="middleName" name="middleName" ng-model="currentRecord.middleName" type="middleName">
-      </md-input-container>
-        
-      <md-input-container>
-        <label>Last Name</label>
-        <input id="lastName" name="lastName" ng-model="currentRecord.lastName" type="lastName" required>
-      </md-input-container>
+            <md-input-container>
+                <label>First Name</label>
+                <input id="firstName" name="firstName" ng-model="currentRecord.firstName" required>
+            </md-input-container>        
 
-      <md-input-container>
-        <label>E-mail</label>
-        <input id="email" name="email" ng-model="currentRecord.email" type="email" required>
-      </md-input-container>
+            <md-input-container>
+                <label>Middle Name</label>
+                <input id="middleName" name="middleName" ng-model="currentRecord.middleName" type="middleName">
+            </md-input-container>
 
-      <md-input-container>
-        <label>Phone Number</label>
-        <input id="phoneNumber" name="phoneNumber" ng-model="currentRecord.phoneNumber" type="phoneNumber" required>
-      </md-input-container>
-        
-      <md-input-container>
-        <label>Home Address</label>
-        <input id="homeAddress" name="homeAddress" ng-model="currentRecord.homeAddress" type="homeAddress" required>
-      </md-input-container>
-    
-      <md-input-container>
-        <label>Avatar</label>
-        <input id="image" name="image" ng-model="currentRecord.image" type="url" required>
-      </md-input-container>
-    
-    
-    
-</form>
-<header>
-        <md-button class="md-raised md-warn" ng-repeat="(key, action) in actions" ng-click="action.fn()" id="save-client">{{action.displayName}}</md-button>
-</header>        
-        
-</div>
+            <md-input-container>
+                <label>Last Name</label>
+                <input id="lastName" name="lastName" ng-model="currentRecord.lastName" type="lastName" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>E-mail</label>
+                <input id="email" name="email" ng-model="currentRecord.email" type="email" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Phone Number</label>
+                <input id="phoneNumber" name="phoneNumber" ng-model="currentRecord.phoneNumber" type="phoneNumber" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Home Address</label>
+                <input id="homeAddress" name="homeAddress" ng-model="currentRecord.homeAddress" type="homeAddress" required>
+            </md-input-container>
+
+            <md-input-container>
+                <label>Avatar</label>
+                <input id="image" name="image" ng-model="currentRecord.image" type="url" required>
+            </md-input-container>
+        </form>
+        <header>
+            <md-button class="md-raised md-warn" ng-repeat="(key, action) in actions" ng-click="action.fn()" id="save-client">{{action.displayName}}</md-button>
+        </header>        
     </div>
+</div>

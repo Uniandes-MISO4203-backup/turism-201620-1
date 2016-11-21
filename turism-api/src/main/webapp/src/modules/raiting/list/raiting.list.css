@@ -29,6 +29,7 @@
 
 .turism-raiting-list-view__item {
     margin: 10px 0px;
+    width: 80%;
     border-top: black dotted 2px;
 }
 
@@ -60,6 +61,7 @@
     background: rgba(252, 247, 228, 0.4);
     border-radius: 25px;
     border: 2px solid rgba(252, 247, 228, 0.6);
+    padding: 0px 20px;
 }
 
 .turism-raiting-list-view__options__item__footer h3 {
