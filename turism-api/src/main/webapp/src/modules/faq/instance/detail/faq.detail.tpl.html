@@ -21,22 +21,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Question: </strong></label><span id="image"> {{currentRecord.question}}</span>
-        </p>
-        <p>
-        <label><strong>Answer: </strong></label><span id="price"> {{currentRecord.response}}</span>
-        </p>
+
+<div class="turism-list-view"> 
+
+    <div class="container-fluid well" flex="80">
+        <div class="col-md-12" layout="column" layout-xs="column" flex="80" >
+            <label class="turism-faq-detail-view__title">{{currentRecord.name}}</label>
+            <label class="turism-faq-detail-view__content">{{currentRecord.question}}</label>
+            <label class="turism-faq-detail-view__answer">{{currentRecord.response}}</label>
+        </div>
+        
+        <div  layout="row" layout-align="space-around center" flex="20" class="noright turism-list-view__list__item" >
+            <div ng-repeat="(actionName, action) in actions" flex="noshrink" 
+                 ng-click="action.fn()" ng-if="!action.show || action.show()">
+                <md-tooltip md-direction="left" class="tourism-tooltip">
+                    {{action.displayName}}
+                </md-tooltip>
+                <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+            </div>
+        </div>
     </div>
 </div>
-</div>
+
+
 <!-- TODO -->
