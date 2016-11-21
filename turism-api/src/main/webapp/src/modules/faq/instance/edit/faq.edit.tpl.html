@@ -24,26 +24,26 @@ SOFTWARE.
 <div id='turism-view-container'>
 <md-content layout-padding>
         <div>
-            <form name="agencyForm" role="form" layout-gt-sm="column" layout-padding class="turism-news-new-view__form">
+            <form name="faqEditForm" role="form" layout-gt-sm="column" layout-padding class="turism-news-new-view__form">
                
                 <md-input-container  flex-gt-xs>
                     <label>Title</label>
                     <input name="name" ng-model="currentRecord.name" required>
-                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                    <div ng-messages="faqEditForm.name.$error" role="alert" multiple>
                         <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
                     </div>
                 </md-input-container> 
                 <md-input-container  flex-gt-xs>
                     <label>Question</label>
                     <input name="name" ng-model="currentRecord.question" required>
-                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                    <div ng-messages="faqEditForm.name.$error" role="alert" multiple>
                         <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
                     </div>
                 </md-input-container>  
                 <md-input-container>
                     <label>Answer</label>
                     <input name="name" ng-model="currentRecord.response" required>
-                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                    <div ng-messages="faqEditForm.name.$error" role="alert" multiple>
                         <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
                     </div>
                 </md-input-container >

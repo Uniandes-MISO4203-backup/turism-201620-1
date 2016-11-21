@@ -34,11 +34,11 @@ SOFTWARE.
                     displayName: 'Save',
                     icon: 'save',
                     fn: function () {
-                        
+                        if ($scope.faqForm.$valid) {
                             faqs.post($scope.currentRecord).then(function (rc) {
                                 $state.go('faqDetail', {faqId: rc.id}, {reload: true});
                             });
-                        
+                        }
                     }
                 },
                 cancel: {

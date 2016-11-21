@@ -24,12 +24,12 @@ SOFTWARE.
 <div class="turism-new-view">
      <md-content layout-padding>
         <div>
-            <form name="agencyForm" role="form" layout-gt-sm="column" layout-padding class="turism-news-new-view__form">
+            <form name="newsForm" role="form" layout-gt-sm="column" layout-padding class="turism-news-new-view__form">
                 <div layout-gt-xs="row">
                     <md-input-container  flex-gt-xs>
                         <label>Name</label>
                         <input name="name" ng-model="currentRecord.name" required>
-                        <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                        <div ng-messages="newsForm.name.$error" role="alert" multiple>
                             <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
                         </div>
                     </md-input-container> 
@@ -41,7 +41,7 @@ SOFTWARE.
                 <md-input-container>
                     <label>Content</label>
                     <input name="name" ng-model="currentRecord.content" required>
-                    <div ng-messages="agencyForm.name.$error" role="alert" multiple>
+                    <div ng-messages="newsForm.name.$error" role="alert" multiple>
                         <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
                     </div>
                 </md-input-container >

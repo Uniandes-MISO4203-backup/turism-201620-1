@@ -33,11 +33,11 @@ SOFTWARE.
                     displayName: 'Save',
                     icon: 'save',
                     fn: function () {
-                        
+                        if ($scope.faqEditForm.$valid) {    
                             $scope.currentRecord.put().then(function (rc) {
                                 $state.go('faqDetail', {faqId: rc.id}, {reload: true});
                             });
-                        
+                        }
                     }
                 },
                 cancel: {
