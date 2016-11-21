@@ -192,10 +192,11 @@ SOFTWARE.
                     </div>
                     <md-nav-bar md-selected-nav-item="currentPage" nav-bar-aria-label="navigation links" md-button--dark >
                         <md-nav-item md-nav-sref="homeTripGallery" name="homeTripGallery" class="main-header__item">Home</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="clientList" name="clientList" class="main-header__item">Client</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="agencyList" name="agencyList" class="main-header__item">Agency</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="productList" name="productList" class="main-header__item">Product</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="categoryList" name="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="client" md-nav-sref="clientList" name="clientList" class="main-header__item">Client</md-nav-item>
+                        <!--<md-nav-item ng-if="wishlist" md-nav-sref="itemListHome" name="itemListHome" class="main-header__item">Wishlist</md-nav-item>-->
+                        <md-nav-item ng-if="agency" md-nav-sref="agencyList" name="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="product" md-nav-sref="productList" name="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="category" md-nav-sref="categoryList" name="categoryList" class="main-header__item">Category</md-nav-item>
                         <md-nav-item ng-if="visitor" md-nav-sref="login" name="login" class="main-header__item">SigIn</md-nav-item>
 
                     </md-nav-bar>
@@ -212,7 +213,20 @@ SOFTWARE.
             <div id='turism-view-auth' ng-if="isLoginView">
                 <div ui-view="mainView" class='main-view-container'></div>
             </div>
-
+             <div>
+                <div  ng-if="client" >
+                Client {{client}}   
+                </div>
+                <div  ng-if="agency" >
+                Agency {{agency}}   
+                </div>
+                <div  ng-if="admin" >
+                Admin {{admin}}   
+                </div>
+                <div>
+                Roles{{roles}}       
+                </div>
+            </div>
             <footer class="footer">
                 <div class="container">
                     <div class="row">

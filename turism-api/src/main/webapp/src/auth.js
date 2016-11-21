@@ -7,6 +7,7 @@
                         $rootScope.category = false;
                         $rootScope.agency = false;
                         $rootScope.client = false;
+                        $rootScope.wishlist = false;
                         $rootScope.product = false;
                         $rootScope.visitor = true;
                         var roles = $rootScope.roles = ["visitor"];
@@ -16,6 +17,7 @@
                             $rootScope.category = false;
                             $rootScope.agency = false;
                             $rootScope.client = true;
+                            $rootScope.wishlist = true;
                             $rootScope.product = false;
                             $rootScope.visitor = false;
                         }
@@ -23,6 +25,7 @@
                             $rootScope.category = false;
                             $rootScope.agency = true;
                             $rootScope.client = false;
+                            $rootScope.wishlist = false;
                             $rootScope.product = false;
                             $rootScope.visitor = false;
                         }
@@ -30,6 +33,7 @@
                             $rootScope.category = true;
                             $rootScope.agency = true;
                             $rootScope.client = true;
+                            $rootScope.wishlist = false;
                             $rootScope.product = true;
                             $rootScope.visitor = false;
                         }
