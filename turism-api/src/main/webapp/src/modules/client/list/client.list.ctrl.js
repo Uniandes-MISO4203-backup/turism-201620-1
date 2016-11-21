@@ -25,8 +25,8 @@ SOFTWARE.
 
     var mod = ng.module("clientModule");
 
-    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','$rootScope',
-        function ($scope, $state, clients, $params,$rootScope) {
+    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','$rootScope','$mdDialog',
+        function ($scope, $state, clients, $params,$rootScope,$mdDialog) {
             $scope.records = clients;
             var roles = $rootScope.roles;
 
@@ -81,6 +81,26 @@ SOFTWARE.
                 delete: {
                     displayName: 'Delete',
                     icon: 'minus',
+                    
+                    /*
+                    fn: function (rc) {
+                        $mdDialog.show({
+                            controller: 'clientDeleteCtrl',
+                            controllerAs: 'ctrl',
+                            templateUrl: 'src/modules/client/instance/delete/client.delete.tpl.html',
+                            parent: angular.element(document.body),
+                            targetEvent: rc,
+                            clickOutsideToClose: true,
+                            fullscreen: $scope.customFullscreen,
+                            locals: {
+                                agency: rc
+                            }
+                        });
+                    },
+                    show: function () {
+                        return true;
+                    }*/
+                    
                     fn: function (rc) { 
                         $state.go('clientDelete', {clientId: rc.id});
                     },

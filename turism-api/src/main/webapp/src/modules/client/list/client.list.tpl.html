@@ -26,6 +26,13 @@ SOFTWARE.
         <img class="turism-list__hero__img" src="assets/img/bg-item.jpg"/> 
         <h2 class="turism-list__hero__title">Clients</h2>
     </div> 
+
+   <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+          <h2 class="md-flex">Client List</h2>
+        </div>
+    </md-toolbar>    
+    
     <md-list class="turism-list-view__list">
 
         <md-list-item ng-repeat="record in records" class="noright turism-list-view__list__item" ng-click="recordActions.detail.fn(record)">
@@ -49,4 +56,5 @@ SOFTWARE.
             <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
         </div>
     </div>
+    
 </div>
