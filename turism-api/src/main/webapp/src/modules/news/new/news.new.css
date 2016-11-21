@@ -1,0 +1,9 @@
+.turism-news-new-view__form {
+    width: 80%;
+    margin: auto;
+    align-self: center;
+}  
+
+.turism-news-new-view__button span {
+    color: #1a4e62;
+}
