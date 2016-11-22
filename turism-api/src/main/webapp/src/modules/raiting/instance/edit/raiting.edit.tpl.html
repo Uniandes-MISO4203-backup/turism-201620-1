@@ -21,13 +21,51 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<form novalidate name="raitingForm" role="form">
-    <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
-    </fieldset>
-</form>
+
+<div class="turism-list-view"> 
+    <md-toolbar class="md-warn">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Edit Raiting</h2>
+        </div>
+    </md-toolbar>
+
+    <div class="turism-list-view__scroll"> 
+
+        <div ng-messages="raitingForm.$error" multiple>
+            <ng-message when="required">
+                <alert type="warning">Please, Fill the required fields!</alert>
+            </ng-message>
+            <ng-message when="integer">
+                <alert type="warning">Value field must be a integer</alert>
+            </ng-message>
+        </div>
+        <form novalidate name="raitingForm" role="form">
+            <!--            <fieldset>
+                            <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
+                        </fieldset>-->
+            <h4>Date when you used the service</h4>
+            <date-picker value="currentRecord.date" model="model.date"></date-picker>
+            <md-content>
+                <h4>Rating: <b>{{currentRecord.value}}/5</b> - for the trip</h4>
+                <div layout>
+                    <div flex="20" layout layout-align="center center">
+                        <span class="md-body-1">Select the rating value</span>
+                    </div>
+                    <md-slider class="md-warn" flex="60" md-discrete ng-model="currentRecord.value" 
+                               step="1" min="1" max="5" aria-label="rating">
+                    </md-slider>
+                     
+                </div>
+                <input id="value" name="value" ng-model="currentRecord.value" type="hidden" required>
+
+                <md-input-container class="md-block">
+                    <label class="h4">Additional Comments</label>
+                    <textarea name="textComment" ng-model="currentRecord.textComment" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+                </md-input-container>
+            </md-content>
+        </form>
+        <header>
+            <md-button class="md-raised md-warn" ng-repeat="(key, action) in actions" ng-click="action.fn()" id="save-client">{{action.displayName}}</md-button>
+        </header>  
+    </div>
 </div>

@@ -30,21 +30,21 @@ SOFTWARE.
             $scope.currentRecord = raiting;
             $scope.actions = {
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Create Raiting or Comment',
                     icon: 'plus',
                     fn: function () {
                         $state.go('raitingNew');
                     }
                 },
                 edit: {
-                    displayName: 'Edit',
+                    displayName: 'Edit Raiting or Comment',
                     icon: 'edit',
                     fn: function () {
                         $state.go('raitingEdit');
                     }
                 },
                 delete: {
-                    displayName: 'Delete',
+                    displayName: 'Delete Raiting',
                     icon: 'minus',
                     fn: function () {
                         $state.go('raitingDelete');
