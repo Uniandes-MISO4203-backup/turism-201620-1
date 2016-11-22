@@ -98,6 +98,22 @@ SOFTWARE.
             var baseInstancePath = basePath + 'instance/';
 
             $sp.state('trip', {
+                url: '/trips?page&limit',
+                abstract: true,
+                parent: 'agencyDetail',
+                views: {
+                     agencyChieldView: {
+                        templateUrl: basePath + 'trip.tpl.html',
+                        controller: 'tripCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'tripModel',
+                    trips: ['agency', '$stateParams', 'model', function (agency, $params, model) {
+                            return agency.getList(model.url, $params);
+                        }]                }
+            });
+            $sp.state('tripHome', {
                 url: '',
                 abstract: true,
                 parent: 'tripDetailInstance',

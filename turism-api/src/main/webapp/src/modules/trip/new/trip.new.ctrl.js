@@ -26,8 +26,8 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripNewCtrl", ["$scope", "$state", "Restangular",
-        function ($scope, $state, r) {
+    mod.controller("tripNewCtrl", ["$scope", "$state", "trips",
+        function ($scope, $state, trips) {
             $scope.currentRecord = {};
             $scope.actions = {
                 save: {
@@ -35,7 +35,7 @@ SOFTWARE.
                     icon: 'save',
                     fn: function () {
                         if ($scope.tripForm.$valid) {
-                            r.all('trips').post($scope.currentRecord).then(function (rc) {
+                            trips.post($scope.currentRecord).then(function (rc) {
                                 $state.go('tripDetail', {tripId: rc.id}, {reload: true});
                             });
                         }
