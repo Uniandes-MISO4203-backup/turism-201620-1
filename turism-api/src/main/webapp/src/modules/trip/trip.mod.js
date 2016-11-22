@@ -113,9 +113,9 @@ SOFTWARE.
             $sp.state('tripItem', {
                 url: '/trips?page&limit',
                 abstract: true,
-                parent: 'tripDetailInstance',
+                parent: 'itemDetail',
                 views: {
-                     tripChieldView: {
+                     itemChieldView: {
                         templateUrl: basePath + 'trip.tpl.html',
                         controller: 'tripCtrl'
                     }
@@ -126,6 +126,7 @@ SOFTWARE.
                             return item.getList(model.url, $params);
                         }]                }
             });
+         
             $sp.state('tripList', {
                 url: '/list',
                 parent: 'trip',
