@@ -51,20 +51,7 @@ SOFTWARE.
                         $state.go('tripNew');
                     }
                 },
-                edit: {
-                    displayName: 'Edit',
-                    icon: 'edit',
-                    fn: function () {
-                        $state.go('tripEdit');
-                    }
-                },
-                delete: {
-                    displayName: 'Delete',
-                    icon: 'minus',
-                    fn: function () {
-                        $state.go('tripDelete');
-                    }
-                },
+              
                 refresh: {
                     displayName: 'Refresh',
                     icon: 'refresh',
