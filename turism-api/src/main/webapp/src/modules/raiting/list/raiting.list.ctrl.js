@@ -46,17 +46,17 @@ SOFTWARE.
             this.pageChanged = function () {
                 $state.go('raitingList', {page: this.currentPage});
             };
-
+            
             $scope.actions = {
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Create Raiting',
                     icon: 'plus',
                     fn: function () {
                         $state.go('raitingNew');
                     }
                 },
                 refresh: {
-                    displayName: 'Refresh',
+                    displayName: 'Refresh Raitings',
                     icon: 'refresh',
                     fn: function () {
                         $state.reload();
@@ -71,6 +71,21 @@ SOFTWARE.
                 }
 
             };
+            
+            // actions only in home view
+            if ($scope.isHomeView)
+            {
+                $scope.actions = {
+                refresh: {
+                    displayName: 'Refresh Raitings',
+                    icon: 'refresh',
+                    fn: function () {
+                        $state.reload();
+                    }
+                }
+               };
+            }
+            
             $scope.recordActions = {
                 detail: {
                     displayName: 'Detail',
@@ -103,5 +118,11 @@ SOFTWARE.
                     }
                 }
             };
+            
+            // actions only in home view
+            if ($scope.isHomeView)
+            {
+                $scope.recordActions = {};
+            }
         }]);
 })(window.angular);

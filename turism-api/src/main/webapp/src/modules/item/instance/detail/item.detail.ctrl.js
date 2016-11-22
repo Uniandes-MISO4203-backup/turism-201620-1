@@ -28,37 +28,52 @@ SOFTWARE.
     mod.controller("itemDetailCtrl", ['$scope', "$state", "item",
         function ($scope, $state, item) {
             $scope.currentRecord = item;
+            
+            //Methods for item actions
+            $scope.tripRelatedEvent= function(){
+                  $state.go('tripDetailItem', {tripId: item.trip.id});
+            };
+            
+            //Methos for trip detail actions
+            $scope.editItemWhislist= function(){
+                  $state.go('itemEdit', {itemId: item.id});
+            };
+            
+            $scope.rateItemTrip= function(){
+                  $state.go('raitingItemTripList', {tripId: item.trip.id});
+            };
+            
             $scope.actions = {
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Add Item to wishlist',
                     icon: 'plus',
                     fn: function () {
                         $state.go('itemNew');
                     }
                 },
                 edit: {
-                    displayName: 'Edit',
+                    displayName: 'Edit Item in the wishlist',
                     icon: 'edit',
                     fn: function () {
                         $state.go('itemEdit');
                     }
                 },
                 delete: {
-                    displayName: 'Delete',
+                    displayName: 'Delete Item in the Wishlist',
                     icon: 'minus',
                     fn: function () {
                         $state.go('itemDelete');
                     }
                 },
                 refresh: {
-                    displayName: 'Refresh',
+                    displayName: 'Refresh items',
                     icon: 'refresh',
                     fn: function () {
                         $state.reload();
                     }
                 },
                 list: {
-                    displayName: 'List',
+                    displayName: 'Go to List',
                     icon: 'th-list',
                     fn: function () {
                         $state.go('itemList');

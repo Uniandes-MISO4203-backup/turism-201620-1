@@ -29,6 +29,7 @@ SOFTWARE.
     mod.controller("raitingNewCtrl", ["$scope", "$state", "raitings",
         function ($scope, $state, raitings) {
             $scope.currentRecord = {};
+            $scope.currentRecord.value=5;
             $scope.actions = {
                 save: {
                     displayName: 'Save',

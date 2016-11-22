@@ -27,6 +27,8 @@ SOFTWARE.
     mod.controller('tripviewCtrl', ['$scope', 
         function ($scope) {
            
+            $scope.isHomeView = true;
+           
             //Alertas
             $scope.alerts = [];
             this.closeAlert = function (index) {

@@ -40,14 +40,14 @@ SOFTWARE.
 
             $scope.actions = {
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Add Item to the wishlist',
                     icon: 'plus',
                     fn: function () {
                         $state.go('itemNew');
                     }
                 },
                 refresh: {
-                    displayName: 'Refresh',
+                    displayName: 'Refresh Wishlist',
                     icon: 'refresh',
                     fn: function () {
                         $state.reload();
@@ -64,7 +64,7 @@ SOFTWARE.
             };
             $scope.recordActions = {
                 detail: {
-                    displayName: 'Detail',
+                    displayName: 'Item Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
                         $state.go('itemDetail', {itemId: rc.id});
@@ -74,7 +74,7 @@ SOFTWARE.
                     }
                 },
                 edit: {
-                    displayName: 'Edit',
+                    displayName: 'Edit Item',
                     icon: 'edit',
                     fn: function (rc) {
                         $state.go('itemEdit', {itemId: rc.id});
@@ -84,7 +84,7 @@ SOFTWARE.
                     }
                 },
                 delete: {
-                    displayName: 'Delete',
+                    displayName: 'Delete Item',
                     icon: 'minus',
                     fn: function (rc) {
                         $state.go('itemDelete', {itemId: rc.id});

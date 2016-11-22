@@ -57,19 +57,30 @@
                 },
                 resolve: {
                     model: 'raitingModel',
-                    raitings: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                    raitings: ['trip','$stateParams', 'model', function (trip, $params, model) {
                             return trip.getList(model.url, $params);
-                        }]                }
+                        }]                
+                }
             });
-            $sp.state('raitingItemTripList', {
-                url: '/list',
-                parent: 'raitingItemTrip',
+            $sp.state('raitingHomeTrip', {
+                url: '/raitings?page&limit',
+                abstract: true,
+                parent: 'tripDetailInstance',
                 views: {
-                     raitingView: {
-                        templateUrl: basePath + 'list/raiting.list.tpl.html',
-                        controller: 'raitingListCtrl',
-                        controllerAs: 'ctrl'
+                    tripChieldView: {
+                        templateUrl: basePath + 'raiting.tpl.html',
+                        controller: 'raitingCtrl'
                     }
+                },
+                resolve: {
+                    model: 'raitingModel',
+                    trip: ['Restangular', '$stateParams',function(r, $params) {
+                           var trip = r.one("trips", 1); 
+                           return trip;
+                        } ], 
+                    raitings: ['trip','$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url, $params);
+                        }]                
                 }
             });
             $sp.state('raitingList', {
@@ -83,27 +94,23 @@
                     }
                 }
             });
-            $sp.state('raitingHomeTrip', {
-                url: '/raitings?page&limit',
-                abstract: true,
-                parent: 'tripview',
+            $sp.state('raitingItemTripList', {
+                url: '/list',
+                parent: 'raitingItemTrip',
                 views: {
-                    tripChieldView: {
-                        templateUrl: basePath + 'raiting.tpl.html',
-                        controller: 'raitingCtrl'
+                     raitingView: {
+                        templateUrl: basePath + 'list/raiting.list.tpl.html',
+                        controller: 'raitingListCtrl',
+                        controllerAs: 'ctrl'
                     }
-                },
-                resolve: {
-                    model: 'raitingModel',
-                    raitings: ['trip', '$stateParams', 'model', function (trip, $params, model) {
-                            return trip.getList(model.url, $params);
-                        }]                }
+                }
             });
+            
             $sp.state('raitingHomeList', {
                 url: '/list',
                 parent: 'raitingHomeTrip',
                 views: {
-                    raitingListView: {
+                    raitingView: {
                         templateUrl: basePath + 'list/raiting.list.tpl.html',
                         controller: 'raitingListCtrl',
                         controllerAs: 'ctrl'
