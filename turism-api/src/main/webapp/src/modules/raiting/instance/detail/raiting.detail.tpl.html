@@ -21,25 +21,66 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+
+<md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">Raiting and Comment Detail</h2>
+        <span flex></span>
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__options__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()" >
+            <md-tooltip md-direction="top" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
+    </div>
+</md-toolbar>  
 <div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Client: </strong></label><span id="client"> {{currentRecord.client.name}}</span>
-        </p>
-        <p>
-        <label><strong>Date: </strong></label><span id="date"> {{currentRecord.date}}</span>
-        </p>
-        <p>
-        <label><strong>Value: </strong></label><span id="value"> {{currentRecord.value}}</span>
-        </p>
-        <p>
-        <label><strong>Comentario: </strong></label><span id="textComment"> {{currentRecord.textComment}}</span>
-        </p>
+    <!--<header>
+        <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+    </header>-->
+
+    <div class="col-md-10" layout="row" layout-align="center">
+
+        <div flex="30" layout="column" layout-align="center">
+            <div flex>
+                <img ng-src="https://cdn2.iconfinder.com/data/icons/free-basic-icon-set-2/300/6-128.png?20" class="md-avatar" alt="Raiting Image" />
+
+            </div>
+        </div>
+
+        <div layout="column" layout-align="center" >
+            <div flex >
+                <div class="md-list-item-text" flex>
+                    <h2>{{currentRecord.value}}</h2>
+                    <i ng-if="currentRecord.value > 0" class="glyphicon glyphicon-star"></i>
+                    <i ng-if="currentRecord.value > 1" class="glyphicon glyphicon-star"></i>
+                    <i ng-if="currentRecord.value > 2" class="glyphicon glyphicon-star"></i>
+                    <i ng-if="currentRecord.value > 3" class="glyphicon glyphicon-star"></i>
+                    <i ng-if="currentRecord.value > 4" class="glyphicon glyphicon-star"></i>
+                </div>
+            </div> 
+            <div flex="30"  >
+                <div>
+                    <label><strong>Date: </strong></label>
+                    <span>{{currentRecord.date}}</span>
+                </div>
+            </div>
+        </div>
+        <div flex="10">      
+        </div>
+        <div flex layout="column" layout-align="center"  > 
+            <p>
+                <label><strong>Client: </strong></label>
+                <span id="client"> {{currentRecord.client.name}}</span>
+            </p>
+            <p>
+                <label><strong>Additional Commment: </strong>
+                </label><span id="textComment"> {{currentRecord.textComment}}</span>
+            </p>
+        </div>
+
     </div>
 </div>
-</div>
+
 <!-- TODO -->
