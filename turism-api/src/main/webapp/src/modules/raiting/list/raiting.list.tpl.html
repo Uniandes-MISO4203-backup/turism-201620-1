@@ -26,7 +26,7 @@ SOFTWARE.
     <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-raiting-list-view__toolbar__item"
          ng-click="action.fn()" ng-if="!action.show || action.show()">
         <md-tooltip md-direction="left" class="tourism-tooltip">
-            {{action.displayName}} Raiting
+            {{action.displayName}}
         </md-tooltip>
         <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
     </div>
@@ -45,6 +45,9 @@ SOFTWARE.
     </div>
 </md-toolbar>
 <div class="turism-raiting-list-view"> 
+    <div  ng-if="isHomeView">
+        <h2>To rate trips, please access to your wishlist</h2>
+    </div>
     <div class="turism-raiting-list-view__scroll">   
         <ul class="turism-raiting-list-view__list">
             <!--<md-list class="turism-list-view__list">-->

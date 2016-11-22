@@ -23,7 +23,7 @@ SOFTWARE.
 -->
    <md-toolbar class="md-warn">
        <div class="md-toolbar-tools">
-            <h2 class="md-flex">Wish List</h2>
+            <h2 class="md-flex">Add Item to WishList</h2>
             <span flex></span>
             <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__options__item"
                  ng-click="action.fn()" ng-if="!action.show || action.show()" >
@@ -45,9 +45,9 @@ SOFTWARE.
         <alert type="warning">Image field must be a URL</alert>
     </ng-message>
 </div>
-<header>
+<!--<header>
     <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
+</header>-->
 <form novalidate name="itemForm" role="form">
     <fieldset>
         <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>

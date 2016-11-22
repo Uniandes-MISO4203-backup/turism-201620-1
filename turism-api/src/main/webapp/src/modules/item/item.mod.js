@@ -44,20 +44,8 @@ SOFTWARE.
                 model: 'tripModel',
                 options: [],
                 required: true
-            },
-            product: {
-                displayName: 'Product',
-                type: 'Reference',
-                model: 'productModel',
-                options: [],
-                required: true
-            },
-            itemState: {
-                displayName: 'State',
-                type: 'String',
-                editable: false
-                
-            }        }
+            }
+        }
     });
 
     mod.config(['$stateProvider',

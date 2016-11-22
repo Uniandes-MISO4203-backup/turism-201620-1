@@ -73,10 +73,10 @@ SOFTWARE.
                  <p>
                     <label><strong>Daily Description: </strong></label><span id="dailyDescription"> {{currentRecord.dailyDescription}}</span>
                 </p>
-                <md-button class="md-fab" ng-if="client || admin" ng-click="edit()">
+                <md-button class="md-fab" ng-if="client" ng-click="edit()">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </md-button>
-                 <md-button class="md-fab" ng-if="client || admin" ng-click="rateTrip()">
+                 <md-button class="md-fab" ng-if="client" ng-click="rateTrip()">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                 </md-button>
             </div>

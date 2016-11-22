@@ -31,7 +31,7 @@ SOFTWARE.
             $scope.currentRecord = {};
             $scope.actions = {
                 save: {
-                    displayName: 'Save',
+                    displayName: 'Save Item',
                     icon: 'save',
                     fn: function () {
                         if ($scope.itemForm.$valid) {

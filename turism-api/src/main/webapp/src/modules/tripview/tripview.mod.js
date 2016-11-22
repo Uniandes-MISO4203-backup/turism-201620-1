@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module('tripviewModule', ['ui.bootstrap']);
+    var mod = ng.module('tripviewModule', ['ui.bootstrap','ngCrud','ui.router']);
 
   
      mod.config(['$stateProvider',

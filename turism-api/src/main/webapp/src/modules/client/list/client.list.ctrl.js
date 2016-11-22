@@ -41,7 +41,7 @@ SOFTWARE.
 
             $scope.actions = {                
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Create Client',
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
@@ -59,7 +59,7 @@ SOFTWARE.
                 }            };
             $scope.recordActions = {
                 detail: {
-                    displayName: 'Detail',
+                    displayName: 'Client Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
                         $state.go('clientDetail', {clientId: rc.id});
@@ -69,7 +69,7 @@ SOFTWARE.
                     }
                 },
                 edit: {
-                    displayName: 'Edit',
+                    displayName: 'Edit Client',
                     icon: 'edit',
                     fn: function (rc) {
                         $state.go('clientEdit', {clientId: rc.id});
@@ -79,7 +79,7 @@ SOFTWARE.
                     }
                 },
                 delete: {
-                    displayName: 'Delete',
+                    displayName: 'Delete Client',
                     icon: 'minus',
                     
                     /*
