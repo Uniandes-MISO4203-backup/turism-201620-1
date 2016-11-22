@@ -25,8 +25,8 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripListCtrl", ["$scope", '$state', '$stateParams', "$http", "trips",
-        function ($scope, $state, $params, $http, trips) {
+    mod.controller("tripGalleryCtrl", ["$scope", '$state', '$stateParams', "$http",
+        function ($scope, $state, $params, $http) {
             $scope.records=[];
 
             //Paginación
@@ -44,9 +44,13 @@ SOFTWARE.
                 }
             };
             
-            
-            $scope.records = trips;
-            
+            if($params.categoryId){
+                $scope.filtrar($state.params.categoryId);
+            } else {
+                $http.get("/turism-api/api/trips").then(function (response) {                    
+                        $scope.records=response.data;
+                });
+            }
 
             this.pageChanged = function () {
                 $state.go('tripList', {page: this.currentPage});
