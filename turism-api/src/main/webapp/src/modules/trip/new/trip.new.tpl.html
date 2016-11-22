@@ -21,21 +21,113 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<div ng-messages="tripForm.$error" multiple>
-    <ng-message when="required">
-        <alert type="warning">Please, Fill the required fields!</alert>
-    </ng-message>
-    <ng-message when="url">
-        <alert type="warning">Image field must be a URL</alert>
-    </ng-message>
-</div>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<form novalidate name="tripForm" role="form">
-    <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
-    </fieldset>
-</form>
-</div>
+  <form novalidate name="tripForm" role="form" layout-gt-sm="column" layout-padding class="turism-new-view__form">
+        <md-input-container class="md-block">
+            <label>Name</label>
+            <input name="name" ng-model="currentRecord.name" required>
+            <div ng-messages="tripForm.name.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      <md-input-container class="md-block">
+            <label>Image</label>
+            <input name="image" ng-model="currentRecord.image" required>
+            <div ng-messages="tripForm.image.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      <md-input-container class="md-block" div flex="1">
+            <label>Price</label>
+            <input name="price" ng-model="currentRecord.price" required type='number'>
+            <div ng-messages="tripForm.price.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+       <md-input-container class="md-block" div flex="1">
+            <label>Quota</label>
+            <input name="quota" ng-model="currentRecord.quota" required type='number'>
+            <div ng-messages="tripForm.quota.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      <md-input-container class="md-block" div flex="60">
+            <label>Duration</label>
+            <input name="duration" ng-model="currentRecord.duration" required type='number'>
+            <div ng-messages="tripForm.duration.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      
+      <md-input-container class="md-block" div flex="60">
+            <label>Date</label>
+             <md-datepicker ng-model="currentRecord.date" name="date" md-min-date="minDate"
+            md-max-date="maxDate"></md-datepicker>
+
+            <div ng-messages="tripForm.date.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+         <md-input-container class="md-block" div flex="60">
+            <label>Origin</label>
+            <input name="origin" ng-model="currentRecord.origin" required>
+            <div ng-messages="tripForm.origin.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      
+         <md-input-container class="md-block" div flex="60">
+            <label>Destination</label>
+            <input name="destnation" ng-model="currentRecord.destination" required>
+            <div ng-messages="tripForm.destination.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" div flex="60">
+            <label>Transport Type</label>
+            <input name="transportType" ng-model="currentRecord.transportType" required>
+            <div ng-messages="tripForm.transportType.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+
+      
+        <md-input-container class="md-block" div flex="60">
+            <label>Special Requirements</label>
+            <input name="specialRequirements" ng-model="currentRecord.specialRequirements" required>
+            <div ng-messages="tripForm.specialRequirements.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      <md-input-container class="md-block" div flex="60">
+            <label>Daily Description</label>
+            <input name="dailyDescription" ng-model="currentRecord.dailyDescription" required>
+            <div ng-messages="tripForm.dailyDescription.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+      
+      <md-input-container class="md-block" div flex="60">
+            <label>Includes Description</label>
+            <input name="includesDescription" ng-model="currentRecord.includesDescription" required>
+            <div ng-messages="tripForm.includesDescription.$error" role="alert" multiple>
+                <div ng-message="required" class="my-message">Please, Fill the required fields!</div>
+            </div>
+        </md-input-container>
+      
+        <md-input-container class="md-block" div flex="20" ng-repeat="(actionName, action) in actions " >
+            <md-button ng-click="action.fn(trip)" class="turism-new-view__button">
+                <span class="glyphicon glyphicon-{{action.icon}}"></span>
+                {{action.displayName}}
+            </md-button> 
+        </md-input-container>
+    </form>

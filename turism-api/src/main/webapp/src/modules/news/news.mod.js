@@ -32,17 +32,17 @@
             $sp.state('news', {
                 url: '/news?page&limit',
                 abstract: true,
-                parent: 'tripDetail',
+                parent: 'tripDetailInstance',
                 views: {
-                     tripChieldView: {
+                        tripChieldView: {
                         templateUrl: basePath + 'news.tpl.html',
                         controller: 'newsCtrl'
                     }
                 },
                 resolve: {
                     model: 'newsModel',
-                    news: ['trip', '$stateParams', 'model', function (trip, $params, model) {
-                            return trip.getList(model.url);
+                    news: ['Restangular', '$stateParams', 'model', function (r, $params, model) {
+                            return r.all(model.url).getList(model.url);
                         }]                }
             });
             $sp.state('newsList', {
