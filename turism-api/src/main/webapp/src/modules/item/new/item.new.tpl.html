@@ -36,21 +36,6 @@ SOFTWARE.
       
     </md-toolbar>  
 
-<md-toolbar class="md-warn">
-    <div class="md-toolbar-tools">
-        <h2 class="md-flex">Wish List</h2>
-        <span flex></span>
-        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__options__item"
-             ng-click="action.fn()" ng-if="!action.show || action.show()" >
-            <md-tooltip md-direction="top" class="tourism-tooltip">
-                {{action.displayName}}
-            </md-tooltip>
-            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
-        </div>
-    </div>
-
-</md-toolbar>  
-
 <div id='turism-view-container'>
     <div ng-messages="itemForm.$error" multiple>
         <ng-message when="required">
@@ -63,14 +48,13 @@ SOFTWARE.
     <header>
     </header>
     <form novalidate name="itemForm" role="form">
-        <md-card>
+        <md-card layout-align="center">
                <md-card-content>
                 <div layout="row">
 
                     <md-input-container>
                         <label>Destination</label>
-                        <md-select id="trip" name="trip" ng-model="currentRecord.trip" class="">
-                              <md-option ng-value="-1">All Trips</md-option>
+                        <md-select id="trip" name="trip" ng-model="currentRecord.trip" class="" required>
                               <md-option ng-repeat="reference in references.trip" ng-value="reference">{{reference.name}}</md-option>
                         </md-select>                        
                     </md-input-container>
