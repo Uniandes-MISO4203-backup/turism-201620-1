@@ -24,7 +24,7 @@
                views: {
                      tripGalleryView: {
                         templateUrl: 'src/modules/trip/list/trip.gallery.tpl.html',
-                        controller: 'tripListCtrl',
+                        controller: 'tripGalleryCtrl',
                         controllerAs: 'ctrl'    
                     }
                 }

@@ -44,6 +44,7 @@ public class ClientEntity extends BaseEntity implements Serializable {
     private String email;
     private String phoneNumber;
     private String homeAddress;
+    private String image;    
     
     @PodamExclude
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -208,11 +209,27 @@ public class ClientEntity extends BaseEntity implements Serializable {
      * @param lastName nuevo valor del atributo
      * @generated
      */
-    
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    
-    
+
+    /**
+     * Obtiene el atributo lastName.
+     *
+     * @return atributo lastName.
+     * @generated
+     */    
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * Establece el valor del atributo image.
+     *
+     * @param image nuevo valor del atributo
+     * @generated
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

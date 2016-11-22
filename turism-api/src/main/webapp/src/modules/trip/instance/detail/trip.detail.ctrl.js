@@ -25,19 +25,22 @@ SOFTWARE.
 
     var mod = ng.module("tripModule");
 
-    mod.controller("tripDetailCtrl", ['$scope', "$state", "$http", "$stateParams",
-        function ($scope, $state, $http, $stateParams) {
+    mod.controller("tripDetailCtrl", ['$scope', "$state", "$http", "$stateParams","Restangular",
+        function ($scope, $state, $http, $stateParams, Restangular) {
              
             $http.get("/turism-api/api/trips/detail/" + $stateParams.tripId).then(function(response){
                 $scope.currentRecord = response.data;
             });
+            
+            $scope.trip =  Restangular.one("trips/detail", $stateParams.tripId);
+
             
             $scope.edit = function(){
                 $state.go('tripEdit');
             };
             
             $scope.rateTrip = function(){
-                $state.go('raitingItemTripList');
+                $state.go('raitingHomeList', {tripId: $stateParams.tripId});
             };
             
             $scope.actions = {
@@ -48,20 +51,7 @@ SOFTWARE.
                         $state.go('tripNew');
                     }
                 },
-                edit: {
-                    displayName: 'Edit',
-                    icon: 'edit',
-                    fn: function () {
-                        $state.go('tripEdit');
-                    }
-                },
-                delete: {
-                    displayName: 'Delete',
-                    icon: 'minus',
-                    fn: function () {
-                        $state.go('tripDelete');
-                    }
-                },
+              
                 refresh: {
                     displayName: 'Refresh',
                     icon: 'refresh',

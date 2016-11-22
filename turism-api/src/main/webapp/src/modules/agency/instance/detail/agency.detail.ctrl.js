@@ -27,6 +27,7 @@ SOFTWARE.
 
     mod.controller("agencyDetailCtrl", ['$scope', "$state", "agency",'$rootScope',
         function ($scope, $state, agency,$rootScope) {
+            $scope.$root.agencyView = true;
             $scope.currentRecord = agency;
             var roles = $rootScope.roles;
             $scope.actions = {

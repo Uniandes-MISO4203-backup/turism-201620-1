@@ -21,21 +21,57 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
+   <md-toolbar class="md-warn">
+       <div class="md-toolbar-tools">
+            <h2 class="md-flex">Add Item to WishList</h2>
+            <span flex></span>
+            <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__options__item"
+                 ng-click="action.fn()" ng-if="!action.show || action.show()" >
+                <md-tooltip md-direction="top" class="tourism-tooltip">
+                    {{action.displayName}}
+                </md-tooltip>
+                <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+            </div>
+       </div>
+      
+    </md-toolbar>  
+
 <div id='turism-view-container'>
-<div ng-messages="itemForm.$error" multiple>
-    <ng-message when="required">
-        <alert type="warning">Please, Fill the required fields!</alert>
-    </ng-message>
-    <ng-message when="url">
-        <alert type="warning">Image field must be a URL</alert>
-    </ng-message>
-</div>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<form novalidate name="itemForm" role="form">
-    <fieldset>
-        <crud-form fields='model.fields' record='currentRecord' lists-of-values="references"></crud-form>
-    </fieldset>
-</form>
+    <div ng-messages="itemForm.$error" multiple>
+        <ng-message when="required">
+            <alert type="warning">Please, Fill the required fields!</alert>
+        </ng-message>
+        <ng-message when="url">
+            <alert type="warning">Image field must be a URL</alert>
+        </ng-message>
+    </div>
+    <header>
+    </header>
+    <form novalidate name="itemForm" role="form">
+        <md-card layout-align="center">
+               <md-card-content>
+                <div layout="row" layout-align="center">
+                    
+                    
+                    <md-input-container flex="60">
+                        <label>Destination</label>
+                        <md-select id="trip" name="trip" ng-model="currentRecord.trip" class="" required>
+                              <md-option ng-repeat="reference in references.trip" ng-value="reference">{{reference.name}}</md-option>
+                        </md-select>                        
+                    </md-input-container >
+
+                    <md-input-container flex="20">
+                        <label>Quantity</label>
+                        <input id="qty" name="qty" ng-model="currentRecord.qty" type="number" required>
+                    </md-input-container>
+
+                </div>
+
+                <md-input-container>
+                    <input  type="hidden" id="name" name="name" ng-model="currentRecord.trip.id + '_' + currentRecord.qty"  required>
+                </md-input-container> 
+
+            </md-card-content>
+        </md-card>
+    </form>
 </div>

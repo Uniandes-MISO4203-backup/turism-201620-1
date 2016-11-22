@@ -38,7 +38,6 @@ public class ClientDetailPage {
     @FindBy(id = "list-client")
     private WebElement listBtn;
 
-    
     @FindBy(id = "name")
     private WebElement name;
     
@@ -60,6 +59,10 @@ public class ClientDetailPage {
     @FindBy(id = "homeAddress")
     private WebElement homeAddress;    
 
+    @FindBy(id = "image")
+    private WebElement image;    
+    
+    
     public void list() {
         listBtn.click();
     }

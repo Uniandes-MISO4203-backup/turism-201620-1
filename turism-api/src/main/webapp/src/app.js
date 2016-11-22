@@ -81,6 +81,11 @@ SOFTWARE.
                         label: 'Client',
                         icon: 'list-alt',
                         state: 'clientList'
+                    },{
+                        id: 'wishlist',
+                        label: 'Wishlist',
+                        icon: 'list-alt',
+                        state: 'itemList'
                     }],
                 'agency': [{
                         id: 'agency',

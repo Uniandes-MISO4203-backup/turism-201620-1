@@ -25,8 +25,8 @@ SOFTWARE.
 
     var mod = ng.module("clientModule");
 
-    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','$rootScope',
-        function ($scope, $state, clients, $params,$rootScope) {
+    mod.controller("clientListCtrl", ["$scope", '$state', 'clients', '$stateParams','$rootScope','$mdDialog',
+        function ($scope, $state, clients, $params,$rootScope,$mdDialog) {
             $scope.records = clients;
             var roles = $rootScope.roles;
 
@@ -41,7 +41,7 @@ SOFTWARE.
 
             $scope.actions = {                
                 create: {
-                    displayName: 'Create',
+                    displayName: 'Create Client',
                     icon: 'plus',
                     fn: function () {
                         $state.go('clientNew');
@@ -59,7 +59,7 @@ SOFTWARE.
                 }            };
             $scope.recordActions = {
                 detail: {
-                    displayName: 'Detail',
+                    displayName: 'Client Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
                         $state.go('clientDetail', {clientId: rc.id});
@@ -69,7 +69,7 @@ SOFTWARE.
                     }
                 },
                 edit: {
-                    displayName: 'Edit',
+                    displayName: 'Edit Client',
                     icon: 'edit',
                     fn: function (rc) {
                         $state.go('clientEdit', {clientId: rc.id});
@@ -79,8 +79,28 @@ SOFTWARE.
                     }
                 },
                 delete: {
-                    displayName: 'Delete',
+                    displayName: 'Delete Client',
                     icon: 'minus',
+                    
+                    /*
+                    fn: function (rc) {
+                        $mdDialog.show({
+                            controller: 'clientDeleteCtrl',
+                            controllerAs: 'ctrl',
+                            templateUrl: 'src/modules/client/instance/delete/client.delete.tpl.html',
+                            parent: angular.element(document.body),
+                            targetEvent: rc,
+                            clickOutsideToClose: true,
+                            fullscreen: $scope.customFullscreen,
+                            locals: {
+                                agency: rc
+                            }
+                        });
+                    },
+                    show: function () {
+                        return true;
+                    }*/
+                    
                     fn: function (rc) { 
                         $state.go('clientDelete', {clientId: rc.id});
                     },

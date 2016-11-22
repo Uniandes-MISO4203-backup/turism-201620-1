@@ -23,31 +23,49 @@ SOFTWARE.
 */
 (function (ng) {
 
-    var mod = ng.module("itemModule");
+    var mod = ng.module("tripModule");
 
-    mod.controller("itemListCtrl", ["$scope", '$state', 'items', '$stateParams',
-        function ($scope, $state, items, $params) {
-            $scope.records = items;
+    mod.controller("tripGalleryCtrl", ["$scope", '$state', '$stateParams', "$http",
+        function ($scope, $state, $params, $http) {
+            $scope.records=[];
 
             //Paginación
             this.itemsPerPage = $params.limit;
             this.currentPage = $params.page;
-            this.totalItems = items.totalRecords;
+            
+            $scope.categorys = [];
+            
+            $scope.filtrar = function (parentCategory) {
+                $scope.getCategorys(parentCategory);
+                if(parentCategory > 0) {
+                    $http.get("/turism-api/api/trips/" + parentCategory).then(function (response) {                    
+                            $scope.records=response.data;
+                    });
+                }
+            };
+            
+            if($params.categoryId){
+                $scope.filtrar($state.params.categoryId);
+            } else {
+                $http.get("/turism-api/api/trips").then(function (response) {                    
+                        $scope.records=response.data;
+                });
+            }
 
             this.pageChanged = function () {
-                $state.go('itemList', {page: this.currentPage});
+                $state.go('tripList', {page: this.currentPage});
             };
 
             $scope.actions = {
                 create: {
-                    displayName: 'Add Item to the wishlist',
+                    displayName: 'Create',
                     icon: 'plus',
                     fn: function () {
-                        $state.go('itemNew');
+                        $state.go('tripNew');
                     }
                 },
                 refresh: {
-                    displayName: 'Refresh Wishlist',
+                    displayName: 'Refresh',
                     icon: 'refresh',
                     fn: function () {
                         $state.reload();
@@ -57,37 +75,38 @@ SOFTWARE.
                     displayName: 'Go back',
                     icon: 'arrow-left',
                     fn: function () {
-                        $state.go('clientDetail');
+                        $state.go('agencyDetail');
                     }
                 }
 
             };
+            
             $scope.recordActions = {
                 detail: {
-                    displayName: 'Item Detail',
+                    displayName: 'Detail',
                     icon: 'eye-open',
                     fn: function (rc) {
-                        $state.go('itemDetail', {itemId: rc.id});
+                        $state.go('tripDetailInstance', {tripId: rc.id});
                     },
                     show: function () {
                         return true;
                     }
                 },
                 edit: {
-                    displayName: 'Edit Item',
+                    displayName: 'Edit',
                     icon: 'edit',
                     fn: function (rc) {
-                        $state.go('itemEdit', {itemId: rc.id});
+                        $state.go('tripEdit', {tripId: rc.id});
                     },
                     show: function () {
                         return true;
                     }
                 },
                 delete: {
-                    displayName: 'Delete Item',
+                    displayName: 'Delete',
                     icon: 'minus',
                     fn: function (rc) {
-                        $state.go('itemDelete', {itemId: rc.id});
+                        $state.go('tripDelete', {tripId: rc.id});
                     },
                     show: function () {
                         return true;

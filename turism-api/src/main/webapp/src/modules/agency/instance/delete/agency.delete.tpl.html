@@ -21,10 +21,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<div class="center-block well text-center">
-    <h1>¿Está seguro que desea borrar el registro?</h1>
-    <button id="confirm-delete" ng-click="ctrl.confirmDelete()" class="btn btn-danger">Eliminar</button>
-    <a id="cancel-delete" ui-sref="agencyList" class="btn btn-info">Cancelar</a>
-</div>
-</div>
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Delete Agency</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" >
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog">X</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1>¿Está seguro que desea borrar el registro {{agency.name}}?</h1>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="ctrl.confirmDelete()" md-autofocus>
+                Emininar
+            </md-button>
+            <md-button ng-click="cancel()">
+                Cancelar 
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

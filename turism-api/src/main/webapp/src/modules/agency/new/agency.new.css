@@ -7,3 +7,13 @@
 .turism-new-view__button span {
     color: #1a4e62;
 }
+
+.edit-form-view {
+    width: 90%;
+    margin: auto;
+    padding: 6em;
+}
+
+.edit-form-view__buttons {
+    float: right;
+}

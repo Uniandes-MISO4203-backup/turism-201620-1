@@ -42,11 +42,9 @@ SOFTWARE.
                     </md-card-title>
                   
                     <md-card-content class="trip-card__detail">
-                        <button ui-sref="tripDetailInstance({tripId: trip.id})" class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto">View Detail</button>
-                        <button ng-repeat="(recordActionName, recordAction) in recordActions " 
+                       <button ng-repeat="(recordActionName, recordAction) in recordActions " 
                             class="md-raised md-accent md-button md-ink-ripple trip-card__detail__goto"
                             ng-click="recordAction.fn(trip)">{{recordAction.displayName}}</button> 
-                        
                     </md-card-content>
                 </md-card>
         </div>
@@ -70,5 +68,4 @@ SOFTWARE.
             </md-tooltip>
             <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
         </div>
-        <!--<toolbar name="model.name" display-name="model.displayName" actions='actions' class="turism-toolbar"></toolbar>-->
     </div>

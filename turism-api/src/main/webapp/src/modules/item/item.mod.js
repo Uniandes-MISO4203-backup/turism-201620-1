@@ -44,20 +44,8 @@ SOFTWARE.
                 model: 'tripModel',
                 options: [],
                 required: true
-            },
-            product: {
-                displayName: 'Product',
-                type: 'Reference',
-                model: 'productModel',
-                options: [],
-                required: true
-            },
-            itemState: {
-                displayName: 'State',
-                type: 'String',
-                editable: false
-                
-            }        }
+            }
+        }
     });
 
     mod.config(['$stateProvider',
@@ -87,7 +75,32 @@ SOFTWARE.
                             return client.getList(model.url, $params);
                         }]                }
             });
+            $sp.state('itemWishlist', {
+                url: '/wishList?page&limit',
+                views: {
+                     mainView: {
+                        templateUrl: basePath + 'item.tpl.html',
+                        controller: 'itemCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'itemModel',
+                    items: ['Restangular', '$stateParams', function (r, $params) {
+                        return r.all('wishList').getList($params);
+                    }]                }
+            });
             $sp.state('itemList', {
+                url: '/list',
+                parent: 'item',
+                views: {
+                    itemView: {
+                        templateUrl: basePath + 'list/item.list.tpl.html',
+                        controller: 'itemListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            });
+            $sp.state('itemListHome', {
                 url: '/list',
                 parent: 'item',
                 views: {

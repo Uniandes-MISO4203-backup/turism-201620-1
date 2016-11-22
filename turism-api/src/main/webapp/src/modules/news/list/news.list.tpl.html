@@ -21,17 +21,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<list-records fields="model.fields" records="records" actions="recordActions"></list-records>
-<pagination ng-if="ctrl.itemsPerPage < ctrl.totalItems"
-            total-items="ctrl.totalItems"
-            max-size="5"
-            ng-model="ctrl.currentPage"
-            ng-change="ctrl.pageChanged()"
-            items-per-page="ctrl.itemsPerPage"
-            class="pagination-md" 
-            boundary-links="true" 
-            rotate="false">
-</pagination>
+<div class="turism-list-view"> 
+
+    <md-content flex class="turism-list-view__list">
+        <md-list>
+            <md-list-item ng-repeat="record in records" class="noright turism-list-view__list__item" ng-click="recordActions.detail.fn(record)">
+                <p class="turism-list-view__list__item__text">{{record.name}}</p>
+                <div ng-repeat="(recordActionName, recordAction) in recordActions" flex="noshrink" class="turism-list-view__options__item"
+                     ng-click="recordAction.fn(record)" ng-if="recordAction.show && recordAction.show(record)">
+                    <md-tooltip md-direction="top" class="tourism-tooltip">
+                        {{recordAction.displayName}}
+                    </md-tooltip>
+                    <span class="glyphicon glyphicon-{{recordAction.icon}}" aria-hidden="true"></span>
+                </div>
+            </md-list-item>    
+        </md-list>
+    </md_content>
+
+</div>   
+   

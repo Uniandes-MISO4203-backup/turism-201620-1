@@ -113,6 +113,19 @@ SOFTWARE.
                             return agency.getList(model.url, $params);
                         }]                }
             });
+            $sp.state('tripHome', {
+                url: '',
+                abstract: true,
+                parent: 'tripDetailInstance',
+                views: {
+                     tripChieldView: {
+                        templateUrl: basePath + 'trip.tpl.html',
+                        controller: 'tripCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'tripModel'              }
+            });
             $sp.state('tripItem', {
                 url: '/trips?page&limit',
                 abstract: true,
@@ -129,6 +142,7 @@ SOFTWARE.
                             return item.getList(model.url, $params);
                         }]                }
             });
+         
             $sp.state('tripList', {
                 url: '/list',
                 parent: 'trip',
@@ -201,7 +215,7 @@ SOFTWARE.
                         controller: 'tripDetailCtrl'
                     }
                 }
-            });
+            });           
             $sp.state('tripDetailItem', {
                 url: '/details',
                 parent: 'tripInstanceItem',

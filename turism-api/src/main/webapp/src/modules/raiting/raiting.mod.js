@@ -57,9 +57,42 @@
                 },
                 resolve: {
                     model: 'raitingModel',
-                    raitings: ['trip', '$stateParams', 'model', function (trip, $params, model) {
+                    raitings: ['trip','$stateParams', 'model', function (trip, $params, model) {
                             return trip.getList(model.url, $params);
-                        }]                }
+                        }]                
+                }
+            });
+            $sp.state('raitingHomeTrip', {
+                url: '/raitings?page&limit',
+                abstract: true,
+                parent: 'tripDetailInstance',
+                views: {
+                    tripChieldView: {
+                        templateUrl: basePath + 'raiting.tpl.html',
+                        controller: 'raitingCtrl'
+                    }
+                },
+                resolve: {
+                    model: 'raitingModel',
+                    trip: ['Restangular', '$stateParams',function(r, $params) {
+                           var trip = r.one("trips", 1); 
+                           return trip;
+                        } ], 
+                    raitings: ['trip','$stateParams', 'model', function (trip, $params, model) {
+                            return trip.getList(model.url, $params);
+                        }]                
+                }
+            });
+            $sp.state('raitingList', {
+                url: '/list',
+                parent: 'raiting',
+                views: {
+                    raitingView: {
+                        templateUrl: basePath + 'list/raiting.list.tpl.html',
+                        controller: 'raitingListCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
             });
             $sp.state('raitingItemTripList', {
                 url: '/list',
@@ -72,9 +105,10 @@
                     }
                 }
             });
-            $sp.state('raitingList', {
+            
+            $sp.state('raitingHomeList', {
                 url: '/list',
-                parent: 'raiting',
+                parent: 'raitingHomeTrip',
                 views: {
                     raitingView: {
                         templateUrl: basePath + 'list/raiting.list.tpl.html',

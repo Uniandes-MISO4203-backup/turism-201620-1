@@ -21,23 +21,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
-<div id='turism-view-container'>
-<header>
-    <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
-</header>
-<div  class="container-fluid well">
-    <div class="col-md-12">
-        <p>
-        <label><strong>Name: </strong></label><span id="name"> {{currentRecord.name}}</span>
-        </p>
-        <p>
-        <label><strong>Qty: </strong></label><span id="qty"> {{currentRecord.qty}}</span>
-        </p>
-        <p><label><strong>Trip: </strong></label><span id="trip"> {{currentRecord.trip.name}}</span></p>
-        <p><label><strong>Product: </strong></label><span id="product"> {{currentRecord.product.name}}</span></p>
-        <p><label><strong>State: </strong></label><span id="itemState"> {{currentRecord.itemState}}</span></p>
+<md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">WishList Item Detail</h2>
+        <span flex></span>
+        <div ng-repeat="(actionName, action) in actions" flex="noshrink" class="turism-list-view__options__item"
+             ng-click="action.fn()" ng-if="!action.show || action.show()" >
+            <md-tooltip md-direction="top" class="tourism-tooltip">
+                {{action.displayName}}
+            </md-tooltip>
+            <span class="glyphicon glyphicon-{{action.icon}}" aria-hidden="true"></span>
+        </div>
     </div>
-</div>
-<div ui-view="itemChieldView"></div>
+
+</md-toolbar>  
+<div id='turism-view-container'>
+    <!--<header>
+        <toolbar name="model.name" display-name="model.displayName" actions='actions'></toolbar>
+    </header>-->
+    <md-content md-theme="docs-dark" layout-xs="column" layout="row" layout-align="center">
+        <div flex-xs flex-gt-xs="60" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Item added to the wishlitst</span>
+                        <span class="md-subhead"><b>Quantity Reserved:</b> {{currentRecord.qty}}</span>
+                        <span class="md-subhead"><b>Trip Selected:</b> {{currentRecord.trip.name}}</span>
+                        <md-button class="md-warn" ng-if="client" ng-click="tripRelatedEvent()">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Trip Information
+                        </md-button>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media">
+                            <img ng-if="currentRecord.image == null" ng-src="/turism-api/assets/img/wishlisticon.PNG" height="20px"/>  
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+    <div ui-view="itemChieldView"></div>
 </div>
 <!-- TODO -->

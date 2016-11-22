@@ -41,6 +41,7 @@ public class ClientDTO implements Serializable{
     private String email;
     private String phoneNumber;
     private String homeAddress;
+    private String image;
 
     /**
      * Constructor de la clase DTO mínima
@@ -65,6 +66,7 @@ public class ClientDTO implements Serializable{
         this.email = entity.getEmail();
         this.phoneNumber = entity.getPhoneNumber();
         this.homeAddress = entity.getHomeAddress();
+        this.image = entity.getImage();
        }
     }
 
@@ -84,6 +86,7 @@ public class ClientDTO implements Serializable{
         entity.setEmail(this.getEmail());
         entity.setPhoneNumber(this.getPhoneNumber());
         entity.setHomeAddress(this.getHomeAddress());
+        entity.setImage(this.getImage());
     return entity;
     }
 
@@ -247,5 +250,24 @@ public class ClientDTO implements Serializable{
     public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
     }
+    
+    /**
+     * Obtiene el atributo lastName.
+     *
+     * @return atributo lastName.
+     * @generated
+     */    
+    public String getImage() {
+        return image;
+    }
 
+    /**
+     * Establece el valor del atributo image.
+     *
+     * @param image nuevo valor del atributo
+     * @generated
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

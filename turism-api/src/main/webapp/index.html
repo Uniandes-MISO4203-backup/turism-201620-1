@@ -47,7 +47,14 @@ SOFTWARE.
         <link rel="stylesheet" href="src/modules/trip/list/trip.gallery.css" />
         <link rel="stylesheet" href="src/modules/trip/list/trip.list.css" />
         <link rel="stylesheet" href="src/modules/trip/instance/detail/trip.detail.css" />
-
+        <link rel="stylesheet" href="src/modules/client/detail/client.detail.css" />
+        <link rel="stylesheet" href="src/modules/news/list/news.list.css" />
+        <link rel="stylesheet" href="src/modules/news/new/news.new.css" />
+        <link rel="stylesheet" href="src/modules/news/instance/detail/news.detail.css" />
+        <link rel="stylesheet" href="src/modules/item/list/item.list.css" />
+        <link rel="stylesheet" href="src/modules/faq/instance/detail/faq.detail.css" />
+        <link rel="stylesheet" href="src/modules/faq/new/faq.new.css" />
+        
         <!-- endbuild -->
 
         <!-- build:css(<%= meta.src %>) styles/main.css -->
@@ -114,6 +121,7 @@ SOFTWARE.
         <script src="src/modules/trip/instance/delete/trip.delete.ctrl.js"></script>
         <script src="src/modules/trip/instance/detail/trip.detail.ctrl.js"></script>
         <script src="src/modules/trip/instance/edit/trip.edit.ctrl.js"></script>
+        <script src="src/modules/trip/list/trip.gallery.ctrl.js"></script>
         <script src="src/modules/trip/list/trip.list.ctrl.js"></script>
         <script src="src/modules/trip/new/trip.new.ctrl.js"></script>
         <script src="src/modules/product/product.ctrl.js"></script>
@@ -191,10 +199,11 @@ SOFTWARE.
                     </div>
                     <md-nav-bar md-selected-nav-item="currentPage" nav-bar-aria-label="navigation links" md-button--dark >
                         <md-nav-item md-nav-sref="homeTripGallery" name="homeTripGallery" class="main-header__item">Home</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="clientList" name="clientList" class="main-header__item">Client</md-nav-item>
-                        <md-nav-item ng-if="agency || admin" md-nav-sref="agencyList" name="agencyList" class="main-header__item">Agency</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="productList" name="productList" class="main-header__item">Product</md-nav-item>
-                        <md-nav-item ng-if="client || admin" md-nav-sref="categoryList" name="categoryList" class="main-header__item">Category</md-nav-item>
+                        <md-nav-item ng-if="client" md-nav-sref="clientList" name="clientList" class="main-header__item">Client</md-nav-item>
+                        <!--<md-nav-item ng-if="wishlist" md-nav-sref="itemListHome" name="itemListHome" class="main-header__item">Wishlist</md-nav-item>-->
+                        <md-nav-item ng-if="agency" md-nav-sref="agencyList" name="agencyList" class="main-header__item">Agency</md-nav-item>
+                        <md-nav-item ng-if="product" md-nav-sref="productList" name="productList" class="main-header__item">Product</md-nav-item>
+                        <md-nav-item ng-if="category" md-nav-sref="categoryList" name="categoryList" class="main-header__item">Category</md-nav-item>
                         <md-nav-item ng-if="visitor" md-nav-sref="login" name="login" class="main-header__item">SigIn</md-nav-item>
 
                     </md-nav-bar>

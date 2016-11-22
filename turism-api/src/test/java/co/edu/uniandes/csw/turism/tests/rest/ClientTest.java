@@ -55,7 +55,6 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -205,6 +204,7 @@ public class ClientTest {
         Assert.assertEquals(client.getEmail(), clientTest.getEmail());
         Assert.assertEquals(client.getPhoneNumber(), clientTest.getPhoneNumber());
         Assert.assertEquals(client.getHomeAddress(), clientTest.getHomeAddress());
+        Assert.assertEquals(client.getImage(), clientTest.getImage());        
 
         ClientEntity entity = em.find(ClientEntity.class, clientTest.getId());
         Assert.assertNotNull(entity);
@@ -231,6 +231,7 @@ public class ClientTest {
         Assert.assertEquals(clientTest.getEmail(), oraculo.get(0).getEmail());
         Assert.assertEquals(clientTest.getPhoneNumber(), oraculo.get(0).getPhoneNumber());
         Assert.assertEquals(clientTest.getHomeAddress(), oraculo.get(0).getHomeAddress());
+        Assert.assertEquals(clientTest.getImage(), oraculo.get(0).getImage());
     }
 
     /**
@@ -270,7 +271,8 @@ public class ClientTest {
         client.setEmail(clientChanged.getEmail());
         client.setPhoneNumber(clientChanged.getPhoneNumber());
         client.setHomeAddress(clientChanged.getHomeAddress());
-
+        client.setHomeAddress(clientChanged.getImage());
+        
         Response response = target
             .path(client.getId().toString())
             .request().cookie(cookieSessionId)
@@ -286,6 +288,7 @@ public class ClientTest {
         Assert.assertEquals(client.getEmail(), clientTest.getEmail());
         Assert.assertEquals(client.getPhoneNumber(), clientTest.getPhoneNumber());
         Assert.assertEquals(client.getHomeAddress(), clientTest.getHomeAddress());
+        Assert.assertEquals(client.getImage(), clientTest.getImage());        
     }
 
     /**
